@@ -1,5 +1,5 @@
-import { BackCircle, BackCircle2, CircleConatiner, ContentClickBox, ContentContainer, ContentDescript, ContentTextBox, ContentTitle, GameImage, KTImage, KioskImage, LogoTitle, MapImage } from "./component/main_components";
-import KTLogo from "./images/KTLogo.png";
+import { BackCircle, BackCircle2, CircleConatiner, ContentClickBox, ContentContainer, ContentDescript, ContentTextBox, ContentTitle, GameImage, KTImage, KioskImage, LogoTitle, MapImage } from "../component/main_components";
+import { StyledLink } from "../component/index-component/styled_index";
 function Main () {
     return(
         <div>
@@ -11,6 +11,8 @@ function Main () {
                 </BackCircle>
             </CircleConatiner>
             <ContentContainer>
+                
+            <StyledLink to="/kiosk">    
                 <ContentClickBox>
                     <KioskImage/>
                     <ContentTextBox>
@@ -20,6 +22,7 @@ function Main () {
                         </ContentDescript>
                     </ContentTextBox>
                 </ContentClickBox>
+            </StyledLink>
 
                 <ContentClickBox>
                     <GameImage/>
@@ -40,9 +43,9 @@ function Main () {
                         </ContentDescript>
                     </ContentTextBox>
                 </ContentClickBox>
+            
             </ContentContainer>
         </div>
-        
     );
 }
 

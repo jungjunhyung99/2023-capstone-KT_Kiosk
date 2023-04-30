@@ -13,7 +13,7 @@ export const BackCircle = styled.div`
     background-color: #2BB7B3;
     height: 17rem;
     width: 100%;
-    border-radius: 20px 20px 300px 300px;
+    border-radius: 0px 0px 300px 300px;
 `;
 
 export const BackCircle2 = styled.div`
@@ -40,6 +40,8 @@ export const ContentClickBox = styled.div`
     border: 3px solid black;
     border-radius: 1rem;
     background-color: white;
+    box-shadow: 0px 1px 2px 1px gray;
+    cursor: pointer;
 `;
 
 export const ContentTitle = styled.span`
