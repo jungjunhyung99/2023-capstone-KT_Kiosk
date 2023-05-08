@@ -1,40 +1,41 @@
-import { StyledLink } from "../component/index-component/styled_index";
-import { FlexBox, ImageBox, KTLogo, KioskContainer, NavBar, NextButton, PrevButton } from "../component/kiosk-component/styled_kiosk";
-import { BackCircle2, CircleConatiner, ContentClickBox, ContentContainer, ContentDescript, ContentTextBox, ContentTitle, GameImage, KTImage, KioskImage, LogoTitle, MapImage } from "../component/main_components";
-import Hamburger from "../images/Hamburger.png";
-import Americano from "../images/Americano_choice.png";
-import Popcorn from "../images/popcorn.png";
+import Hamburger from "../../images/Hamburger.png";
+import Americano from "../../images/Americano_choice.png";
+import Popcorn from "../../images/popcorn.png";
 import { useNavigate } from "react-router-dom";
-function KioskMain() {
+import { BackCircle2, CircleConatiner, ContentClickBox, ContentDescript, ContentTextBox, ContentTitle, LogoTitle } from "../../component/main_components";
+import Kiosk_Nav from "../Navbar/KioskNav";
+import { FlexBox, ImageBox, ImageLongBox, KTLogo, KioskContainer } from "../../component/kiosk-component/styled_kiosk";
+import { StyledLink } from "../../component/index-component/styled_index";
+import BasicBalloon from "../../images/basic_balloon.svg";
+
+function GameMain() {
     const navigate = useNavigate();
     return (        
         <div>
             <CircleConatiner>
                 <BackCircle2/>
-                <NavBar> 
-                    <PrevButton onClick={() => navigate(-1)}>이전 화면으로</PrevButton>
-                    <NextButton onClick={() => navigate(-1)}>처음 화면으로</NextButton>
-                </NavBar>
+                <Kiosk_Nav/>
             </CircleConatiner>
             <KioskContainer>
                 <FlexBox>
                     <KTLogo/>
-                    <LogoTitle>키오스크 체험하기</LogoTitle>
+                    <LogoTitle>뇌활력 게임 체험하기</LogoTitle>
                 </FlexBox>    
-                <StyledLink to="/kiosk">    
+                <StyledLink to="/game/balloon">    
                     <ContentClickBox>
-                        <ImageBox image={Hamburger}/>
+                        <ImageLongBox image={BasicBalloon}/>
                         <ContentTextBox>
-                            <ContentTitle>패스트푸드 키오스크</ContentTitle>
+                            <ContentTitle>글자게임 하기</ContentTitle>
                             <ContentDescript>
-                                햄버거, 너겟, 파이 등의 메뉴를 주문해보세요!
+                                글자색을 혼동하지말고 풍선을 팡팡 터뜨려주세요!
                             </ContentDescript>
                         </ContentTextBox>
                     </ContentClickBox>
                 </StyledLink>
-
+                
+                <StyledLink to="/kiosk/cafe">
                     <ContentClickBox>
-                        <ImageBox image={Americano}/>
+                        <ImageLongBox image={Americano}/>
                         <ContentTextBox>
                             <ContentTitle>카페 키오스크</ContentTitle>
                             <ContentDescript>
@@ -42,9 +43,10 @@ function KioskMain() {
                             </ContentDescript>
                         </ContentTextBox>
                     </ContentClickBox>
-
+                </StyledLink>
+                    
                     <ContentClickBox>
-                        <ImageBox image={Popcorn}/>
+                        <ImageLongBox image={Popcorn}/>
                         <ContentTextBox>
                             <ContentTitle>영화관 키오스크</ContentTitle>
                             <ContentDescript>
@@ -58,4 +60,4 @@ function KioskMain() {
     );
 }
 
-export default KioskMain;
+export default GameMain;

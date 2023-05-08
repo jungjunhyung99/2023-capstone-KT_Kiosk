@@ -42,6 +42,10 @@ export const ContentClickBox = styled.div`
     background-color: white;
     box-shadow: 0px 1px 2px 1px gray;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+    transform: scale(1.1);
+    }
 `;
 
 export const ContentTitle = styled.span`
