@@ -26,49 +26,9 @@ export const ImageBox = styled.div<{image: any}>`
     background-size: cover;
 `;
 
-export const ImageBox1 = styled.div<{image: any}>`
+export const ImageLongBox = styled.div<{image: any}>`
     width: 9rem;
-    height: 9rem;
-    background-image: url(${(props) => props.image});
-    background-size: cover;
-`
-export const ImageBox_IcecreamCone = styled.div<{image: any}>`
-    width: 10rem;
-    height: 20rem;
-    background-image: url(${(props) => props.image});
-    background-size: cover;
-`
-export const ImageBox_IcecreamBar = styled.div<{image: any}>`
-    width: 18rem;
-    height: 8rem;
-    background-image: url(${(props) => props.image});
-    background-size: cover;
-`;
-
-export const ImageBox_IcecreamTube = styled.div<{image: any}>`
-    width: 20rem;
-    height: 8rem;
-    background-image: url(${(props) => props.image});
-    background-size: cover;
-`;
-
-export const ImageBox_IcecreamFamily = styled.div<{image: any}>`
-    width: 20rem;
-    height: 18rem;
-    background-image: url(${(props) => props.image});
-    background-size: cover;
-`;
-
-export const ImageBox_IcecreamFamilyNattur = styled.div<{image: any}>`
-    width: 20rem;
-    height: 20rem;
-    background-image: url(${(props) => props.image});
-    background-size: cover;
-`;
-
-export const ImageBox_IcecreamFamilyGoogoo = styled.div<{image: any}>`
-    width: 20rem;
-    height: 22.5rem;
+    height: 9.5rem;
     background-image: url(${(props) => props.image});
     background-size: cover;
 `;
@@ -77,7 +37,7 @@ export const KioskContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    transform: translateY(-50%);
+    transform: translateY(-40%);
     justify-content: center;
     align-items: center;
 `;
