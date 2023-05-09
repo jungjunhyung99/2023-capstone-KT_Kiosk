@@ -443,5 +443,4 @@ function Icecream_bar() {
     );
 }
 
-
 export default Icecream_bar;
