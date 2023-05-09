@@ -12,7 +12,8 @@ export const LaxicalContainer = styled.div`
     width: 80vw;
     display: grid;
     background-color: white;
-    grid-template-rows: 10vh, 80vh;
+    grid-template-rows: 10vh, 95vh;
+    overflow: scroll;
 `;
 
 export const StyledLink = styled(Link)`
