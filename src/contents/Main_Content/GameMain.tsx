@@ -1,4 +1,3 @@
-import Hamburger from "../../images/Hamburger.png";
 import Americano from "../../images/Americano_choice.png";
 import Popcorn from "../../images/popcorn.png";
 import { useNavigate } from "react-router-dom";

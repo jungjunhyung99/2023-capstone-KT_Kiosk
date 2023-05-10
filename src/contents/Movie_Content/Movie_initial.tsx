@@ -3,15 +3,19 @@ import {useEffect, useState} from "react";
 import { makeImagePath } from "../../Hook/Hook";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import { IAtomMovie, IGetMoives, movieInfoState, movieObj } from "../../Atom/atom";
+import { IAtomMovie, IGetMoives, movieObj } from "../../Atom/atom";
 import { title } from "process";
 import { motion } from "framer-motion";
 import GameNav from "../Navbar/GameNav";
+import { MovieChoiceDiv, MovieContentDiv, MovieGuideDiv } from "../../component/kiosk-component/styled_movie";
+import ticket from "../../images/ticket.svg";
+import smartphone from "../../images/smartphone.svg";
+import Clock from "./Clock";
 
 const Container = styled(motion.div)`
   width: 50vw;
-  height: 100%;
-  background-color: #212121;
+  height: 100vh;
+  background-color: #1B1B1B;
 `;
 
 const Button = styled.button`
@@ -23,6 +27,8 @@ const Button = styled.button`
     color: #fff;
     letter-spacing: -1px;
     border: none;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
 `;
 
 const Box = styled.div<{bgPhoto: string}>`
@@ -37,7 +43,7 @@ const Box = styled.div<{bgPhoto: string}>`
 `;
 
 const Banner = styled.div<{bgPhoto: string}>`
-height: 18rem;
+height: 15rem;
 width: 50vw;
 display: flex;
 flex-direction: column;
@@ -47,15 +53,9 @@ background-image:
 background-size: cover;
 `;
 
-const PosterImage=styled.img`
-    width : 13.5rem;
-    height : 20rem;
-    padding : 1rem;
-`;
-
 function Movie_initial(){
     const navigate = useNavigate();
-    const [movies, setMovies] = useRecoilState<IGetMoives>(movieInfoState);
+    const [movies, setMovies] = useState<IGetMoives>();
     const [movieRecoil, setMovieRecoil] = useRecoilState<IAtomMovie>(movieObj);
     const BoxClicked = (MovieTitle: string) => {
       setMovieRecoil({title:MovieTitle, seat:0, time:""});
@@ -72,14 +72,12 @@ function Movie_initial(){
         setMovies(json);
     }
     };
-
     useEffect(() => {
       getMovies();
     }, []);
-    
+    console.log(movies);
     return (
-      <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-          <GameNav/>
+      <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:"scroll"}}>
           <Container
           initial={{opacity: 0}}
               animate={{opacity: 1, transition:{
@@ -89,23 +87,25 @@ function Movie_initial(){
               exit={{opacity: 0}}>
             <div style={{display:"flex",flexDirection:"column",justifyContent:"center"}}>
               <Banner bgPhoto={makeImagePath(movies?.results[4].backdrop_path || "")}/>
-              <div>
-                <h2 style={{color:"#666666", display:"flex",justifyContent:"center"}}>가장 빨리 볼 수 있는 영화</h2>
+              <div style={{color:"#666666", display:"flex",flexDirection:"column",width:"100%",alignItems:"center"}}>
+                <Clock/>
               </div>
               <div style={{display:"flex", justifyContent:"center"}}>
-                
-                {movies?.results.slice(0,3).map((movie,index:number) => (
-                  <div key={index} style={{display:"flex",justifyContent:"center",flexDirection:"column",margin:"5px"}}>
-                    <Box onClick={() => BoxClicked(movie.title)} bgPhoto={makeImagePath(movie?.poster_path)}>
-                    </Box>
-                    <p style={{borderTop:"1px solid #666666",fontSize:"20px"}}>{movie.title}</p>
-                    <h3 style={{fontSize:"15px", borderTop:"1px solid #666666"}}>별점: <span style={{fontSize:"23px"}}>{movie.vote_average}</span></h3>
-                  </div>
-                ))}
+                <MovieContentDiv>
+                  <MovieGuideDiv onClick={() => navigate("/kiosk/movie/main")}>
+                    <MovieChoiceDiv bgimage={ticket}/>
+                    <span style={{color:"#9B2F7B"}}>티켓 예매하기</span>
+                  </MovieGuideDiv>
+                  <hr/>
+                  <MovieGuideDiv>
+                    <MovieChoiceDiv bgimage={smartphone}/>
+                    <span style={{color:"#6FF0E1"}}>예매티켓 출력</span>
+                  </MovieGuideDiv>
+                </MovieContentDiv>
               </div>
             </div>
             <div style={{width:"100%",display:"flex", justifyContent:"center"}}>
-              <Button onClick={() => navigate("/Menu/home/hard")}>홈으로 가기</Button>
+              <Button onClick={() => navigate("/")}>홈으로 가기</Button>
             </div>
           </Container>
         </div>

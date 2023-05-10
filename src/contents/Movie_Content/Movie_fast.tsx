@@ -10,7 +10,7 @@ import GameNav from "../Navbar/GameNav";
 
 const Container = styled(motion.div)`
   width: 50vw;
-  height: 100%;
+  height: 100vh;
   background-color: #212121;
 `;
 
@@ -78,7 +78,6 @@ function Movie_fast(){
     console.log(movies);
     return (
       <div style={{display:"flex", flexDirection:"column", alignItems:"center"}}>
-          <GameNav/>
           <Container
           initial={{opacity: 0}}
               animate={{opacity: 1, transition:{

@@ -4,7 +4,7 @@ import { balloon } from "./Balloon_data/data";
 import pang from "../../images/pang.jpg";
 import X from "../../images/X.png";
 import { AnimatePresence } from "framer-motion";
-import { BigMovie, Box, Button, Button2, Dealt, MainContainer, MiniBox, Overlay, Progress, ResultMovie, Row } from "../../component/game-component/balloon-component";
+import {  BalloonButton, BalloonButtonDiv, BigMovie, Box, Button, Button2, Dealt, MainContainer, MiniBox, Overlay, Progress, ResultMovie, Row } from "../../component/game-component/balloon-component";
 import Kiosk_Nav from "../Navbar/KioskNav";
 import GameNav from "../Navbar/GameNav";
 
@@ -31,7 +31,7 @@ function BallonGame() {
       const [score, setScore] = useState(0);
       const [fontColor,setFontColor] = useState<string[]>(["green","red"]);    
       const [realBall, setBall] = useState<IBallon[]>(balloon);
-      const [count, setCount] = useState(20);
+      const [count, setCount] = useState(50);
       const [num, setNum] = useState(0);
       useEffect(() => {
         const sec = 
@@ -119,8 +119,8 @@ function BallonGame() {
         return (
           <AnimatePresence>
                 <div style={{display:"flex", flexDirection:"column",height:"110vh",overflow:"auto"}}>
-                  <GameNav/>
                   {count !== 0 ? 
+                  <div style={{display:"flex", flexDirection:"column",alignItems:"center"}}>
                   <BigMovie
                   layoutId="movie"
                 >
@@ -137,7 +137,7 @@ function BallonGame() {
                       </h1>
                       <h1 style={{margin: "0 auto", color: "white"}}>
                         score
-                      </h1>
+                      </h1> 
                     </div>
                     <div style={{display:"flex", justifyContent:"center",alignItems:"center", marginTop:"2rem", width:"25rem", height:"8rem", backgroundColor:"#3da8a5"}}>{selColor.map((colorIdx,index) => <h1 key={index} style={{margin:"15px",color:fontColor[index]}}>
                       {colorIdx}
@@ -153,11 +153,22 @@ function BallonGame() {
                         key={index}>
                         </Box>)}
                     </Row>
-                  </MainContainer>  
+                  </MainContainer>
                 </BigMovie>
+                <BalloonButtonDiv
+                initial={{opacity: 0}}
+                animate={{opacity: 1, transition:{
+                    duration: 1,
+                    delay: 1,
+                }}}
+                exit={{opacity: 0}}>
+                      <BalloonButton>처음으로</BalloonButton>
+                  </BalloonButtonDiv>
+                </div>
                   :
                   <ResultMovie
                    layoutId="movie">
+                    <div>
                    <h2>당신의 점수는...</h2>
                    <h4><span style={{fontSize:"2em",color:"red",fontWeight:"800"}}>{score}</span>점 입니다.</h4>
                <div style={{margin:"0 auto" ,display:"flex", justifyContent:"space-between",width: "100%"}}>
@@ -166,9 +177,10 @@ function BallonGame() {
                    <h3>다시시작</h3>
                </MiniBox>
                <MiniBox>
-                   <Button onClick={() => navigate("/Menu/home/hard")}/>
+                   <Button onClick={() => navigate("/")}/>
                    <h3>나가기</h3>
                </MiniBox>
+               </div>
                </div>
                      </ResultMovie>
                     }
