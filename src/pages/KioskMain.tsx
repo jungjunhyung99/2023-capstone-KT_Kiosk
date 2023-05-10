@@ -56,7 +56,7 @@ function KioskMain() {
                         </ContentTextBox>
                     </ContentClickBox>
 
-                <StyledLink to="/Icecream">    
+                <StyledLink to="/kiosk/Icecream">    
                     <ContentClickBox>
                         <ImageBox1 image={Icecream}/>
                         <ContentTextBox>

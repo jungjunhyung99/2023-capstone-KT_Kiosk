@@ -5,19 +5,19 @@ function Icecream_main() {
     const navigate = useNavigate();
     
     const onClickIcecreamCone = () => {
-        navigate('/Icecream_cone');
+        navigate('/kiosk/Icecream_cone');
     }
 
     const onClickIcecreamBar = () => {
-        navigate('/Icecream_bar');
+        navigate('/kiosk/Icecream_bar');
     }
 
     const onClickIcecreamTube = () => {
-        navigate('/Icecream_tube');
+        navigate('/kiosk/Icecream_tube');
     }
 
     const onClickIcecreamFamily = () => {
-        navigate('/Icecream_family');
+        navigate('/kiosk/Icecream_family');
     }
 
     const onClickKiosk = () => {

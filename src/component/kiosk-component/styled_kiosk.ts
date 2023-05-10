@@ -34,7 +34,7 @@ export const ImageBox1 = styled.div<{image: any}>`
 `
 export const ImageBox_IcecreamCone = styled.div<{image: any}>`
     width: 10rem;
-    height: 20rem;
+    height: 22rem;
     background-image: url(${(props) => props.image});
     background-size: cover;
 `

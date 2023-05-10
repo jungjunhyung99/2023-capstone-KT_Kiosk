@@ -16,11 +16,11 @@ function App() {
             <Routes>
               <Route path='/' element={<Main/>}/>
               <Route path='/kiosk' element={<KioskMain/>}/>
-              <Route path='/Icecream' element={<Icecream_main/>}/>
-              <Route path='/Icecream_cone' element={<Icecream_cone/>}/>
-              <Route path='/Icecream_bar' element={<Icecream_bar/>}/>
-              <Route path='/Icecream_tube' element={<Icecream_tube/>}/>
-              <Route path='/Icecream_family' element={<Icecream_family/>}/>
+              <Route path='/kiosk/Icecream' element={<Icecream_main/>}/>
+              <Route path='/kiosk/Icecream_cone' element={<Icecream_cone/>}/>
+              <Route path='/kiosk/Icecream_bar' element={<Icecream_bar/>}/>
+              <Route path='/kiosk/Icecream_tube' element={<Icecream_tube/>}/>
+              <Route path='/kiosk/Icecream_family' element={<Icecream_family/>}/>
             </Routes>
           </LaxicalContainer>
         </GlobalContainer>

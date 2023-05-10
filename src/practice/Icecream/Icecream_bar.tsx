@@ -13,24 +13,21 @@ function Icecream_bar() {
     const navigate = useNavigate();
 
     const onClickIcecreamCone = () => {
-        navigate('/Icecream_cone');
+        navigate('/kiosk/Icecream_cone');
     }
 
     const onClickIcecreamTube = () => {
-        navigate('/Icecream_tube');
+        navigate('/kiosk/Icecream_tube');
     }
 
     const onClickIcecreamFamily = () => {
-        navigate('/Icecream_family');
+        navigate('/kiosk/Icecream_family');
     }
+   
     const [number, setNumber] = useState(0);
     const [number2, setNumber2] = useState(0);
     const [number3, setNumber3] = useState(0);
     const [number4, setNumber4] = useState(0);
-    const [count, setCount] = useState(0);
-    const [count2, setCount2] = useState(0);
-    const [count3, setCount3] = useState(0);
-    const [count4, setCount4] = useState(0);
 
     const btn_first_click = () => {
         setNumber(number + 1);
@@ -49,62 +46,30 @@ function Icecream_bar() {
     }
 
     const btn_first_minus_click = () => {
-        setNumber(number - 1);
+        if (number > 0)
+            setNumber(number - 1);
     }
 
     const btn_second_minus_click = () => {
-        setNumber2(number2 - 1);
+        if (number2 > 0)
+            setNumber2(number2 - 1);
     }
 
     const btn_third_minus_click = () => {
-        setNumber3(number3 - 1);
+        if (number3 > 0)
+            setNumber3(number3 - 1);
     }
 
     const btn_fourth_minus_click = () => {
-        setNumber4(number4 - 1);
+        if (number4 > 0)
+            setNumber4(number4 - 1);
     }
 
-    const Count = () => {
-        setCount(count + 1);
-    }
-
-    const Count2 = () => {
-        setCount2(count2 + 1);
-    }
-
-    const Count3 = () => {
-        setCount3(count3 + 1);
-    }
-
-    const Count4 = () => {
-        setCount4(count4 + 1);
-    }
-
-    const Minus_Count = () => {    
-        setMinusCount(minus_count - 1);
-    }
-
-    const Minus_Count2 = () => {
-        setMinusCount2(minus_count2 - 1);
-    }
-
-    const Minus_Count3 = () => {
-        setMinusCount3(minus_count3 - 1);
-    }
-
-    const Minus_Count4 = () => {
-        setMinusCount4(minus_count4 - 1);
-    }
-
-    const [minus_count, setMinusCount] = useState(0);
-    const [minus_count2, setMinusCount2] = useState(0);
-    const [minus_count3, setMinusCount3] = useState(0);
-    const [minus_count4, setMinusCount4] = useState(0);
     const [isOpenModal, setOpenModal] = useState<boolean>(false);
 
     const onClickToggleModal = useCallback(() => {
         setOpenModal(!isOpenModal);
-    }, [isOpenModal]);
+    }, [isOpenModal]); 
 
     const Title = styled.div`
         width: 80vw;
@@ -160,14 +125,10 @@ function Icecream_bar() {
         width: 25%;
     `;
 
-    const Warning = styled.div`
-        font-size: 30px;
-        font-weight: bold;
+    const Space = styled.div`
         display:flex;
-        align-items: center;
-        justify-content: center;
-        height: 100px;
-        `;
+        height: 90px;
+    `;
 
     const Items = styled.div`
         display: flex;
@@ -181,9 +142,6 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         right: 4.5rem;
-        &:hover {
-            background-color: lightyellow;
-        }
     `;
 
     const SubakbaBox = styled.button`
@@ -191,9 +149,6 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         right: 5.2em;
-        &:hover {
-            background-color: lightyellow;
-        }
     `;
 
     const BosukbaBox = styled.button`
@@ -201,9 +156,6 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         right: 3.6rem;
-        &:hover {
-            background-color: lightyellow;
-        }
     `;
 
     const ZyosbaBox = styled.button`
@@ -211,9 +163,6 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         right: 3rem;
-        &:hover {
-            background-color: lightyellow;
-        }
     `;
 
     const MeronaPrice = styled.div`
@@ -232,14 +181,14 @@ function Icecream_bar() {
         font-size: 30px;
     `;
 
-    const MinusDivButton = styled.div`
+    const PlusDivButton = styled.div`
         display: flex;
-        justify-content: center;
+        justify-content: center;  
         position: relative;
         left: 60px;
     `;
 
-    const FirstButton = styled.button`
+    const FirstPlusButton = styled.button`
         width: 60px;
         height: 50px;
         background-color: green;
@@ -252,7 +201,7 @@ function Icecream_bar() {
         }
     `;
 
-    const SecondButton = styled.button`
+    const SecondPlusButton = styled.button`
         width: 60px;
         height: 50px;
         background-color: green;
@@ -265,7 +214,7 @@ function Icecream_bar() {
         }
     `;
 
-    const ThirdButton = styled.button`
+    const ThirdPlusButton = styled.button`
         width: 60px;
         height: 50px;
         background-color: green;
@@ -278,47 +227,134 @@ function Icecream_bar() {
         }
     `;
 
-    const FourthButton = styled.button`
+    const FourthPlusButton = styled.button`
         width: 60px;
         height: 50px;
         background-color: green;
         border-width: 1px;
         position: relative;
         top: 10px;
-        left: 430px;
+        left: 435px;
         &:hover {
             background-color: lightyellow;
         }
     `;
 
-    const FirstButtonDiv = styled.div`
+    const FirstPlusButtonDiv = styled.div`
         color: white;
         font-size: 40px;
         display: flex;
         justify-content: center;
     `;
 
-    const SecondButtonDiv = styled.div`
+    const SecondPlusButtonDiv = styled.div`
         color: white;
         font-size: 40px;
         display: flex;
         justify-content: center;
     `;
 
-    const ThirdButtonDiv = styled.div`
+    const ThirdPlusButtonDiv = styled.div`
         color: white;
         font-size: 40px;
         display: flex;
         justify-content: center;
     `;
 
-    const FourthButtonDiv = styled.div`
+    const FourthPlusButtonDiv = styled.div`
         color: white;
         font-size: 40px;
         display: flex;
         justify-content: center;
     `;
- 
+
+    const MinusDivButton = styled.div`
+        display: flex;
+        justify-content: center;
+        position: relative;
+        left: 60px;
+    `;
+
+    const FirstMinusButton = styled.button`
+        width: 60px;
+        height: 50px;
+        background-color: green;
+        border-width: 1px;
+        position: relative;
+        top: 10px;
+        right: 315px;
+        &:hover {
+            background-color: lightyellow;
+        }
+    `;
+
+    const SecondMinusButton = styled.button`
+        width: 60px;
+        height: 50px;
+        background-color: green;
+        border-width: 1px;
+        position: relative;
+        top: 10px;
+        right: 70px;
+        &:hover {
+            background-color: lightyellow;
+        }
+    `;
+
+    const ThirdMinusButton = styled.button`
+        width: 60px;
+        height: 50px;
+        background-color: green;
+        border-width: 1px;
+        position: relative;
+        top: 10px;
+        left: 183px;
+        &:hover {
+            background-color: lightyellow;
+        }
+    `;
+
+    const FourthMinusButton = styled.button`
+        width: 60px;
+        height: 50px;
+        background-color: green;
+        border-width: 1px;
+        position: relative;
+        top: 10px;
+        left: 435px;
+        &:hover {
+            background-color: lightyellow;
+        }
+    `;
+
+    const FirstMinusButtonDiv = styled.div`
+        color: white;
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+    `;
+
+    const SecondMinusButtonDiv = styled.div`
+        color: white;
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+    `;
+
+    const ThirdMinusButtonDiv = styled.div`
+        color: white;
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+    `;
+
+    const FourthMinusButtonDiv = styled.div`
+        color: white;
+        font-size: 40px;
+        display: flex;
+        justify-content: center;
+    `;
+
     const CountItems = styled.div`
         display: flex;
         justify-content: center;
@@ -406,18 +442,24 @@ function Icecream_bar() {
                 <TubeButton onClick={onClickIcecreamTube}>Tube</TubeButton>
                 <FamilyButton onClick={onClickIcecreamFamily}>Family</FamilyButton>
             </List>
-            <Warning>주의 : 수량이 0보다 크도록 선택하세요. 아니면 주문에 실패합니다.</Warning>
+            <Space></Space>
             <Items>
-                <MeronaBox onClick={() => {btn_first_click(); Count()}}><ImageBox_IcecreamBar image={merona}/><MeronaPrice>2,500원</MeronaPrice></MeronaBox>
-                <SubakbaBox onClick={() => {btn_second_click(); Count2()}}><ImageBox_IcecreamBar image={subakba}/><SubakbaPrice>2,000원</SubakbaPrice></SubakbaBox>
-                <BosukbaBox onClick={() => {btn_third_click(); Count3()}}><ImageBox_IcecreamBar image={bosukba}/><BosukbaPrice>2,500원</BosukbaPrice></BosukbaBox>
-                <ZyosbaBox onClick={() => {btn_fourth_click(); Count4()}}><ImageBox_IcecreamBar image={zyosba}/><ZyosbaPrice>2,000원</ZyosbaPrice></ZyosbaBox>
+                <MeronaBox><ImageBox_IcecreamBar image={merona}/><MeronaPrice>2,500원</MeronaPrice></MeronaBox>
+                <SubakbaBox><ImageBox_IcecreamBar image={subakba}/><SubakbaPrice>2,000원</SubakbaPrice></SubakbaBox>
+                <BosukbaBox><ImageBox_IcecreamBar image={bosukba}/><BosukbaPrice>2,500원</BosukbaPrice></BosukbaBox>
+                <ZyosbaBox><ImageBox_IcecreamBar image={zyosba}/><ZyosbaPrice>2,000원</ZyosbaPrice></ZyosbaBox>
             </Items>
+            <PlusDivButton>
+                <FirstPlusButton onClick={() => {btn_first_click();}}><FirstPlusButtonDiv>+</FirstPlusButtonDiv></FirstPlusButton>
+                <SecondPlusButton onClick={() => {btn_second_click();}}><SecondPlusButtonDiv>+</SecondPlusButtonDiv></SecondPlusButton>
+                <ThirdPlusButton onClick={() => {btn_third_click();}}><ThirdPlusButtonDiv>+</ThirdPlusButtonDiv></ThirdPlusButton>
+                <FourthPlusButton onClick={() => {btn_fourth_click();}}><FourthPlusButtonDiv>+</FourthPlusButtonDiv></FourthPlusButton>
+            </PlusDivButton>
             <MinusDivButton>
-                <FirstButton onClick={() => {btn_first_minus_click(); Minus_Count();}}><FirstButtonDiv>-</FirstButtonDiv></FirstButton>
-                <SecondButton onClick={() => {btn_second_minus_click(); Minus_Count2();}}><SecondButtonDiv>-</SecondButtonDiv></SecondButton>
-                <ThirdButton onClick={() => {btn_third_minus_click(); Minus_Count3();}}><ThirdButtonDiv>-</ThirdButtonDiv></ThirdButton>
-                <FourthButton onClick={() => {btn_fourth_minus_click(); Minus_Count4();}}><FourthButtonDiv>-</FourthButtonDiv></FourthButton>
+                <FirstMinusButton onClick={() => {btn_first_minus_click();}}><FirstMinusButtonDiv>-</FirstMinusButtonDiv></FirstMinusButton>
+                <SecondMinusButton onClick={() => {btn_second_minus_click();}}><SecondMinusButtonDiv>-</SecondMinusButtonDiv></SecondMinusButton>
+                <ThirdMinusButton onClick={() => {btn_third_minus_click();}}><ThirdMinusButtonDiv>-</ThirdMinusButtonDiv></ThirdMinusButton>
+                <FourthMinusButton onClick={() => {btn_fourth_minus_click();}}><FourthMinusButtonDiv>-</FourthMinusButtonDiv></FourthMinusButton>
             </MinusDivButton>
             <CountItems>
                 <FirstCount>{number}</FirstCount>
@@ -428,14 +470,11 @@ function Icecream_bar() {
             <Order onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
             {isOpenModal && (
                 <Modal onClickToggleModal={onClickToggleModal}>
-                   <MeronaText>메로나 : 2,500원 * {count+(minus_count)}개 = {2500*(count+(minus_count))}원</MeronaText>
-                            <SubakText>수박바 : 2,000원 * {count2+(minus_count2)}개 = {2000*(count2+(minus_count2))}원</SubakText>
-                            <BosukText>보석바 : 2,500원 * {count3+(minus_count3)}개 = {2500*(count3+(minus_count3))}원</BosukText>
-                            <ZyosText>죠스바 : 2,000원 * {count4+(minus_count4)}개 = {2000*(count4+(minus_count4))}원</ZyosText> <br />
-                            <Total>총 금액 : {(2500*(count+(minus_count))
-                            +(2000*(count2+(minus_count2)))
-                            +(2500*(count3+(minus_count3)))
-                            +(2000*(count4+(minus_count4))))}원</Total>
+                   <MeronaText>메로나 : 2,500원 * {number}개 = {2500*number}원</MeronaText>
+                            <SubakText>수박바 : 2,000원 * {number2}개 = {2000*number2}원</SubakText>
+                            <BosukText>보석바 : 2,500원 * {number3}개 = {2500*number3}원</BosukText>
+                            <ZyosText>죠스바 : 2,000원 * {number4}개 = {2000*number4}원</ZyosText> <br />
+                            <Total>총 금액 : {2500*number + 2000*number2 + 2500*number3 + 2000*number4}원</Total>
                             <Close onClick={() => setOpenModal(false)}>닫기</Close>
                 </Modal>
             )}
