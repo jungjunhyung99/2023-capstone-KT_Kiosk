@@ -23,7 +23,6 @@ function Icecream_bar() {
     const onClickIcecreamFamily = () => {
         navigate('/kiosk/Icecream_family');
     }
-   
     const [number, setNumber] = useState(0);
     const [number2, setNumber2] = useState(0);
     const [number3, setNumber3] = useState(0);
@@ -47,29 +46,29 @@ function Icecream_bar() {
 
     const btn_first_minus_click = () => {
         if (number > 0)
-            setNumber(number - 1);
+        setNumber(number - 1);
     }
 
     const btn_second_minus_click = () => {
         if (number2 > 0)
-            setNumber2(number2 - 1);
+        setNumber2(number2 - 1);
     }
 
     const btn_third_minus_click = () => {
         if (number3 > 0)
-            setNumber3(number3 - 1);
+        setNumber3(number3 - 1);
     }
 
     const btn_fourth_minus_click = () => {
         if (number4 > 0)
-            setNumber4(number4 - 1);
+        setNumber4(number4 - 1);
     }
 
     const [isOpenModal, setOpenModal] = useState<boolean>(false);
 
     const onClickToggleModal = useCallback(() => {
         setOpenModal(!isOpenModal);
-    }, [isOpenModal]); 
+    }, [isOpenModal]);
 
     const Title = styled.div`
         width: 80vw;
@@ -129,7 +128,6 @@ function Icecream_bar() {
         display:flex;
         height: 90px;
     `;
-
     const Items = styled.div`
         display: flex;
         justify-content: center;
@@ -142,6 +140,9 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         right: 4.5rem;
+        &:hover {
+            background-color: lightyellow;
+        }
     `;
 
     const SubakbaBox = styled.button`
@@ -149,6 +150,9 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         right: 5.2em;
+        &:hover {
+            background-color: lightyellow;
+        }
     `;
 
     const BosukbaBox = styled.button`
@@ -156,6 +160,9 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         right: 3.6rem;
+        &:hover {
+            background-color: lightyellow;
+        }
     `;
 
     const ZyosbaBox = styled.button`
@@ -163,6 +170,9 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         right: 3rem;
+        &:hover {
+            background-color: lightyellow;
+        }
     `;
 
     const MeronaPrice = styled.div`
@@ -185,7 +195,7 @@ function Icecream_bar() {
         display: flex;
         justify-content: center;  
         position: relative;
-        left: 60px;
+        left: 59px;
     `;
 
     const FirstPlusButton = styled.button`
@@ -234,7 +244,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        left: 435px;
+        left: 436px;
         &:hover {
             background-color: lightyellow;
         }
@@ -272,7 +282,7 @@ function Icecream_bar() {
         display: flex;
         justify-content: center;
         position: relative;
-        left: 60px;
+        left: 59px;
     `;
 
     const FirstMinusButton = styled.button`
@@ -321,7 +331,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        left: 435px;
+        left: 436px;
         &:hover {
             background-color: lightyellow;
         }
@@ -481,6 +491,5 @@ function Icecream_bar() {
         </div>
     );
 }
-
 
 export default Icecream_bar;
