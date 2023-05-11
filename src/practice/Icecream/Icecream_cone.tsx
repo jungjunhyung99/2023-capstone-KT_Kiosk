@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { ImageBox_IcecreamCone } from '../../component/kiosk-component/styled_kiosk';
+import { ImageBox_IcecreamCone } from '../../component/kiosk-component/styled_icecream';
 import Gugucone from "../../images/icecream/Gugucone.png";
 import Pigcone from "../../images/icecream/Pigcone.png";
 import Worldcone from "../../images/icecream/Worldcone.png";

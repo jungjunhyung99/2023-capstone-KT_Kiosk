@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { ImageBox_IcecreamFamily, ImageBox_IcecreamFamilyNattur,  ImageBox_IcecreamFamilyGoogoo} from '../../component/kiosk-component/styled_kiosk';
+import { ImageBox_IcecreamFamily, ImageBox_IcecreamFamilyNattur, ImageBox_IcecreamFamilyGoogoo} from '../../component/kiosk-component/styled_icecream';
 import Bingsoo from "../../images/icecream/Bingsoo.png";
 import Together from "../../images/icecream/Together.png";
 import Nattur from "../../images/icecream/Nattur.png";

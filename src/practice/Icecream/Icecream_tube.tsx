@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { ImageBox_IcecreamTube } from '../../component/kiosk-component/styled_kiosk';
+import { ImageBox_IcecreamTube } from '../../component/kiosk-component/styled_icecream';
 import Yogurt from "../../images/icecream/Yogurt.png";
 import Bbabbico from "../../images/icecream/Bbabbico.png";
 import Tankboygreengrape from "../../images/icecream/Tankboygreengrape.png";
