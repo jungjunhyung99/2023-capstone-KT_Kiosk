@@ -195,6 +195,7 @@ function Icecream_cone() {
         &:hover {
             background-color: lightyellow;
         }
+        z-index: 100;
     `;
 
     const SecondPlusButton = styled.button`
@@ -208,6 +209,7 @@ function Icecream_cone() {
         &:hover {
             background-color: lightyellow;
         }
+        z-index: 100;
     `;
 
     const ThirdPlusButton = styled.button`
@@ -221,6 +223,7 @@ function Icecream_cone() {
         &:hover {
             background-color: lightyellow;
         }
+        z-index: 100;
     `;
 
     const FourthPlusButton = styled.button`
@@ -234,6 +237,7 @@ function Icecream_cone() {
         &:hover {
             background-color: lightyellow;
         }
+        z-index: 100;
     `;
 
     const FirstPlusButtonDiv = styled.div`
@@ -268,7 +272,8 @@ function Icecream_cone() {
         display: flex;
         justify-content: center;
         position: relative;
-        left: 0px;
+        right: 110px;
+        bottom: 50px;
     `;
 
     const FirstMinusButton = styled.button`

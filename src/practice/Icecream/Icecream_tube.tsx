@@ -199,6 +199,7 @@ function Icecream_bar() {
         &:hover {
             background-color: lightyellow;
         }
+        z-index: 100;
     `;
 
     const SecondPlusButton = styled.button`
@@ -212,6 +213,7 @@ function Icecream_bar() {
         &:hover {
             background-color: lightyellow;
         }
+        z-index: 100;
     `;
 
     const ThirdPlusButton = styled.button`
@@ -225,6 +227,7 @@ function Icecream_bar() {
         &:hover {
             background-color: lightyellow;
         }
+        z-index: 100;
     `;
 
     const FourthPlusButton = styled.button`
@@ -238,6 +241,7 @@ function Icecream_bar() {
         &:hover {
             background-color: lightyellow;
         }
+        z-index: 100;
     `;
 
     const FirstPlusButtonDiv = styled.div`
@@ -272,7 +276,8 @@ function Icecream_bar() {
         display: flex;
         justify-content: center;
         position: relative;
-        left: 28px;
+        right: 250px;
+        bottom: 50px;
     `;
 
     const FirstMinusButton = styled.button`
@@ -295,7 +300,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        right: 37px;
+        right: 27px;
         ;
         &:hover {
             background-color: lightyellow;
@@ -309,7 +314,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        left: 249px;
+        left: 252px;
         &:hover {
             background-color: lightyellow;
         }
@@ -322,7 +327,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        left: 532px;
+        left: 537px;
         &:hover {
             background-color: lightyellow;
         }
