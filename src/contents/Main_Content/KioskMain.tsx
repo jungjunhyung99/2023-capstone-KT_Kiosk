@@ -1,3 +1,4 @@
+<<<<<<< HEAD:src/pages/KioskMain.tsx
 import { StyledLink } from "../component/index-component/styled_index";
 import { FlexBox, ImageBox, KTLogo, KioskContainer, NavBar, NextButton, PrevButton } from "../component/kiosk-component/styled_kiosk";
 import { ImageBox1 } from "../component/kiosk-component/styled_icecream";
@@ -8,6 +9,16 @@ import Popcorn from "../images/popcorn.png";
 import Icecream from "../images/Icecream.png"; 
 import { useNavigate } from "react-router-dom";
 
+=======
+import { StyledLink } from "../../component/index-component/styled_index";
+import { FlexBox, ImageBox, ImageLongBox, KTLogo, KioskContainer, NavBar, NextButton, PrevButton } from "../../component/kiosk-component/styled_kiosk";
+import { BackCircle2, CircleConatiner, ContentClickBox, ContentContainer, ContentDescript, ContentTextBox, ContentTitle, GameImage, KTImage, KioskImage, LogoTitle, MapImage } from "../../component/main_components";
+import Hamburger from "../../images/Hamburger.png"
+import Americano from "../../images/Americano_choice.png";
+import Popcorn from "../../images/popcorn.png";
+import { useNavigate } from "react-router-dom";
+import Kiosk_Nav from "../Navbar/KioskNav";
+>>>>>>> origin/main:src/contents/Main_Content/KioskMain.tsx
 function KioskMain() {
     const navigate = useNavigate();
 
@@ -15,17 +26,14 @@ function KioskMain() {
         <div>
             <CircleConatiner>
                 <BackCircle2/>
-                <NavBar> 
-                    <PrevButton onClick={() => navigate(-1)}>이전 화면으로</PrevButton>
-                    <NextButton onClick={() => navigate(-1)}>처음 화면으로</NextButton>
-                </NavBar>
+                <Kiosk_Nav/>
             </CircleConatiner>
             <KioskContainer>
                 <FlexBox>
                     <KTLogo/>
                     <LogoTitle>키오스크 체험하기</LogoTitle>
                 </FlexBox>    
-                <StyledLink to="/kiosk">    
+                <StyledLink to="/kiosk/hamburger">    
                     <ContentClickBox>
                         <ImageBox image={Hamburger}/>
                         <ContentTextBox>
@@ -36,9 +44,10 @@ function KioskMain() {
                         </ContentTextBox>
                     </ContentClickBox>
                 </StyledLink>
-
+                
+                <StyledLink to="/kiosk/cafe">
                     <ContentClickBox>
-                        <ImageBox image={Americano}/>
+                        <ImageLongBox image={Americano}/>
                         <ContentTextBox>
                             <ContentTitle>카페 키오스크</ContentTitle>
                             <ContentDescript>
@@ -46,9 +55,11 @@ function KioskMain() {
                             </ContentDescript>
                         </ContentTextBox>
                     </ContentClickBox>
+                </StyledLink>
 
+                <StyledLink to="/kiosk/movie">    
                     <ContentClickBox>
-                        <ImageBox image={Popcorn}/>
+                        <ImageLongBox image={Popcorn}/>
                         <ContentTextBox>
                             <ContentTitle>영화관 키오스크</ContentTitle>
                             <ContentDescript>
@@ -56,6 +67,7 @@ function KioskMain() {
                             </ContentDescript>
                         </ContentTextBox>
                     </ContentClickBox>
+<<<<<<< HEAD:src/pages/KioskMain.tsx
 
                 <StyledLink to="/kiosk/Icecream">    
                     <ContentClickBox>
@@ -69,6 +81,9 @@ function KioskMain() {
                     </ContentClickBox>
                 </StyledLink>
 
+=======
+                </StyledLink>
+>>>>>>> origin/main:src/contents/Main_Content/KioskMain.tsx
             </KioskContainer>
         </div>
     );

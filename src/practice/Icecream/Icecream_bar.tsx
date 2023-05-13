@@ -369,7 +369,6 @@ function Icecream_bar() {
         display: flex;
         justify-content: center;
     `;
-
     const CountItems = styled.div`
         display: flex;
         justify-content: center;

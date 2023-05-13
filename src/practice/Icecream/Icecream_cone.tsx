@@ -13,6 +13,7 @@ function Icecream_cone() {
     const navigate = useNavigate();
 
     const onClickIcecreamBar = () => {
+
         navigate('/kiosk/Icecream_bar');
     }
 
@@ -22,7 +23,7 @@ function Icecream_cone() {
 
     const onClickIcecreamFamily = () => {
         navigate('/kiosk/Icecream_family');
-    }
+
 
     const [number, setNumber] = useState(0);
     const [number2, setNumber2] = useState(0);
@@ -129,6 +130,15 @@ function Icecream_cone() {
         }
         width: 25%;
     `;
+
+    const Warning = styled.div`
+        font-size: 30px;
+        font-weight: bold;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        height: 100px;
+        `;
 
     const Items = styled.div`
         display: flex;
@@ -355,7 +365,6 @@ function Icecream_cone() {
         display: flex;
         justify-content: center;
     `;
-
     const CountItems = styled.div`
         display: flex;
         justify-content: center;
@@ -480,7 +489,6 @@ function Icecream_cone() {
                 </Modal>
             )}
         </div>
-    );
+    );}
 }
-
 export default Icecream_cone;

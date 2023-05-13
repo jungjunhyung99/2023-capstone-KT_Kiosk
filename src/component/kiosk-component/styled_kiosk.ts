@@ -26,11 +26,18 @@ export const ImageBox = styled.div<{image: any}>`
     background-size: cover;
 `;
 
+export const ImageLongBox = styled.div<{image: any}>`
+    width: 9rem;
+    height: 9.5rem;
+    background-image: url(${(props) => props.image});
+    background-size: cover;
+`;
+
 export const KioskContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
-    transform: translateY(-50%);
+    transform: translateY(-40%);
     justify-content: center;
     align-items: center;
 `;

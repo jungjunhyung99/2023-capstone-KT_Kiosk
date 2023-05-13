@@ -1,5 +1,5 @@
-import { BackCircle, BackCircle2, CircleConatiner, ContentClickBox, ContentContainer, ContentDescript, ContentTextBox, ContentTitle, GameImage, KTImage, KioskImage, LogoTitle, MapImage } from "../component/main_components";
-import { StyledLink } from "../component/index-component/styled_index";
+import { BackCircle, BackCircle2, CircleConatiner, ContentClickBox, ContentContainer, ContentDescript, ContentTextBox, ContentTitle, GameImage, KTImage, KioskImage, LogoTitle, MapImage } from "../../component/main_components";
+import { StyledLink } from "../../component/index-component/styled_index";
 function Main () {
     return(
         <div>
@@ -24,6 +24,7 @@ function Main () {
                 </ContentClickBox>
             </StyledLink>
 
+            <StyledLink to="/game">
                 <ContentClickBox>
                     <GameImage/>
                     <ContentTextBox>
@@ -33,7 +34,7 @@ function Main () {
                         </ContentDescript>
                     </ContentTextBox>
                 </ContentClickBox>
-
+            </StyledLink>
                 <ContentClickBox>
                     <MapImage/>
                     <ContentTextBox>

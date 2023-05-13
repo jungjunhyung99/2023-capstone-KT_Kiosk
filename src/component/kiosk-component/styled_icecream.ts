@@ -1,5 +1,15 @@
 import styled from "styled-components";
 
+<<<<<<< HEAD
+=======
+export const ImageBox = styled.div<{image: any}>`
+    width: 9rem;
+    height: 7rem;
+    background-image: url(${(props) => props.image});
+    background-size: cover;
+`;
+
+>>>>>>> origin/main
 export const ImageBox1 = styled.div<{image: any}>`
     width: 9rem;
     height: 9rem;
@@ -8,7 +18,11 @@ export const ImageBox1 = styled.div<{image: any}>`
 `
 export const ImageBox_IcecreamCone = styled.div<{image: any}>`
     width: 10rem;
+<<<<<<< HEAD
     height: 22rem;
+=======
+    height: 20rem;
+>>>>>>> origin/main
     background-image: url(${(props) => props.image});
     background-size: cover;
 `
@@ -45,4 +59,8 @@ export const ImageBox_IcecreamFamilyGoogoo = styled.div<{image: any}>`
     height: 22.5rem;
     background-image: url(${(props) => props.image});
     background-size: cover;
+<<<<<<< HEAD
 `;
+=======
+`;
+>>>>>>> origin/main
