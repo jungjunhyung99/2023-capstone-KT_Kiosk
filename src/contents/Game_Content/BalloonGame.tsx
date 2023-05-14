@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useMatch, useNavigate } from "react-router-dom";
 import { balloon } from "./Balloon_data/data";
-import pang from "../../images/pang.jpg";
+import pang from "../../images/pang.png";
 import X from "../../images/X.png";
 import { AnimatePresence } from "framer-motion";
 import {  BalloonButton, BalloonButtonDiv, BigMovie, Box, Button, Button2, Dealt, MainContainer, MiniBox, Overlay, Progress, ResultMovie, Row } from "../../component/game-component/balloon-component";
@@ -31,7 +31,7 @@ function BallonGame() {
       const [score, setScore] = useState(0);
       const [fontColor,setFontColor] = useState<string[]>(["green","red"]);    
       const [realBall, setBall] = useState<IBallon[]>(balloon);
-      const [count, setCount] = useState(50);
+      const [count, setCount] = useState(20);
       const [num, setNum] = useState(0);
       useEffect(() => {
         const sec = 

@@ -31,3 +31,12 @@ export const GameContainer = styled.div`
     display: grid;
     background-color: white;
 `;
+
+export const GameDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    transform: translateY(-50%);
+    justify-content: center;
+    align-items: center;
+`;

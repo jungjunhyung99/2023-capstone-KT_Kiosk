@@ -7,22 +7,27 @@ import { IAtomMovie, IGetMoives, movieObj } from "../../Atom/atom";
 import { title } from "process";
 import { motion } from "framer-motion";
 import GameNav from "../Navbar/GameNav";
+import { ImageBox } from "../../component/kiosk-component/styled_kiosk";
+import star from "../../images/star.svg";
 
 const Container = styled(motion.div)`
   width: 50vw;
   height: 100vh;
   background-color: #212121;
+  overflow: scroll;
 `;
 
 const Button = styled.button`
     font-size: 25px;
-    width: 30vw;
+    width: 20rem;
     padding: 7px 0;
     border-radius: 16px;
     background-color: #666666;
     color: #fff;
     letter-spacing: -1px;
     border: none;
+    margin-bottom: 2rem;
+    cursor: pointer;
 `;
 
 const Box = styled.div<{bgPhoto: string}>`
@@ -59,7 +64,7 @@ function Movie_fast(){
     const [movieRecoil, setMovieRecoil] = useRecoilState<IAtomMovie>(movieObj);
     const BoxClicked = (MovieTitle: string) => {
       setMovieRecoil({title:MovieTitle, seat:0, time:""});
-      navigate("/Menu/home/hard/cgv/when");
+      navigate("/kiosk/movie/timeline");
     };
 
     const getMovies = async () => {
@@ -93,17 +98,22 @@ function Movie_fast(){
               <div style={{display:"flex", justifyContent:"center"}}>
                 
                 {movies?.results.slice(0,3).map((movie,index:number) => (
-                  <div key={index} style={{display:"flex",justifyContent:"center",flexDirection:"column",margin:"5px"}}>
+                  <div key={index} style={{display:"flex",color:"white",justifyContent:"center",flexDirection:"column",margin:"5px"}}>
                     <Box onClick={() => BoxClicked(movie.title)} bgPhoto={makeImagePath(movie?.poster_path)}>
                     </Box>
-                    <p style={{borderTop:"1px solid #666666",fontSize:"20px"}}>{movie.title}</p>
-                    <h3 style={{fontSize:"15px", borderTop:"1px solid #666666"}}>별점: <span style={{fontSize:"23px"}}>{movie.vote_average}</span></h3>
+                    <div style={{display:"flex",borderTop:"1px solid #666666",fontSize:"20px",height:"5rem", justifyContent:"center",alignItems:"center"}}>
+                      {movie.title}
+                    </div>
+                    <div style={{display:"flex",fontSize:"15px", borderTop:"1px solid #666666",justifyContent:"center"}}>
+                     <ImageBox image={star}/><span style={{fontSize:"23px"}}>{movie.vote_average}
+                      </span></div>
                   </div>
                 ))}
               </div>
             </div>
-            <div style={{width:"100%",display:"flex", justifyContent:"center"}}>
-              <Button onClick={() => navigate("/Menu/home/hard")}>홈으로 가기</Button>
+            <div style={{width:"100%",display:"flex", justifyContent:"center",gap:"5rem"}}>
+              <Button onClick={() => navigate("/")}>홈으로 가기</Button>
+              <Button onClick={() => navigate("/kiosk/movie/timeline")}>전체 상영표 보기</Button>
             </div>
           </Container>
         </div>

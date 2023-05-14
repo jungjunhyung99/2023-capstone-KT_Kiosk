@@ -6,6 +6,8 @@ export const CafeContainer = styled(motion.div)`
     display:flex;
     flex-direction: column;
     width: 65%;
+    background-color: white;
+    height: 100vh;
 `;
 
 export const MenuContainer = styled(motion.div)`
@@ -66,7 +68,7 @@ export const Row = styled(motion.div)`
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3,1fr);
   margin: 0 40px;
-  height: 70vh;
+  height: 80vh;
 `;
 
 export const Order = styled(motion.div)`
@@ -85,6 +87,8 @@ export const Ul =styled.ul`
 `;
 
 export const Li = styled.li`
+  display:flex;
+  justify-content: center;
   border: 3px solid white;
   width: 25%;
   margin: 5px;  
@@ -138,7 +142,7 @@ export const smboxVariant = {
 
 export const XButton = styled(motion.button)`  
     position: relative;
-    left:50%;
+    left:80%;
     bottom:90%;
     border-radius: 5em;
     font-weight: 700;
@@ -167,6 +171,33 @@ export const rowVariants = {
         text-decoration: none;
     }
   `;
+
+  export const CafeHomeButton = styled.button`
+    width: 4rem;
+    height: 2rem;
+    border-radius: 1rem;
+    background-color: #666666;
+    color: white;
+    border: none;
+    font-weight: 700;
+  `;
+
+export const CafePayDiv = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+`;
+
+export const CafeCostDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:white;
+  height:100%;
+  align-items:center; 
+  width: 5.5vw
+`;
 
 export interface Ikiosk {
     id: string;

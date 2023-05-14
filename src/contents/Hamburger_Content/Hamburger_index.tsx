@@ -1,70 +1,56 @@
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { fastAnswer, fastObj } from "../../Atom/atom";
-import { motion } from "framer-motion";
 
-const Container = styled(motion.div)`
-    display:flex;
-    width: 50%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height:100%;
+const Container = styled.div`
+  display:flex;
+  flex-direction: column;
+  width:40rem;
+  height:100vh;
+  background-color: #FF1F41;
+  color:white;
 `;
 
-const Button = styled.button`
-    width:13vw;
-    height: 10vh;
-    margin:20px;
-    font-size: 30px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: 700;
-    background-color: #FFFFFF;
-    border:none;
-    box-shadow:  3px 3px 6px 3px #2b2a2a;
+const Banner = styled.div`
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height:85%;
+`;
+
+const Button = styled.div`
+    display: block;
+    background-color: #00B01F;
+    height:15%;
+    font-size:50px;
+    &:hover{
+        background-color: #027317;
+        transition: all ease 0.6s 0s;
+    }
+`;
+
+const Bottom = styled.div`
+    display: block;
+    margin-top: 30px;
     cursor: pointer;
+    
 `;
 
-const Box = styled.div`
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-`;
-
-function Hamburger_index() {
-    const navigate = useNavigate();
-    const [cafeRecoil, setCafeRecoil] = useRecoilState(fastObj);
-    const [answerRecoil, setAnswerRecoil] = useRecoilState(fastAnswer);
-    const buttonClick = (choice:string) => {
-        setCafeRecoil({takeout:choice, item:[]});
-        navigate("/Menu/home/hard/hamburger/choice");
-        
-    };
-
-    return (
-        <Container
-        initial={{opacity: 0}}
-            animate={{opacity: 1, transition:{
-                duration: 0.5,
-                delay: 0.2,
-            }}}
-            exit={{opacity: 0}}>
-            <h1>매장식사 유무를 선택해 주세요!</h1>
-            <div style={{marginTop:"40px",display:"flex"}}>
-                <Box>
-                    <Button onClick={() => buttonClick("포장주문")}>
-                        포장하기
-                    </Button>
-                </Box>
-                <Box>
-                    <Button onClick={() => buttonClick("매장식사")}>
-                        매장식사
-                    </Button>
-                </Box>
+function Hamburger_main(){
+    let navigate = useNavigate();
+   return(
+    <Container>
+        <Banner>
+            <h4 style={{fontSize:"40px"}}>더 빠르고 쉬워진</h4>
+            <h1 style={{fontSize:"120px",transform:`translateY(-30%)`,textAlign:"center"}}>order & pay here</h1>
+        </Banner>
+        <Button onClick={() => navigate("/kiosk/hamburger")}>
+            <div style={{display:"block",marginTop:"30px", cursor:"pointer",textAlign:"center"}}>
+            여기를 클릭해 주세요!
             </div>
-        </Container>
-    );
+        </Button>
+    </Container>
+   );
 }
 
-export default Hamburger_index;
+export default Hamburger_main;

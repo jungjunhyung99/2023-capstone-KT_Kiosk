@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { CafeAnswer, IAtomCafe, ICafe, cafeObj } from "../../Atom/atom";
-import { Box, Button, CafeContainer, Head, IItem, IPay, Ikiosk, Li, MenuContainer, Order, OrderSlider, QuantityButton, Row, SmallBox, StyledLink, Ul, XButton, boxVariant, rowVariants, smboxVariant } from "../../component/kiosk-component/styled_cafe";
+import { Box, Button, CafeContainer, CafeCostDiv, CafeHomeButton, CafePayDiv, Head, IItem, IPay, Ikiosk, Li, MenuContainer, Order, OrderSlider, QuantityButton, Row, SmallBox, StyledLink, Ul, XButton, boxVariant, rowVariants, smboxVariant } from "../../component/kiosk-component/styled_cafe";
 import { useEffect, useState } from "react";
 import { cafeItem, cafeItem2, cafeItem3 } from "./data";
 import { AnimatePresence } from "framer-motion";
@@ -145,8 +145,7 @@ function Cafe_index () {
      
     return (
         <AnimatePresence initial={false} onExitComplete={toggleLeaving}> 
-        <div style={{display:"flex", flexDirection:"column",alignItems:"center"}}>
-            <GameNav/>
+        <div style={{display:"flex", flexDirection:"column",alignItems:"center",backgroundColor:"black"}}>
             <CafeContainer
                 initial={{opacity: 0}}
                 animate={{opacity: 1, transition:{
@@ -156,9 +155,9 @@ function Cafe_index () {
                 exit={{opacity: 0}}>
                 <Head>
                     <div style={{color:"white", display: "flex",justifyContent:"space-between",alignItems:"center",padding:"0 3rem"}}>
-                        <div style={{display:"flex"}}><button onClick={onBackClick}>Home</button></div>
+                        <CafeHomeButton onClick={onBackClick}>Home</CafeHomeButton>
                         <div style={{color:"white", fontSize:"3rem"}}>KT CAFE</div>
-                        <div style={{color: "white", fontSize:"1.0rem"}}>version:2.0</div>
+                        <div style={{color: "white", fontSize:"1.0rem"}}>KT광운대점</div>
                     </div>
                     <div>
                     <Ul>
@@ -187,7 +186,7 @@ function Cafe_index () {
                 transition={{type:"tween"}}
                 onClick={() => onBoxClicked(obj.id, obj)}>
                 </Box>
-                <div>
+                <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
                     <div style={{fontSize:"23px", fontWeight:"bold"}}>{obj.name}</div>
                     <span>{obj.cost}원</span>
                 </div>
@@ -234,15 +233,14 @@ function Cafe_index () {
                         <Button onClick={() => increaseIndex(choice)}>{'>'}</Button>
                         </div>
             <div style={{display:"flex", fontSize:"20px", alignItems:"center"}}>
-            <div style={{backgroundColor:"white", height:"100%",alignItems:"center", width: "5.5vw"}}><h4>{cost}원</h4></div>
+            <CafeCostDiv style={{}}><h4>{cost}원</h4></CafeCostDiv>
             
-            <div onClick={() => {onPayClicked2(choice)}} style={{height:"100%",backgroundColor:"#212020",color:"white", alignItems:"center", width: "5.5vw", border: "1px solid white", cursor:"pointer"}}>
-            <StyledLink to="/Menu/home/hard/cafe/payment"><h4>카드결제</h4>
-            </StyledLink>
-            </div>
-            <div onClick={() => navigate("/Menu/home/hard/cafe/payment")} style={{height:"100%",backgroundColor:"#212020",color:"white", alignItems:"center", width: "6vw", border: "1px solid white", cursor:"pointer"}}>
-                <h4>현금결제</h4>
-            </div>
+            <CafePayDiv onClick={() => {onPayClicked2(choice)}} style={{height:"100%",backgroundColor:"#212020",color:"white", alignItems:"center", width: "6vw", border: "1px solid white", cursor:"pointer"}}>
+                카드결제
+            </CafePayDiv>
+            <CafePayDiv onClick={() => navigate("/Menu/home/hard/cafe/payment")} style={{height:"100%",backgroundColor:"#212020",color:"white", alignItems:"center", width: "6.5vw", border: "1px solid white", cursor:"pointer"}}>
+                현금결제
+            </CafePayDiv>
             </div>
             </div>
             </CafeContainer>

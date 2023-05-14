@@ -20,10 +20,19 @@ export const FlexBox = styled.div`
 `;
 
 export const ImageBox = styled.div<{image: any}>`
-    width: 9rem;
-    height: 7rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 3rem;
+    height: 6rem;
     background-image: url(${(props) => props.image});
     background-size: cover;
+`;
+
+export const ImageStar = styled.div<{image: any}>`
+    width: 1rem;
+    background-image: url()(${(props) => props.image});
+    background-image: cover;
 `;
 
 export const ImageLongBox = styled.div<{image: any}>`
