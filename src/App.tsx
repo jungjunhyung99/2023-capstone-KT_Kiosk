@@ -1,3 +1,4 @@
+/*
 import React from 'react';
 import Main from './pages/Main';
 import { GlobalContainer, LaxicalContainer } from './component/index-component/styled_index';
@@ -29,3 +30,4 @@ function App() {
 }
 
 export default App;
+*/
