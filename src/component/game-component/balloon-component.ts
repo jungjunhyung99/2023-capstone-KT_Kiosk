@@ -28,6 +28,7 @@ export const MiniBox = styled.div`
       display:flex;
       flex-direction: column;
       color: black;
+      margin: 0 2rem;
   `;
   
 export const Button = styled.div`
@@ -68,7 +69,6 @@ export const Row = styled(motion.div)`
       display: grid;
       grid-template-columns: repeat(4,1fr);
       grid-template-rows: repeat(4,1fr);
-      margin: 30px 0px 20px 20px;
       height: 100%;
       width: 80%;
       @media screen and (max-width: 700px){
@@ -104,16 +104,15 @@ export const Box = styled(motion.div)<{bgphoto: string}>`
   `;
   
 export const BigMovie = styled(motion.div)`
-    width: 50%;
-    height: 95vh;
+    width: 100%;
+    height: 90vh;
     left: 0;
     right: 0;
-    margin: 0 auto;
+    padding: 0;
+    margin: 0;
     background-color: white;
     border: 2px solid white;
-    overflow: hidden;
     background-color: #2BB7B3;
-    transform: translateY(-1%);
     border:none;
     @media screen and (max-width: 700px){
       width: 80vw;
@@ -121,10 +120,11 @@ export const BigMovie = styled(motion.div)`
   `;
   
 export const ResultMovie = styled(motion.div)`
-    width: 30%;
-    height: 40vh;
-    top: 30%;
-    left: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
     margin: 0 auto;
     background-color: white;
     border: 2px solid white;
@@ -137,3 +137,17 @@ export const ResultMovie = styled(motion.div)`
   `;
   
   
+export const BalloonButtonDiv = styled(motion.div)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 2rem;
+`;
+
+export const BalloonButton = styled.button`
+  width: 100%;
+  height: 6rem;
+  background-color: #28A8A5;
+  border-top: 2px solid gray;
+`;

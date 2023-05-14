@@ -20,3 +20,23 @@ export const StyledLink = styled(Link)`
     text-decoration: none;
     color: black;
 `;
+
+export const GlobalKioskDiv = styled.div`
+    width: 50vw;
+`;
+
+export const GameContainer = styled.div`
+    width: 40vw;
+    height: 100%;
+    display: grid;
+    background-color: white;
+`;
+
+export const GameDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    transform: translateY(-50%);
+    justify-content: center;
+    align-items: center;
+`;
