@@ -24,4 +24,4 @@ yarn-error.log*
 .env
 
 # App.tsx 커밋 제외
-.App.tsx
+.App.tsx/
