@@ -1,24 +1,14 @@
-<<<<<<< HEAD:src/pages/KioskMain.tsx
-import { StyledLink } from "../component/index-component/styled_index";
-import { FlexBox, ImageBox, KTLogo, KioskContainer, NavBar, NextButton, PrevButton } from "../component/kiosk-component/styled_kiosk";
-import { ImageBox1 } from "../component/kiosk-component/styled_icecream";
-import { BackCircle2, CircleConatiner, ContentClickBox, ContentContainer, ContentDescript, ContentTextBox, ContentTitle, GameImage, KTImage, KioskImage, LogoTitle, MapImage } from "../component/main_components";
-import Hamburger from "../images/Hamburger.png";
-import Americano from "../images/Americano_choice.png";
-import Popcorn from "../images/popcorn.png";
-import Icecream from "../images/Icecream.png"; 
-import { useNavigate } from "react-router-dom";
-
-=======
 import { StyledLink } from "../../component/index-component/styled_index";
 import { FlexBox, ImageBox, ImageLongBox, KTLogo, KioskContainer, NavBar, NextButton, PrevButton } from "../../component/kiosk-component/styled_kiosk";
+import { ImageBox1 } from "../../component/kiosk-component/styled_icecream";
 import { BackCircle2, CircleConatiner, ContentClickBox, ContentContainer, ContentDescript, ContentTextBox, ContentTitle, GameImage, KTImage, KioskImage, LogoTitle, MapImage } from "../../component/main_components";
-import Hamburger from "../../images/Hamburger.png"
+import Hamburger from "../../images/Hamburger.png";
 import Americano from "../../images/Americano_choice.png";
 import Popcorn from "../../images/popcorn.png";
+import Icecream from "../../images/Icecream.png"; 
 import { useNavigate } from "react-router-dom";
 import Kiosk_Nav from "../Navbar/KioskNav";
->>>>>>> origin/main:src/contents/Main_Content/KioskMain.tsx
+
 function KioskMain() {
     const navigate = useNavigate();
 
@@ -67,8 +57,7 @@ function KioskMain() {
                             </ContentDescript>
                         </ContentTextBox>
                     </ContentClickBox>
-<<<<<<< HEAD:src/pages/KioskMain.tsx
-
+                </StyledLink>
                 <StyledLink to="/kiosk/Icecream">    
                     <ContentClickBox>
                         <ImageBox1 image={Icecream}/>
@@ -81,9 +70,6 @@ function KioskMain() {
                     </ContentClickBox>
                 </StyledLink>
 
-=======
-                </StyledLink>
->>>>>>> origin/main:src/contents/Main_Content/KioskMain.tsx
             </KioskContainer>
         </div>
     );

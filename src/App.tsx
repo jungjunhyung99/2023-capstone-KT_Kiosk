@@ -1,9 +1,8 @@
-/*
 import React from 'react';
-import Main from './pages/Main';
+import Main from './pages/Main/MainPage';
 import { GlobalContainer, LaxicalContainer } from './component/index-component/styled_index';
 import {BrowserRouter as Router,Routes, Route} from "react-router-dom";
-import KioskMain from './pages/KioskMain';
+import KioskMain from './pages/Main/KioskPage';
 import Icecream_main from './practice/Icecream/Icecream_main';
 import Icecream_cone from './practice/Icecream/Icecream_cone';
 import Icecream_bar from './practice/Icecream/Icecream_bar';
@@ -17,17 +16,16 @@ function App() {
             <Routes>
               <Route path='/' element={<Main/>}/>
               <Route path='/kiosk' element={<KioskMain/>}/>
-              <Route path='/Icecream' element={<Icecream_main/>}/>
-              <Route path='/Icecream_cone' element={<Icecream_cone/>}/>
-              <Route path='/Icecream_bar' element={<Icecream_bar/>}/>
-              <Route path='/Icecream_tube' element={<Icecream_tube/>}/>
-              <Route path='/Icecream_family' element={<Icecream_family/>}/>
+              <Route path='/kiosk/Icecream' element={<Icecream_main/>}/>
+              <Route path='/kiosk/Icecream_cone' element={<Icecream_cone/>}/>
+              <Route path='/kiosk/Icecream_bar' element={<Icecream_bar/>}/>
+              <Route path='/kiosk/Icecream_tube' element={<Icecream_tube/>}/>
+              <Route path='/kiosk/Icecream_family' element={<Icecream_family/>}/>
             </Routes>
           </LaxicalContainer>
         </GlobalContainer>
         </Router>
-  );
-}
+    );
+};
 
 export default App;
-*/
