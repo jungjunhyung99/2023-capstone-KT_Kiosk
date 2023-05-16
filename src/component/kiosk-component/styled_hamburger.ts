@@ -1,5 +1,19 @@
 import { motion } from "framer-motion";
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+
+const fadeInOut = keyframes`
+ 0% {
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+    border-color: transparent;
+  }
+  50%{
+    border-color: red;
+  }
+  100% {
+    border-color: transparent;
+    box-shadow: 0 0 0 1.5rem rgba(255, 0, 0, 0);
+  }
+`;
 
 export const HamburgerContainer = styled(motion.div)`
     display:flex;
@@ -151,4 +165,61 @@ export const NextButton3 = styled(NextButton)<{isActive:boolean}>`
     width: 300px;
     background-color: ${(props) => props.isActive ?  "FF1F41" : "#666666"};
     cursor:pointer;
+`;
+
+export const InitButton = styled.div`
+    display: block;
+    background-color: #00B01F;
+    height:15%;
+    font-size:50px;
+    text-align: center;
+    align-items: center;
+    padding-top: 2rem;
+    &:hover{
+        background-color: #027317;
+        transition: all ease 0.6s 0s;
+    }
+    border: 4px dashed white;
+    animation: ${fadeInOut} 2s infinite;
+`;
+
+
+export const TakeButton = styled.button<{answer: string}>`
+    width:13vw;
+    height: 10vh;
+    margin:20px;
+    font-size: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+    background-color: #FFFFFF;
+    border:none;
+    box-shadow:  3px 3px 6px 3px #2b2a2a;
+    cursor: pointer;
+    
+    ${(props) =>
+    props.answer === "포장주문" &&
+    css`
+      border-color: red;
+      animation: ${fadeInOut} 2s infinite;
+    `};
+`;
+
+export const HallButton = styled.button<{answer: string}>`
+    width:13vw;
+    height: 10vh;
+    margin:20px;
+    font-size: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+    background-color: #FFFFFF;
+    border:none;
+    box-shadow:  3px 3px 6px 3px #2b2a2a;
+    cursor: pointer;
+    
+    ${(props) =>
+    props.answer !== "포장주문" &&
+    css`
+      border-color: red;
+      animation: ${fadeInOut} 2s infinite;
+    `};
 `;

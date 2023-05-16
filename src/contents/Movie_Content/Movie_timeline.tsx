@@ -5,25 +5,11 @@ import { IAtomMovie, movieObj } from "../../Atom/atom";
 import { makeImagePath } from "../../Hook/Hook";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { TimeBox, TimelineDiv } from "../../component/kiosk-component/styled_movie";
 
 const Container = styled(motion.div)`
   width: 50vw;
   height: 100%;
-`;
-
-const TimeBox = styled.div`
-  display:flex;
-  align-items: center;
-  margin-right: 10px;
-  margin-top: 5px;
-  justify-content: center;
-  border: 1px solid #666666;
-  width: 9vw;
-  height: 6vh;
-  cursor: pointer;
-  &:hover{
-    background-color: #666666;
-  }
 `;
 
 const Button = styled.button`
@@ -144,7 +130,7 @@ function Movie_timeline() {
           <div style={{display:"flex",flexDirection:"column",color:"white",height:"100vh"}}>
             <Banner bgPhoto={makeImagePath(movies?.results[4].backdrop_path || "")}/>
             {movies?.results.slice(0,3).map((movie,index) => (
-               <div key={index} style={{display:"flex",justifyContent:"center",alignContent:"center",height:"9rem",marginBottom:"3rem"}}>
+               <TimelineDiv idx={index} key={index}>
               <Box bgPhoto={makeImagePath(movie?.poster_path)}>
               </Box>
               <div style={{display:"flex", flexDirection:"column"}}>
@@ -161,7 +147,7 @@ function Movie_timeline() {
                     </TimeBox>)}
                 </div>
               </div>
-              </div>
+              </TimelineDiv>
               ))}
           <Footer>
             <BackButton onClick={()=>navigate(-1)}>←</BackButton>

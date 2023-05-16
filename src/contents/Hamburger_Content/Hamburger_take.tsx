@@ -3,6 +3,7 @@ import { useNavigate } from "react-router";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import { fastObj, fastAnswer } from "../../Atom/atom";
+import { HallButton, TakeButton } from "../../component/kiosk-component/styled_hamburger";
 
 const Container = styled(motion.div)`
     width: 40rem;
@@ -13,19 +14,6 @@ const Container = styled(motion.div)`
     height:100vh;
     background-color: #023282;
     color:white;
-`;
-
-const Button = styled.button`
-    width:13vw;
-    height: 10vh;
-    margin:20px;
-    font-size: 30px;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-weight: 700;
-    background-color: #FFFFFF;
-    border:none;
-    box-shadow:  3px 3px 6px 3px #2b2a2a;
-    cursor: pointer;
 `;
 
 const Box = styled.div`
@@ -40,9 +28,10 @@ function Hamburger_take() {
     const [answerRecoil, setAnswerRecoil] = useRecoilState(fastAnswer);
     const buttonClick = (choice:string) => {
         setCafeRecoil({takeout:choice, item:[]});
-        navigate("/Menu/home/hard/hamburger/choice");
-        
+        navigate("/kiosk/hamburger/choice");        
     };
+
+    console.log(answerRecoil);
 
     return (
         <Container
@@ -55,14 +44,14 @@ function Hamburger_take() {
             <h1>매장식사 유무를 선택해 주세요!</h1>
             <div style={{marginTop:"40px",display:"flex"}}>
                 <Box>
-                    <Button onClick={() => buttonClick("포장주문")}>
+                    <TakeButton answer={answerRecoil.takeout} onClick={() => buttonClick("포장주문")}>
                         포장하기
-                    </Button>
+                    </TakeButton>
                 </Box>
                 <Box>
-                    <Button onClick={() => buttonClick("매장식사")}>
+                    <HallButton answer={answerRecoil.takeout} onClick={() => buttonClick("매장식사")}>
                         매장식사
-                    </Button>
+                    </HallButton>
                 </Box>
             </div>
         </Container>
