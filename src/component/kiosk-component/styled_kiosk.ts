@@ -51,6 +51,10 @@ export const KioskContainer = styled.div`
     align-items: center;
 `;
 
+export const KioskContainer2 = styled(KioskContainer)`
+    transform: translateY(-35%);
+`;
+
 export const PrevButton = styled.button`
     width: 15rem;
     height: 4rem;

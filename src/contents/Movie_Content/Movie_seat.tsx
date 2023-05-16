@@ -299,7 +299,6 @@ function Movie_seat(){
             </Grid>
             </div>
             {num === 0 ? <SeatButton onClick={() => nextPress(person)} isActive={num === 0}>예약하기</SeatButton> : <SeatButton isActive={false} >좌석을 선택해주세요</SeatButton> }
-          
             <Footer/>
           </Body>
         </Container>

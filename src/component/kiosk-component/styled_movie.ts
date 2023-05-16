@@ -10,7 +10,7 @@ const fadeInOut = keyframes`
   }
   100% {
     border-color: transparent;
-    box-shadow: 0 0 0 1.5rem rgba(255, 0, 0, 0);
+    box-shadow: 0 0 0 1.7rem rgba(255, 0, 0, 0);
   }
 `;
 
@@ -147,6 +147,7 @@ export const SeatButton = styled.button<{isActive:boolean}>`
     border: none;
     margin: 0 auto;
     margin-bottom: 20px;
+    border: 2px dashed transparent;
     cursor: ${(props) => props.isActive ? "pointer" :"default"};
 
         ${(props) => 
@@ -161,10 +162,11 @@ export const TimelineDiv = styled.div<{idx: number}>`
     display:flex;
     justify-content:center;
     align-content:center;
+    border: 2px dashed transparent;
     ${(props) => 
         props.idx === 1 &&
         css`
         border-color: red;
         animation: ${fadeInOut} 2s infinite;
-        `};
+      `};
 `;

@@ -112,3 +112,48 @@ export const LogoTitle = styled.div`
     font-weight: 800;
     color:white;
 `;
+
+export const KioskClickBox = styled.div`
+    display:flex;
+    padding-left: 1.5rem;
+    width: 25rem;
+    gap: 2rem;
+    height: 20rem;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: 0px 1px 2px 1px gray;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+    transform: scale(1.1);
+    }
+`;
+
+export const KioskChoiceContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const KioskImageBox = styled.div<{image: any}>`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 9rem;
+    height: 8rem;
+    background-image: url(${(props) => props.image});
+    background-size: cover;
+`;
+
+export const WidthImageBox = styled(KioskImageBox)`
+    height: 6rem;
+`;
+
+export const HeightImageBox = styled(KioskImageBox)`
+    height: 7rem;
+`;

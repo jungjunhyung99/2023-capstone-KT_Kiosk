@@ -92,7 +92,7 @@ function Movie_initial(){
               </div>
               <div style={{display:"flex", justifyContent:"center"}}>
                 <MovieContentDiv>
-                  <MovieGuideDiv onClick={() => navigate("/kiosk/movie/main")}>
+                  <MovieGuideDiv onClick={() => navigate("/kiosk/movie/fast")}>
                     <MovieChoiceDiv bgimage={ticket}/>
                     <AnimatedDiv style={{color:"#9B2F7B"}}>티켓 예매하기</AnimatedDiv>
                   </MovieGuideDiv>
