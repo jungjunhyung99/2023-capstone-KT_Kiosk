@@ -1,13 +1,17 @@
 import { StyledLink } from "../../component/index-component/styled_index";
 import { FlexBox, ImageBox, ImageLongBox, KTLogo, KioskContainer, NavBar, NextButton, PrevButton } from "../../component/kiosk-component/styled_kiosk";
+import { ImageBox1 } from "../../component/kiosk-component/styled_icecream";
 import { BackCircle2, CircleConatiner, ContentClickBox, ContentContainer, ContentDescript, ContentTextBox, ContentTitle, GameImage, KTImage, KioskImage, LogoTitle, MapImage } from "../../component/main_components";
-import Hamburger from "../../images/Hamburger.png"
+import Hamburger from "../../images/Hamburger.png";
 import Americano from "../../images/Americano_choice.png";
 import Popcorn from "../../images/popcorn.png";
+import Icecream from "../../images/Icecream.png"; 
 import { useNavigate } from "react-router-dom";
 import Kiosk_Nav from "../Navbar/KioskNav";
+
 function KioskMain() {
     const navigate = useNavigate();
+
     return (        
         <div>
             <CircleConatiner>
@@ -54,6 +58,18 @@ function KioskMain() {
                         </ContentTextBox>
                     </ContentClickBox>
                 </StyledLink>
+                <StyledLink to="/kiosk/Icecream">    
+                    <ContentClickBox>
+                        <ImageBox1 image={Icecream}/>
+                        <ContentTextBox>
+                            <ContentTitle>아이스크림 키오스크</ContentTitle>
+                                <ContentDescript>
+                                    여러 종류의 아이스크림을 주문해보세요!  
+                                </ContentDescript>
+                        </ContentTextBox>
+                    </ContentClickBox>
+                </StyledLink>
+
             </KioskContainer>
         </div>
     );
