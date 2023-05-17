@@ -3,6 +3,8 @@ import KTLogo from "../images/ktLogo2.svg"
 import GameIcon from "../images/GameIcon.svg";
 import MapIcon from "../images/MapIcon.svg";
 import KioskIcon from "../images/KisokImage.svg";
+import LogInIcon from "../images/LoginIcon.svg";
+import DocIcon from "../images/file.svg";
 
 export const BackCircle = styled.div`
     display: flex;
@@ -74,6 +76,7 @@ export const ContentContainer = styled.div`
     transform: translateY(-30%);
     justify-content: center;
     align-items: center;
+    padding-top: 2rem;
 `;
 
 export const KTImage = styled.div`
@@ -97,6 +100,20 @@ export const KioskImage = styled.div`
     width: 9rem;
     height: 8.5rem;
     background-image: url(${KioskIcon});
+    background-size: cover;
+`;
+
+export const LogInImage = styled.div`
+    width: 9rem;
+    height: 7rem;
+    background-image: url(${LogInIcon});
+    background-size: cover;
+`;
+
+export const DocImage = styled.div`
+    width: 9rem;
+    height: 7rem;
+    background-image: url(${DocIcon});
     background-size: cover;
 `;
 

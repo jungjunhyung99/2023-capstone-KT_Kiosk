@@ -1,11 +1,14 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useNavigate } from "react-router";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { useRecoilState } from "recoil";
 import { BerverageMenu, HamburgerMenu } from "../Cafe_Content/data";
-import { fastObj } from "../../Atom/atom";
-
+import { IFastItem, fastObj } from "../../Atom/atom";
+import Bigmac from "../../images/BigMac.png";
+import { FlexBox, HamburgerImageBox, ImageBox, MenuBox } from "../../component/kiosk-component/styled_kiosk";
+import { MenuCal, MenuCost, MenuTitle } from "../../component/kiosk-component/styled_hamburger";
+import { menuFadeInOut } from "../../component/kiosk-component/styled_movie";
 
 const Container = styled(motion.div)`
     display:flex;
@@ -56,18 +59,27 @@ const Menu = styled(motion.div)`
     }
 `;
 
-const ItemBox = styled(motion.div)`
+const ItemBox = styled(motion.div)<{index: number}>`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width:14vw;
-    height:10vh;
+    justify-content: center;
+    width: 15rem;
+    height:15rem;
     margin: 15px;
     color:black;
     border: 2px solid black;
+    background-color: white;
     cursor: pointer;
     box-shadow:  3px 3px 3px 3px rgba(38, 38, 69, 0.3);
-    border: none;
+    border: 2px dashed transparent;
+        ${(props) => 
+        props.index === 0 &&
+        css`
+        border-color: red;
+        animation: ${menuFadeInOut} 2s infinite;
+      `};
+
 `;
 
 const Footer = styled.footer`
@@ -178,6 +190,7 @@ interface IMenu {
     cost: number | undefined;
     cal: number | undefined;
     quantity: number;
+    img: any;
 }
 
 
@@ -186,9 +199,9 @@ function Hamburger_choice() {
     const navigate = useNavigate();
     const [menu,setMenu] = useState(BerverageMenu);
     const [fastRecoil, setFastRecoil] = useRecoilState(fastObj);
-    const [select, setSelect] = useState<IMenu[]>([]);
+    const [select, setSelect] = useState<IFastItem[]>([]);
     const [selectId, setSelectId] = useState<number | null>();
-    const [selectMenu, setSelectMenu] = useState<IMenu | null>();
+    const [selectMenu, setSelectMenu] = useState<IFastItem | null>();
     const [quantity, setQuantity] = useState(1);
     const [cost, setCost] = useState(0);
     const NavClick = (name: string) => {
@@ -229,7 +242,8 @@ function Hamburger_choice() {
         name: selectMenu?.name,
         cost: selectMenu?.cost,
         cal: selectMenu?.cal,
-        quantity: quantity
+        quantity: quantity,
+        img: selectMenu?.img
         };
         orderSum(obj?.cost, quantity);
         setSelectMenu(obj);
@@ -262,10 +276,16 @@ function Hamburger_choice() {
                                 {menu[0].category} 
                             </h1><br/>
                         <Menu>
-                            {menu.map((menu) => <ItemBox key={menu.id} layoutId={menu.id} onClick={()=>BoxClicked(menu,menu.id as string)}>
-                                {menu.name}<br/>
-                                {menu.cal} cal<br/>
-                                {menu.cost}원
+                            {menu.map((menu, index:number) => 
+                            <ItemBox 
+                            key={menu.id} layoutId={menu.id} onClick={()=>BoxClicked(menu,menu.id as string)} index={index}
+                            >
+                                <MenuBox>
+                                    <HamburgerImageBox image={menu.img}/>
+                                    <MenuTitle>{menu.name}</MenuTitle>
+                                    <MenuCost>{menu.cost}원</MenuCost>
+                                    <MenuCal>{menu.cal} cal</MenuCal>
+                                </MenuBox>
                             </ItemBox>)}
                             <AnimatePresence>
                                 {selectId && (

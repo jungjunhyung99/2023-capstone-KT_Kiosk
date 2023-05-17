@@ -23,7 +23,7 @@ function Cafe_start() {
                     <PopcornImage image={Americano}/>
                 </KioskBorderDiv>
                 <DescribeDiv>준비가 되셨다면 하단의 버튼을 눌러주세요!</DescribeDiv>
-                <StartButton onClick={() => navigate("/kiosk/cafe/main")}>이거랑 저거랑 저거 저거 저거를 주문해주세요!</StartButton>
+                <StartButton onClick={() => navigate("/kiosk/cafe/main")}>고구마 라떼 2개, 초코케이크 2개, 청포도에이드 3개를 구매해주세요!</StartButton>
             </KioskStartContainer>
         </LaxicalContainer>
     );
