@@ -19,7 +19,7 @@ export const BackCircle = styled.div`
 export const BackCircle2 = styled.div`
     position: absolute;
     background-color: #31CECA;
-    height: 100%;
+    height: 40rem;
     width: 100%;
     border-radius: 20px 20px 300px 300px;
 `;
@@ -50,7 +50,7 @@ export const ContentClickBox = styled.div`
 
 export const ContentTitle = styled.span`
     font-weight: 800;
-    font-size: 2rem;
+    font-size: 1.7rem;
 `;
 
 export const ContentDescript = styled.span`
@@ -108,7 +108,61 @@ export const MapImage = styled.div`
 `;
 
 export const LogoTitle = styled.div`
+    padding-top: 1rem;
     font-size: 4.5rem;
     font-weight: 800;
     color:white;
+`;
+
+export const KioskClickBox = styled.div`
+    display:flex;
+    padding-left: 1.5rem;
+    width: 25rem;
+    gap: 2rem;
+    height: 20rem;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid black;
+    border-radius: 1rem;
+    background-color: white;
+    box-shadow: 0px 1px 2px 1px gray;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    &:hover {
+    transform: scale(1.1);
+    }
+`;
+
+export const KioskChoiceContainer = styled.div`
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const KioskImageBox = styled.div<{image: any}>`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 9rem;
+    height: 8rem;
+    background-image: url(${(props) => props.image});
+    background-size: cover;
+`;
+
+export const WidthImageBox = styled(KioskImageBox)`
+    height: 6rem;
+`;
+
+export const SelectedImage = styled(KioskImageBox)`
+    height: 9rem;
+`;
+
+export const PopcornImage = styled(KioskImageBox)`
+    height: 11rem;
+`;
+
+export const HeightImageBox = styled(KioskImageBox)`
+    height: 7rem;
 `;

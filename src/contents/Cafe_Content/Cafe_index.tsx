@@ -6,11 +6,13 @@ import { useEffect, useState } from "react";
 import { cafeItem, cafeItem2, cafeItem3 } from "./data";
 import { AnimatePresence } from "framer-motion";
 import GameNav from "../Navbar/GameNav";
+import Modal from "./Modal";
 
 const offset = 4;
 
 function Cafe_index () {
     const navigate = useNavigate();
+    const [showModal, setShowModal] = useState(false);
     const [menuRecoil,SetMenuRecoil] = useRecoilState<IAtomCafe[]>(cafeObj);
     const [menu, setKiosk] = useState<Ikiosk[]>(cafeItem);
     const [index, setIndex] = useState(0);
@@ -39,8 +41,9 @@ function Cafe_index () {
     };
 
     const onBoxClicked = (objId: string, array:Ikiosk) => {
-        
+        setShowModal(true);
         const boxCopy = choice;
+        console.log(boxCopy);
         for(let i = 0; i < choice.length; i++){
             if(boxCopy[i].id === objId){
                 boxCopy[i].quantity++;
@@ -193,6 +196,7 @@ function Cafe_index () {
                 </MenuContainer>
                 )}
             </Row>
+            {/* <Modal/> */}
             {condiment?.in[0].name}
             <div style={{display:"flex", backgroundColor:"#d3d7d6",height:"11.5vh"}}>
                     <div style={{display:"flex",alignItems:"center"}}>

@@ -199,6 +199,38 @@ export const CafeCostDiv = styled.div`
   width: 5.5vw
 `;
 
+export const ModalContainer = styled.div`
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+`;
+
+export const ModalTitle = styled.h2`
+  font-size: 24px;
+  margin-bottom: 20px;
+`;
+
+export const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const ModalButton = styled.button<{active: boolean}>`
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: ${({ active }) => (active ? '#333' : '#ccc')};
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+`;
+
+
 export interface Ikiosk {
     id: string;
     sub: string;

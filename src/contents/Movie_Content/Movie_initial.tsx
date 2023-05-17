@@ -7,7 +7,7 @@ import { IAtomMovie, IGetMoives, movieObj } from "../../Atom/atom";
 import { title } from "process";
 import { motion } from "framer-motion";
 import GameNav from "../Navbar/GameNav";
-import { MovieChoiceDiv, MovieContentDiv, MovieGuideDiv } from "../../component/kiosk-component/styled_movie";
+import { AnimatedDiv, MovieChoiceDiv, MovieContentDiv, MovieGuideDiv } from "../../component/kiosk-component/styled_movie";
 import ticket from "../../images/ticket.svg";
 import smartphone from "../../images/smartphone.svg";
 import Clock from "./Clock";
@@ -92,9 +92,9 @@ function Movie_initial(){
               </div>
               <div style={{display:"flex", justifyContent:"center"}}>
                 <MovieContentDiv>
-                  <MovieGuideDiv onClick={() => navigate("/kiosk/movie/main")}>
+                  <MovieGuideDiv onClick={() => navigate("/kiosk/movie/fast")}>
                     <MovieChoiceDiv bgimage={ticket}/>
-                    <span style={{color:"#9B2F7B"}}>티켓 예매하기</span>
+                    <AnimatedDiv style={{color:"#9B2F7B"}}>티켓 예매하기</AnimatedDiv>
                   </MovieGuideDiv>
                   <hr/>
                   <MovieGuideDiv>

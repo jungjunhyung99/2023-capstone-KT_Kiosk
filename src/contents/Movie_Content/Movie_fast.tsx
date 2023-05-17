@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 import GameNav from "../Navbar/GameNav";
 import { ImageBox } from "../../component/kiosk-component/styled_kiosk";
 import star from "../../images/star.svg";
+import { AllButton, Button } from "../../component/kiosk-component/styled_movie";
 
 const Container = styled(motion.div)`
   width: 50vw;
@@ -17,18 +18,6 @@ const Container = styled(motion.div)`
   overflow: scroll;
 `;
 
-const Button = styled.button`
-    font-size: 25px;
-    width: 20rem;
-    padding: 7px 0;
-    border-radius: 16px;
-    background-color: #666666;
-    color: #fff;
-    letter-spacing: -1px;
-    border: none;
-    margin-bottom: 2rem;
-    cursor: pointer;
-`;
 
 const Box = styled.div<{bgPhoto: string}>`
   display: flex;
@@ -96,7 +85,6 @@ function Movie_fast(){
                 <h2 style={{color:"#666666", display:"flex",justifyContent:"center"}}>가장 빨리 볼 수 있는 영화</h2>
               </div>
               <div style={{display:"flex", justifyContent:"center"}}>
-                
                 {movies?.results.slice(0,3).map((movie,index:number) => (
                   <div key={index} style={{display:"flex",color:"white",justifyContent:"center",flexDirection:"column",margin:"5px"}}>
                     <Box onClick={() => BoxClicked(movie.title)} bgPhoto={makeImagePath(movie?.poster_path)}>
@@ -113,7 +101,7 @@ function Movie_fast(){
             </div>
             <div style={{width:"100%",display:"flex", justifyContent:"center",gap:"5rem"}}>
               <Button onClick={() => navigate("/")}>홈으로 가기</Button>
-              <Button onClick={() => navigate("/kiosk/movie/timeline")}>전체 상영표 보기</Button>
+              <AllButton onClick={() => navigate("/kiosk/movie/timeline")}>전체 상영표 보기</AllButton>
             </div>
           </Container>
         </div>

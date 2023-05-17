@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ImageBox1 = styled.div<{image: any}>`
     width: 9rem;
-    height: 9rem;
+    height: 10rem;
     background-image: url(${(props) => props.image});
     background-size: cover;
 `

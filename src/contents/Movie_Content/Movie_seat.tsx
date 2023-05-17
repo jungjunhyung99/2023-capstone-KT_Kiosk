@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { makeImagePath } from "../../Hook/Hook";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { MinusButton, PlusButton, SeatButton } from "../../component/kiosk-component/styled_movie";
 
 const Container = styled(motion.div)`
   width: 50vw;
@@ -54,31 +55,6 @@ const Body = styled.div`
   align-items: center;
   justify-content: center;
   align-items: center;
-`;
-
-const CountButton = styled.button`
-  font-size: 40px;
-  width: 5vw;
-  height: 5vh;
-  border-radius: 20px;
-  background-color: #666666;
-  color: #ffffff;
-  border:none;
-  cursor: pointer;
-`;
-
-const Button = styled.button<{isActive:boolean}>`
-    font-size: 25px;
-    width: 30vw;
-    padding: 7px 0;
-    border-radius: 16px;
-    background-color: ${(props) => props.isActive ? "#fc5858" : "#666666"};
-    color: #fff;
-    letter-spacing: -1px;
-    border: none;
-    margin: 0 auto;
-    margin-bottom: 20px;
-    cursor: ${(props) => props.isActive ? "pointer" :"default"};
 `;
 
 
@@ -305,9 +281,9 @@ function Movie_seat(){
             <div style={{display:"flex", flexDirection:"column", justifyContent:"center"}}>
             <h2 style={{textAlign:"center"}}>인원수를 정한 후 자리를 지정해주세요</h2>
               <div style={{display:"flex",justifyContent:"center", alignItems:"center",}}>
-              <CountButton onClick={minusPress}>-</CountButton>
+              <MinusButton num={3} current={person} onClick={minusPress}>-</MinusButton>
               <h2 style={{fontSize:"50px", margin: "0 10vw"}}>{person}</h2>
-              <CountButton onClick={plusPress}>+</CountButton>
+              <PlusButton num={3} current={person} onClick={plusPress}>+</PlusButton>
               </div>
             </div>
             <div style={{display:"block", margin:"0 auto", border:"3px solid white",width:"70%", marginTop:"20px",justifyContent:"center"}}><h2 style={{textAlign:"center"}}>screen</h2></div>
@@ -322,8 +298,7 @@ function Movie_seat(){
                 {seat3.map((num,index) => <Item key={index+50} onClick={()=>seatClick(index,3)} isActive={num.clicked}>{num.seat_num}</Item>)}
             </Grid>
             </div>
-            {num === 0 ? <Button onClick={() => nextPress(person)} isActive={num === 0}>예약하기</Button> : <Button isActive={false} >좌석을 선택해주세요</Button> }
-          
+            {num === 0 ? <SeatButton onClick={() => nextPress(person)} isActive={num === 0}>예약하기</SeatButton> : <SeatButton isActive={false} >좌석을 선택해주세요</SeatButton> }
             <Footer/>
           </Body>
         </Container>
