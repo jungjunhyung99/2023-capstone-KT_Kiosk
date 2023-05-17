@@ -248,4 +248,8 @@ export const StartButton = styled.div`
     font-size: 2rem;
     font-weight: 700;
     cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    &:hover{
+        transform: scale(1.1);
+    }
 `;

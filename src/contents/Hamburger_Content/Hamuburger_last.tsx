@@ -204,6 +204,7 @@ interface IMenu{
     cost: number | undefined;
     cal: number | undefined;
     quantity: number;
+    img: any;
 }
 
 const BerverageMenu = [

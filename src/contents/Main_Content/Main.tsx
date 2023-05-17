@@ -1,6 +1,29 @@
-import { BackCircle, BackCircle2, CircleConatiner, ContentClickBox, ContentContainer, ContentDescript, ContentTextBox, ContentTitle, GameImage, KTImage, KioskImage, LogoTitle, MapImage } from "../../component/main_components";
+import { BackCircle, BackCircle2, CircleConatiner, ContentClickBox, ContentContainer, ContentDescript, ContentTextBox, ContentTitle, DocImage, GameImage, KTImage, KioskImage, LogInImage, LogoTitle, MapImage } from "../../component/main_components";
 import { StyledLink } from "../../component/index-component/styled_index";
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {auth} from "../../Hook/Hook";
+import { useState } from 'react';
+import { useRecoilState } from "recoil";
+import { LogInState } from "../../Atom/atom";
+
+
 function Main () {
+  const [userData, setUserData] = useState<any | null>(null);
+  const [login, setLogin] = useRecoilState(LogInState);
+
+  function handleGoogleLogin() {
+    const provider = new GoogleAuthProvider(); // provider를 구글로 설정
+    signInWithPopup(auth, provider) // popup을 이용한 signup
+      .then((data: any) => {
+        setUserData(data.user); // user data 설정
+        setLogin(true);
+        console.log(data) // console로 들어온 데이터 표시
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
     return(
         <div>
             <CircleConatiner>
@@ -11,6 +34,28 @@ function Main () {
                 </BackCircle>
             </CircleConatiner>
             <ContentContainer>
+   
+            {!login ? 
+                <ContentClickBox onClick={handleGoogleLogin}>
+                    <LogInImage/>
+                    <ContentTextBox>
+                        <ContentTitle>로그인 하기</ContentTitle>
+                        <ContentDescript>
+                            로그인을 통해 나의 데이터를 비교해보세요!
+                        </ContentDescript>
+                    </ContentTextBox>
+                </ContentClickBox>
+                : 
+                <ContentClickBox>
+                    <DocImage/>
+                    <ContentTextBox>
+                        <ContentTitle>나의 기록 확인하기</ContentTitle>
+                        <ContentDescript>
+                            나의 지난 기록들을 통해 성장한 나를 확인해보세요!
+                        </ContentDescript>
+                    </ContentTextBox>
+                </ContentClickBox>
+                }
                 
             <StyledLink to="/kiosk">    
                 <ContentClickBox>
@@ -34,6 +79,7 @@ function Main () {
                         </ContentDescript>
                     </ContentTextBox>
                 </ContentClickBox>
+
             </StyledLink>
                 <ContentClickBox>
                     <MapImage/>

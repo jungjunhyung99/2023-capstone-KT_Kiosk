@@ -12,7 +12,10 @@ import Soybean from "../../images/Soybean.png";
 import jado from "../../images/JaduAde.png";
 import grape from "../../images/grapes.png";
 import { IFastItem } from "../../Atom/atom";
-
+import BigMac from "../../images/BigMac.png";
+import Hotchoco from "../../images/HotChoco.png";
+import Banila from "../../images/BanilaShake.png";
+import Cola from "../../images/Cola.png";
 
 export const image = [Americano, SweetPo, Espresso, Latte,IceTea, Apogatto,Soybean];
 export const image2 = [Tiramisu, Chococake, Bagle, Browny];
@@ -172,7 +175,9 @@ export const BerverageMenu : IFastItem[] = [
         cost: 2000,
         cal: 120,
         quantity: 1,
+        img: Cola,
     },
+
     {
         id: "2",
         category: "음료수",   
@@ -180,7 +185,9 @@ export const BerverageMenu : IFastItem[] = [
         cost: 2000,
         cal: 120,
         quantity: 1,
+        img: Banila
     },
+
     {
         id: "3",
         category: "음료수",   
@@ -188,32 +195,33 @@ export const BerverageMenu : IFastItem[] = [
         cost: 2000,
         cal: 120,
         quantity: 1,
+        img: Hotchoco
     },
 ];
 
 export const HamburgerMenu:IFastItem[] = [
-    {
-        id: "10",
-        category: "메인 메뉴",   
-        name: "베이컨 & 비스킷",
-        cost: 4500,
-        cal: 420,
-        quantity: 1,
-    },
-    {
-        id: "11",
-        category: "메인 메뉴",   
-        name: "블루베리 비스킷",
-        cost: 4500,
-        cal: 420,
-        quantity: 1,
-    },
-    {
-        id: "12",
-        category: "메인 메뉴",   
-        name: "빅맥",
-        cost: 4500,
-        cal: 420,
-        quantity: 1,
-    },
+    // {
+    //     id: "10",
+    //     category: "메인 메뉴",   
+    //     name: "베이컨 & 비스킷",
+    //     cost: 4500,
+    //     cal: 420,
+    //     quantity: 1,
+    // },
+    // {
+    //     id: "11",
+    //     category: "메인 메뉴",   
+    //     name: "블루베리 비스킷",
+    //     cost: 4500,
+    //     cal: 420,
+    //     quantity: 1,
+    // },
+    // {
+    //     id: "12",
+    //     category: "메인 메뉴",   
+    //     name: "빅맥",
+    //     cost: 4500,
+    //     cal: 420,
+    //     quantity: 1,
+    // },
 ];

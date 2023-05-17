@@ -29,6 +29,10 @@ export const ImageBox = styled.div<{image: any}>`
     background-size: cover;
 `;
 
+export const HamburgerImageBox = styled(ImageBox)`
+    width: 6rem;
+`;
+
 export const ImageStar = styled.div<{image: any}>`
     width: 1rem;
     background-image: url()(${(props) => props.image});

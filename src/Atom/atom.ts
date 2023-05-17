@@ -14,6 +14,7 @@ export interface IFastItem{
     cost: number | undefined;
     cal: number | undefined;
     quantity: number;
+    img: any;
 }
 
 export interface IAtomFast {
@@ -118,3 +119,8 @@ export const fastAnswer = atom<IAtomFast>({
         item: [],
     }
 });
+
+export const LogInState = atom<boolean>({
+    key: "LogInState",
+    default: false
+})
