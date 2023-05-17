@@ -23,7 +23,7 @@ function Movie_start() {
                     <PopcornImage image={Popcorn}/>
                 </KioskBorderDiv>
                 <DescribeDiv>준비가 되셨다면 하단의 버튼을 눌러주세요!</DescribeDiv>
-                <StartButton onClick={() => navigate("/kiosk/movie")}>이거랑 저거랑 저거 저거 저거를 주문해주세요!</StartButton>
+                <StartButton onClick={() => navigate("/kiosk/movie")}>'The Super Mario Bros. Movie' 영화를 3자리 예매해주세요!</StartButton>
             </KioskStartContainer>
         </LaxicalContainer>
     );

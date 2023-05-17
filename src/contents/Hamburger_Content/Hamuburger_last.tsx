@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useRecoilState } from "recoil";
 import { fastObj } from "../../Atom/atom";
+import { fadeInOut } from "../../component/kiosk-component/styled_movie";
 
 const Container = styled(motion.div)`
     display:flex;
@@ -186,6 +187,8 @@ const NextButton3 = styled(NextButton)`
         background-color: #0a4b0c;
         transition: all ease 0.5s 0s;
     }
+    border: 4px dashed transparent;
+    animation: ${fadeInOut} 2s infinite;
 `;
 
 const Overlay = styled(motion.div)`

@@ -1,6 +1,6 @@
 import styled, {css, keyframes } from "styled-components";
 
-const fadeInOut = keyframes`
+export const fadeInOut = keyframes`
  0% {
     box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
     border-color: transparent;
@@ -11,6 +11,20 @@ const fadeInOut = keyframes`
   100% {
     border-color: transparent;
     box-shadow: 0 0 0 1.7rem rgba(255, 0, 0, 0);
+  }
+`;
+
+export const menuFadeInOut = keyframes`
+  0% {
+    box-shadow:  3px 3px 3px 3px rgba(38, 38, 69, 0.3);
+    border-color: transparent;
+  }
+  50%{
+    border-color: red;
+  }
+  100% {
+    border-color: transparent;
+    box-shadow:  3px 3px 3px 3px rgba(38, 38, 69, 0.3);
   }
 `;
 

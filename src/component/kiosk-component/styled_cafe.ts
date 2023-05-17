@@ -1,6 +1,29 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
+import { fadeInOut } from "./styled_movie";
+
+export const cafeFadeInOut = keyframes`
+  0% {
+    border-color: black;
+    border-style: solid;
+    box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+  }
+  10%{
+    border-color: red;
+  }
+  53%{
+    border-color: red;
+    border-style: dashed;
+  }
+  80% {
+    box-shadow: 0 0 0 1.7rem rgba(255, 0, 0, 0);
+  }
+  100% {
+    border-color: black;
+    border-style: solid;
+  }
+`;
 
 export const CafeContainer = styled(motion.div)`
     display:flex;
@@ -40,7 +63,7 @@ export const Info = styled(motion.div)`
   }
 `;
 
-export const Box = styled(motion.div)<{bgphoto: string}>`
+export const Box = styled(motion.div)<{bgphoto: string,index:number}>`
     background-image: url(${(props)=>props.bgphoto});
     background-size: cover;
     height: 60%;
@@ -49,7 +72,13 @@ export const Box = styled(motion.div)<{bgphoto: string}>`
     cursor: pointer;
     background-position: center center;
     margin: 0 auto;
-    border: 2px solid;
+    border: ${(props) => props.index === 1 ? "3px dashed transparent" : "2px solid"};
+            ${(props) => 
+        props.index === 1 &&
+        css`
+        border-color: red;
+        animation: ${cafeFadeInOut} 2s infinite;
+        `};
 `;
 
 export const SmallBox = styled(motion.div)<{bgphoto: string}>`
