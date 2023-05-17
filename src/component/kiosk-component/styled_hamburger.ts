@@ -253,3 +253,17 @@ export const StartButton = styled.div`
         transform: scale(1.1);
     }
 `;
+
+export const MenuTitle = styled.div`
+    font-size: 1.5rem;
+    font-weight: 600;
+`;
+
+export const MenuCost = styled.div`
+    font-size: 1rem;
+    font-weight: 600;
+`;
+
+export const MenuCal = styled.div`
+    color: #666666;
+`;

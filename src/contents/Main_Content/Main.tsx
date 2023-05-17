@@ -12,12 +12,12 @@ function Main () {
   const [login, setLogin] = useRecoilState(LogInState);
 
   function handleGoogleLogin() {
-    const provider = new GoogleAuthProvider(); // provider를 구글로 설정
-    signInWithPopup(auth, provider) // popup을 이용한 signup
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
       .then((data: any) => {
-        setUserData(data.user); // user data 설정
+        setUserData(data.user); 
         setLogin(true);
-        console.log(data) // console로 들어온 데이터 표시
+        console.log(data);
       })
       .catch((err) => {
         console.log(err);
@@ -34,7 +34,6 @@ function Main () {
                 </BackCircle>
             </CircleConatiner>
             <ContentContainer>
-   
             {!login ? 
                 <ContentClickBox onClick={handleGoogleLogin}>
                     <LogInImage/>
@@ -46,15 +45,17 @@ function Main () {
                     </ContentTextBox>
                 </ContentClickBox>
                 : 
-                <ContentClickBox>
-                    <DocImage/>
-                    <ContentTextBox>
-                        <ContentTitle>나의 기록 확인하기</ContentTitle>
-                        <ContentDescript>
-                            나의 지난 기록들을 통해 성장한 나를 확인해보세요!
-                        </ContentDescript>
-                    </ContentTextBox>
-                </ContentClickBox>
+                <StyledLink to="/login">
+                    <ContentClickBox>
+                        <DocImage/>
+                        <ContentTextBox>
+                            <ContentTitle>{userData.displayName}님의 기록 확인하기</ContentTitle>
+                            <ContentDescript>
+                            {userData.displayName}님의 지난 기록들을 통해 성장한 모습을 <br/> 확인해보세요!
+                            </ContentDescript>
+                        </ContentTextBox>
+                    </ContentClickBox>
+                </StyledLink>
                 }
                 
             <StyledLink to="/kiosk">    
@@ -90,7 +91,6 @@ function Main () {
                         </ContentDescript>
                     </ContentTextBox>
                 </ContentClickBox>
-            
             </ContentContainer>
         </div>
     );

@@ -19,6 +19,14 @@ export const FlexBox = styled.div`
     align-items: center;
 `;
 
+export const MenuBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+`;
+
 export const ImageBox = styled.div<{image: any}>`
     display: flex;
     justify-content: center;
@@ -30,7 +38,8 @@ export const ImageBox = styled.div<{image: any}>`
 `;
 
 export const HamburgerImageBox = styled(ImageBox)`
-    width: 6rem;
+    width: 8rem;
+    height: 8rem;
 `;
 
 export const ImageStar = styled.div<{image: any}>`

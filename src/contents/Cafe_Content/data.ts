@@ -171,7 +171,7 @@ export const cafeItem3 = [
 export const BerverageMenu : IFastItem[] = [
     {   id: "1",
         category: "음료수",   
-        name: "콜라",
+        name: "코키콜라",
         cost: 2000,
         cal: 120,
         quantity: 1,
@@ -216,12 +216,13 @@ export const HamburgerMenu:IFastItem[] = [
     //     cal: 420,
     //     quantity: 1,
     // },
-    // {
-    //     id: "12",
-    //     category: "메인 메뉴",   
-    //     name: "빅맥",
-    //     cost: 4500,
-    //     cal: 420,
-    //     quantity: 1,
-    // },
+    {
+        id: "12",
+        category: "메인 메뉴",   
+        name: "빅맥",
+        cost: 4500,
+        cal: 420,
+        quantity: 1,
+        img: BigMac
+    },
 ];

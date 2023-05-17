@@ -76,6 +76,7 @@ export const ContentContainer = styled.div`
     transform: translateY(-30%);
     justify-content: center;
     align-items: center;
+    padding-top: 2rem;
 `;
 
 export const KTImage = styled.div`

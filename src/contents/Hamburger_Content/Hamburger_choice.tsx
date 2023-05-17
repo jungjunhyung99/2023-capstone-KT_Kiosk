@@ -6,7 +6,8 @@ import { useRecoilState } from "recoil";
 import { BerverageMenu, HamburgerMenu } from "../Cafe_Content/data";
 import { IFastItem, fastObj } from "../../Atom/atom";
 import Bigmac from "../../images/BigMac.png";
-import { FlexBox, HamburgerImageBox, ImageBox } from "../../component/kiosk-component/styled_kiosk";
+import { FlexBox, HamburgerImageBox, ImageBox, MenuBox } from "../../component/kiosk-component/styled_kiosk";
+import { MenuCal, MenuCost, MenuTitle } from "../../component/kiosk-component/styled_hamburger";
 
 const Container = styled(motion.div)`
     display:flex;
@@ -61,8 +62,9 @@ const ItemBox = styled(motion.div)`
     display: flex;
     flex-direction: column;
     align-items: center;
-    width:14vw;
-    height:10vh;
+    justify-content: center;
+    width: 15rem;
+    height:15rem;
     margin: 15px;
     color:black;
     border: 2px solid black;
@@ -270,12 +272,12 @@ function Hamburger_choice() {
                             <ItemBox 
                             key={menu.id} layoutId={menu.id} onClick={()=>BoxClicked(menu,menu.id as string)}
                             >
-                                <FlexBox>
+                                <MenuBox>
                                     <HamburgerImageBox image={menu.img}/>
-                                    {menu.name}<br/>
-                                    {menu.cal} cal<br/>
-                                    {menu.cost}원
-                                </FlexBox>
+                                    <MenuTitle>{menu.name}</MenuTitle>
+                                    <MenuCost>{menu.cost}원</MenuCost>
+                                    <MenuCal>{menu.cal} cal</MenuCal>
+                                </MenuBox>
                             </ItemBox>)}
                             <AnimatePresence>
                                 {selectId && (
