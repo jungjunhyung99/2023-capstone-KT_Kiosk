@@ -21,6 +21,10 @@ import Icecream_cone from './practice/Icecream/Icecream_cone';
 import Icecream_bar from './practice/Icecream/Icecream_family';
 import Icecream_tube from './practice/Icecream/Icecream_tube';
 import Icecream_family from './practice/Icecream/Icecream_family';
+import Hamburger_start from './contents/Hamburger_Content/Hamburger_start';
+import Movie_start from './contents/Movie_Content/Movie_start';
+import Cafe_start from './contents/Cafe_Content/Cafe_start';
+
 function App() {
   return (
       <RecoilRoot>
@@ -30,11 +34,14 @@ function App() {
                 <Route path='/' element={<MainPage/>}/>
                 <Route path='/kiosk' element={<KioskPage/>}/>
                 <Route path='/kiosk/hamburger' element={<Hamburger_index/>}/>
-                <Route path='/kiosk/cafe' element={<CafePage/>}/>
+                <Route path='/kiosk/cafe/main' element={<CafePage/>}/>
+                <Route path='/kiosk/cafe/start' element={<Cafe_start/>}/>
                 <Route path='/kiosk/movie' element={<MoviePage/>}/>
+                <Route path='/kiosk/movie/start' element={<Movie_start/>}/>
                 <Route path='/kiosk/movie/fast' element={<Movie_fast/>}/>
                 <Route path='/kiosk/movie/timeline' element={<Movie_timeline/>}/>
                 <Route path='/kiosk/movie/seat' element={<Movie_seat/>}/>
+                <Route path='/kiosk/Hamburger/start' element={<Hamburger_start/>}/>
                 <Route path='/kiosk/Hamburger/take' element={<Hamburger_take/>}/>
                 <Route path='/kiosk/Hamburger/choice' element={<Hamburger_choice/>}/>
                 <Route path='/kiosk/Hamburger/last' element={<Hamburger_last/>}/>

@@ -36,7 +36,7 @@ function KioskMain() {
                     </KioskClickBox>
                 </StyledLink>
                 
-                <StyledLink to="/kiosk/cafe">
+                <StyledLink to="/kiosk/cafe/start">
                     <KioskClickBox>
                         <HeightImageBox image={Americano}/>
                         <ContentTextBox>

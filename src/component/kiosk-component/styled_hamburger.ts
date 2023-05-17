@@ -223,3 +223,29 @@ export const HallButton = styled.button<{answer: string}>`
       animation: ${fadeInOut} 2s infinite;
     `};
 `;
+
+export const DescribeDiv = styled.div`
+    font-size: 2rem;
+    color: white;
+`;
+
+export const KioskBorderDiv = styled.div`
+    border: 3px solid #DEE3EA;
+    background-color: white;
+`;
+
+
+export const StartButton = styled.div`
+    display: flex;
+    width: 80%;
+    height: 10rem;
+    margin-top: 5rem;
+    align-items: center;
+    justify-content: center;
+    background-color: #2BB7B3;
+    border: 3px solid black;
+    border-radius: 2rem;
+    font-size: 2rem;
+    font-weight: 700;
+    cursor: pointer;
+`;

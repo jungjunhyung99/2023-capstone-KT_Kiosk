@@ -19,7 +19,7 @@ export const BackCircle = styled.div`
 export const BackCircle2 = styled.div`
     position: absolute;
     background-color: #31CECA;
-    height: 100%;
+    height: 40rem;
     width: 100%;
     border-radius: 20px 20px 300px 300px;
 `;
@@ -50,7 +50,7 @@ export const ContentClickBox = styled.div`
 
 export const ContentTitle = styled.span`
     font-weight: 800;
-    font-size: 2rem;
+    font-size: 1.7rem;
 `;
 
 export const ContentDescript = styled.span`
@@ -108,6 +108,7 @@ export const MapImage = styled.div`
 `;
 
 export const LogoTitle = styled.div`
+    padding-top: 1rem;
     font-size: 4.5rem;
     font-weight: 800;
     color:white;
@@ -152,6 +153,14 @@ export const KioskImageBox = styled.div<{image: any}>`
 
 export const WidthImageBox = styled(KioskImageBox)`
     height: 6rem;
+`;
+
+export const SelectedImage = styled(KioskImageBox)`
+    height: 9rem;
+`;
+
+export const PopcornImage = styled(KioskImageBox)`
+    height: 11rem;
 `;
 
 export const HeightImageBox = styled(KioskImageBox)`

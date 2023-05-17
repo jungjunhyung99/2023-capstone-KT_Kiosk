@@ -53,6 +53,12 @@ export const KioskContainer = styled.div`
 
 export const KioskContainer2 = styled(KioskContainer)`
     transform: translateY(-35%);
+    min-height: 100vh;
+`;
+
+export const KioskStartContainer = styled(KioskContainer)`
+    transform: translateY(-45%);
+    gap: 2rem;
 `;
 
 export const PrevButton = styled.button`
