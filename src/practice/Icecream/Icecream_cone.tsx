@@ -13,7 +13,6 @@ function Icecream_cone() {
     const navigate = useNavigate();
 
     const onClickIcecreamBar = () => {
-
         navigate('/kiosk/Icecream_bar');
     }
 
@@ -23,7 +22,7 @@ function Icecream_cone() {
 
     const onClickIcecreamFamily = () => {
         navigate('/kiosk/Icecream_family');
-
+    }
 
     const [number, setNumber] = useState(0);
     const [number2, setNumber2] = useState(0);
@@ -374,21 +373,25 @@ function Icecream_cone() {
     const FirstCount = styled.div`
         position: relative;
         right: 400px;
+        color: white;
     `;
 
     const SecondCount = styled.div`
         position: relative;
         right: 130px;
+        color: white;
     `;
 
     const ThirdCount = styled.div`
         position: relative;
         left: 130px;
+        color: white;
     `;
 
     const FourthCount = styled.div`
         position: relative;
         left: 390px;
+        color: white;
     `;
 
     const Order = styled.button`
@@ -489,6 +492,6 @@ function Icecream_cone() {
                 </Modal>
             )}
         </div>
-    );}
+    );
 }
 export default Icecream_cone;

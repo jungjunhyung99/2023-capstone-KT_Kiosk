@@ -378,21 +378,25 @@ function Icecream_bar() {
     const FirstCount = styled.div`
         position: relative;
         right: 400px;
+        color: white;
     `;
 
     const SecondCount = styled.div`
         position: relative;
         right: 130px;
-    `;
+        color: white;
+        `;
 
     const ThirdCount = styled.div`
         position: relative;
         left: 130px;
+        color: white;
     `;
 
     const FourthCount = styled.div`
         position: relative;
         left: 390px;
+        color: white;
     `;
 
     const Order = styled.button`

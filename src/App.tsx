@@ -46,6 +46,7 @@ function App() {
                 <Route path='/kiosk/Hamburger/choice' element={<Hamburger_choice/>}/>
                 <Route path='/kiosk/Hamburger/last' element={<Hamburger_last/>}/>
                 <Route path='/kiosk/Icecream' element={<Icecream_main/>}/>
+                <Route path='/kiosk/Icecream_cone' element={<Icecream_cone/>}/>
                 <Route path='/kiosk/Icecream_bar' element={<Icecream_bar/>}/>
                 <Route path='/kiosk/Icecream_tube' element={<Icecream_tube/>}/>
                 <Route path='/kiosk/Icecream_family' element={<Icecream_family/>}/>
