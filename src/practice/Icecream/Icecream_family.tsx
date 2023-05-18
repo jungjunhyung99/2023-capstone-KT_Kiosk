@@ -366,25 +366,21 @@ function Icecream_bar() {
     const FirstCount = styled.div`
         position: relative;
         right: 400px;
-        color: white;
     `;
 
     const SecondCount = styled.div`
         position: relative;
         right: 130px;
-        color: white;
     `;
 
     const ThirdCount = styled.div`
         position: relative;
         left: 130px;
-        color: white;
     `;
 
     const FourthCount = styled.div`
         position: relative;
         left: 390px;
-        color: white;
     `;
 
     const Order = styled.button`
@@ -437,6 +433,10 @@ function Icecream_bar() {
         position: relative;
         top: 100px;
         background-color: lightblue;
+    `;
+
+    const Entire = styled.div`
+        background-color: white
     `;
 
     return(

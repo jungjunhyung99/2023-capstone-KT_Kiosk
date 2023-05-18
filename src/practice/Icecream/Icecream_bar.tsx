@@ -378,25 +378,21 @@ function Icecream_bar() {
     const FirstCount = styled.div`
         position: relative;
         right: 400px;
-        color: white;
     `;
 
     const SecondCount = styled.div`
         position: relative;
         right: 130px;
-        color: white;
-        `;
+    `;
 
     const ThirdCount = styled.div`
         position: relative;
         left: 130px;
-        color: white;
     `;
 
     const FourthCount = styled.div`
         position: relative;
         left: 390px;
-        color: white;
     `;
 
     const Order = styled.button`
@@ -451,6 +447,10 @@ function Icecream_bar() {
         background-color: lightblue;
     `;
 
+    const Entire = styled.div`
+        background-color: white;
+    `;
+
     return(
         <div>
             <Title>Icecream</Title>
@@ -460,6 +460,7 @@ function Icecream_bar() {
                 <TubeButton onClick={onClickIcecreamTube}>Tube</TubeButton>
                 <FamilyButton onClick={onClickIcecreamFamily}>Family</FamilyButton>
             </List>
+            <Entire>
             <Space></Space>
             <Items>
                 <MeronaBox><ImageBox_IcecreamBar image={merona}/><MeronaPrice>2,500원</MeronaPrice></MeronaBox>
@@ -485,6 +486,7 @@ function Icecream_bar() {
                 <ThirdCount>{number3}</ThirdCount>
                 <FourthCount>{number4}</FourthCount>
             </CountItems>
+            </Entire>
             <Order onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
             {isOpenModal && (
                 <Modal onClickToggleModal={onClickToggleModal}>

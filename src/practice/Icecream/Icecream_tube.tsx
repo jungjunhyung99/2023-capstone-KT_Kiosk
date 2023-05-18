@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { ImageBox_IcecreamTube } from '../../component/kiosk-component/styled_icecream';
-import Yogurt from "../../images/icecream/Yogurt.png";
-import Bbabbico from "../../images/icecream/Bbabbico.png";
-import Tankboygreengrape from "../../images/icecream/Tankboygreengrape.png";
-import Tankboy from "../../images/icecream/Tankboy.png";
+import { ImageBox_IcecreamFamily, ImageBox_IcecreamFamilyNattur, ImageBox_IcecreamFamilyGoogoo} from '../../component/kiosk-component/styled_icecream';
+import Bingsoo from "../../images/icecream/Bingsoo.png";
+import Together from "../../images/icecream/Together.png";
+import Nattur from "../../images/icecream/Nattur.png";
+import Googoocluster from "../../images/icecream/Googoocluster.png";
 import { useState, useCallback } from 'react';
 import Modal from "../../component/Modal";
 
@@ -137,55 +137,53 @@ function Icecream_bar() {
         left: 60px;
     `;
 
-    const YogurtBox = styled.button`
+    const BingsooBox = styled.button`
         background-color: white;
         border-width: 1px;
         position: relative;
         right: 4.5rem;
     `;
 
-    const BbabbicoBox = styled.button`
+    const TogetherBox = styled.button`
         background-color: white;
         border-width: 1px;
         position: relative;
         right: 5.2em;
     `;
 
-    const TankboygreengrapeBox = styled.button`
+    const NatturBox = styled.button`
         background-color: white;
         border-width: 1px;
         position: relative;
         right: 3.6rem;
     `;
 
-    const TankboyBox = styled.button`
+    const GoogooclusterBox = styled.button`
         background-color: white;
         border-width: 1px;
         position: relative;
         right: 3rem;
     `;
 
-    const YogurtPrice = styled.div`
+    const BingsooPrice = styled.div`
         font-size: 30px;
     `;
 
-    const BbabbicoPrice = styled.div`
+    const TogetherPrice = styled.div`
         font-size: 30px;
     `
 
-    const TankboygreengrapePrice = styled.div`
+    const NatturPrice = styled.div`
         font-size: 30px;
     `;
 
-    const TankboyPrice = styled.div`
+    const GoogooclusterPrice = styled.div`
         font-size: 30px;
     `;
 
     const PlusDivButton = styled.div`
         display: flex;
         justify-content: center;  
-        position: relative;
-        left: 28px;
     `;
 
     const FirstPlusButton = styled.button`
@@ -195,7 +193,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        right: 315px;
+        right: 287px;
         &:hover {
             background-color: lightyellow;
         }
@@ -209,7 +207,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        right: 37px;
+        right: 10px;
         &:hover {
             background-color: lightyellow;
         }
@@ -223,7 +221,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        left: 249px;
+        left: 277px;
         &:hover {
             background-color: lightyellow;
         }
@@ -237,7 +235,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        left: 532px;
+        left: 560px;
         &:hover {
             background-color: lightyellow;
         }
@@ -276,7 +274,7 @@ function Icecream_bar() {
         display: flex;
         justify-content: center;
         position: relative;
-        right: 250px;
+        right: 272px;
         bottom: 50px;
     `;
 
@@ -287,7 +285,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        right: 315px;
+        right: 287px;
         &:hover {
             background-color: lightyellow;
         }
@@ -300,8 +298,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        right: 27px;
-        ;
+        right: 10px;
         &:hover {
             background-color: lightyellow;
         }
@@ -314,7 +311,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        left: 252px;
+        left: 277px;
         &:hover {
             background-color: lightyellow;
         }
@@ -327,7 +324,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        left: 537px;
+        left: 560px;
         &:hover {
             background-color: lightyellow;
         }
@@ -369,25 +366,21 @@ function Icecream_bar() {
     const FirstCount = styled.div`
         position: relative;
         right: 400px;
-        color: white;
     `;
 
     const SecondCount = styled.div`
         position: relative;
         right: 130px;
-        color: white;
     `;
 
     const ThirdCount = styled.div`
         position: relative;
         left: 130px;
-        color: white;
     `;
 
     const FourthCount = styled.div`
         position: relative;
         left: 390px;
-        color: white;
     `;
 
     const Order = styled.button`
@@ -404,25 +397,25 @@ function Icecream_bar() {
         color: white;
     `;
 
-    const YogurtText = styled.div`
+    const BingsooText = styled.div`
         font-size: 30px;
         position: relative;
         top: 40px;
     `;
 
-    const BbabbicoText = styled.div`
+    const TogetherText = styled.div`
         font-size: 30px;
         position: relative;
         top: 40px;
     `;
 
-    const TankboygreengrapeText = styled.div`
+    const NatturText = styled.div`
         font-size: 30px;
         position: relative;
         top: 40px;
     `;
 
-    const TankboyText = styled.div`
+    const GoogooclusterText = styled.div`
         font-size: 30px;
         position: relative;
         top: 40px;
@@ -442,6 +435,10 @@ function Icecream_bar() {
         background-color: lightblue;
     `;
 
+    const Entire = styled.div`
+        background-color: white;
+    `;
+
     return(
         <div>
             <Title>Icecream</Title>
@@ -449,14 +446,15 @@ function Icecream_bar() {
                 <ConeButton onClick={onClickIcecreamCone}>Cone</ConeButton>
                 <BarButton onClick={onClickIcecreamBar}>Bar</BarButton>
                 <TubeButton>Tube</TubeButton>
-                <FamilyButton onClick={onClickIcecreamFamily}>Family</FamilyButton>
+                <FamilyButton onClick={onClickIcecreamBar}>Family</FamilyButton>
             </List>
+            <Entire>
             <Space></Space>
             <Items>
-                <YogurtBox><ImageBox_IcecreamTube image={Yogurt}/><YogurtPrice>3,500원</YogurtPrice></YogurtBox>
-                <BbabbicoBox><ImageBox_IcecreamTube image={Bbabbico}/><BbabbicoPrice>3,000원</BbabbicoPrice></BbabbicoBox>
-                <TankboygreengrapeBox><ImageBox_IcecreamTube image={Tankboygreengrape}/><TankboygreengrapePrice>3,500원</TankboygreengrapePrice></TankboygreengrapeBox>
-                <TankboyBox><ImageBox_IcecreamTube image={Tankboy}/><TankboyPrice>3,000원</TankboyPrice></TankboyBox>
+                <BingsooBox><ImageBox_IcecreamFamily image={Bingsoo}/><BingsooPrice>3,500원</BingsooPrice></BingsooBox>
+                <TogetherBox><ImageBox_IcecreamFamily image={Together}/><TogetherPrice>3,500원</TogetherPrice></TogetherBox>
+                <NatturBox><ImageBox_IcecreamFamilyNattur image={Nattur}/><NatturPrice>4,000원</NatturPrice></NatturBox>
+                <GoogooclusterBox><ImageBox_IcecreamFamilyGoogoo image={Googoocluster}/><GoogooclusterPrice>3,500원</GoogooclusterPrice></GoogooclusterBox>
             </Items>
             <PlusDivButton>
                 <FirstPlusButton onClick={() => {btn_first_click();}}><FirstPlusButtonDiv>+</FirstPlusButtonDiv></FirstPlusButton>
@@ -476,14 +474,15 @@ function Icecream_bar() {
                 <ThirdCount>{number3}</ThirdCount>
                 <FourthCount>{number4}</FourthCount>
             </CountItems>
+            </Entire>
             <Order onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
             {isOpenModal && (
                 <Modal onClickToggleModal={onClickToggleModal}>
-                   <YogurtText>요구르트 쭈쭈빠 : 3,500원 * {number}개 = {3500*number}원</YogurtText>
-                            <BbabbicoText>빠삐코 : 3,000원 * {number2}개 = {3000*number2}원</BbabbicoText>
-                            <TankboygreengrapeText>탱크보이 청포도 : 3,500원 * {number3}개 = {3500*number3}원</TankboygreengrapeText>
-                            <TankboyText>탱크보이 : 3,000원 * {number4}개 = {3000*number4}원</TankboyText> <br />
-                            <Total>총 금액 : {3500*number + 3000*number2 + 3500*number3 + 3000*number4}원</Total>
+                   <BingsooText>팥빙수 : 3,500원 * {number}개 = {3500*number}원</BingsooText>
+                            <TogetherText>투게더 : 3,500원 * {number2}개 = {3500*number2}원</TogetherText>
+                            <NatturText>나뚜루 : 4,000원 * {number3}개 = {4000*number3}원</NatturText>
+                            <GoogooclusterText>구구크러스터 : 3,500원 * {number4}개 = {3500*number4}원</GoogooclusterText> <br />
+                            <Total>총 금액 : {3500*number + 3500*number2 + 4000*number3 + 3500*number4}원</Total>
                             <Close onClick={() => setOpenModal(false)}>닫기</Close>
                 </Modal>
             )}

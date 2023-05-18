@@ -16,9 +16,9 @@ import Movie_seat from './contents/Movie_Content/Movie_seat';
 import Hamburger_take from './contents/Hamburger_Content/Hamburger_take';
 import Hamburger_choice from './contents/Hamburger_Content/Hamburger_choice';
 import Hamburger_last from './contents/Hamburger_Content/Hamuburger_last';
-import Icecream_main from './practice/Icecream/Icecream_main';
+import Icecream from './practice/Icecream/Icecream';
 import Icecream_cone from './practice/Icecream/Icecream_cone';
-import Icecream_bar from './practice/Icecream/Icecream_family';
+import Icecream_bar from './practice/Icecream/Icecream_bar';
 import Icecream_tube from './practice/Icecream/Icecream_tube';
 import Icecream_family from './practice/Icecream/Icecream_family';
 import Hamburger_start from './contents/Hamburger_Content/Hamburger_start';
@@ -45,7 +45,7 @@ function App() {
                 <Route path='/kiosk/Hamburger/take' element={<Hamburger_take/>}/>
                 <Route path='/kiosk/Hamburger/choice' element={<Hamburger_choice/>}/>
                 <Route path='/kiosk/Hamburger/last' element={<Hamburger_last/>}/>
-                <Route path='/kiosk/Icecream' element={<Icecream_main/>}/>
+                <Route path='/kiosk/Icecream' element={<Icecream/>}/>
                 <Route path='/kiosk/Icecream_cone' element={<Icecream_cone/>}/>
                 <Route path='/kiosk/Icecream_bar' element={<Icecream_bar/>}/>
                 <Route path='/kiosk/Icecream_tube' element={<Icecream_tube/>}/>
