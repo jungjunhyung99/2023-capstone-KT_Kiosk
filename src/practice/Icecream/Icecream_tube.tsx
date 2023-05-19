@@ -608,9 +608,9 @@ function Icecream_tube() {
                     <Text>{TUBE4()}</Text>
 
                     <Text>{FAMILY1()}</Text>
-                    <Text>{FAMILY1()}</Text>
-                    <Text>{FAMILY1()}</Text>
-                    <Text>{FAMILY1()}</Text>
+                    <Text>{FAMILY2()}</Text>
+                    <Text>{FAMILY3()}</Text>
+                    <Text>{FAMILY4()}</Text>
                     <Total>총 금액 : {2500*cone_number1 + 2200*cone_number2 + 2500*cone_number3 + 3500*cone_number4 
                         + 2500*bar_number1 + 2000*bar_number2 + 2500*bar_number3 + 2000* bar_number4
                         + 3500*tube_number1 + 3000*tube_number2 + 3500*tube_number3 + 3000*tube_number4
