@@ -6,9 +6,9 @@ import subakba from "../../images/icecream/subakba.png";
 import zyosba from "../../images/icecream/zyosba.png";
 import bosukba from "../../images/icecream/bosukba.png";
 import { useState, useCallback } from 'react';
-import { RecoilRoot, atom, useRecoilState } from "recoil";
+import { RecoilRoot, atom, useRecoilState, useRecoilValue } from "recoil";
 import Modal from "../../component/Modal";
-import {number5, number6, number7, number8} from "../../Atom/store";
+import {number1, number2, number3, number4, number5, number6, number7, number8, number9, number10, number11, number12, number13, number14, number15, number16} from "../../Atom/store";
 
 function Icecream_bar() {
 
@@ -26,45 +26,60 @@ function Icecream_bar() {
         navigate('/kiosk/Icecream_family');
     }
     
-    const [bar_number1, setNumber] = useRecoilState(number5);
-    const [bar_number2, setNumber2] = useRecoilState(number6);
-    const [bar_number3, setNumber3] = useRecoilState(number7);
-    const [bar_number4, setNumber4] = useRecoilState(number8);
+    const [bar_number1, setNumber5] = useRecoilState(number5);
+    const [bar_number2, setNumber6] = useRecoilState(number6);
+    const [bar_number3, setNumber7] = useRecoilState(number7);
+    const [bar_number4, setNumber8] = useRecoilState(number8);
+
+    const cone_number1 = useRecoilValue(number1);
+    const cone_number2 = useRecoilValue(number2);
+    const cone_number3 = useRecoilValue(number3);
+    const cone_number4 = useRecoilValue(number4);
     
+    const tube_number1 = useRecoilValue(number9);
+    const tube_number2 = useRecoilValue(number10);
+    const tube_number3 = useRecoilValue(number11);
+    const tube_number4 = useRecoilValue(number12);
+    
+    const family_number1 = useRecoilValue(number13);
+    const family_number2 = useRecoilValue(number14);
+    const family_number3 = useRecoilValue(number15);
+    const family_number4 = useRecoilValue(number16);
+
     const btn_first_click = () => {
-        setNumber(bar_number1 + 1);
+        setNumber5(bar_number1 + 1);
     }
 
     const btn_second_click = () => {
-        setNumber2(bar_number2 + 1);
+        setNumber6(bar_number2 + 1);
     }
 
     const btn_third_click = () => {
-        setNumber3(bar_number3 + 1);
+        setNumber7(bar_number3 + 1);
     }
 
     const btn_fourth_click = () => {
-        setNumber4(bar_number4 + 1);
+        setNumber8(bar_number4 + 1);
     }
 
     const btn_first_minus_click = () => {
         if (bar_number1 > 0)
-        setNumber3(bar_number1 - 1);
+        setNumber5(bar_number1 - 1);
     }
 
     const btn_second_minus_click = () => {
         if (bar_number2 > 0)
-        setNumber3(bar_number2 - 1);
+        setNumber6(bar_number2 - 1);
     }
 
     const btn_third_minus_click = () => {
         if (bar_number3 > 0)
-        setNumber3(bar_number3 - 1);
+        setNumber7(bar_number3 - 1);
     }
 
     const btn_fourth_minus_click = () => {
         if (bar_number4 > 0)
-        setNumber4(bar_number4 - 1);
+        setNumber8(bar_number4 - 1);
     }
 
     const [isOpenModal, setOpenModal] = useState<boolean>(false);
@@ -412,28 +427,10 @@ function Icecream_bar() {
         color: white;
     `;
 
-    const MeronaText = styled.div`
-        font-size: 30px;
-        position: relative;
-        top: 40px;
-    `;
-
-    const SubakText = styled.div`
-        font-size: 30px;
-        position: relative;
-        top: 40px;
-    `;
-
-    const BosukText = styled.div`
-        font-size: 30px;
-        position: relative;
-        top: 40px;
-    `;
-
-    const ZyosText = styled.div`
-        font-size: 30px;
-        position: relative;
-        top: 40px;
+    const Text = styled.div`
+    font-size: 30px;
+    position: relative;
+    top: 40px;
     `;
 
     const Total = styled.div`
@@ -493,10 +490,10 @@ function Icecream_bar() {
             <Order onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
             {isOpenModal && (
                 <Modal onClickToggleModal={onClickToggleModal}>
-                   <MeronaText>메로나 : 2,500원 * {bar_number1}개 = {2500*bar_number1}원</MeronaText>
-                            <SubakText>수박바 : 2,000원 * {bar_number2}개 = {2000*bar_number2}원</SubakText>
-                            <BosukText>보석바 : 2,500원 * {bar_number3}개 = {2500*bar_number3}원</BosukText>
-                            <ZyosText>죠스바 : 2,000원 * {bar_number4}개 = {2000*bar_number4}원</ZyosText> <br />
+                    <Total>총 금액 : {2500*cone_number1 + 2200*cone_number2 + 2500*cone_number3 + 3500*cone_number4 
+                            + 2500*bar_number1 + 2000*bar_number2 + 2500*bar_number3 + 2000* bar_number4
+                            + 3500*tube_number1 + 3000*tube_number2 + 3500*tube_number3 + 3000*tube_number4
+                            + 3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원</Total>
                             <Close onClick={() => setOpenModal(false)}>닫기</Close>
                 </Modal>
             )}

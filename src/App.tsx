@@ -5,7 +5,7 @@ import {BrowserRouter as Router,Routes, Route, useMatch} from "react-router-dom"
 import Hamburger_index from './contents/Hamburger_Content/Hamburger_index';
 import MainPage from './pages/Main/MainPage';
 import KioskPage from './pages/Main/KioskPage';
-import { RecoilRoot } from 'recoil';
+import { RecoilRoot, useRecoilState } from 'recoil';
 import GamePage from './pages/Main/GamePage';
 import Game from './pages/Game/Game';
 import CafePage from './pages/Cafe/CafePage';
@@ -26,6 +26,7 @@ import Movie_start from './contents/Movie_Content/Movie_start';
 import Cafe_start from './contents/Cafe_Content/Cafe_start';
 
 function App() {
+
   return (
       <RecoilRoot>
         <Router>

@@ -6,9 +6,9 @@ import Bbabbico from "../../images/icecream/Bbabbico.png";
 import Tankboygreengrape from "../../images/icecream/Tankboygreengrape.png";
 import Tankboy from "../../images/icecream/Tankboy.png";
 import { useState, useCallback } from 'react';
-import { RecoilRoot, atom, useRecoilState } from "recoil";
+import { RecoilRoot, atom, useRecoilState, useRecoilValue } from "recoil";
 import Modal from "../../component/Modal";
-import {number9, number10, number11, number12} from "../../Atom/store";
+import {number1, number2, number3, number4, number5, number6, number7, number8, number9, number10, number11, number12, number13, number14, number15, number16} from "../../Atom/store";
 
 function Icecream_tube() {
 
@@ -26,45 +26,60 @@ function Icecream_tube() {
         navigate('/kiosk/Icecream_family');
     }
     
-    const [number, setNumber] = useRecoilState(number9);
-    const [number2, setNumber2] = useRecoilState(number10);
-    const [number3, setNumber3] = useRecoilState(number11);
-    const [number4, setNumber4] = useRecoilState(number12);
+    const [tube_number1, setNumber] = useRecoilState(number9);
+    const [tube_number2, setNumber2] = useRecoilState(number10);
+    const [tube_number3, setNumber3] = useRecoilState(number11);
+    const [tube_number4, setNumber4] = useRecoilState(number12);
+
+    const cone_number1 = useRecoilValue(number1);
+    const cone_number2 = useRecoilValue(number2);
+    const cone_number3 = useRecoilValue(number3);
+    const cone_number4 = useRecoilValue(number4);
+    
+    const bar_number1 = useRecoilValue(number5);
+    const bar_number2 = useRecoilValue(number6);
+    const bar_number3 = useRecoilValue(number7);
+    const bar_number4 = useRecoilValue(number8);
+    
+    const family_number1 = useRecoilValue(number13);
+    const family_number2 = useRecoilValue(number14);
+    const family_number3 = useRecoilValue(number15);
+    const family_number4 = useRecoilValue(number16);
 
     const btn_first_click = () => {
-        setNumber(number + 1);
+        setNumber(tube_number1 + 1);
     }
 
     const btn_second_click = () => {
-        setNumber2(number2 + 1);
+        setNumber2(tube_number2 + 1);
     }
     
     const btn_third_click = () => {
-        setNumber3(number3 + 1);
+        setNumber3(tube_number3 + 1);
     }
 
     const btn_fourth_click = () => {
-        setNumber4(number4 + 1);
+        setNumber4(tube_number4 + 1);
     }
 
     const btn_first_minus_click = () => {
-        if (number > 0)
-            setNumber(number - 1);
+        if (tube_number1 > 0)
+            setNumber(tube_number1 - 1);
     }
 
     const btn_second_minus_click = () => {
-        if (number2 > 0)
-            setNumber2(number2 - 1);
+        if (tube_number2 > 0)
+            setNumber2(tube_number2 - 1);
     }
 
     const btn_third_minus_click = () => {
-        if (number3 > 0)
-            setNumber3(number3 - 1);
+        if (tube_number3 > 0)
+            setNumber3(tube_number3 - 1);
     }
 
     const btn_fourth_minus_click = () => {
-        if (number4 > 0)
-            setNumber4(number4 - 1);
+        if (tube_number4 > 0)
+            setNumber4(tube_number4 - 1);
     }
 
     const [isOpenModal, setOpenModal] = useState<boolean>(false);
@@ -402,28 +417,10 @@ function Icecream_tube() {
         color: white;
     `;
 
-    const YogurtText = styled.div`
-        font-size: 30px;
-        position: relative;
-        top: 40px;
-    `;
-
-    const BbabbicoText = styled.div`
-        font-size: 30px;
-        position: relative;
-        top: 40px;
-    `;
-
-    const TankboygreengrapeText = styled.div`
-        font-size: 30px;
-        position: relative;
-        top: 40px;
-    `;
-
-    const TankboyText = styled.div`
-        font-size: 30px;
-        position: relative;
-        top: 40px;
+    const Text = styled.div`
+    font-size: 30px;
+    position: relative;
+    top: 40px;
     `;
 
     const Total = styled.div`
@@ -474,19 +471,19 @@ function Icecream_tube() {
                 <FourthMinusButton onClick={() => {btn_fourth_minus_click();}}><FourthMinusButtonDiv>-</FourthMinusButtonDiv></FourthMinusButton>
             </MinusDivButton>
             <CountItems>
-                <FirstCount>{number}</FirstCount>
-                <SecondCount>{number2}</SecondCount>
-                <ThirdCount>{number3}</ThirdCount>
-                <FourthCount>{number4}</FourthCount>
+                <FirstCount>{tube_number1}</FirstCount>
+                <SecondCount>{tube_number2}</SecondCount>
+                <ThirdCount>{tube_number3}</ThirdCount>
+                <FourthCount>{tube_number4}</FourthCount>
             </CountItems>
             </Entire>
             <Order onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
             {isOpenModal && (
                 <Modal onClickToggleModal={onClickToggleModal}>
-                   <YogurtText>요구르트 쭈쭈빠 : 3,500원 * {number}개 = {3500*number}원</YogurtText>
-                            <BbabbicoText>빠삐코 : 3,000원 * {number2}개 = {3000*number2}원</BbabbicoText>
-                            <TankboygreengrapeText>탱크보이 청포도 : 3,500원 * {number3}개 = {3500*number3}원</TankboygreengrapeText>
-                            <TankboyText>탱크보이 : 3,000원 * {number4}개 = {3000*number4}원</TankboyText> <br />
+                            <Total>총 금액 : {2500*cone_number1 + 2200*cone_number2 + 2500*cone_number3 + 3500*cone_number4 
+                            + 2500*bar_number1 + 2000*bar_number2 + 2500*bar_number3 + 2000* bar_number4
+                            + 3500*tube_number1 + 3000*tube_number2 + 3500*tube_number3 + 3000*tube_number4
+                            + 3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원</Total>
                             <Close onClick={() => setOpenModal(false)}>닫기</Close>
                 </Modal>
             )}

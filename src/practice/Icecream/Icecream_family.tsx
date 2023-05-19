@@ -6,9 +6,9 @@ import Together from "../../images/icecream/Together.png";
 import Nattur from "../../images/icecream/Nattur.png";
 import Googoocluster from "../../images/icecream/Googoocluster.png";
 import { useState, useCallback } from 'react';
-import { RecoilRoot, atom, useRecoilState } from "recoil";
+import { RecoilRoot, atom, useRecoilState, useRecoilValue } from "recoil";
 import Modal from "../../component/Modal";
-import {number13, number14, number15, number16} from "../../Atom/store";
+import {number1, number2, number3, number4, number5, number6, number7, number8, number9, number10, number11, number12, number13, number14, number15, number16} from "../../Atom/store";
 
 function Icecream_family() {
 
@@ -30,6 +30,21 @@ function Icecream_family() {
     const [family_number2, setNumber2] = useRecoilState(number14);
     const [family_number3, setNumber3] = useRecoilState(number15);
     const [family_number4, setNumber4] = useRecoilState(number16);
+
+    const cone_number1 = useRecoilValue(number1);
+    const cone_number2 = useRecoilValue(number2);
+    const cone_number3 = useRecoilValue(number3);
+    const cone_number4 = useRecoilValue(number4);
+    
+    const tube_number1 = useRecoilValue(number9);
+    const tube_number2 = useRecoilValue(number10);
+    const tube_number3 = useRecoilValue(number11);
+    const tube_number4 = useRecoilValue(number12);
+    
+    const bar_number1 = useRecoilValue(number5);
+    const bar_number2 = useRecoilValue(number6);
+    const bar_number3 = useRecoilValue(number7);
+    const bar_number4 = useRecoilValue(number8);
 
     const btn_first_click = () => {
         setNumber(family_number1 + 1);
@@ -399,28 +414,10 @@ function Icecream_family() {
         color: white;
     `;
 
-    const BingsooText = styled.div`
-        font-size: 30px;
-        position: relative;
-        top: 40px;
-    `;
-
-    const TogetherText = styled.div`
-        font-size: 30px;
-        position: relative;
-        top: 40px;
-    `;
-
-    const NatturText = styled.div`
-        font-size: 30px;
-        position: relative;
-        top: 40px;
-    `;
-
-    const GoogooclusterText = styled.div`
-        font-size: 30px;
-        position: relative;
-        top: 40px;
+    const Text = styled.div`
+    font-size: 30px;
+    position: relative;
+    top: 40px;
     `;
 
     const Total = styled.div`
@@ -480,10 +477,10 @@ function Icecream_family() {
             <Order onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
             {isOpenModal && (
                 <Modal onClickToggleModal={onClickToggleModal}>
-                   <BingsooText>팥빙수 : 3,500원 * {family_number1}개 = {3500*family_number1}원</BingsooText>
-                            <TogetherText>투게더 : 3,500원 * {family_number2}개 = {3500*family_number2}원</TogetherText>
-                            <NatturText>나뚜루 : 4,000원 * {family_number3}개 = {4000*family_number3}원</NatturText>
-                            <GoogooclusterText>구구크러스터 : 3,500원 * {family_number4}개 = {3500*family_number4}원</GoogooclusterText> <br />
+                            <Total>총 금액 : {2500*cone_number1 + 2200*cone_number2 + 2500*cone_number3 + 3500*cone_number4 
+                            + 2500*bar_number1 + 2000*bar_number2 + 2500*bar_number3 + 2000* bar_number4
+                            + 3500*tube_number1 + 3000*tube_number2 + 3500*tube_number3 + 3000*tube_number4
+                            + 3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원</Total>
                             <Close onClick={() => setOpenModal(false)}>닫기</Close>
                 </Modal>
             )}

@@ -7,7 +7,7 @@ import Worldcone from "../../images/icecream/Worldcone.png";
 import Boorabo from "../../images/icecream/Boorabo.png";
 import { useState, useCallback } from 'react';
 import Modal from "../../component/Modal";
-import { RecoilRoot, atom, useRecoilState } from "recoil";
+import { RecoilRoot, atom, useRecoilState, useRecoilValue } from "recoil";
 import {number1, number2, number3, number4, number5, number6, number7, number8, number9, number10, number11, number12, number13, number14, number15, number16} from "../../Atom/store";
 
 function Icecream_cone() {
@@ -31,6 +31,21 @@ function Icecream_cone() {
     const [cone_number3, setNumber3] = useRecoilState(number3);
     const [cone_number4, setNumber4] = useRecoilState(number4);
     
+    const bar_number1 = useRecoilValue(number5);
+    const bar_number2 = useRecoilValue(number6);
+    const bar_number3 = useRecoilValue(number7);
+    const bar_number4 = useRecoilValue(number8);
+    
+    const tube_number1 = useRecoilValue(number9);
+    const tube_number2 = useRecoilValue(number10);
+    const tube_number3 = useRecoilValue(number11);
+    const tube_number4 = useRecoilValue(number12);
+    
+    const family_number1 = useRecoilValue(number13);
+    const family_number2 = useRecoilValue(number14);
+    const family_number3 = useRecoilValue(number15);
+    const family_number4 = useRecoilValue(number16);
+
     const btn_first_click = () => {
         setNumber(cone_number1 + 1);
     }
@@ -397,7 +412,7 @@ function Icecream_cone() {
         color: white;
     `;
 
-    const GuguText = styled.div`
+    const Text = styled.div`
         font-size: 30px;
         position: relative;
         top: 40px;
@@ -461,27 +476,10 @@ function Icecream_cone() {
             <Order onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
             {isOpenModal && (
                 <Modal onClickToggleModal={onClickToggleModal}>
-                   <GuguText>더블콘 : 2,500원 * {cone_number1}개 = {1800*cone_number1}원</GuguText>
-                            <GuguText>돼지콘 : 2,200원 * {cone_number2}개 = {2200*cone_number2}원</GuguText>
-                            <GuguText>월드콘 : 2,500원 * {cone_number3}개 = {2500*cone_number3}원</GuguText>
-                            <GuguText>요맘때 : 3,500원 * {cone_number4}개 = {3500*cone_number4}원</GuguText>
-
-                            <GuguText>메로나 : 2,500원 * {cone_number1}개 = {2500*cone_number1}원</GuguText>
-                            <GuguText>돼지콘 : 2,200원 * {cone_number2}개 = {2200*cone_number2}원</GuguText>
-                            <GuguText>월드콘 : 2,500원 * {cone_number3}개 = {2500*cone_number3}원</GuguText>
-                            <GuguText>요맘때 : 3,500원 * {cone_number4}개 = {3500*cone_number4}원</GuguText>
-
-                            <GuguText>요맘때 : 3,500원 * {cone_number4}개 = {3500*cone_number4}원</GuguText>
-                            <GuguText>돼지콘 : 2,200원 * {cone_number2}개 = {2200*cone_number2}원</GuguText>
-                            <GuguText>월드콘 : 2,500원 * {cone_number3}개 = {2500*cone_number3}원</GuguText>
-                            <GuguText>요맘때 : 3,500원 * {cone_number4}개 = {3500*cone_number4}원</GuguText>
-
-                            <GuguText>요맘때 : 3,500원 * {cone_number4}개 = {3500*cone_number4}원</GuguText>
-                            <GuguText>돼지콘 : 2,200원 * {cone_number2}개 = {2200*cone_number2}원</GuguText>
-                            <GuguText>월드콘 : 2,500원 * {cone_number3}개 = {2500*cone_number3}원</GuguText>
-                            <GuguText>요맘때 : 3,500원 * {cone_number4}개 = {3500*cone_number4}원</GuguText>
-                            
-                            <Total>총 금액 : {2500*cone_number1 + 2200*cone_number2 + 2500*cone_number3 + 3500*cone_number4}원</Total>
+                            <Total>총 금액 : {2500*cone_number1 + 2200*cone_number2 + 2500*cone_number3 + 3500*cone_number4 
+                            + 2500*bar_number1 + 2000*bar_number2 + 2500*bar_number3 + 2000* bar_number4
+                            + 3500*tube_number1 + 3000*tube_number2 + 3500*tube_number3 + 3000*tube_number4
+                            + 3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원</Total>
                             <Close onClick={() => setOpenModal(false)}>닫기</Close>
                 </Modal>
             )}
