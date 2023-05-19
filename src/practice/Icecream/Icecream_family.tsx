@@ -6,7 +6,9 @@ import Together from "../../images/icecream/Together.png";
 import Nattur from "../../images/icecream/Nattur.png";
 import Googoocluster from "../../images/icecream/Googoocluster.png";
 import { useState, useCallback } from 'react';
+import { RecoilRoot, atom, useRecoilState } from "recoil";
 import Modal from "../../component/Modal";
+import {number13, number14, number15, number16} from "../../Atom/store";
 
 function Icecream_family() {
 
@@ -24,10 +26,10 @@ function Icecream_family() {
         navigate('/kiosk/Icecream_Tube');
     }
     
-    const [family_number1, setNumber] = useState(0);
-    const [family_number2, setNumber2] = useState(0);
-    const [family_number3, setNumber3] = useState(0);
-    const [family_number4, setNumber4] = useState(0);
+    const [family_number1, setNumber] = useRecoilState(number13);
+    const [family_number2, setNumber2] = useRecoilState(number14);
+    const [family_number3, setNumber3] = useRecoilState(number15);
+    const [family_number4, setNumber4] = useRecoilState(number16);
 
     const btn_first_click = () => {
         setNumber(family_number1 + 1);
@@ -482,7 +484,6 @@ function Icecream_family() {
                             <TogetherText>투게더 : 3,500원 * {family_number2}개 = {3500*family_number2}원</TogetherText>
                             <NatturText>나뚜루 : 4,000원 * {family_number3}개 = {4000*family_number3}원</NatturText>
                             <GoogooclusterText>구구크러스터 : 3,500원 * {family_number4}개 = {3500*family_number4}원</GoogooclusterText> <br />
-                            <Total>총 금액 : {3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원</Total>
                             <Close onClick={() => setOpenModal(false)}>닫기</Close>
                 </Modal>
             )}

@@ -6,7 +6,9 @@ import Bbabbico from "../../images/icecream/Bbabbico.png";
 import Tankboygreengrape from "../../images/icecream/Tankboygreengrape.png";
 import Tankboy from "../../images/icecream/Tankboy.png";
 import { useState, useCallback } from 'react';
+import { RecoilRoot, atom, useRecoilState } from "recoil";
 import Modal from "../../component/Modal";
+import {number9, number10, number11, number12} from "../../Atom/store";
 
 function Icecream_tube() {
 
@@ -24,10 +26,10 @@ function Icecream_tube() {
         navigate('/kiosk/Icecream_family');
     }
     
-    const [number, setNumber] = useState(0);
-    const [number2, setNumber2] = useState(0);
-    const [number3, setNumber3] = useState(0);
-    const [number4, setNumber4] = useState(0);
+    const [number, setNumber] = useRecoilState(number9);
+    const [number2, setNumber2] = useRecoilState(number10);
+    const [number3, setNumber3] = useRecoilState(number11);
+    const [number4, setNumber4] = useRecoilState(number12);
 
     const btn_first_click = () => {
         setNumber(number + 1);
@@ -485,7 +487,6 @@ function Icecream_tube() {
                             <BbabbicoText>빠삐코 : 3,000원 * {number2}개 = {3000*number2}원</BbabbicoText>
                             <TankboygreengrapeText>탱크보이 청포도 : 3,500원 * {number3}개 = {3500*number3}원</TankboygreengrapeText>
                             <TankboyText>탱크보이 : 3,000원 * {number4}개 = {3000*number4}원</TankboyText> <br />
-                            <Total>총 금액 : {3500*number + 3000*number2 + 3500*number3 + 3000*number4}원</Total>
                             <Close onClick={() => setOpenModal(false)}>닫기</Close>
                 </Modal>
             )}

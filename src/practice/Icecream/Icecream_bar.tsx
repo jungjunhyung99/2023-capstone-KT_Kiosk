@@ -8,6 +8,7 @@ import bosukba from "../../images/icecream/bosukba.png";
 import { useState, useCallback } from 'react';
 import { RecoilRoot, atom, useRecoilState } from "recoil";
 import Modal from "../../component/Modal";
+import {number5, number6, number7, number8} from "../../Atom/store";
 
 function Icecream_bar() {
 
@@ -25,17 +26,35 @@ function Icecream_bar() {
         navigate('/kiosk/Icecream_family');
     }
     
-    const [bar_number1, setNumber] = useState(0);
-    const [bar_number2, setNumber2] = useState(0);
-    const [bar_number3, setNumber3] = useState(0);
-    const [bar_number4, setNumber4] = useState(0);
+    const [bar_number1, setNumber] = useRecoilState(number5);
+    const [bar_number2, setNumber2] = useRecoilState(number6);
+    const [bar_number3, setNumber3] = useRecoilState(number7);
+    const [bar_number4, setNumber4] = useRecoilState(number8);
     
+    const btn_first_click = () => {
+        setNumber(bar_number1 + 1);
+    }
+
+    const btn_second_click = () => {
+        setNumber2(bar_number2 + 1);
+    }
+
     const btn_third_click = () => {
         setNumber3(bar_number3 + 1);
     }
 
     const btn_fourth_click = () => {
         setNumber4(bar_number4 + 1);
+    }
+
+    const btn_first_minus_click = () => {
+        if (bar_number1 > 0)
+        setNumber3(bar_number1 - 1);
+    }
+
+    const btn_second_minus_click = () => {
+        if (bar_number2 > 0)
+        setNumber3(bar_number2 - 1);
     }
 
     const btn_third_minus_click = () => {
@@ -453,14 +472,14 @@ function Icecream_bar() {
                 <ZyosbaBox><ImageBox_IcecreamBar image={zyosba}/><ZyosbaPrice>2,000원</ZyosbaPrice></ZyosbaBox>
             </Items>
             <PlusDivButton>
-                <FirstPlusButton onClick={() => {btn_third_click();}}><FirstPlusButtonDiv>+</FirstPlusButtonDiv></FirstPlusButton>
-                <SecondPlusButton onClick={() => {btn_third_click();}}><SecondPlusButtonDiv>+</SecondPlusButtonDiv></SecondPlusButton>
+                <FirstPlusButton onClick={() => {btn_first_click();}}><FirstPlusButtonDiv>+</FirstPlusButtonDiv></FirstPlusButton>
+                <SecondPlusButton onClick={() => {btn_second_click();}}><SecondPlusButtonDiv>+</SecondPlusButtonDiv></SecondPlusButton>
                 <ThirdPlusButton onClick={() => {btn_third_click();}}><ThirdPlusButtonDiv>+</ThirdPlusButtonDiv></ThirdPlusButton>
                 <FourthPlusButton onClick={() => {btn_fourth_click();}}><FourthPlusButtonDiv>+</FourthPlusButtonDiv></FourthPlusButton>
             </PlusDivButton>
             <MinusDivButton>
-                <FirstMinusButton onClick={() => {btn_third_click();}}><FirstMinusButtonDiv>-</FirstMinusButtonDiv></FirstMinusButton>
-                <SecondMinusButton onClick={() => {btn_third_click();}}><SecondMinusButtonDiv>-</SecondMinusButtonDiv></SecondMinusButton>
+                <FirstMinusButton onClick={() => {btn_first_minus_click();}}><FirstMinusButtonDiv>-</FirstMinusButtonDiv></FirstMinusButton>
+                <SecondMinusButton onClick={() => {btn_second_minus_click();}}><SecondMinusButtonDiv>-</SecondMinusButtonDiv></SecondMinusButton>
                 <ThirdMinusButton onClick={() => {btn_third_minus_click();}}><ThirdMinusButtonDiv>-</ThirdMinusButtonDiv></ThirdMinusButton>
                 <FourthMinusButton onClick={() => {btn_fourth_minus_click();}}><FourthMinusButtonDiv>-</FourthMinusButtonDiv></FourthMinusButton>
             </MinusDivButton>
@@ -474,11 +493,10 @@ function Icecream_bar() {
             <Order onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
             {isOpenModal && (
                 <Modal onClickToggleModal={onClickToggleModal}>
-                   <MeronaText>메로나 : 2,500원 * {bar_number3}개 = {2500*bar_number3}원</MeronaText>
-                            <SubakText>수박바 : 2,000원 * {bar_number3}개 = {2000*bar_number3}원</SubakText>
+                   <MeronaText>메로나 : 2,500원 * {bar_number1}개 = {2500*bar_number1}원</MeronaText>
+                            <SubakText>수박바 : 2,000원 * {bar_number2}개 = {2000*bar_number2}원</SubakText>
                             <BosukText>보석바 : 2,500원 * {bar_number3}개 = {2500*bar_number3}원</BosukText>
                             <ZyosText>죠스바 : 2,000원 * {bar_number4}개 = {2000*bar_number4}원</ZyosText> <br />
-                            <Total>총 금액 : {2500*bar_number3 + 2000*bar_number3 + 2500*bar_number3 + 2000*bar_number4}원</Total>
                             <Close onClick={() => setOpenModal(false)}>닫기</Close>
                 </Modal>
             )}

@@ -8,6 +8,7 @@ import Boorabo from "../../images/icecream/Boorabo.png";
 import { useState, useCallback } from 'react';
 import Modal from "../../component/Modal";
 import { RecoilRoot, atom, useRecoilState } from "recoil";
+import {number1, number2, number3, number4, number5, number6, number7, number8, number9, number10, number11, number12, number13, number14, number15, number16} from "../../Atom/store";
 
 function Icecream_cone() {
 
@@ -25,11 +26,11 @@ function Icecream_cone() {
         navigate('/kiosk/Icecream_family');
     }    
     
-    const [cone_number1, setNumber] = useState(0);
-    const [cone_number2, setNumber2] = useState(0);
-    const [cone_number3, setNumber3] = useState(0);
-    const [cone_number4, setNumber4] = useState(0);
-
+    const [cone_number1, setNumber] = useRecoilState(number1);
+    const [cone_number2, setNumber2] = useRecoilState(number2);
+    const [cone_number3, setNumber3] = useRecoilState(number3);
+    const [cone_number4, setNumber4] = useRecoilState(number4);
+    
     const btn_first_click = () => {
         setNumber(cone_number1 + 1);
     }
@@ -402,24 +403,6 @@ function Icecream_cone() {
         top: 40px;
     `;
 
-    const PigText = styled.div`
-        font-size: 30px;
-        position: relative;
-        top: 40px;
-    `;
-
-    const WorldText = styled.div`
-        font-size: 30px;
-        position: relative;
-        top: 40px;
-    `;
-
-    const BooraboText = styled.div`
-        font-size: 30px;
-        position: relative;
-        top: 40px;
-    `;
-
     const Total = styled.div`
         font-size: 30px;
         position: relative;
@@ -479,9 +462,25 @@ function Icecream_cone() {
             {isOpenModal && (
                 <Modal onClickToggleModal={onClickToggleModal}>
                    <GuguText>더블콘 : 2,500원 * {cone_number1}개 = {1800*cone_number1}원</GuguText>
-                            <PigText>돼지콘 : 2,200원 * {cone_number2}개 = {2200*cone_number2}원</PigText>
-                            <WorldText>월드콘 : 2,500원 * {cone_number3}개 = {2500*cone_number3}원</WorldText>
-                            <BooraboText>요맘때 : 3,500원 * {cone_number4}개 = {3500*cone_number4}원</BooraboText> <br />
+                            <GuguText>돼지콘 : 2,200원 * {cone_number2}개 = {2200*cone_number2}원</GuguText>
+                            <GuguText>월드콘 : 2,500원 * {cone_number3}개 = {2500*cone_number3}원</GuguText>
+                            <GuguText>요맘때 : 3,500원 * {cone_number4}개 = {3500*cone_number4}원</GuguText>
+
+                            <GuguText>메로나 : 2,500원 * {cone_number1}개 = {2500*cone_number1}원</GuguText>
+                            <GuguText>돼지콘 : 2,200원 * {cone_number2}개 = {2200*cone_number2}원</GuguText>
+                            <GuguText>월드콘 : 2,500원 * {cone_number3}개 = {2500*cone_number3}원</GuguText>
+                            <GuguText>요맘때 : 3,500원 * {cone_number4}개 = {3500*cone_number4}원</GuguText>
+
+                            <GuguText>요맘때 : 3,500원 * {cone_number4}개 = {3500*cone_number4}원</GuguText>
+                            <GuguText>돼지콘 : 2,200원 * {cone_number2}개 = {2200*cone_number2}원</GuguText>
+                            <GuguText>월드콘 : 2,500원 * {cone_number3}개 = {2500*cone_number3}원</GuguText>
+                            <GuguText>요맘때 : 3,500원 * {cone_number4}개 = {3500*cone_number4}원</GuguText>
+
+                            <GuguText>요맘때 : 3,500원 * {cone_number4}개 = {3500*cone_number4}원</GuguText>
+                            <GuguText>돼지콘 : 2,200원 * {cone_number2}개 = {2200*cone_number2}원</GuguText>
+                            <GuguText>월드콘 : 2,500원 * {cone_number3}개 = {2500*cone_number3}원</GuguText>
+                            <GuguText>요맘때 : 3,500원 * {cone_number4}개 = {3500*cone_number4}원</GuguText>
+                            
                             <Total>총 금액 : {2500*cone_number1 + 2200*cone_number2 + 2500*cone_number3 + 3500*cone_number4}원</Total>
                             <Close onClick={() => setOpenModal(false)}>닫기</Close>
                 </Modal>
