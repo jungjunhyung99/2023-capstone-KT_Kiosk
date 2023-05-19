@@ -142,6 +142,13 @@ function Icecream_tube() {
         else if (family_number4 <= 0)
         {return;}
     }
+    
+    function ANSWER_PRTINT() {
+        if (tube_number2 == 3)
+        {return (<SUCCESSTEXT>"성공하셨습니다!"</SUCCESSTEXT>);}
+        else if (tube_number2)
+        {return (<FAILURETEXT>"실패하셨습니다!"</FAILURETEXT>);}
+    }
 
     const cone_number1 = useRecoilValue(number1);
     const cone_number2 = useRecoilValue(number2);
@@ -529,8 +536,24 @@ function Icecream_tube() {
         color: white;
     `;
 
+    const SUCCESSTEXT = styled.div`
+        font-size: 40px;
+        position: relative;
+        top: 40px;
+        font-weight: bold;
+        color: blue;
+    `;
+
+    const FAILURETEXT = styled.div`
+        font-size: 40px;
+        position: relative;
+        top: 40px;
+        font-weight: bold;
+        color: red;
+    `;
+    
     const Text = styled.div`
-    font-size: 30px;
+    font-size: 27px;
     position: relative;
     top: 40px;
     `;
@@ -592,25 +615,26 @@ function Icecream_tube() {
             <Order onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
             {isOpenModal && (
                 <Modal onClickToggleModal={onClickToggleModal}>
-                    <Text>{CONE1()}</Text>
-                    <Text>{CONE2()}</Text>
-                    <Text>{CONE3()}</Text>
-                    <Text>{CONE4()}</Text>
+                    {ANSWER_PRTINT()}<br></br><br></br>
+                    <Text>{CONE1()}</Text><br></br>
+                    <Text>{CONE2()}</Text><br></br>
+                    <Text>{CONE3()}</Text><br></br>
+                    <Text>{CONE4()}</Text><br></br>
 
-                    <Text>{BAR1()}</Text>
-                    <Text>{BAR2()}</Text>
-                    <Text>{BAR3()}</Text>
-                    <Text>{BAR4()}</Text>
+                    <Text>{BAR1()}</Text><br></br>
+                    <Text>{BAR2()}</Text><br></br>
+                    <Text>{BAR3()}</Text><br></br>
+                    <Text>{BAR4()}</Text><br></br>
 
-                    <Text>{TUBE1()}</Text>
-                    <Text>{TUBE2()}</Text>
-                    <Text>{TUBE3()}</Text>
-                    <Text>{TUBE4()}</Text>
+                    <Text>{TUBE1()}</Text><br></br>
+                    <Text>{TUBE2()}</Text><br></br>
+                    <Text>{TUBE3()}</Text><br></br>
+                    <Text>{TUBE4()}</Text><br></br>
 
-                    <Text>{FAMILY1()}</Text>
-                    <Text>{FAMILY2()}</Text>
-                    <Text>{FAMILY3()}</Text>
-                    <Text>{FAMILY4()}</Text>
+                    <Text>{FAMILY1()}</Text><br></br>
+                    <Text>{FAMILY2()}</Text><br></br>
+                    <Text>{FAMILY3()}</Text><br></br>
+                    <Text>{FAMILY4()}</Text><br></br>
                     <Total>총 금액 : {2500*cone_number1 + 2200*cone_number2 + 2500*cone_number3 + 3500*cone_number4 
                         + 2500*bar_number1 + 2000*bar_number2 + 2500*bar_number3 + 2000* bar_number4
                         + 3500*tube_number1 + 3000*tube_number2 + 3500*tube_number3 + 3000*tube_number4
