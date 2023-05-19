@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
-import { ImageBox_IcecreamFamily, ImageBox_IcecreamFamilyNattur, ImageBox_IcecreamFamilyGoogoo} from '../../component/kiosk-component/styled_icecream';
-import Bingsoo from "../../images/icecream/Bingsoo.png";
-import Together from "../../images/icecream/Together.png";
-import Nattur from "../../images/icecream/Nattur.png";
-import Googoocluster from "../../images/icecream/Googoocluster.png";
+import { ImageBox_IcecreamTube } from '../../component/kiosk-component/styled_icecream';
+import Yogurt from "../../images/icecream/Yogurt.png";
+import Bbabbico from "../../images/icecream/Bbabbico.png";
+import Tankboygreengrape from "../../images/icecream/Tankboygreengrape.png";
+import Tankboy from "../../images/icecream/Tankboy.png";
 import { useState, useCallback } from 'react';
 import Modal from "../../component/Modal";
 
-function Icecream_bar() {
+function Icecream_tube() {
 
     const navigate = useNavigate();
 
@@ -137,53 +137,55 @@ function Icecream_bar() {
         left: 60px;
     `;
 
-    const BingsooBox = styled.button`
+    const YogurtBox = styled.button`
         background-color: white;
         border-width: 1px;
         position: relative;
         right: 4.5rem;
     `;
 
-    const TogetherBox = styled.button`
+    const BbabbicoBox = styled.button`
         background-color: white;
         border-width: 1px;
         position: relative;
         right: 5.2em;
     `;
 
-    const NatturBox = styled.button`
+    const TankboygreengrapeBox = styled.button`
         background-color: white;
         border-width: 1px;
         position: relative;
         right: 3.6rem;
     `;
 
-    const GoogooclusterBox = styled.button`
+    const TankboyBox = styled.button`
         background-color: white;
         border-width: 1px;
         position: relative;
         right: 3rem;
     `;
 
-    const BingsooPrice = styled.div`
+    const YogurtPrice = styled.div`
         font-size: 30px;
     `;
 
-    const TogetherPrice = styled.div`
+    const BbabbicoPrice = styled.div`
         font-size: 30px;
     `
 
-    const NatturPrice = styled.div`
+    const TankboygreengrapePrice = styled.div`
         font-size: 30px;
     `;
 
-    const GoogooclusterPrice = styled.div`
+    const TankboyPrice = styled.div`
         font-size: 30px;
     `;
 
     const PlusDivButton = styled.div`
         display: flex;
         justify-content: center;  
+        position: relative;
+        left: 28px;
     `;
 
     const FirstPlusButton = styled.button`
@@ -193,7 +195,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        right: 287px;
+        right: 315px;
         &:hover {
             background-color: lightyellow;
         }
@@ -207,7 +209,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        right: 10px;
+        right: 37px;
         &:hover {
             background-color: lightyellow;
         }
@@ -221,7 +223,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        left: 277px;
+        left: 249px;
         &:hover {
             background-color: lightyellow;
         }
@@ -235,7 +237,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        left: 560px;
+        left: 532px;
         &:hover {
             background-color: lightyellow;
         }
@@ -274,7 +276,7 @@ function Icecream_bar() {
         display: flex;
         justify-content: center;
         position: relative;
-        right: 272px;
+        right: 250px;
         bottom: 50px;
     `;
 
@@ -285,7 +287,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        right: 287px;
+        right: 315px;
         &:hover {
             background-color: lightyellow;
         }
@@ -298,7 +300,8 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        right: 10px;
+        right: 27px;
+        ;
         &:hover {
             background-color: lightyellow;
         }
@@ -311,7 +314,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        left: 277px;
+        left: 252px;
         &:hover {
             background-color: lightyellow;
         }
@@ -324,7 +327,7 @@ function Icecream_bar() {
         border-width: 1px;
         position: relative;
         top: 10px;
-        left: 560px;
+        left: 537px;
         &:hover {
             background-color: lightyellow;
         }
@@ -397,25 +400,25 @@ function Icecream_bar() {
         color: white;
     `;
 
-    const BingsooText = styled.div`
+    const YogurtText = styled.div`
         font-size: 30px;
         position: relative;
         top: 40px;
     `;
 
-    const TogetherText = styled.div`
+    const BbabbicoText = styled.div`
         font-size: 30px;
         position: relative;
         top: 40px;
     `;
 
-    const NatturText = styled.div`
+    const TankboygreengrapeText = styled.div`
         font-size: 30px;
         position: relative;
         top: 40px;
     `;
 
-    const GoogooclusterText = styled.div`
+    const TankboyText = styled.div`
         font-size: 30px;
         position: relative;
         top: 40px;
@@ -446,15 +449,15 @@ function Icecream_bar() {
                 <ConeButton onClick={onClickIcecreamCone}>Cone</ConeButton>
                 <BarButton onClick={onClickIcecreamBar}>Bar</BarButton>
                 <TubeButton>Tube</TubeButton>
-                <FamilyButton onClick={onClickIcecreamBar}>Family</FamilyButton>
+                <FamilyButton onClick={onClickIcecreamFamily}>Family</FamilyButton>
             </List>
             <Entire>
             <Space></Space>
             <Items>
-                <BingsooBox><ImageBox_IcecreamFamily image={Bingsoo}/><BingsooPrice>3,500원</BingsooPrice></BingsooBox>
-                <TogetherBox><ImageBox_IcecreamFamily image={Together}/><TogetherPrice>3,500원</TogetherPrice></TogetherBox>
-                <NatturBox><ImageBox_IcecreamFamilyNattur image={Nattur}/><NatturPrice>4,000원</NatturPrice></NatturBox>
-                <GoogooclusterBox><ImageBox_IcecreamFamilyGoogoo image={Googoocluster}/><GoogooclusterPrice>3,500원</GoogooclusterPrice></GoogooclusterBox>
+                <YogurtBox><ImageBox_IcecreamTube image={Yogurt}/><YogurtPrice>3,500원</YogurtPrice></YogurtBox>
+                <BbabbicoBox><ImageBox_IcecreamTube image={Bbabbico}/><BbabbicoPrice>3,000원</BbabbicoPrice></BbabbicoBox>
+                <TankboygreengrapeBox><ImageBox_IcecreamTube image={Tankboygreengrape}/><TankboygreengrapePrice>3,500원</TankboygreengrapePrice></TankboygreengrapeBox>
+                <TankboyBox><ImageBox_IcecreamTube image={Tankboy}/><TankboyPrice>3,000원</TankboyPrice></TankboyBox>
             </Items>
             <PlusDivButton>
                 <FirstPlusButton onClick={() => {btn_first_click();}}><FirstPlusButtonDiv>+</FirstPlusButtonDiv></FirstPlusButton>
@@ -478,11 +481,11 @@ function Icecream_bar() {
             <Order onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
             {isOpenModal && (
                 <Modal onClickToggleModal={onClickToggleModal}>
-                   <BingsooText>팥빙수 : 3,500원 * {number}개 = {3500*number}원</BingsooText>
-                            <TogetherText>투게더 : 3,500원 * {number2}개 = {3500*number2}원</TogetherText>
-                            <NatturText>나뚜루 : 4,000원 * {number3}개 = {4000*number3}원</NatturText>
-                            <GoogooclusterText>구구크러스터 : 3,500원 * {number4}개 = {3500*number4}원</GoogooclusterText> <br />
-                            <Total>총 금액 : {3500*number + 3500*number2 + 4000*number3 + 3500*number4}원</Total>
+                   <YogurtText>요구르트 쭈쭈빠 : 3,500원 * {number}개 = {3500*number}원</YogurtText>
+                            <BbabbicoText>빠삐코 : 3,000원 * {number2}개 = {3000*number2}원</BbabbicoText>
+                            <TankboygreengrapeText>탱크보이 청포도 : 3,500원 * {number3}개 = {3500*number3}원</TankboygreengrapeText>
+                            <TankboyText>탱크보이 : 3,000원 * {number4}개 = {3000*number4}원</TankboyText> <br />
+                            <Total>총 금액 : {3500*number + 3000*number2 + 3500*number3 + 3000*number4}원</Total>
                             <Close onClick={() => setOpenModal(false)}>닫기</Close>
                 </Modal>
             )}
@@ -491,4 +494,4 @@ function Icecream_bar() {
 }
 
 
-export default Icecream_bar;
+export default Icecream_tube;

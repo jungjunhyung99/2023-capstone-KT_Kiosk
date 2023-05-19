@@ -6,6 +6,7 @@ import subakba from "../../images/icecream/subakba.png";
 import zyosba from "../../images/icecream/zyosba.png";
 import bosukba from "../../images/icecream/bosukba.png";
 import { useState, useCallback } from 'react';
+import { RecoilRoot, atom, useRecoilState } from "recoil";
 import Modal from "../../component/Modal";
 
 function Icecream_bar() {
@@ -23,45 +24,28 @@ function Icecream_bar() {
     const onClickIcecreamFamily = () => {
         navigate('/kiosk/Icecream_family');
     }
-    const [number, setNumber] = useState(0);
-    const [number2, setNumber2] = useState(0);
-    const [number3, setNumber3] = useState(0);
-    const [number4, setNumber4] = useState(0);
-
-    const btn_first_click = () => {
-        setNumber(number + 1);
-    }
-
-    const btn_second_click = () => {
-        setNumber2(number2 + 1);
-    }
+    
+    const [bar_number1, setNumber] = useState(0);
+    const [bar_number2, setNumber2] = useState(0);
+    const [bar_number3, setNumber3] = useState(0);
+    const [bar_number4, setNumber4] = useState(0);
     
     const btn_third_click = () => {
-        setNumber3(number3 + 1);
+        setNumber3(bar_number3 + 1);
     }
 
     const btn_fourth_click = () => {
-        setNumber4(number4 + 1);
-    }
-
-    const btn_first_minus_click = () => {
-        if (number > 0)
-        setNumber(number - 1);
-    }
-
-    const btn_second_minus_click = () => {
-        if (number2 > 0)
-        setNumber2(number2 - 1);
+        setNumber4(bar_number4 + 1);
     }
 
     const btn_third_minus_click = () => {
-        if (number3 > 0)
-        setNumber3(number3 - 1);
+        if (bar_number3 > 0)
+        setNumber3(bar_number3 - 1);
     }
 
     const btn_fourth_minus_click = () => {
-        if (number4 > 0)
-        setNumber4(number4 - 1);
+        if (bar_number4 > 0)
+        setNumber4(bar_number4 - 1);
     }
 
     const [isOpenModal, setOpenModal] = useState<boolean>(false);
@@ -453,7 +437,7 @@ function Icecream_bar() {
 
     return(
         <div>
-            <Title>Icecream</Title>
+           <Title>Icecream</Title>
             <List>
                 <ConeButton onClick={onClickIcecreamCone}>Cone</ConeButton>
                 <BarButton>Bar</BarButton>
@@ -469,32 +453,32 @@ function Icecream_bar() {
                 <ZyosbaBox><ImageBox_IcecreamBar image={zyosba}/><ZyosbaPrice>2,000원</ZyosbaPrice></ZyosbaBox>
             </Items>
             <PlusDivButton>
-                <FirstPlusButton onClick={() => {btn_first_click();}}><FirstPlusButtonDiv>+</FirstPlusButtonDiv></FirstPlusButton>
-                <SecondPlusButton onClick={() => {btn_second_click();}}><SecondPlusButtonDiv>+</SecondPlusButtonDiv></SecondPlusButton>
+                <FirstPlusButton onClick={() => {btn_third_click();}}><FirstPlusButtonDiv>+</FirstPlusButtonDiv></FirstPlusButton>
+                <SecondPlusButton onClick={() => {btn_third_click();}}><SecondPlusButtonDiv>+</SecondPlusButtonDiv></SecondPlusButton>
                 <ThirdPlusButton onClick={() => {btn_third_click();}}><ThirdPlusButtonDiv>+</ThirdPlusButtonDiv></ThirdPlusButton>
                 <FourthPlusButton onClick={() => {btn_fourth_click();}}><FourthPlusButtonDiv>+</FourthPlusButtonDiv></FourthPlusButton>
             </PlusDivButton>
             <MinusDivButton>
-                <FirstMinusButton onClick={() => {btn_first_minus_click();}}><FirstMinusButtonDiv>-</FirstMinusButtonDiv></FirstMinusButton>
-                <SecondMinusButton onClick={() => {btn_second_minus_click();}}><SecondMinusButtonDiv>-</SecondMinusButtonDiv></SecondMinusButton>
+                <FirstMinusButton onClick={() => {btn_third_click();}}><FirstMinusButtonDiv>-</FirstMinusButtonDiv></FirstMinusButton>
+                <SecondMinusButton onClick={() => {btn_third_click();}}><SecondMinusButtonDiv>-</SecondMinusButtonDiv></SecondMinusButton>
                 <ThirdMinusButton onClick={() => {btn_third_minus_click();}}><ThirdMinusButtonDiv>-</ThirdMinusButtonDiv></ThirdMinusButton>
                 <FourthMinusButton onClick={() => {btn_fourth_minus_click();}}><FourthMinusButtonDiv>-</FourthMinusButtonDiv></FourthMinusButton>
             </MinusDivButton>
             <CountItems>
-                <FirstCount>{number}</FirstCount>
-                <SecondCount>{number2}</SecondCount>
-                <ThirdCount>{number3}</ThirdCount>
-                <FourthCount>{number4}</FourthCount>
+                <FirstCount>{bar_number1}</FirstCount>
+                <SecondCount>{bar_number2}</SecondCount>
+                <ThirdCount>{bar_number3}</ThirdCount>
+                <FourthCount>{bar_number4}</FourthCount>
             </CountItems>
             </Entire>
             <Order onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
             {isOpenModal && (
                 <Modal onClickToggleModal={onClickToggleModal}>
-                   <MeronaText>메로나 : 2,500원 * {number}개 = {2500*number}원</MeronaText>
-                            <SubakText>수박바 : 2,000원 * {number2}개 = {2000*number2}원</SubakText>
-                            <BosukText>보석바 : 2,500원 * {number3}개 = {2500*number3}원</BosukText>
-                            <ZyosText>죠스바 : 2,000원 * {number4}개 = {2000*number4}원</ZyosText> <br />
-                            <Total>총 금액 : {2500*number + 2000*number2 + 2500*number3 + 2000*number4}원</Total>
+                   <MeronaText>메로나 : 2,500원 * {bar_number3}개 = {2500*bar_number3}원</MeronaText>
+                            <SubakText>수박바 : 2,000원 * {bar_number3}개 = {2000*bar_number3}원</SubakText>
+                            <BosukText>보석바 : 2,500원 * {bar_number3}개 = {2500*bar_number3}원</BosukText>
+                            <ZyosText>죠스바 : 2,000원 * {bar_number4}개 = {2000*bar_number4}원</ZyosText> <br />
+                            <Total>총 금액 : {2500*bar_number3 + 2000*bar_number3 + 2500*bar_number3 + 2000*bar_number4}원</Total>
                             <Close onClick={() => setOpenModal(false)}>닫기</Close>
                 </Modal>
             )}

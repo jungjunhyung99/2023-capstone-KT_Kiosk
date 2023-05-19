@@ -7,9 +7,10 @@ import Worldcone from "../../images/icecream/Worldcone.png";
 import Boorabo from "../../images/icecream/Boorabo.png";
 import { useState, useCallback } from 'react';
 import Modal from "../../component/Modal";
+import { RecoilRoot, atom, useRecoilState } from "recoil";
 
 function Icecream_cone() {
-    
+
     const navigate = useNavigate();
 
     const onClickIcecreamBar = () => {
@@ -22,47 +23,47 @@ function Icecream_cone() {
 
     const onClickIcecreamFamily = () => {
         navigate('/kiosk/Icecream_family');
-    }
-
-    const [number, setNumber] = useState(0);
-    const [number2, setNumber2] = useState(0);
-    const [number3, setNumber3] = useState(0);
-    const [number4, setNumber4] = useState(0);
+    }    
+    
+    const [cone_number1, setNumber] = useState(0);
+    const [cone_number2, setNumber2] = useState(0);
+    const [cone_number3, setNumber3] = useState(0);
+    const [cone_number4, setNumber4] = useState(0);
 
     const btn_first_click = () => {
-        setNumber(number + 1);
+        setNumber(cone_number1 + 1);
     }
 
     const btn_second_click = () => {
-        setNumber2(number2 + 1);
+        setNumber2(cone_number2 + 1);
     }
-    
+
     const btn_third_click = () => {
-        setNumber3(number3 + 1);
+        setNumber3(cone_number3 + 1);
     }
 
     const btn_fourth_click = () => {
-        setNumber4(number4 + 1);
+        setNumber4(cone_number4 + 1);
     }
 
     const btn_first_minus_click = () => {
-        if (number > 0)
-            setNumber(number - 1);
+        if (cone_number1 > 0)
+            setNumber(cone_number1 - 1);
     }
 
     const btn_second_minus_click = () => {
-        if (number2 > 0)
-            setNumber2(number2 - 1);
+        if (cone_number2 > 0)
+            setNumber2(cone_number2 - 1);
     }
 
     const btn_third_minus_click = () => {
-        if (number3 > 0)
-            setNumber3(number3 - 1);
+        if (cone_number3 > 0)
+            setNumber3(cone_number3 - 1);
     }
 
     const btn_fourth_minus_click = () => {
-        if (number4 > 0)
-            setNumber4(number4 - 1);
+        if (cone_number4 > 0)
+            setNumber4(cone_number4 - 1);
     }
 
     const [isOpenModal, setOpenModal] = useState<boolean>(false);
@@ -130,15 +131,6 @@ function Icecream_cone() {
         width: 25%;
     `;
 
-    const Warning = styled.div`
-        font-size: 30px;
-        font-weight: bold;
-        display:flex;
-        align-items: center;
-        justify-content: center;
-        height: 100px;
-        `;
-
     const Items = styled.div`
         display: flex;
         justify-content: center;
@@ -178,7 +170,7 @@ function Icecream_cone() {
 
     const PigconePrice = styled.div`
         font-size: 30px;
-    `
+    `;
 
     const WorldconePrice = styled.div`
         font-size: 30px;
@@ -447,6 +439,7 @@ function Icecream_cone() {
     `;
 
     return(
+    <RecoilRoot>
         <div>
             <Title>Icecream</Title>
             <List>
@@ -476,24 +469,25 @@ function Icecream_cone() {
                 <FourthMinusButton onClick={() => {btn_fourth_minus_click();}}><FourthMinusButtonDiv>-</FourthMinusButtonDiv></FourthMinusButton>
             </MinusDivButton>
             <CountItems>
-                <FirstCount>{number}</FirstCount>
-                <SecondCount>{number2}</SecondCount>
-                <ThirdCount>{number3}</ThirdCount>
-                <FourthCount>{number4}</FourthCount>
+                <FirstCount>{cone_number1}</FirstCount>
+                <SecondCount>{cone_number2}</SecondCount>
+                <ThirdCount>{cone_number3}</ThirdCount>
+                <FourthCount>{cone_number4}</FourthCount>
             </CountItems>
             </Entire>
             <Order onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
             {isOpenModal && (
                 <Modal onClickToggleModal={onClickToggleModal}>
-                   <GuguText>더블콘 : 2,500원 * {number}개 = {1800*number}원</GuguText>
-                            <PigText>돼지콘 : 2,200원 * {number2}개 = {2200*number2}원</PigText>
-                            <WorldText>월드콘 : 2,500원 * {number3}개 = {2500*number3}원</WorldText>
-                            <BooraboText>요맘때 : 3,500원 * {number4}개 = {3500*number4}원</BooraboText> <br />
-                            <Total>총 금액 : {2500*number + 2200*number2 + 2500*number3 + 3500*number4}원</Total>
+                   <GuguText>더블콘 : 2,500원 * {cone_number1}개 = {1800*cone_number1}원</GuguText>
+                            <PigText>돼지콘 : 2,200원 * {cone_number2}개 = {2200*cone_number2}원</PigText>
+                            <WorldText>월드콘 : 2,500원 * {cone_number3}개 = {2500*cone_number3}원</WorldText>
+                            <BooraboText>요맘때 : 3,500원 * {cone_number4}개 = {3500*cone_number4}원</BooraboText> <br />
+                            <Total>총 금액 : {2500*cone_number1 + 2200*cone_number2 + 2500*cone_number3 + 3500*cone_number4}원</Total>
                             <Close onClick={() => setOpenModal(false)}>닫기</Close>
                 </Modal>
             )}
         </div>
+    </RecoilRoot>
     );
 }
 

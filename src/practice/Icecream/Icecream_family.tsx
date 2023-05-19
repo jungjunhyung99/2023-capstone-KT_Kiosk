@@ -8,7 +8,7 @@ import Googoocluster from "../../images/icecream/Googoocluster.png";
 import { useState, useCallback } from 'react';
 import Modal from "../../component/Modal";
 
-function Icecream_bar() {
+function Icecream_family() {
 
     const navigate = useNavigate();
 
@@ -24,45 +24,45 @@ function Icecream_bar() {
         navigate('/kiosk/Icecream_Tube');
     }
     
-    const [number, setNumber] = useState(0);
-    const [number2, setNumber2] = useState(0);
-    const [number3, setNumber3] = useState(0);
-    const [number4, setNumber4] = useState(0);
+    const [family_number1, setNumber] = useState(0);
+    const [family_number2, setNumber2] = useState(0);
+    const [family_number3, setNumber3] = useState(0);
+    const [family_number4, setNumber4] = useState(0);
 
     const btn_first_click = () => {
-        setNumber(number + 1);
+        setNumber(family_number1 + 1);
     }
 
     const btn_second_click = () => {
-        setNumber2(number2 + 1);
+        setNumber2(family_number2 + 1);
     }
     
     const btn_third_click = () => {
-        setNumber3(number3 + 1);
+        setNumber3(family_number3 + 1);
     }
 
     const btn_fourth_click = () => {
-        setNumber4(number4 + 1);
+        setNumber4(family_number4 + 1);
     }
 
     const btn_first_minus_click = () => {
-        if (number > 0)
-            setNumber(number - 1);
+        if (family_number1 > 0)
+            setNumber(family_number1 - 1);
     }
 
     const btn_second_minus_click = () => {
-        if (number2 > 0)
-            setNumber2(number2 - 1);
+        if (family_number2 > 0)
+            setNumber2(family_number2 - 1);
     }
 
     const btn_third_minus_click = () => {
-        if (number3 > 0)
-            setNumber3(number3 - 1);
+        if (family_number3 > 0)
+            setNumber3(family_number3 - 1);
     }
 
     const btn_fourth_minus_click = () => {
-        if (number4 > 0)
-            setNumber4(number4 - 1);
+        if (family_number4 > 0)
+            setNumber4(family_number4 - 1);
     }
 
     const [isOpenModal, setOpenModal] = useState<boolean>(false);
@@ -436,7 +436,7 @@ function Icecream_bar() {
     `;
 
     const Entire = styled.div`
-        background-color: white
+        background-color: white;
     `;
 
     return(
@@ -448,6 +448,7 @@ function Icecream_bar() {
                 <TubeButton onClick={onClickIcecreamTube}>Tube</TubeButton>
                 <FamilyButton>Family</FamilyButton>
             </List>
+            <Entire>
             <Space></Space>
             <Items>
                 <BingsooBox><ImageBox_IcecreamFamily image={Bingsoo}/><BingsooPrice>3,500원</BingsooPrice></BingsooBox>
@@ -468,19 +469,20 @@ function Icecream_bar() {
                 <FourthMinusButton onClick={() => {btn_fourth_minus_click();}}><FourthMinusButtonDiv>-</FourthMinusButtonDiv></FourthMinusButton>
             </MinusDivButton>
             <CountItems>
-                <FirstCount>{number}</FirstCount>
-                <SecondCount>{number2}</SecondCount>
-                <ThirdCount>{number3}</ThirdCount>
-                <FourthCount>{number4}</FourthCount>
+                <FirstCount>{family_number1}</FirstCount>
+                <SecondCount>{family_number2}</SecondCount>
+                <ThirdCount>{family_number3}</ThirdCount>
+                <FourthCount>{family_number4}</FourthCount>
             </CountItems>
+            </Entire>
             <Order onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
             {isOpenModal && (
                 <Modal onClickToggleModal={onClickToggleModal}>
-                   <BingsooText>팥빙수 : 3,500원 * {number}개 = {3500*number}원</BingsooText>
-                            <TogetherText>투게더 : 3,500원 * {number2}개 = {3500*number2}원</TogetherText>
-                            <NatturText>나뚜루 : 4,000원 * {number3}개 = {4000*number3}원</NatturText>
-                            <GoogooclusterText>구구크러스터 : 3,500원 * {number4}개 = {3500*number4}원</GoogooclusterText> <br />
-                            <Total>총 금액 : {3500*number + 3500*number2 + 4000*number3 + 3500*number4}원</Total>
+                   <BingsooText>팥빙수 : 3,500원 * {family_number1}개 = {3500*family_number1}원</BingsooText>
+                            <TogetherText>투게더 : 3,500원 * {family_number2}개 = {3500*family_number2}원</TogetherText>
+                            <NatturText>나뚜루 : 4,000원 * {family_number3}개 = {4000*family_number3}원</NatturText>
+                            <GoogooclusterText>구구크러스터 : 3,500원 * {family_number4}개 = {3500*family_number4}원</GoogooclusterText> <br />
+                            <Total>총 금액 : {3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원</Total>
                             <Close onClick={() => setOpenModal(false)}>닫기</Close>
                 </Modal>
             )}
@@ -489,4 +491,4 @@ function Icecream_bar() {
 }
 
 
-export default Icecream_bar;
+export default Icecream_family;
