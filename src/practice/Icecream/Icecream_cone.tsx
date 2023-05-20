@@ -7,13 +7,14 @@ import Worldcone from "../../images/icecream/Worldcone.png";
 import Boorabo from "../../images/icecream/Boorabo.png";
 import { useState, useCallback } from 'react';
 import Modal from "../../component/Modal";
+import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
+import {number1, number2, number3, number4, number5, number6, number7, number8, number9, number10, number11, number12, number13, number14, number15, number16} from "../../Atom/store";
 
 function Icecream_cone() {
-    
+
     const navigate = useNavigate();
 
     const onClickIcecreamBar = () => {
-
         navigate('/kiosk/Icecream_bar');
     }
 
@@ -23,47 +24,181 @@ function Icecream_cone() {
 
     const onClickIcecreamFamily = () => {
         navigate('/kiosk/Icecream_family');
+    }    
+    
+    const [cone_number1, setNumber] = useRecoilState(number1);
+    const [cone_number2, setNumber2] = useRecoilState(number2);
+    const [cone_number3, setNumber3] = useRecoilState(number3);
+    const [cone_number4, setNumber4] = useRecoilState(number4);
 
+    function CONE1() {
+        if (cone_number1 > 0) 
+        {return "구구콘 : " + 1800 + "원 * " + cone_number1 + "개 = " + 1800*cone_number1 + "원";}
+        else if (cone_number1 <= 0)
+        {return;}
+    }
 
-    const [number, setNumber] = useState(0);
-    const [number2, setNumber2] = useState(0);
-    const [number3, setNumber3] = useState(0);
-    const [number4, setNumber4] = useState(0);
+    function CONE2() {
+        if (cone_number2 > 0) 
+        {return "돼지콘 : " + 2200 + "원 * " + cone_number2 + "개 = " + 2200*cone_number2 + "원";}
+        else if (cone_number2 <= 0)
+        {return;}
+    }
+
+    function CONE3() {
+        if (cone_number3 > 0) 
+        {return "월드콘 : " + 2500 + "원 * " + cone_number3 + "개 = " + 2500*cone_number3 + "원";}
+        else if (cone_number3 <= 0)
+        {return;}
+    }
+
+    function CONE4() {
+        if (cone_number4 > 0) 
+        {return "부라보 : " + 3500 + "원 * " + cone_number4 + "개 = " + 3500*cone_number4 + "원";}
+        else if (cone_number4 <= 0)
+        {return;}
+    }
+
+    function BAR1() {
+        if (bar_number1 > 0)
+        {return "메로나 : " + 2500 + "원 * " + bar_number1 + "개 = " + 2500*bar_number1 + "원";}
+        else if (bar_number1 <= 0)
+        {return;}
+    }
+
+    function BAR2() {
+        if (bar_number2 > 0)
+        {return "수박바 : " + 2000 + "원 * " + bar_number2 + "개 = " + 2000*bar_number2 + "원";}
+        else if (bar_number2 <= 0)
+        {return;}
+    }
+
+    function BAR3() {
+        if (bar_number3 > 0)
+        {return "보석바 : " + 2500 + "원 * " + bar_number3 + "개 = " + 2500*bar_number3 + "원";}
+        else if (bar_number3 <= 0)
+        {return;}
+    }
+
+    function BAR4() {
+        if (bar_number4 > 0)
+        {return "죠스바 : " + 2000 + "원 * " + bar_number4 + "개 = " + 2000*bar_number4 + "원";}
+        else if (bar_number4 <= 0)
+        {return;}
+    }
+
+    function TUBE1() {
+        if (tube_number1 > 0)
+        {return "요구르트쭈쭈바 : " + 3500 + "원 * " + tube_number1 + "개 = " + 3500*tube_number1 + "원";}
+        else if (tube_number1 <= 0)
+        {return;}
+    }
+
+    function TUBE2() {
+        if (tube_number2 > 0)
+        {return "빠삐코 : " + 3000 + "원 * " + tube_number2 + "개 = " + 3000*tube_number2 + "원";}
+        else if (tube_number2 <= 0)
+        {return;}
+    }
+
+    function TUBE3() {
+        if (tube_number3 > 0)
+        {return "탱크보이청포도 : " + 3500 + "원 * " + tube_number3 + "개 = " + 3500*tube_number3 + "원";}
+        else if (tube_number3 <= 0)
+        {return;}
+    }
+
+    function TUBE4() {
+        if (tube_number4 > 0)
+        {return "탱크보이 : " + 3000 + "원 * " + tube_number4 + "개 = " + 3000*tube_number4 + "원";}
+        else if (tube_number4 <= 0)
+        {return;}
+    }
+
+    function FAMILY1() {
+        if (family_number1 > 0)
+        {return "팥빙수 : " + 3500 + "원 * " + family_number1 + "개 = " + 3500*family_number1 + "원";}
+        else if (family_number1 <= 0)
+        {return;}
+    }
+
+    function FAMILY2() {
+        if (family_number2 > 0)
+        {return "투게더 : " + 3500 + "원 * " + family_number2 + "개 = " + 3500*family_number2 + "원";}
+        else if (bar_number2 <= 0)
+        {return;}
+    }
+
+    function FAMILY3() {
+        if (family_number3 > 0)
+        {return "나뚜르 : " + 4000 + "원 * " + family_number3 + "개 = " + 4000*family_number3 + "원";}
+        else if (family_number3 <= 0)
+        {return;}
+    }
+
+    function FAMILY4() {
+        if (family_number4 > 0)
+        {return "구구크러스터 : " + 3500 + "원 * " + family_number4 + "개 = " + 3500*family_number4 + "원";}
+        else if (family_number4 <= 0)
+        {return;}
+    }
+    
+    function ANSWER_PRTINT() {
+        if (tube_number2 == 3)
+        {return (<SUCCESSTEXT>"성공하셨습니다!"</SUCCESSTEXT>);}
+        else if (tube_number2 != 3)
+        {return (<FAILURETEXT>"실패하셨습니다!"</FAILURETEXT>);}
+    }
+
+    const bar_number1 = useRecoilValue(number5);
+    const bar_number2 = useRecoilValue(number6);
+    const bar_number3 = useRecoilValue(number7);
+    const bar_number4 = useRecoilValue(number8);
+
+    const tube_number1 = useRecoilValue(number9);
+    const tube_number2 = useRecoilValue(number10);
+    const tube_number3 = useRecoilValue(number11);
+    const tube_number4 = useRecoilValue(number12);
+    
+    const family_number1 = useRecoilValue(number13);
+    const family_number2 = useRecoilValue(number14);
+    const family_number3 = useRecoilValue(number15);
+    const family_number4 = useRecoilValue(number16);
 
     const btn_first_click = () => {
-        setNumber(number + 1);
+        setNumber(cone_number1 + 1);
     }
 
     const btn_second_click = () => {
-        setNumber2(number2 + 1);
+        setNumber2(cone_number2 + 1);
     }
-    
+
     const btn_third_click = () => {
-        setNumber3(number3 + 1);
+        setNumber3(cone_number3 + 1);
     }
 
     const btn_fourth_click = () => {
-        setNumber4(number4 + 1);
+        setNumber4(cone_number4 + 1);
     }
 
     const btn_first_minus_click = () => {
-        if (number > 0)
-            setNumber(number - 1);
+        if (cone_number1 > 0)
+            setNumber(cone_number1 - 1);
     }
 
     const btn_second_minus_click = () => {
-        if (number2 > 0)
-            setNumber2(number2 - 1);
+        if (cone_number2 > 0)
+            setNumber2(cone_number2 - 1);
     }
 
     const btn_third_minus_click = () => {
-        if (number3 > 0)
-            setNumber3(number3 - 1);
+        if (cone_number3 > 0)
+            setNumber3(cone_number3 - 1);
     }
 
     const btn_fourth_minus_click = () => {
-        if (number4 > 0)
-            setNumber4(number4 - 1);
+        if (cone_number4 > 0)
+            setNumber4(cone_number4 - 1);
     }
 
     const [isOpenModal, setOpenModal] = useState<boolean>(false);
@@ -131,15 +266,6 @@ function Icecream_cone() {
         width: 25%;
     `;
 
-    const Warning = styled.div`
-        font-size: 30px;
-        font-weight: bold;
-        display:flex;
-        align-items: center;
-        justify-content: center;
-        height: 100px;
-        `;
-
     const Items = styled.div`
         display: flex;
         justify-content: center;
@@ -179,7 +305,7 @@ function Icecream_cone() {
 
     const PigconePrice = styled.div`
         font-size: 30px;
-    `
+    `;
 
     const WorldconePrice = styled.div`
         font-size: 30px;
@@ -405,26 +531,24 @@ function Icecream_cone() {
         color: white;
     `;
 
-    const GuguText = styled.div`
-        font-size: 30px;
+    const SUCCESSTEXT = styled.div`
+        font-size: 40px;
         position: relative;
         top: 40px;
+        font-weight: bold;
+        color: blue;
     `;
 
-    const PigText = styled.div`
-        font-size: 30px;
+    const FAILURETEXT = styled.div`
+        font-size: 40px;
         position: relative;
         top: 40px;
+        font-weight: bold;
+        color: red;
     `;
 
-    const WorldText = styled.div`
-        font-size: 30px;
-        position: relative;
-        top: 40px;
-    `;
-
-    const BooraboText = styled.div`
-        font-size: 30px;
+    const Text = styled.div`
+        font-size: 27px;
         position: relative;
         top: 40px;
     `;
@@ -443,7 +567,12 @@ function Icecream_cone() {
         background-color: lightblue;
     `;
 
+    const Entire = styled.div`
+        background-color: white;
+    `;
+
     return(
+    <RecoilRoot>
         <div>
             <Title>Icecream</Title>
             <List>
@@ -452,6 +581,7 @@ function Icecream_cone() {
                 <TubeButton onClick={onClickIcecreamTube}>Tube</TubeButton>
                 <FamilyButton onClick={onClickIcecreamFamily}>Family</FamilyButton>
             </List>
+            <Entire>
             <Space></Space>
             <Items>
                 <GuguconeBox><ImageBox_IcecreamCone image={Gugucone}/><GuguconePrice>1,800원</GuguconePrice></GuguconeBox>
@@ -472,23 +602,46 @@ function Icecream_cone() {
                 <FourthMinusButton onClick={() => {btn_fourth_minus_click();}}><FourthMinusButtonDiv>-</FourthMinusButtonDiv></FourthMinusButton>
             </MinusDivButton>
             <CountItems>
-                <FirstCount>{number}</FirstCount>
-                <SecondCount>{number2}</SecondCount>
-                <ThirdCount>{number3}</ThirdCount>
-                <FourthCount>{number4}</FourthCount>
+                <FirstCount>{cone_number1}</FirstCount>
+                <SecondCount>{cone_number2}</SecondCount>
+                <ThirdCount>{cone_number3}</ThirdCount>
+                <FourthCount>{cone_number4}</FourthCount>
             </CountItems>
+            </Entire>
             <Order onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
             {isOpenModal && (
                 <Modal onClickToggleModal={onClickToggleModal}>
-                   <GuguText>더블콘 : 2,500원 * {number}개 = {1800*number}원</GuguText>
-                            <PigText>돼지콘 : 2,200원 * {number2}개 = {2200*number2}원</PigText>
-                            <WorldText>월드콘 : 2,500원 * {number3}개 = {2500*number3}원</WorldText>
-                            <BooraboText>요맘때 : 3,500원 * {number4}개 = {3500*number4}원</BooraboText> <br />
-                            <Total>총 금액 : {2500*number + 2200*number2 + 2500*number3 + 3500*number4}원</Total>
-                            <Close onClick={() => setOpenModal(false)}>닫기</Close>
+                    {ANSWER_PRTINT()}<br></br>
+                    <Text>{CONE1()}</Text>
+                    <Text>{CONE2()}</Text>
+                    <Text>{CONE3()}</Text>
+                    <Text>{CONE4()}</Text>
+
+                    <Text>{BAR1()}</Text>
+                    <Text>{BAR2()}</Text>
+                    <Text>{BAR3()}</Text>
+                    <Text>{BAR4()}</Text>
+
+                    <Text>{TUBE1()}</Text>
+                    <Text>{TUBE2()}</Text>
+                    <Text>{TUBE3()}</Text>
+                    <Text>{TUBE4()}</Text>
+
+                    <Text>{FAMILY1()}</Text>
+                    <Text>{FAMILY2()}</Text>
+                    <Text>{FAMILY3()}</Text>
+                    <Text>{FAMILY4()}</Text>
+                            
+                    <Total>총 금액 : {2500*cone_number1 + 2200*cone_number2 + 2500*cone_number3 + 3500*cone_number4 
+                        + 2500*bar_number1 + 2000*bar_number2 + 2500*bar_number3 + 2000* bar_number4
+                        + 3500*tube_number1 + 3000*tube_number2 + 3500*tube_number3 + 3000*tube_number4
+                        + 3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원</Total>
+                    <Close onClick={() => setOpenModal(false)}>닫기</Close>
                 </Modal>
             )}
         </div>
-    );}
+    </RecoilRoot>
+    );
 }
+
 export default Icecream_cone;
