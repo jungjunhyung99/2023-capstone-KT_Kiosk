@@ -55,8 +55,12 @@ function App() {
                 <Route path='/kiosk/Icecream_family' element={<Icecream_family/>}/>
                 <Route path='/game' element={<GamePage/>}/>
                 <Route path='/game/balloon' element={<Game/>}/>
+<<<<<<< HEAD
                 <Route path='/game/number' element={<NumberGame/>}/>
                 <Route path='login' element={<LogIn/>}/>
+=======
+                <Route path='/login' element={<LogIn/>}/>
+>>>>>>> 566760176d0f9e31bd6af2036a20aa8bf90829c6
               </Routes>
           </ GlobalContainer>
         </Router>

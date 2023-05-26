@@ -1,6 +1,29 @@
-import { BackCircle, BackCircle2, CircleConatiner, ContentClickBox, ContentContainer, ContentDescript, ContentTextBox, ContentTitle, GameImage, KTImage, KioskImage, LogoTitle, MapImage } from "../../component/main_components";
+import { BackCircle, BackCircle2, CircleConatiner, ContentClickBox, ContentContainer, ContentDescript, ContentTextBox, ContentTitle, DocImage, GameImage, KTImage, KioskImage, LogInImage, LogoTitle, MapImage } from "../../component/main_components";
 import { StyledLink } from "../../component/index-component/styled_index";
+import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {auth} from "../../Hook/Hook";
+import { useState } from 'react';
+import { useRecoilState } from "recoil";
+import { LogInState } from "../../Atom/atom";
+
+
 function Main () {
+  const [userData, setUserData] = useState<any | null>(null);
+  const [login, setLogin] = useRecoilState(LogInState);
+
+  function handleGoogleLogin() {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((data: any) => {
+        setUserData(data.user); 
+        setLogin(true);
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
     return(
         <div>
             <CircleConatiner>
@@ -11,6 +34,29 @@ function Main () {
                 </BackCircle>
             </CircleConatiner>
             <ContentContainer>
+            {!login ? 
+                <ContentClickBox onClick={handleGoogleLogin}>
+                    <LogInImage/>
+                    <ContentTextBox>
+                        <ContentTitle>로그인 하기</ContentTitle>
+                        <ContentDescript>
+                            로그인을 통해 나의 데이터를 비교해보세요!
+                        </ContentDescript>
+                    </ContentTextBox>
+                </ContentClickBox>
+                : 
+                <StyledLink to="/login">
+                    <ContentClickBox>
+                        <DocImage/>
+                        <ContentTextBox>
+                            <ContentTitle>{userData.displayName}님의 기록 확인하기</ContentTitle>
+                            <ContentDescript>
+                            {userData.displayName}님의 지난 기록들을 통해 성장한 모습을 <br/> 확인해보세요!
+                            </ContentDescript>
+                        </ContentTextBox>
+                    </ContentClickBox>
+                </StyledLink>
+                }
                 
             <StyledLink to="/kiosk">    
                 <ContentClickBox>
@@ -34,6 +80,7 @@ function Main () {
                         </ContentDescript>
                     </ContentTextBox>
                 </ContentClickBox>
+
             </StyledLink>
                 <ContentClickBox>
                     <MapImage/>
@@ -44,7 +91,6 @@ function Main () {
                         </ContentDescript>
                     </ContentTextBox>
                 </ContentClickBox>
-            
             </ContentContainer>
         </div>
     );

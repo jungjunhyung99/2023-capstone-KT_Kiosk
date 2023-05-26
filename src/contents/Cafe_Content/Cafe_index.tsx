@@ -180,14 +180,15 @@ function Cafe_index () {
                     </div>
                 </Head>
             <Row>
-                {menu.map((obj) => 
+                {menu.map((obj,index) => 
                 <MenuContainer>
                 <Box 
                 bgphoto={obj.img} 
                 key={obj.id}
                 variants={boxVariant} initial whileHover="hover" 
                 transition={{type:"tween"}}
-                onClick={() => onBoxClicked(obj.id, obj)}>
+                onClick={() => onBoxClicked(obj.id, obj)}
+                index={index}>
                 </Box>
                 <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
                     <div style={{fontSize:"23px", fontWeight:"bold"}}>{obj.name}</div>

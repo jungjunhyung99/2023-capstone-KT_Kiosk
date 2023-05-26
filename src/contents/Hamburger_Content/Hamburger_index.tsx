@@ -37,30 +37,34 @@ function Hamburger_main(){
     const [answerRecoil, setAnswerRecoil] = useRecoilState<IAtomFast>(fastAnswer);
 
     const getAnswer = () => {
-        const idx1 = Math.floor(Math.random()*3);
-        const idx2 = Math.floor(Math.random()*3);
-        const idx3 = Math.floor(Math.random()*2);
-        setAnswerRecoil({
-            takeout: take[idx3],
-            item:[
-                {
-                    id: "0",
-                    category: take[idx3],
-                    name: HamburgerMenu[idx1].name,
-                    cost: HamburgerMenu[idx1].cost,
-                    cal: HamburgerMenu[idx1].cal,
-                    quantity: idx1 + 1,
-                },
-                {
-                    id: "1",
-                    category: take[idx3],
-                    name: BerverageMenu[idx1].name,
-                    cost: BerverageMenu[idx1].cost,
-                    cal: BerverageMenu[idx1].cal,
-                    quantity: idx2 + 1,
-                }
-            ]
-        });
+        // const idx1 = Math.floor(Math.random()*3);
+        // const idx2 = Math.floor(Math.random()*3);
+        // const idx3 = Math.floor(Math.random()*2);
+        // setAnswerRecoil({
+        //     takeout: take[idx3],
+        //     item:[
+        //         {
+        //             id: "0",
+        //             category: take[idx3],
+        //             name: HamburgerMenu[idx1].name,
+        //             cost: HamburgerMenu[idx1].cost,
+        //             cal: HamburgerMenu[idx1].cal,
+        //             quantity: idx1 + 1,
+        //             img: " "
+        //         },
+        //         {
+        //             id: "1",
+        //             category: take[idx3],
+        //             name: BerverageMenu[idx1].name,
+        //             cost: BerverageMenu[idx1].cost,
+        //             cal: BerverageMenu[idx1].cal,
+        //             quantity: idx2 + 1,
+        //             img: " "
+        //         }
+        //     ]
+        // });
+
+        // 답안은 마지막에
 };
 
     useEffect(() => {

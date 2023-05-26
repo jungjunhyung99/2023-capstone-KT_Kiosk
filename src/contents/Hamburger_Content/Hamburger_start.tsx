@@ -23,7 +23,7 @@ function Hamburger_start() {
                     <SelectedImage image={Hamburger}/>
                 </KioskBorderDiv>
                 <DescribeDiv>준비가 되셨다면 하단의 버튼을 눌러주세요!</DescribeDiv>
-                <StartButton onClick={() => navigate("/kiosk/hamburger/")}>이거랑 저거랑 저거 저거 저거를 주문해주세요!</StartButton>
+                <StartButton onClick={() => navigate("/kiosk/hamburger/")}>핫초코 2개와 빅맥 단품 3개를 주문해주세요!</StartButton>
             </KioskStartContainer>
         </LaxicalContainer>
     );
