@@ -25,6 +25,7 @@ import Icecream_family from './practice/Icecream/Icecream_family';
 import Hamburger_start from './contents/Hamburger_Content/Hamburger_start';
 import Movie_start from './contents/Movie_Content/Movie_start';
 import Cafe_start from './contents/Cafe_Content/Cafe_start';
+import LogIn from './contents/LogIn_Content/LogIn';
 
 function App() {
 
@@ -55,6 +56,7 @@ function App() {
                 <Route path='/game' element={<GamePage/>}/>
                 <Route path='/game/balloon' element={<Game/>}/>
                 <Route path='/game/number' element={<NumberGame/>}/>
+                <Route path='login' element={<LogIn/>}/>
               </Routes>
           </ GlobalContainer>
         </Router>
