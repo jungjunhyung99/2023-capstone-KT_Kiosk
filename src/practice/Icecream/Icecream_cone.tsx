@@ -32,7 +32,7 @@ function Icecream_cone() {
     const [cone_number4, setNumber4] = useRecoilState(number4);
 
     function CONE1() {
-        if (cone_number1 > 0) 
+        if (cone_number1 > 0)
         {return "구구콘 : " + 1800 + "원 * " + cone_number1 + "개 = " + 1800*cone_number1 + "원";}
         else if (cone_number1 <= 0)
         {return;}
@@ -144,9 +144,11 @@ function Icecream_cone() {
     }
     
     function ANSWER_PRTINT() {
-        if (tube_number2 == 3)
+        if ((cone_number1 == 0) && (cone_number2 == 0) && (cone_number3 == 0) && (cone_number4 == 0) && (bar_number1 == 0) && (bar_number2 == 0) 
+        && (bar_number3 == 0) && (bar_number4 == 0) && (tube_number1 == 0) && (tube_number2 == 3) && (tube_number3 == 0) && (tube_number4 == 0)
+        && (family_number1 == 0) && (family_number2 == 0) && (family_number3 == 0) && (family_number4 == 0))
         {return (<SUCCESSTEXT>"성공하셨습니다!"</SUCCESSTEXT>);}
-        else if (tube_number2 != 3)
+        else
         {return (<FAILURETEXT>"실패하셨습니다!"</FAILURETEXT>);}
     }
 
