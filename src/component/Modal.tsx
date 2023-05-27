@@ -31,13 +31,14 @@ const ModalContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    position: relative;
-    bottom: 40rem;
+    position: absolute;
+    top: 0rem;
+    right: 0rem;
 `;
 
 const DialogBox = styled.dialog`
-    width: 800px;
-    height: 1250px;
+    width: 700px;
+    height: 900px;
     display: flex;
     flex-direction: column;
     align-items: center;

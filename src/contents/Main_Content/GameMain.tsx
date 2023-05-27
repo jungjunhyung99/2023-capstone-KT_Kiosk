@@ -32,7 +32,7 @@ function GameMain() {
                     </ContentClickBox>
                 </StyledLink>
                 
-                <StyledLink to="/kiosk/cafe">
+                <StyledLink to="/game/number">
                     <ContentClickBox>
                         <ImageLongBox image={number}/>
                         <ContentTextBox>
