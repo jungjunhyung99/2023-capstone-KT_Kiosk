@@ -13,6 +13,16 @@ export const NavBar = styled.div`
     border-radius: 0px 0px 100px 100px;
 `;
 
+export const RecordNavBar = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background-color: #2BB7B3;
+    height: 10rem;
+    width: 100%;
+`;
+
 export const FlexBox = styled.div`
     display: flex;
     justify-content: center;

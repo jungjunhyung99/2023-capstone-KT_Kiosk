@@ -72,7 +72,7 @@ export const Box = styled(motion.div)<{bgphoto: string,index:number}>`
     cursor: pointer;
     background-position: center center;
     margin: 0 auto;
-    border: ${(props) => props.index === 1 ? "3px dashed transparent" : "2px solid"};
+    border: ${(props) => props.index === 1 ? "2px dashed transparent" : "2px solid"};
             ${(props) => 
         props.index === 1 &&
         css`
@@ -225,7 +225,7 @@ export const CafeCostDiv = styled.div`
   background-color:white;
   height:100%;
   align-items:center; 
-  width: 5.5vw
+  width: 6.3vw;
 `;
 
 export const ModalContainer = styled.div`

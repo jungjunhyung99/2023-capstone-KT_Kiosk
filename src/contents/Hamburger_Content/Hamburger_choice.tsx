@@ -79,7 +79,6 @@ const ItemBox = styled(motion.div)<{index: number}>`
         border-color: red;
         animation: ${menuFadeInOut} 2s infinite;
       `};
-
 `;
 
 const Footer = styled.footer`

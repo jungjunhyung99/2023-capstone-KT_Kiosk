@@ -291,14 +291,14 @@ function Movie_seat(){
             <Grid>
                 {seat1.map((num,index) => <Item key={index+10} onClick={()=>seatClick(index,1)} isActive={num.clicked}>{num.seat_num}</Item>)}
             </Grid>
-            <LargeGrid>
+            <LargeGrid> 
                 {seat2.map((num,index) => <Item key={index+30} onClick={()=>seatClick(index,2)} isActive={num.clicked}>{num.seat_num}</Item>)}
             </LargeGrid>
             <Grid>
                 {seat3.map((num,index) => <Item key={index+50} onClick={()=>seatClick(index,3)} isActive={num.clicked}>{num.seat_num}</Item>)}
             </Grid>
             </div>
-            {num === 0 ? <SeatButton onClick={() => nextPress(person)} isActive={num === 0}>예약하기</SeatButton> : <SeatButton isActive={false} >좌석을 선택해주세요</SeatButton> }
+            {num === 0 ? <SeatButton onClick={() => nextPress(person)} isActive={num === 0}>예약하기</SeatButton> : <SeatButton isActive={false}> <span style={{color:"#31CECA", fontSize: "2rem"}}>3개</span>의 좌석을 선택해주세요</SeatButton> }
             <Footer/>
           </Body>
         </Container>

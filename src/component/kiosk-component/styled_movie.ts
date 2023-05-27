@@ -120,7 +120,7 @@ export const MinusButton = styled.button<{num: number, current:number}>`
   border-radius: 20px;
   background-color: #666666;
   color: #ffffff;
-  border:none;
+  border: 3px dashed transparent;
   cursor: pointer;
   
   ${(props) =>
@@ -138,7 +138,7 @@ export const PlusButton = styled.button<{num: number, current:number}>`
   border-radius: 20px;
   background-color: #666666;
   color: #ffffff;
-  border:none;
+  border: 3px dashed transparent;
   cursor: pointer;
   
        ${(props) =>

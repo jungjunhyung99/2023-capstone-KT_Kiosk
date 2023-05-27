@@ -31,8 +31,6 @@ function Hamburger_take() {
         navigate("/kiosk/hamburger/choice");        
     };
 
-    console.log(answerRecoil);
-
     return (
         <Container
         initial={{opacity: 0}}

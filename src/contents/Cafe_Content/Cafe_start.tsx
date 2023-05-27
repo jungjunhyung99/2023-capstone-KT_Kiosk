@@ -17,7 +17,7 @@ function Cafe_start() {
             <KioskStartContainer> 
                 <FlexBox>
                     <KTLogo/>
-                    <LogoTitle>패스트푸드점</LogoTitle>
+                    <LogoTitle>카 페</LogoTitle>
                 </FlexBox>
                 <KioskBorderDiv>
                     <PopcornImage image={Americano}/>

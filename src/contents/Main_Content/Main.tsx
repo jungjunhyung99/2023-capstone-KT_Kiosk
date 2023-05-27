@@ -1,6 +1,6 @@
-import { BackCircle, BackCircle2, CircleConatiner, ContentClickBox, ContentContainer, ContentDescript, ContentTextBox, ContentTitle, DocImage, GameImage, KTImage, KioskImage, LogInImage, LogoTitle, MapImage } from "../../component/main_components";
+import { BackCircle, BackCircle2, CircleConatiner, ContentClickBox, ContentContainer, ContentDescript, ContentTextBox, ContentTitle, DocImage, GameImage, KTImage, KioskImage, LogInImage, LogoTitle, LogoutButton, MapImage } from "../../component/main_components";
 import { StyledLink } from "../../component/index-component/styled_index";
-import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
 import {auth} from "../../Hook/Hook";
 import { useState } from 'react';
 import { useRecoilState } from "recoil";
@@ -10,6 +10,12 @@ import { LogInState } from "../../Atom/atom";
 function Main () {
   const [userData, setUserData] = useState<any | null>(null);
   const [login, setLogin] = useRecoilState(LogInState);
+  const auth = getAuth();
+
+  const signOut = () => {
+    setLogin(false);
+    auth.signOut();
+  }
 
   function handleGoogleLogin() {
     const provider = new GoogleAuthProvider();
@@ -49,10 +55,11 @@ function Main () {
                     <ContentClickBox>
                         <DocImage/>
                         <ContentTextBox>
-                            <ContentTitle>{userData.displayName}님의 기록 확인하기</ContentTitle>
+                            <ContentTitle>{userData?.displayName}님의 기록 확인하기</ContentTitle>
                             <ContentDescript>
-                            {userData.displayName}님의 지난 기록들을 통해 성장한 모습을 <br/> 확인해보세요!
+                            {userData?.displayName}님의 지난 기록들을 통해 성장한 모습을 <br/> 확인해보세요!
                             </ContentDescript>
+                            <LogoutButton onClick={signOut}>로그아웃</LogoutButton>
                         </ContentTextBox>
                     </ContentClickBox>
                 </StyledLink>
