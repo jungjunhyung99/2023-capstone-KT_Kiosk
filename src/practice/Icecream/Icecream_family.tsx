@@ -575,6 +575,11 @@ function Icecream_family() {
         background-color: white;
     `;
 
+    const Final = styled.div`
+        background-color: black;
+        height: 300px;
+    `;
+
     return(
         <div>
             <Title>Icecream</Title>
@@ -640,7 +645,7 @@ function Icecream_family() {
                         + 3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원</Total>
                     <Close onClick={() => setOpenModal(false)}>닫기</Close>
                 </Modal>
-            )}
+            )}<Final></Final>
         </div>
     );
 }
