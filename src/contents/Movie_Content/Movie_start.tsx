@@ -5,9 +5,18 @@ import Popcorn from "../../images/popcorn.png"
 import { DescribeDiv, KioskBorderDiv, StartButton } from "../../component/kiosk-component/styled_hamburger";
 import { LaxicalContainer } from "../../component/index-component/styled_index";
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { movieTime, practiceMode } from "../../Atom/atom";
 
 function Movie_start() {
     const navigate = useNavigate();
+    const setMovieTime = useSetRecoilState(movieTime);
+    const setModeRecoil = useSetRecoilState(practiceMode);
+    const startClick = () => {
+        setMovieTime(Date.now());
+        navigate("/kiosk/movie");
+    };
+
     return (
         <LaxicalContainer>
             <CircleConatiner>
@@ -23,7 +32,7 @@ function Movie_start() {
                     <PopcornImage image={Popcorn}/>
                 </KioskBorderDiv>
                 <DescribeDiv>준비가 되셨다면 하단의 버튼을 눌러주세요!</DescribeDiv>
-                <StartButton onClick={() => navigate("/kiosk/movie")}>'The Super Mario Bros. Movie' 영화를 3자리 예매해주세요!</StartButton>
+                <StartButton onClick={startClick}>'The Super Mario Bros. Movie' 영화를 3자리 예매해주세요!</StartButton>
             </KioskStartContainer>
         </LaxicalContainer>
     );

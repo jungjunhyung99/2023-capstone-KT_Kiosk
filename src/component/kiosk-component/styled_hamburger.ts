@@ -181,7 +181,7 @@ export const NextButton3 = styled(NextButton)<{isActive:boolean}>`
     cursor:pointer;
 `;
 
-export const InitButton = styled.div`
+export const InitButton = styled.div<{mode: boolean}>`
     display: block;
     background-color: #00B01F;
     height:15%;
@@ -193,12 +193,12 @@ export const InitButton = styled.div`
         background-color: #027317;
         transition: all ease 0.6s 0s;
     }
-    border: 4px dashed white;
-    animation: ${initFadeInOut} 2s infinite;
+    border: ${(props) => props.mode ? "4px dashed white" : null};
+    animation: ${(props) => props.mode ? `${initFadeInOut} 2s infinite` : null} ;
 `;
 
 
-export const TakeButton = styled.button<{answer: string}>`
+export const TakeButton = styled.button<{answer: string, mode: boolean}>`
     width:13vw;
     height: 10vh;
     margin:20px;
@@ -209,14 +209,14 @@ export const TakeButton = styled.button<{answer: string}>`
     box-shadow:  3px 3px 6px 3px #2b2a2a;
     cursor: pointer;
     ${(props) =>
-    props.answer === "포장주문" &&
+    props.answer === "포장주문" && props.mode &&
     css`
       border: 2px dashed transparent;
       animation: ${fadeInOut} 2s infinite;
     `};
 `;
 
-export const HallButton = styled.button<{answer: string}>`
+export const HallButton = styled.button<{answer: string, mode: boolean}>`
     width:13vw;
     height: 10vh;
     margin:20px;
@@ -228,7 +228,7 @@ export const HallButton = styled.button<{answer: string}>`
     box-shadow:  3px 3px 6px 3px #2b2a2a;
     cursor: pointer;
     ${(props) =>
-    props.answer !== "포장주문" &&
+    props.answer !== "포장주문" && props.mode &&
     css`
       border-color: red;
       animation: ${fadeInOut} 2s infinite;

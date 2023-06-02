@@ -5,9 +5,19 @@ import Hamburger from "../../images/Hamburger.png";
 import { DescribeDiv, KioskBorderDiv, StartButton } from "../../component/kiosk-component/styled_hamburger";
 import { LaxicalContainer } from "../../component/index-component/styled_index";
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { IMode, hamburgerTime, practiceMode } from "../../Atom/atom";
 
 function Hamburger_start() {
     const navigate = useNavigate();
+    const setTime = useSetRecoilState(hamburgerTime);
+    const setModeRecoil = useSetRecoilState(practiceMode);
+    const startClick = (index: boolean) => {
+        setTime(Date.now());
+        setModeRecoil((prev: IMode) => ({...prev, hamburger:index}));
+        navigate("/kiosk/hamburger/");
+    };
+
     return (
         <LaxicalContainer>
             <CircleConatiner>
@@ -23,7 +33,8 @@ function Hamburger_start() {
                     <SelectedImage image={Hamburger}/>
                 </KioskBorderDiv>
                 <DescribeDiv>준비가 되셨다면 하단의 버튼을 눌러주세요!</DescribeDiv>
-                <StartButton onClick={() => navigate("/kiosk/hamburger/")}>핫초코 2개와 빅맥 단품 3개를 주문해주세요!</StartButton>
+                <StartButton onClick={() => startClick(true)}>핫초코 2개와 빅맥 단품 3개를 주문해주세요!</StartButton>
+                <StartButton onClick={() => startClick(false)}>자율 연습 해보기</StartButton>
             </KioskStartContainer>
         </LaxicalContainer>
     );

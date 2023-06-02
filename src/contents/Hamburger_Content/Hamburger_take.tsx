@@ -1,8 +1,8 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { fastObj, fastAnswer } from "../../Atom/atom";
+import { fastObj, fastAnswer, practiceMode } from "../../Atom/atom";
 import { HallButton, TakeButton } from "../../component/kiosk-component/styled_hamburger";
 
 const Container = styled(motion.div)`
@@ -26,6 +26,7 @@ function Hamburger_take() {
     const navigate = useNavigate();
     const [cafeRecoil, setCafeRecoil] = useRecoilState(fastObj);
     const [answerRecoil, setAnswerRecoil] = useRecoilState(fastAnswer);
+    const modeRecoil = useRecoilValue(practiceMode);
     const buttonClick = (choice:string) => {
         setCafeRecoil({takeout:choice, item:[]});
         navigate("/kiosk/hamburger/choice");        
@@ -42,12 +43,12 @@ function Hamburger_take() {
             <h1>매장식사 유무를 선택해 주세요!</h1>
             <div style={{marginTop:"40px",display:"flex"}}>
                 <Box>
-                    <TakeButton answer={answerRecoil.takeout} onClick={() => buttonClick("포장주문")}>
+                    <TakeButton mode={modeRecoil.hamburger} answer={answerRecoil.takeout} onClick={() => buttonClick("포장주문")}>
                         포장하기
                     </TakeButton>
                 </Box>
                 <Box>
-                    <HallButton answer={answerRecoil.takeout} onClick={() => buttonClick("매장식사")}>
+                    <HallButton mode={modeRecoil.hamburger} answer={answerRecoil.takeout} onClick={() => buttonClick("매장식사")}>
                         매장식사
                     </HallButton>
                 </Box>

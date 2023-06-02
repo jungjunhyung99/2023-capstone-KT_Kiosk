@@ -4,8 +4,11 @@ import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { useRecoilState } from "recoil";
-import { fastObj } from "../../Atom/atom";
+import { fastObj, hamburgerTime } from "../../Atom/atom";
 import { fadeInOut } from "../../component/kiosk-component/styled_movie";
+import { formatTime } from "../Movie_Content/Movie_fx";
+import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore";
+import { dbService } from "../../Hook/Hook";
 
 const Container = styled(motion.div)`
     display:flex;
@@ -273,6 +276,7 @@ function Hamburger_last() {
     const [quantity, setQuantity] = useState(0);
     const [selectId, setSelectId] = useState<number | null>();
     const [selectMenu, setSelectMenu] = useState<IMenu>();
+    const [timer, setTimer] = useRecoilState(hamburgerTime);
     const EditClciked = (item: IMenu, index: string) => {
         setSelectMenu(item);
         
@@ -281,6 +285,30 @@ function Hamburger_last() {
     const cancleClicked = () => {
         setSelectId(null);
         setQuantity(1);
+    };
+
+    const updateData = async (time: number) => {
+        try {
+          const docId = "c5EkUB47lyWaKnU36b5c";
+          const docRef = doc(dbService, 'kiosk-record', docId); 
+      
+          const docSnap = await getDoc(docRef);
+          const data = docSnap.data();
+          console.log(data);
+  
+          await updateDoc(docRef, {
+            "data.hamburger.time": arrayUnion(parseInt(((time % 60000) / 1000).toFixed(0)))
+          });
+          console.log('문서 업데이트 완료');
+        } catch (error) {
+          console.error('문서 업데이트 중 오류 발생:', error);
+        }
+      };
+
+    const payClick = () => {
+        const endTime = Date.now();
+        console.log(formatTime(endTime - timer));
+        updateData(endTime - timer);
     };
 
     const overlayClicked = () => {

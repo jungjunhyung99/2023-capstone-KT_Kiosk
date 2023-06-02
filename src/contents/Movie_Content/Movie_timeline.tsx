@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { useRecoilState } from "recoil";
-import { IAtomMovie, movieObj } from "../../Atom/atom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { IAtomMovie, movieObj, practiceMode } from "../../Atom/atom";
 import { makeImagePath } from "../../Hook/Hook";
 import styled from "styled-components";
 import { motion } from "framer-motion";
@@ -102,6 +102,7 @@ function Movie_timeline() {
   const navigate = useNavigate();
   const [movies, setMovies] = useState<IGetMoives>();
   const [movieRecoil, SetMovieRecoil] = useRecoilState<IAtomMovie>(movieObj);
+  const modeRecoil = useRecoilValue(practiceMode);
   const TimeClick = (timeline:string) => {
     SetMovieRecoil({title:movieRecoil.title, seat:0,time:timeline});
     navigate("/kiosk/movie/seat");
@@ -119,6 +120,7 @@ function Movie_timeline() {
     useEffect(() => {
       getMovies();
     }, []);
+
   return (
     <Container
     initial={{opacity: 0}}
@@ -130,7 +132,7 @@ function Movie_timeline() {
           <div style={{display:"flex",flexDirection:"column",color:"white",height:"100vh"}}>
             <Banner bgPhoto={makeImagePath(movies?.results[4].backdrop_path || "")}/>
             {movies?.results.slice(0,3).map((movie,index) => (
-               <TimelineDiv idx={index} key={index}>
+               <TimelineDiv mode={modeRecoil.movie}idx={index} key={index}>
               <Box bgPhoto={makeImagePath(movie?.poster_path)}>
               </Box>
               <div style={{display:"flex", flexDirection:"column"}}>
@@ -138,7 +140,10 @@ function Movie_timeline() {
                   <p style={{fontWeight:"500",fontSize:"20px"}}>{movie.title}</p>
                 </div>
                 <div style={{display:"flex", flexWrap:"wrap",transform:"translateY(-15%)"}}>
-                  {when.time.map((time,index) => <TimeBox onClick={() => TimeClick(time)}>
+                  {when.time.map((time,index) => 
+                  <TimeBox 
+                  key={index}
+                  onClick={() => TimeClick(time)}>
                     <p>
                     {when.time[index]}
                     <br/>

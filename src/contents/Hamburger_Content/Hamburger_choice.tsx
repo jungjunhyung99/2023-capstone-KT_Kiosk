@@ -2,9 +2,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import styled, { css } from "styled-components";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { BerverageMenu, HamburgerMenu } from "../Cafe_Content/data";
-import { IFastItem, fastObj } from "../../Atom/atom";
+import { IFastItem, fastObj, practiceMode } from "../../Atom/atom";
 import Bigmac from "../../images/BigMac.png";
 import { FlexBox, HamburgerImageBox, ImageBox, MenuBox } from "../../component/kiosk-component/styled_kiosk";
 import { MenuCal, MenuCost, MenuTitle } from "../../component/kiosk-component/styled_hamburger";
@@ -59,7 +59,7 @@ const Menu = styled(motion.div)`
     }
 `;
 
-const ItemBox = styled(motion.div)<{index: number}>`
+const ItemBox = styled(motion.div)<{index: number, mode: boolean}>`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,7 +74,7 @@ const ItemBox = styled(motion.div)<{index: number}>`
     box-shadow:  3px 3px 3px 3px rgba(38, 38, 69, 0.3);
     border: 2px dashed transparent;
         ${(props) => 
-        props.index === 0 &&
+        props.index === 0 && props.mode &&
         css`
         border-color: red;
         animation: ${menuFadeInOut} 2s infinite;
@@ -203,6 +203,7 @@ function Hamburger_choice() {
     const [selectMenu, setSelectMenu] = useState<IFastItem | null>();
     const [quantity, setQuantity] = useState(1);
     const [cost, setCost] = useState(0);
+    const modeRecoil = useRecoilValue(practiceMode);
     const NavClick = (name: string) => {
         if(name === "A"){
             setMenu(BerverageMenu);
@@ -277,7 +278,7 @@ function Hamburger_choice() {
                         <Menu>
                             {menu.map((menu, index:number) => 
                             <ItemBox 
-                            key={menu.id} layoutId={menu.id} onClick={()=>BoxClicked(menu,menu.id as string)} index={index}
+                            key={menu.id} layoutId={menu.id} mode={modeRecoil.hamburger} onClick={()=>BoxClicked(menu,menu.id as string)} index={index}
                             >
                                 <MenuBox>
                                     <HamburgerImageBox image={menu.img}/>
@@ -297,7 +298,7 @@ function Hamburger_choice() {
                                             <div style={{display:"flex",justifyContent:"center",backgroundColor:"#E2E2E2", fontSize:"45px", width:"50px",height:"100%"}}>{quantity}</div>
                                         <QuantityButton onClick={plusClicked}>+</QuantityButton>
                                         </CountBox>
-                                        <div style={{}}>
+                                        <div>
                                             <NextButton onClick={cancleClicked}>취소하기</NextButton>
                                             <NextButton onClick={okClicked}>메뉴에 추가하기</NextButton>
                                         </div>

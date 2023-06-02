@@ -6,6 +6,13 @@ export interface ICafe {
     quantity: number;
 }
 
+export interface IMode {
+    movie: boolean,
+    hamburger: boolean,
+    cafe: boolean,
+    icecream: boolean,
+}
+
 
 export interface IFastItem{
     id: string | undefined;
@@ -121,6 +128,51 @@ export const fastAnswer = atom<IAtomFast>({
 });
 
 export const LogInState = atom<boolean>({
-    key: "LogInState",
+    key: "LogInState2",
     default: false
 })
+
+export const movieTime = atom<number>({
+    key: 'movieTime2',
+    default: 0
+});
+
+export const hamburgerTime = atom<number>({
+    key: 'hamburgerTime2',
+    default: 0
+});
+
+export const cafeTime = atom<number>({
+    key: 'cafeTime2',
+    default: 0
+});
+
+export const movieRecord = atom<any>({
+    key: 'movieRecord2',
+    default: "",
+});
+
+export const hamburgerRecord = atom<any>({
+    key: 'hamburgerRecord2',
+    default: ""
+});
+
+export const cafeRecord = atom<any>({
+    key: 'cafeRecord2',
+    default: ""
+});
+
+export const userIdAtom = atom<any>({
+    key: 'userIdAtom2',
+    default: ""
+});
+
+export const practiceMode = atom<IMode>({
+    key: "practiceMode",
+    default: {
+        movie: false,
+        hamburger: false,
+        cafe: false,
+        icecream: false
+    }
+});

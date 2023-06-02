@@ -74,9 +74,9 @@ export const DayDiv = styled.div`
     color: white;
 `;
 
-export const AnimatedDiv = styled.div`
-  border: 2px dashed transparent;
-  animation: ${fadeInOut} 2s infinite;
+export const AnimatedDiv = styled.div<{mode: boolean}>`
+  border: ${(props) => props.mode ? "2px dashed transparent" : null};
+  animation: ${(props) => props.mode ? `${fadeInOut} 2s infinite` : null};
 `;
 
 export const Button = styled.button`
@@ -113,7 +113,7 @@ export const TimeBox = styled.div`
 `;
 
 
-export const MinusButton = styled.button<{num: number, current:number}>`
+export const MinusButton = styled.button<{num: number, current:number, mode: boolean}>`
   font-size: 40px;
   width: 5vw;
   height: 5vh;
@@ -124,14 +124,14 @@ export const MinusButton = styled.button<{num: number, current:number}>`
   cursor: pointer;
   
   ${(props) =>
-    props.num < props.current &&
+    props.num < props.current && props.mode &&
     css`
       border-color: red;
       animation: ${fadeInOut} 2s infinite;
     `};
 `;
 
-export const PlusButton = styled.button<{num: number, current:number}>`
+export const PlusButton = styled.button<{num: number, current:number, mode: boolean}>`
   font-size: 40px;
   width: 5vw;
   height: 5vh;
@@ -142,7 +142,7 @@ export const PlusButton = styled.button<{num: number, current:number}>`
   cursor: pointer;
   
        ${(props) =>
-    props.num > props.current &&
+    props.num > props.current && props.mode &&
     css`
       border-color: red;
       animation: ${fadeInOut} 2s infinite;
@@ -150,7 +150,7 @@ export const PlusButton = styled.button<{num: number, current:number}>`
 `;
 
 
-export const SeatButton = styled.button<{isActive:boolean}>`
+export const SeatButton = styled.button<{isActive:boolean, mode: boolean}>`
     font-size: 25px;
     width: 30vw;
     padding: 7px 0;
@@ -165,22 +165,53 @@ export const SeatButton = styled.button<{isActive:boolean}>`
     cursor: ${(props) => props.isActive ? "pointer" :"default"};
 
         ${(props) => 
-        props.isActive &&
+        props.isActive && props.mode &&
         css`
         border-color: red;
         animation: ${fadeInOut} 2s infinite;
         `};
 `;
 
-export const TimelineDiv = styled.div<{idx: number}>`
+export const TimelineDiv = styled.div<{idx: number, mode: boolean}>`
     display:flex;
     justify-content:center;
     align-content:center;
     border: 2px dashed transparent;
     ${(props) => 
-        props.idx === 1 &&
+        props.idx === 1 && props.mode && 
         css`
         border-color: red;
         animation: ${fadeInOut} 2s infinite;
       `};
+`;
+
+export const MovieResult = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  width: 20rem;
+  height: 20rem;
+  background-color: #666666;
+  border-radius: 1rem;
+  top: 25rem;
+`;
+
+export const TakenMovieTime = styled.div`
+  display: flex;
+  font-size: 2rem;
+  font-weight: 700;
+  color: white;
+`;
+
+export const BackButton = styled.div`
+  width: 7rem;
+  height: 4rem;
+  border-radius: 1rem;
+  background-color: white;
+  color: black;
+`;
+
+export const BackButtonContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
 `;

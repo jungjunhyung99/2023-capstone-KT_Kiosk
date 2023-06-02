@@ -1,12 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { CafeAnswer, IAtomCafe, ICafe, cafeObj } from "../../Atom/atom";
+import { CafeAnswer, IAtomCafe, ICafe, cafeObj, cafeTime } from "../../Atom/atom";
 import { Box, Button, CafeContainer, CafeCostDiv, CafeHomeButton, CafePayDiv, Head, IItem, IPay, Ikiosk, Li, MenuContainer, Order, OrderSlider, QuantityButton, Row, SmallBox, StyledLink, Ul, XButton, boxVariant, rowVariants, smboxVariant } from "../../component/kiosk-component/styled_cafe";
 import { useEffect, useState } from "react";
 import { cafeItem, cafeItem2, cafeItem3 } from "./data";
 import { AnimatePresence } from "framer-motion";
 import GameNav from "../Navbar/GameNav";
 import Modal from "./Modal";
+import { formatTime } from "../Movie_Content/Movie_fx";
 
 const offset = 4;
 
@@ -23,6 +24,7 @@ function Cafe_index () {
     const [send, setSend] = useState<IPay>();
     const [condiment,setCondiment] = useState<IItem>();
     const answer = useRecoilValue<ICafe[]>(CafeAnswer);
+    const [timer, setTimer] = useRecoilState(cafeTime);
     const toggleLeaving = () => setLeaving((prev) => !prev);
     const onBackClick = () => navigate(-1);
     const increaseIndex = (array:Ikiosk[]) => {
@@ -120,11 +122,13 @@ function Cafe_index () {
     };
 
     const onPayClicked2 = (obj: Ikiosk[]) => {
+        const endTime = Date.now();
         let arr:IAtomCafe[] = [];
         for(let i = 0; i < obj.length ; i++){
             arr.push({name:obj[i].name, quantity: obj[i].quantity});
         }
         SetMenuRecoil(arr);
+        console.log(formatTime(endTime - timer));
         navigate("/Menu/home/hard/cafe/payment");
     };
 

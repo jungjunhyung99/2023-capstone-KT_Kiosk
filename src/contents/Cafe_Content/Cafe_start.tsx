@@ -5,9 +5,18 @@ import Americano from "../../images/Americano_choice.png";
 import { DescribeDiv, KioskBorderDiv, StartButton } from "../../component/kiosk-component/styled_hamburger";
 import { LaxicalContainer } from "../../component/index-component/styled_index";
 import { useNavigate } from "react-router-dom";
+import { useSetRecoilState } from "recoil";
+import { cafeTime } from "../../Atom/atom";
 
 function Cafe_start() {
     const navigate = useNavigate();
+    const setCafeTimer = useSetRecoilState(cafeTime);
+
+    const startClick = () => {
+        navigate("/kiosk/cafe/main");
+        setCafeTimer(Date.now());
+    }
+
     return (
         <LaxicalContainer>
             <CircleConatiner>
@@ -23,7 +32,7 @@ function Cafe_start() {
                     <PopcornImage image={Americano}/>
                 </KioskBorderDiv>
                 <DescribeDiv>준비가 되셨다면 하단의 버튼을 눌러주세요!</DescribeDiv>
-                <StartButton onClick={() => navigate("/kiosk/cafe/main")}>고구마 라떼 2개, 초코케이크 2개, 청포도에이드 3개를 구매해주세요!</StartButton>
+                <StartButton onClick={startClick}>고구마 라떼 2개, 초코케이크 2개, 청포도에이드 3개를 구매해주세요!</StartButton>
             </KioskStartContainer>
         </LaxicalContainer>
     );

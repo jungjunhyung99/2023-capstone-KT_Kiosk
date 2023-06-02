@@ -22,7 +22,6 @@ export const RecordDiv = styled.div`
     justify-content: center;
     align-items: center;
     height: 28rem;
-    border: 1px solid black;
 `;
 
 export const LineDiv = styled.div`
