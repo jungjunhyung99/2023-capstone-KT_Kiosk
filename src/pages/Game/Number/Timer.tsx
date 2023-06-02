@@ -16,7 +16,6 @@ function Timer(){
     return (
         <Container>
             <Front>{Math.floor(timeElapsed/1000)}초</Front>
-            
         </Container>
     );
 }

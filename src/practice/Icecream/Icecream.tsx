@@ -136,7 +136,11 @@ function Icecream() {
             background-color: lightyellow;
         }
     `;
-
+    
+    const Final = styled.div`
+        background-color: black;
+        height: 300px;
+    `;
     return(
         <div>
             <Title>Icecream</Title>
@@ -148,6 +152,7 @@ function Icecream() {
             </List>
             <Introduce>{QUESTION_PRINT()}</Introduce>
             <Before onClick={onClickKiosk}>이전으로 돌아가기</Before> 
+            <Final></Final>
         </div>
     );
 }
