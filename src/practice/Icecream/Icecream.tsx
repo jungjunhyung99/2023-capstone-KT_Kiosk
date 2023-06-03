@@ -62,7 +62,7 @@ function Icecream() {
         font-size: 45px;
         display: flex;
         justify-content: center;
-        background-color: #CCA63D;
+        background-color: #008299;
         height: 100px;
         font-style: italic;
         align-items: center;
@@ -77,7 +77,7 @@ function Icecream() {
 
     const ConeButton = styled.button`
         font-size: 30px;
-        background-color: #FFE08C;
+        background-color: #3DB7CC;
         &:hover {
             background-color: lightyellow;
         }
@@ -86,7 +86,7 @@ function Icecream() {
 
     const BarButton = styled.button`
         font-size: 30px;
-        background-color: #FFE08C;
+        background-color: #3DB7CC;
         &:hover {
             background-color: lightyellow;
         }
@@ -95,7 +95,7 @@ function Icecream() {
 
     const TubeButton = styled.button`
         font-size: 30px;
-        background-color: #FFE08C;
+        background-color: #3DB7CC;
         &:hover {
             background-color: lightyellow;
         }
@@ -104,7 +104,7 @@ function Icecream() {
 
     const FamilyButton = styled.button`
         font-size: 30px;
-        background-color: #FFE08C;
+        background-color: #3DB7CC;
         &:hover {
             background-color: lightyellow;
         }
@@ -131,7 +131,7 @@ function Icecream() {
         width: 80vw;
         height: 80px;
         align-items: center;
-        background-color: #FFCC99;
+        background-color: #3DB7CC;
         &:hover {
             background-color: lightyellow;
         }

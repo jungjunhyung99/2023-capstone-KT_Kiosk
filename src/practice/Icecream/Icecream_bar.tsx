@@ -214,10 +214,11 @@ function Icecream_bar() {
         font-size: 45px;
         display: flex;
         justify-content: center;
-        background-color: #CCA63D;
+        background-color: #008299;
         height: 100px;
         font-style: italic;
         align-items: center;
+        font-weight: bold;
         `;
 
     const List = styled.div`
@@ -228,8 +229,8 @@ function Icecream_bar() {
         `;
 
     const ConeButton = styled.button`
-        font-size: 30px;
-        background-color: #FFE08C;
+        font-size: 35px;
+        background-color: #3DB7CC;
         &:hover {
             background-color: lightyellow;
         }
@@ -237,8 +238,8 @@ function Icecream_bar() {
         `;
 
     const BarButton = styled.button`
-        font-size: 30px;
-        background-color: #FFE08C;
+        font-size: 35px;
+        background-color: #3DB7CC;
         &:hover {
             background-color: lightyellow;
         }
@@ -246,8 +247,8 @@ function Icecream_bar() {
     `;
 
     const TubeButton = styled.button`
-        font-size: 30px;
-        background-color: #FFE08C;
+        font-size: 35px;
+        background-color: #3DB7CC;
         &:hover {
             background-color: lightyellow;
         }
@@ -255,8 +256,8 @@ function Icecream_bar() {
     `;
 
     const FamilyButton = styled.button`
-        font-size: 30px;
-        background-color: #FFE08C;
+        font-size: 35px;
+        background-color: #3DB7CC;
         &:hover {
             background-color: lightyellow;
         }
@@ -536,8 +537,8 @@ function Icecream_bar() {
 
     const Order = styled.button`
         width: 80vw;
-        font-size: 30px;
-        background-color: red;
+        font-size: 35px;
+        background-color: #3DB7CC;
         border-width: 1px;
         height: 100px;
         font-color: white;
@@ -545,7 +546,8 @@ function Icecream_bar() {
 
     const OrderDiv = styled.div`
         width: 80vw;
-        color: white;
+        color: black;
+        font-weight: bold;
     `;
 
     const SUCCESSTEXT = styled.div`

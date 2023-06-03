@@ -214,10 +214,11 @@ function Icecream_cone() {
         font-size: 45px;
         display: flex;
         justify-content: center;
-        background-color: #CCA63D;
+        background-color: #008299;
         height: 100px;
         font-style: italic;
         align-items: center;
+        font-weight: bold;
         `;
 
     const List = styled.div`
@@ -228,8 +229,8 @@ function Icecream_cone() {
         `;
 
     const ConeButton = styled.button`
-        font-size: 30px;
-        background-color: #FFE08C;
+        font-size: 35px;
+        background-color: #3DB7CC;
         &:hover {
             background-color: lightyellow;
         }
@@ -237,8 +238,8 @@ function Icecream_cone() {
         `;
 
     const BarButton = styled.button`
-        font-size: 30px;
-        background-color: #FFE08C;
+        font-size: 35px;
+        background-color: #3DB7CC;
         &:hover {
             background-color: lightyellow;
         }
@@ -246,8 +247,8 @@ function Icecream_cone() {
     `;
 
     const TubeButton = styled.button`
-        font-size: 30px;
-        background-color: #FFE08C;
+        font-size: 35px;
+        background-color: #3DB7CC;
         &:hover {
             background-color: lightyellow;
         }
@@ -260,8 +261,8 @@ function Icecream_cone() {
     `;
 
     const FamilyButton = styled.button`
-        font-size: 30px;
-        background-color: #FFE08C;
+        font-size: 35px;
+        background-color: #3DB7CC;
         &:hover {
             background-color: lightyellow;
         }
@@ -325,7 +326,7 @@ function Icecream_cone() {
     const FirstPlusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #2F9D27;
         border-width: 1px;
         position: relative;
         top: 10px;
@@ -339,7 +340,7 @@ function Icecream_cone() {
     const SecondPlusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #2F9D27;
         border-width: 1px;
         position: relative;
         top: 10px;
@@ -353,7 +354,7 @@ function Icecream_cone() {
     const ThirdPlusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #2F9D27;
         border-width: 1px;
         position: relative;
         top: 10px;
@@ -367,7 +368,7 @@ function Icecream_cone() {
     const FourthPlusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #2F9D27;
         border-width: 1px;
         position: relative;
         top: 10px;
@@ -417,7 +418,7 @@ function Icecream_cone() {
     const FirstMinusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #2F9D27;
         border-width: 1px;
         position: relative;
         top: 10px;
@@ -430,7 +431,7 @@ function Icecream_cone() {
     const SecondMinusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #2F9D27;
         border-width: 1px;
         position: relative;
         top: 10px;
@@ -443,7 +444,7 @@ function Icecream_cone() {
     const ThirdMinusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #2F9D27;
         border-width: 1px;
         position: relative;
         top: 10px;
@@ -456,7 +457,7 @@ function Icecream_cone() {
     const FourthMinusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #2F9D27;
         border-width: 1px;
         position: relative;
         top: 10px;
@@ -521,8 +522,8 @@ function Icecream_cone() {
 
     const Order = styled.button`
         width: 80vw;
-        font-size: 30px;
-        background-color: red;
+        font-size: 35px;
+        background-color: #3DB7CC;
         border-width: 1px;
         height: 100px;
         font-color: white;
@@ -530,7 +531,8 @@ function Icecream_cone() {
 
     const OrderDiv = styled.div`
         width: 80vw;
-        color: white;
+        color: black;
+        font-weight: bold;
     `;
 
     const SUCCESSTEXT = styled.div`
