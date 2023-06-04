@@ -3,8 +3,8 @@ import { useEffect,useState } from "react";
 import { useNavigate } from "react-router";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useRecoilState } from "recoil";
-import { fastObj, hamburgerTime } from "../../Atom/atom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { fastObj, hamburgerTime, practiceMode } from "../../Atom/atom";
 import { fadeInOut } from "../../component/kiosk-component/styled_movie";
 import { formatTime } from "../Movie_Content/Movie_fx";
 import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore";
@@ -277,9 +277,9 @@ function Hamburger_last() {
     const [selectId, setSelectId] = useState<number | null>();
     const [selectMenu, setSelectMenu] = useState<IMenu>();
     const [timer, setTimer] = useRecoilState(hamburgerTime);
+    const modeRecoil = useRecoilValue(practiceMode);
     const EditClciked = (item: IMenu, index: string) => {
         setSelectMenu(item);
-        
     };
 
     const cancleClicked = () => {
@@ -392,7 +392,7 @@ function Hamburger_last() {
                     <ResultBox>내 주문: {fastRecoil.takeout} | 상품 수: {fastRecoil.item.length} | 가격: {cost}</ResultBox>
                     <div>
                         <NextButton2 onClick={() => navigate(-1)}>뒤로가기</NextButton2>
-                        <NextButton3 onClick={() => navigate("/Menu/home/hard/hamburger/result")}>결제하기</NextButton3>
+                        <NextButton3 onClick={payClick}>결제하기</NextButton3>
                     </div>
                 </Footer>
             </Container>

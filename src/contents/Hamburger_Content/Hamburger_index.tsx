@@ -5,6 +5,8 @@ import { IAtomFast, fastAnswer, practiceMode } from "../../Atom/atom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { BerverageMenu, HamburgerMenu } from "../Cafe_Content/data";
 import { useEffect } from "react";
+import KTLogo2 from "../../images/KTLogo3.svg";
+import { ImageBox, ModeBox } from "../../component/kiosk-component/styled_kiosk";
 
 const Container = styled.div`
   display:flex;
@@ -73,8 +75,11 @@ function Hamburger_main(){
     return(
     <Container>
         <Banner>
-            <h4 style={{fontSize:"40px"}}>더 빠르고 쉬워진</h4>
-            <h1 style={{fontSize:"120px",transform:`translateY(-30%)`,textAlign:"center"}}>KT 패스트푸드점</h1>
+            <div style={{display: "flex", fontWeight:"800" ,alignItems:"center", justifyContent:"center", fontSize:"80px",transform:`translateY(-30%)`,textAlign:"center"}}>    
+            <ModeBox image={KTLogo2}/>
+            <div>패스트푸드점</div>
+            </div>
+            <div style={{fontSize: "40px",fontWeight:"700"}}>광운대점</div>
         </Banner>
         <InitButton mode={modeRecoil.hamburger} onClick={() => navigate("/kiosk/hamburger/take")}>
             여기를 클릭해 주세요!

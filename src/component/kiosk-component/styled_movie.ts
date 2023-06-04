@@ -74,9 +74,14 @@ export const DayDiv = styled.div`
     color: white;
 `;
 
-export const AnimatedDiv = styled.div<{mode: boolean}>`
-  border: ${(props) => props.mode ? "2px dashed transparent" : null};
-  animation: ${(props) => props.mode ? `${fadeInOut} 2s infinite` : null};
+
+export const AnimatedDiv = styled.div<{ mode: boolean }>`
+  ${props =>
+    props.mode &&
+    css`
+      border: 2px dashed transparent;
+      animation: ${fadeInOut} 2s infinite;
+    `}
 `;
 
 export const Button = styled.button`

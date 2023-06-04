@@ -193,8 +193,12 @@ export const InitButton = styled.div<{mode: boolean}>`
         background-color: #027317;
         transition: all ease 0.6s 0s;
     }
-    border: ${(props) => props.mode ? "4px dashed white" : null};
-    animation: ${(props) => props.mode ? `${initFadeInOut} 2s infinite` : null} ;
+    ${props =>
+    props.mode &&
+    css`
+      border: 4px dashed transparent;
+      animation: ${fadeInOut} 2s infinite;
+    `}
 `;
 
 
@@ -237,28 +241,36 @@ export const HallButton = styled.button<{answer: string, mode: boolean}>`
 
 export const DescribeDiv = styled.div`
     font-size: 2rem;
+    font-weight: 800;
     color: white;
 `;
 
 export const KioskBorderDiv = styled.div`
     border: 3px solid #DEE3EA;
     background-color: white;
+    margin: 2rem 0;
+`;
+
+export const ModeButtonDiv = styled.div`
+    display: flex;
+    flex-direction: column;
 `;
 
 
 export const StartButton = styled.div`
     display: flex;
-    width: 80%;
+    width: 50%;
     height: 10rem;
     margin-top: 5rem;
     align-items: center;
-    justify-content: center;
-    background-color: #4BE4DF;
+    padding-left: 5rem;
+    background-color: white;
     border: 3px solid black;
     border-radius: 2rem;
     font-size: 2rem;
     font-weight: 700;
     cursor: pointer;
+    box-shadow: 1px 2px 0px 1px gray;
     transition: transform 0.2s ease-in-out;
     &:hover{
         transform: scale(1.1);

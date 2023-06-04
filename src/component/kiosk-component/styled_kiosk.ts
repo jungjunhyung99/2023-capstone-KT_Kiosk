@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import KTIcon from "../../images/KTLogo3.svg"
+import KTIcon2 from "../../images/ktLogo2.svg"
 
 export const NavBar = styled.div`
     display: flex;
@@ -47,6 +48,20 @@ export const ImageBox = styled.div<{image: any}>`
     background-size: cover;
 `;
 
+export const ModeBox = styled.div<{image: any}>`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 7rem;
+    height: 8rem;
+    margin-right: 3rem;
+    background-image: url(${(props) => props.image});
+    background-size: cover;
+    path{
+        fill: white;
+    }
+`;
+
 export const HamburgerImageBox = styled(ImageBox)`
     width: 8rem;
     height: 8rem;
@@ -80,6 +95,8 @@ export const KioskContainer2 = styled(KioskContainer)`
 `;
 
 export const KioskStartContainer = styled(KioskContainer)`
+    display: flex;
+    flex-direction: column;
     transform: translateY(-45%);
     gap: 2rem;
 `;
@@ -105,6 +122,7 @@ export const NextButton = styled(PrevButton)`
 `;
 
 export const KTLogo = styled.div`
+    display: flex;
     position: relative;
     right: 3rem;
     width:10rem;
@@ -112,6 +130,20 @@ export const KTLogo = styled.div`
     border-radius: 3rem;
     background-size:cover;
     background-image: url(${KTIcon});
+    path{
+            fill: white;
+    }
+    align-items: center;
+    justify-content: center;
+`;
+
+export const KTLogo2 = styled.div`
+    right: 3rem;
+    width:10rem;
+    height: 10rem;
+    border-radius: 3rem;
+    background-size:cover;
+    background-image: url(${KTIcon2});
     path{
             fill: white;
     }

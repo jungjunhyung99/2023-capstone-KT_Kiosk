@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { addDoc, collection,getDocs, query } from 'firebase/firestore';
 import { auth, dbService, getData } from '../../Hook/Hook';
 import { GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { RecordContainer, RecordDiv, RecordGrid } from '../../component/styled_login';
+import { BoldDiv, RecordContainer, RecordDiv, RecordGrid } from '../../component/styled_login';
 import { LaxicalContainer } from '../../component/index-component/styled_index';
 import RecordNav from '../Navbar/RecordNav';
 import { KioskBorderDiv } from '../../component/kiosk-component/styled_hamburger';
@@ -50,32 +50,49 @@ console.log(userData);
       <RecordNav />
       <RecordGrid>
         <RecordDiv>
+          <BoldDiv>
           패스트푸드점
+          </BoldDiv>
           <KioskBorderDiv>
             <SelectedImage image={Hamburger} />
-    
           </KioskBorderDiv>
+          <BoldDiv>
+          {userData?.data.hamburger?.time?.sort((a: any,b: any) => a.time - b.time)?.slice(0,3)?.map((time:number, index: number) => (
+              <div>{index + 1}번째: {time}초</div>
+            ))}
+          </BoldDiv>
         </RecordDiv>
 
         <RecordDiv>
+          <BoldDiv>
           영화관
+          </BoldDiv>
           <KioskBorderDiv>
             <PopcornImage image={Popcorn} />
           </KioskBorderDiv>
-          {userData?.data.movie?.time?.map((time:number, index: number) => (
+          <BoldDiv>
+          {userData?.data.movie?.time?.sort((a: any,b: any) => a - b)?.slice(0,3).map((time:number, index: number) => (
+              <div>{index + 1}번째: {time}초</div>
+            ))}
+          </BoldDiv>
+        </RecordDiv>
+
+        <RecordDiv>
+          <BoldDiv>
+          카 페
+          </BoldDiv>
+          <KioskBorderDiv>
+            <PopcornImage image={Americano} />
+          </KioskBorderDiv>
+          {userData?.data.cafe?.time?.map((time:number, index: number) => (
               <div>{index + 1}번째: {time}초</div>
             ))}
         </RecordDiv>
 
         <RecordDiv>
-          카 페
-          <KioskBorderDiv>
-            <PopcornImage image={Americano} />
-          </KioskBorderDiv>
-        </RecordDiv>
-
-        <RecordDiv>
+          <BoldDiv>
           아이스크림
+          </BoldDiv>
           <KioskBorderDiv>
             <PopcornImage image={IceCream} />
           </KioskBorderDiv>

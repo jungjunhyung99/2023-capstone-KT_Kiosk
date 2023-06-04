@@ -8,6 +8,8 @@ import { AnimatePresence } from "framer-motion";
 import GameNav from "../Navbar/GameNav";
 import Modal from "./Modal";
 import { formatTime } from "../Movie_Content/Movie_fx";
+import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore";
+import { dbService } from "../../Hook/Hook";
 
 const offset = 4;
 
@@ -89,37 +91,24 @@ function Cafe_index () {
             }
         }
     };
-    
-    
-    const onPayClicked = (obj: Ikiosk[]) => {
-        let item2 = [];
-        for(let i = 0; i < obj.length; i++){
-            const item = {
-                name: obj[i].name,
-                quantity: obj[i].quantity,
-            };
-            item2.push(item);
+
+    const updateData = async (time: number) => {
+        try {
+          const docId = "c5EkUB47lyWaKnU36b5c";
+          const docRef = doc(dbService, 'kiosk-record', docId); 
+      
+          const docSnap = await getDoc(docRef);
+          const data = docSnap.data();
+          console.log(data);
+  
+          await updateDoc(docRef, {
+            "data.cafe.time": arrayUnion(parseInt(((time % 60000) / 1000).toFixed(0)))
+          });
+          console.log('문서 업데이트 완료');
+        } catch (error) {
+          console.error('문서 업데이트 중 오류 발생:', error);
         }
-    setSend({
-        store: "cafe",
-        level: "middle",
-        basket:[
-            ...item2
-        ]
-    });
-    
-    fetch("http://minho2618.dothome.co.kr/test1/api/kiosk_answer.php",{
-        method: "POST",
-        headers:{
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        },
-        body: JSON.stringify(
-          send  
-        ),
-    }).then((response) => response.json()).then((result) => setCondiment(result));
-    
-    };
+      };
 
     const onPayClicked2 = (obj: Ikiosk[]) => {
         const endTime = Date.now();
@@ -129,7 +118,7 @@ function Cafe_index () {
         }
         SetMenuRecoil(arr);
         console.log(formatTime(endTime - timer));
-        navigate("/Menu/home/hard/cafe/payment");
+        updateData(endTime - timer);
     };
 
     const XClicked = (num: number) => {
