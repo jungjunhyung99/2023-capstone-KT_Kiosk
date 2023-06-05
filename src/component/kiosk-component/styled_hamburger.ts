@@ -228,7 +228,7 @@ export const HallButton = styled.button<{answer: string, mode: boolean}>`
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 700;
     background-color: #FFFFFF;
-    border: 5px dashed red;
+    border: 5px dashed transparent;
     box-shadow:  3px 3px 6px 3px #2b2a2a;
     cursor: pointer;
     ${(props) =>

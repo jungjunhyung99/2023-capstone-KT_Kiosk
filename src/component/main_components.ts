@@ -150,6 +150,12 @@ export const KioskClickBox = styled.div`
     }
 `;
 
+export const ModeClickBox = styled(KioskClickBox)`
+    width: 50rem;
+    height: 15rem;
+    justify-content: start;
+`;
+
 export const KioskChoiceContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);

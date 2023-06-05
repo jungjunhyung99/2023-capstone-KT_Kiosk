@@ -75,9 +75,9 @@ function Hamburger_main(){
     return(
     <Container>
         <Banner>
-            <div style={{display: "flex", fontWeight:"800" ,alignItems:"center", justifyContent:"center", fontSize:"80px",transform:`translateY(-30%)`,textAlign:"center"}}>    
+            <div style={{display: "flex", fontWeight:"800" ,alignItems:"center", justifyContent:"center", fontSize:"70px",transform:`translateY(-30%)`,textAlign:"center"}}>    
             <ModeBox image={KTLogo2}/>
-            <div>패스트푸드점</div>
+            <div>패스트푸드</div>
             </div>
             <div style={{fontSize: "40px",fontWeight:"700"}}>광운대점</div>
         </Banner>

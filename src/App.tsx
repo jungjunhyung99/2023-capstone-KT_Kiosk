@@ -27,6 +27,7 @@ import Cafe_start from './contents/Cafe_Content/Cafe_start';
 import LogIn from './contents/LogIn_Content/LogIn';
 import NumberGame from './pages/Game/Number/NumberGame';
 import Explain from './contents/Explain_Content/Explain';
+import Movie_result from './contents/Movie_Content/Movie_result';
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
                 <Route path='/kiosk/movie/fast' element={<Movie_fast/>}/>
                 <Route path='/kiosk/movie/timeline' element={<Movie_timeline/>}/>
                 <Route path='/kiosk/movie/seat' element={<Movie_seat/>}/>
+                <Route path='/kiosk/movie/result' element={<Movie_result/>}/>
                 <Route path='/kiosk/Hamburger/start' element={<Hamburger_start/>}/>
                 <Route path='/kiosk/Hamburger/take' element={<Hamburger_take/>}/>
                 <Route path='/kiosk/Hamburger/choice' element={<Hamburger_choice/>}/>

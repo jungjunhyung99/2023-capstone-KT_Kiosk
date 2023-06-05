@@ -119,11 +119,14 @@ export const fastObj = atom<IAtomFast>({
     default: {takeout:"",item:[]},
 });
 
-export const fastAnswer = atom<IAtomFast>({
+export const fastAnswer = atom<any>({
     key: "fastAnswer",
     default: {
         takeout: "",
-        item: [],
+        beverage: "",
+        beverageCount: 0,
+        food:"",
+        foodCount: 0
     }
 });
 

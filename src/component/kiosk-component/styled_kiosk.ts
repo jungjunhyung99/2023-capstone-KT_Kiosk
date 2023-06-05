@@ -52,14 +52,11 @@ export const ModeBox = styled.div<{image: any}>`
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 7rem;
+    width: 8rem;
     height: 8rem;
     margin-right: 3rem;
     background-image: url(${(props) => props.image});
     background-size: cover;
-    path{
-        fill: white;
-    }
 `;
 
 export const HamburgerImageBox = styled(ImageBox)`

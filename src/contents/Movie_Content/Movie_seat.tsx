@@ -267,9 +267,14 @@ function Movie_seat(){
       setMovieRecoil({title:movieRecoil.title, time:movieRecoil.time, seat:num})
       const endTime = Date.now();
       setTimeTaken(formatTime(endTime - timer));
-      setResultPrint((prev: boolean) => !prev);
       console.log(dbService);
-      updateData(endTime - timer);
+      if(modeRecoil.movie){
+        updateData(endTime - timer);
+        navigate("/kiosk/movie/result");
+      }
+      else{
+        setResultPrint((prev: boolean) => !prev);
+      }
     }
 
     const plusPress = () => {
@@ -332,7 +337,6 @@ function Movie_seat(){
             </div>
             {num === 0 ? <SeatButton mode={modeRecoil.movie} onClick={() => nextPress(person)} isActive={num === 0}>예약하기</SeatButton> : <SeatButton mode={modeRecoil.movie} isActive={false}> <span style={{color:"#31CECA", fontSize: "2rem"}}>3개</span>의 좌석을 선택해주세요</SeatButton> }
             <Footer/>
-
             {resultPrint ? 
               <MovieResult>
                 <TakenMovieTime>
@@ -341,7 +345,7 @@ function Movie_seat(){
                 </TakenMovieTime>
                 <BackButtonContainer>
                   <BackButton onClick={() => setResultPrint((prev: boolean) => !prev)}>다시하기</BackButton>
-                  <BackButton>메인 화면으로 가기</BackButton>
+                  <BackButton onClick={() => navigate("/")}>메인 화면으로 가기</BackButton>
                 </BackButtonContainer>
               </MovieResult>
               :

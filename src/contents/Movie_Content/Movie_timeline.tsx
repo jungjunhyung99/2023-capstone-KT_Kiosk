@@ -103,8 +103,8 @@ function Movie_timeline() {
   const [movies, setMovies] = useState<IGetMoives>();
   const [movieRecoil, SetMovieRecoil] = useRecoilState<IAtomMovie>(movieObj);
   const modeRecoil = useRecoilValue(practiceMode);
-  const TimeClick = (timeline:string) => {
-    SetMovieRecoil({title:movieRecoil.title, seat:0,time:timeline});
+  const TimeClick = (timeline:string, index: number) => {
+    SetMovieRecoil({title:movies?.results[index].title as string, seat:0,time:timeline});
     navigate("/kiosk/movie/seat");
   };
     const getMovies = async () => {
@@ -143,7 +143,7 @@ function Movie_timeline() {
                   {when.time.map((time,index) => 
                   <TimeBox 
                   key={index}
-                  onClick={() => TimeClick(time)}>
+                  onClick={() => TimeClick(time,index)}>
                     <p>
                     {when.time[index]}
                     <br/>
