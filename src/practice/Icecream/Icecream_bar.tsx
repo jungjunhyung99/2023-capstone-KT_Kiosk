@@ -149,7 +149,7 @@ function Icecream_bar() {
     }
 
     function RESULT_PRINT() {
-        return (<RESULTTEXT>결과 화면</RESULTTEXT>);
+        return (<RESULTTEXT>주문 결과</RESULTTEXT>);
     }
 
     function ANSWER_PRINT() {
