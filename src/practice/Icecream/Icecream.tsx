@@ -2,10 +2,13 @@ import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
 import {number1, number2, number3, number4, number5, number6, number7, number8, number9, number10, number11, number12, number13, number14, number15, number16} from "../../Atom/store";
+import { practiceMode2 } from '../../Atom/atom';
+import { css, keyframes } from "styled-components";
 
 function Icecream() {
     const navigate = useNavigate();
-    
+    const modeRecoil = useRecoilValue(practiceMode2);
+
     const onClickIcecreamCone = () => {
         navigate('/kiosk/Icecream_cone');
     }
@@ -53,8 +56,8 @@ function Icecream() {
         {return;}
     }
 
-    function QUESTION_PRINT() {
-        return "위의 Tube에 있는 " + "빠삐코" + " 아이스크림을 " + "3" + "개 골라주세요.";
+    function PRINT() {
+        return (<Main_Text>상단 메뉴를 선택해주세요.</Main_Text>);
     }
 
     const Title = styled.div`
@@ -66,49 +69,93 @@ function Icecream() {
         height: 100px;
         font-style: italic;
         align-items: center;
-    `;
+        font-weight: bold;
+        `;
 
     const List = styled.div`
         width: 80vw;
         height: 80px;
         display: flex;
-        background-color: #FFE08C;
+        background-color: #3DB7CC;
     `;
 
-    const ConeButton = styled.button`
-        font-size: 30px;
+    const ConeButton = styled.div`
+        font-size: 35px;
         background-color: #3DB7CC;
         &:hover {
             background-color: lightyellow;
         }
-        width: 25%;
-     `;
-
-    const BarButton = styled.button`
-        font-size: 30px;
-        background-color: #3DB7CC;
-        &:hover {
-            background-color: lightyellow;
-        }
-        width: 25%;
+        width:27%;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        font-weight: bold;
     `;
 
-    const TubeButton = styled.button`
-        font-size: 30px;
+    const BarButton = styled.div`
+        font-size: 35px;
         background-color: #3DB7CC;
         &:hover {
             background-color: lightyellow;
         }
-        width: 25%;
+        width: 27%;
+        margin-left: 15px;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        font-weight: bold;
     `;
 
-    const FamilyButton = styled.button`
-        font-size: 30px;
+    const fadeInOut = keyframes`
+        0% {
+            box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
+            border-width: 4px;
+        }
+        50%{
+            border-color: red;
+        }
+        100% {
+            border-color: black;
+            box-shadow: 0 0 0 1.03rem rgba(255, 0, 0, 0);
+        }
+        `;
+        
+    const TubeButton = styled.div<{mode: boolean}>`
+        font-size: 35px;
         background-color: #3DB7CC;
         &:hover {
             background-color: lightyellow;
         }
-        width: 25%;
+        width: 27%;
+        ${(props) =>
+            props.mode &&
+            css`
+                border: 4px dashed transparent;
+                animation: ${fadeInOut} 2s infinite;
+            `}
+        margin-left: 15px;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        font-weight: bold;
+    `;
+
+    const FamilyButton = styled.div`
+        font-size: 35px;
+        background-color: #3DB7CC;
+        &:hover {
+            background-color: lightyellow;
+        }
+        width: 27%;
+        margin-left: 15px;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        font-weight: bold;
+    `;
+
+    const Main_Text = styled.div`
+        font-size: 36px;
     `;
 
     const Introduce = styled.div`
@@ -122,7 +169,7 @@ function Icecream() {
     `;  
 
     const Before = styled.button`
-        font-size: 30px;
+        font-size: 35px;
         font-weight: bold;
         position: relative;
         top: 0px;
@@ -141,16 +188,17 @@ function Icecream() {
         background-color: black;
         height: 300px;
     `;
+
     return(
         <div>
             <Title>Icecream</Title>
             <List>
                 <ConeButton onClick={onClickIcecreamCone}>Cone</ConeButton>
                 <BarButton onClick={onClickIcecreamBar}>Bar</BarButton>
-                <TubeButton onClick={onClickIcecreamTube}>Tube</TubeButton>
+                <TubeButton mode={modeRecoil.icecream} onClick={onClickIcecreamTube}>Tube</TubeButton>
                 <FamilyButton onClick={onClickIcecreamFamily}>Family</FamilyButton>
             </List>
-            <Introduce>{QUESTION_PRINT()}</Introduce>
+            <Introduce>{PRINT()}</Introduce>
             <Before onClick={onClickKiosk}>이전으로 돌아가기</Before> 
             <Final></Final>
         </div>
