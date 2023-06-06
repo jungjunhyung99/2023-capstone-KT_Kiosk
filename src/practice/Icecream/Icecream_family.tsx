@@ -161,11 +161,13 @@ function Icecream_family() {
         {return (<FAILURETEXT>"실패하셨습니다!"</FAILURETEXT>);}
     }
 
-    function PERSENT_PRINT() {
-        let PERSENT_VALUE = Math.round(tube_number2/3*100);
+    function PERCENT_PRINT() {
+        let PERCENT_VALUE = Math.round(tube_number2/3*100);
+        let OVER_VALUE = Math.round((3-(tube_number2-3))/3*100);
 
-        if (tube_number2>0) { return PERSENT_VALUE; }
+        if ((tube_number2>0) && (tube_number2<=3)) { return PERCENT_VALUE; }
         else if (tube_number2 == 0) { return 0;}
+        else if (tube_number2 > 3) { return OVER_VALUE; }
     }
 
     const cone_number1 = useRecoilValue(number1);
@@ -762,7 +764,7 @@ function Icecream_family() {
                                         + 2500*bar_number1 + 2000*bar_number2 + 2500*bar_number3 + 2000* bar_number4
                                         + 3500*tube_number1 + 3000*tube_number2 + 3500*tube_number3 + 3000*tube_number4
                                         + 3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원, 
-                                        정답률 : {PERSENT_PRINT()}%
+                                        정답률 : {PERCENT_PRINT()}%
                                     </Total>
                                     <Close onClick={() => setOpenModal(false)}>닫기</Close> 
                                 </Modal_Result2>
