@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { IMode, icecreamTime, practiceMode2 } from "../../Atom/store";
+import { IMode, icecreamTime, practiceMode2 } from "../../Atom/atom";
 import check from "../../images/check.svg";
 import key from "../../images/key.svg";
 import { LaxicalContainer } from "../../component/index-component/styled_index";

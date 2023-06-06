@@ -79,25 +79,3 @@ export const number16 = atom({
     key:'number16',
     default: 0,
 });
-
-export interface IMode {
-    movie: boolean,
-    hamburger: boolean,
-    cafe: boolean,
-    icecream: boolean,
-}
-
-export const practiceMode2 = atom<IMode>({
-    key: "practiceMode2",
-    default: {
-        movie: false,
-        hamburger: false,
-        cafe: false,
-        icecream: true
-    }
-})
-
-export const icecreamTime = atom<number>({
-    key: 'icecreamTime2',
-    default: 0
-})
