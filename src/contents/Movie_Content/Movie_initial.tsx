@@ -7,10 +7,12 @@ import { IAtomMovie, IGetMoives, movieObj, practiceMode } from "../../Atom/atom"
 import { title } from "process";
 import { motion } from "framer-motion";
 import GameNav from "../Navbar/GameNav";
-import { AnimatedDiv, MovieChoiceDiv, MovieContentDiv, MovieGuideDiv } from "../../component/kiosk-component/styled_movie";
+import { AnimatedDiv, ModalCompleteButton, ModalNavBar, MovieChoiceDiv, MovieContentDiv, MovieExplain, MovieGuideDiv } from "../../component/kiosk-component/styled_movie";
 import ticket from "../../images/ticket.svg";
 import smartphone from "../../images/smartphone.svg";
 import Clock from "./Clock";
+import { Overlay } from "../../component/game-component/balloon-component";
+import AnimatedText from "../AnimatedText";
 
 const Container = styled(motion.div)`
   width: 50vw;
@@ -58,6 +60,7 @@ function Movie_initial(){
     const [movies, setMovies] = useState<IGetMoives>();
     const [movieRecoil, setMovieRecoil] = useRecoilState<IAtomMovie>(movieObj);
     const modeRecoil = useRecoilValue(practiceMode);
+    const [modalMatch, setModalMatch] = useState(true);
     const BoxClicked = (MovieTitle: string) => {
       setMovieRecoil({title:MovieTitle, seat:0, time:""});
       navigate("/Menu/home/hard/cgv/when");
@@ -108,6 +111,20 @@ function Movie_initial(){
             <div style={{width:"100%",display:"flex", justifyContent:"center"}}>
               <Button onClick={() => navigate("/")}>홈으로 가기</Button>
             </div>
+            {modeRecoil.movie && modalMatch ? 
+              <>
+              <Overlay/>
+              <MovieExplain>
+                <ModalNavBar>
+                  키오스크 지도
+                </ModalNavBar>
+                <AnimatedText text="티 켓은 입장권과 같은 표를 말해요!  희는 티켓을 직접 예매해 볼 거에요!"/>
+                <ModalCompleteButton onClick={() => setModalMatch(false)}>확인하기</ModalCompleteButton>
+              </MovieExplain>
+              </>
+              :
+              null
+              }
           </Container>
         </div>
     );

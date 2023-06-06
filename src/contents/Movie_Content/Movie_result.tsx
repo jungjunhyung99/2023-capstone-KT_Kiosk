@@ -2,8 +2,10 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
-import { IAtomMovie, IMovieAnswer, movieAnswer, movieObj } from "../../Atom/atom";
+import { IAtomMovie, IMovieAnswer, movieAnswer, movieObj, movieTime } from "../../Atom/atom";
 import { makeImagePath } from "../../Hook/Hook"
+import { GoHomeButton, MovieButtonDiv } from "../../component/kiosk-component/styled_movie";
+import { useNavigate } from "react-router-dom";
 
 
 const Container = styled(motion.div)`
@@ -40,7 +42,7 @@ const TimeBox = styled.div`
 const Box = styled.div<{bgPhoto: string}>`
   display: flex;
   width: 15vw;
-  height: 30vh;
+  height: 25vh;
   background-image:
   url(${(props) => props.bgPhoto});
   background-size: cover;
@@ -51,7 +53,7 @@ const SubBox = styled.div`
   display: flex;
   flex-direction: column;
   width: 15vw;
-  height: 50vh;
+  height: 30vh;
   align-items: center;
   justify-content: center;
   color: white;
@@ -90,8 +92,10 @@ interface IGetMoives{
   }
 
 function Movie_result() {
+    const navigate = useNavigate();
     const result = useRecoilValue<IAtomMovie>(movieObj);
     const [movies, setMovies] = useState<IGetMoives>();
+    const takenTime = useRecoilValue(movieTime);
     const [answerRecoil, setAnswerRecoil] = useRecoilState<IMovieAnswer>(movieAnswer);
     const getMovies = async () => {
         const json = await (
@@ -119,7 +123,9 @@ function Movie_result() {
             exit={{opacity: 0}}>
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",justifyContent:"center"}}>
              <Banner bgPhoto={makeImagePath(movies?.results[1].backdrop_path || "")}/>
-             <h1 style={{marginTop:"2em"}}>결과를 확인해 주세요!</h1>
+             <div style={{display: "flex",alignItems:"center",justifyContent:"center",width: "100%"}}>
+             <h1 style={{marginTop:"2em",color:"white"}}>주문 완료까지 {takenTime.toFixed(0)}초 걸리셨습니다.</h1>
+             </div>
              <div style={{display:"flex", alignItems:"center"}}>
                 
                 <SubBox>
@@ -149,6 +155,15 @@ function Movie_result() {
                     </div>
                   </SubBox>
                 </div>
+                <MovieButtonDiv>
+                  <GoHomeButton onClick={() => navigate("/")}>
+                    홈으로 가기
+                  </GoHomeButton>
+                  <GoHomeButton onClick={() => navigate("/login")}>
+                    기록 확인 하기
+                  </GoHomeButton>
+                </MovieButtonDiv>
+                
             </div>
         </Container>
     );

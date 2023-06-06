@@ -239,6 +239,20 @@ export const HallButton = styled.button<{answer: string, mode: boolean}>`
     `};
 `;
 
+
+export const HallButton2 = styled.button`
+    width:13vw;
+    height: 10vh;
+    margin:20px;
+    font-size: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+    background-color: #FFFFFF;
+    border: 5px dashed transparent;
+    box-shadow:  3px 3px 6px 3px #2b2a2a;
+    cursor: pointer;
+`;
+
 export const DescribeDiv = styled.div`
     font-size: 2rem;
     font-weight: 800;
@@ -289,4 +303,13 @@ export const MenuCost = styled.div`
 
 export const MenuCal = styled.div`
     color: #666666;
+`;
+
+export const HamburgerReusultBox = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.9em;
+    margin-top: 3em;
+    gap: 2rem;
 `;

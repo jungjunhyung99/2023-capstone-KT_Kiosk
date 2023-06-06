@@ -6,7 +6,7 @@ import { DescribeDiv, KioskBorderDiv, StartButton } from "../../component/kiosk-
 import { LaxicalContainer } from "../../component/index-component/styled_index";
 import { useNavigate } from "react-router-dom";
 import { useSetRecoilState } from "recoil";
-import { cafeTime } from "../../Atom/atom";
+import { CafeAnswer, IMode, cafeTime, practiceMode } from "../../Atom/atom";
 import check from "../../images/check.svg";
 import key from "../../images/key.svg";
 
@@ -14,11 +14,29 @@ import key from "../../images/key.svg";
 function Cafe_start() {
     const navigate = useNavigate();
     const setCafeTimer = useSetRecoilState(cafeTime);
-
+    const setModeRecoil = useSetRecoilState(practiceMode);
+    const setCafeAnswer = useSetRecoilState(CafeAnswer);
     const startClick = (index: boolean) => {
         navigate("/kiosk/cafe/main");
         setCafeTimer(Date.now());
-    }
+        setModeRecoil((prev: IMode) => ({...prev, cafe: index}));
+        setCafeAnswer([{
+            index: 0,
+            name: "고구마라떼",
+            quantity: 2
+        },
+        {
+            index: 1,
+            name: "초코케이크",
+            quantity: 2
+        },
+        {
+            index: 2,
+            name: "청포도 에이드",
+            quantity: 3
+        }
+        ])
+    };
 
     return (
         <LaxicalContainer>

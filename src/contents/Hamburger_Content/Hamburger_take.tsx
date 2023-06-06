@@ -4,6 +4,10 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import styled from "styled-components";
 import { fastObj, fastAnswer, practiceMode } from "../../Atom/atom";
 import { HallButton, TakeButton } from "../../component/kiosk-component/styled_hamburger";
+import { useState } from "react";
+import { Overlay } from "../../component/game-component/balloon-component";
+import { ModalCompleteButton, ModalNavBar, MovieExplain } from "../../component/kiosk-component/styled_movie";
+import AnimatedText from "../AnimatedText";
 
 const Container = styled(motion.div)`
     width: 40rem;
@@ -24,6 +28,7 @@ const Box = styled.div`
 
 function Hamburger_take() {
     const navigate = useNavigate();
+    const [modalMatch, setModalMatch] = useState(true)
     const [cafeRecoil, setCafeRecoil] = useRecoilState(fastObj);
     const [answerRecoil, setAnswerRecoil] = useRecoilState(fastAnswer);
     const modeRecoil = useRecoilValue(practiceMode);
@@ -52,6 +57,20 @@ function Hamburger_take() {
                         매장식사
                     </HallButton>
                 </Box>
+            {modeRecoil.hamburger && modalMatch ? 
+              <>
+              <Overlay/>
+              <MovieExplain>
+                <ModalNavBar>
+                  키오스크 지도
+                </ModalNavBar>
+                <AnimatedText text="일 부 키오스크에서는 포장하기 대신 take out 이라는 말을 사용해요!"/>
+                <ModalCompleteButton onClick={() => setModalMatch(false)}>확인하기</ModalCompleteButton>
+              </MovieExplain>
+              </>
+              :
+              null
+              }
             </div>
         </Container>
     );

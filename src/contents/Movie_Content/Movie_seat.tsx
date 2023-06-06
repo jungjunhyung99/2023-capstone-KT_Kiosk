@@ -1,13 +1,15 @@
 import { useNavigate } from "react-router";
-import { IAtomMovie, movieObj, movieTime, practiceMode, userIdAtom } from "../../Atom/atom";
+import { IAtomMovie, hamburgerTime, movieObj, movieTime, practiceMode, userIdAtom } from "../../Atom/atom";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { useEffect, useState } from "react";
 import { dbService, makeImagePath } from "../../Hook/Hook";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { BackButton, BackButtonContainer, MinusButton, MovieResult, PlusButton, SeatButton, TakenMovieTime } from "../../component/kiosk-component/styled_movie";
+import { BackButton, BackButtonContainer, MinusButton, ModalCompleteButton, ModalNavBar, MovieExplain, MovieResult, PlusButton, ResultNavBar, SeatButton, TakenMovieTime, TimeTakenDiv } from "../../component/kiosk-component/styled_movie";
 import { formatTime } from "./Movie_fx";
 import { doc, getFirestore, setDoc, updateDoc, FieldValue,arrayUnion, getDoc } from "firebase/firestore";
+import { Overlay } from "../../component/game-component/balloon-component";
+import AnimatedText from "../AnimatedText";
 
 const Container = styled(motion.div)`
   width: 50vw;
@@ -150,9 +152,10 @@ function Movie_seat(){
     const [seat2, setSeat2] = useState<ISeat[]>([]);
     const [seat3, setSeat3] = useState<ISeat[]>([]);
     const [timer,setTimer] = useRecoilState(movieTime);
-    const [timeTaken, setTimeTaken] = useState("");
+    const [timeTaken, setTimeTaken] = useRecoilState(movieTime);
     const [resultPrint, setResultPrint] = useState(false);
     const [editData, setEditData] = useState<any>();
+    const [modalMatch,setModalMatch] = useState(true);
     const modeRecoil = useRecoilValue(practiceMode);
     const userId = useRecoilValue(userIdAtom);
     const makeArray = (num: number) => {
@@ -266,32 +269,33 @@ function Movie_seat(){
     const nextPress = (num : number) => {
       setMovieRecoil({title:movieRecoil.title, time:movieRecoil.time, seat:num})
       const endTime = Date.now();
-      setTimeTaken(formatTime(endTime - timer));
+      console.log(((endTime - timer) % 60000) / 1000);
+      setTimeTaken(((endTime - timer) % 60000) / 1000);
       console.log(dbService);
       if(modeRecoil.movie){
         updateData(endTime - timer);
         navigate("/kiosk/movie/result");
       }
       else{
+        setTimeTaken(((endTime - timer) % 60000) / 1000);
         setResultPrint((prev: boolean) => !prev);
       }
-    }
+    };
 
     const plusPress = () => {
       setPerson(person+1);
-    }
+    };
     
     const minusPress = () => {
       if(person === 1 ) return;
       setPerson(person-1);
-    }
+    };
 
     const getMovies = async () => {
       const json = await (
         await fetch(
             `https://api.themoviedb.org/3/movie/now_playing?api_key=1e1dd98e7bbdb858a49359dbec86444f`
         )
-        
       ).json();
       setMovies(json);
     };
@@ -326,31 +330,47 @@ function Movie_seat(){
             <div style={{display:"block", margin:"0 auto", border:"3px solid white",width:"70%", marginTop:"20px",justifyContent:"center"}}><h2 style={{textAlign:"center"}}>screen</h2></div>
             <div style={{display:"flex",height:"80%",justifyContent:"center"}}>
             <Grid>
-                {seat1.map((num,index) => <Item key={index+10} onClick={()=>seatClick(index,1)} isActive={num.clicked} seatnum={0}>{num.seat_num}</Item>)}
+                {seat1.map((num,index) => <Item key={index+70} onClick={()=>seatClick(index,1)} isActive={num.clicked} seatnum={0}>{num.seat_num}</Item>)}
             </Grid>
             <LargeGrid> 
-                {seat2.map((num,index) => <Item key={index+30} onClick={()=>seatClick(index,2)} isActive={num.clicked} seatnum={1}>{num.seat_num}</Item>)}
+                {seat2.map((num,index) => <Item key={index+90} onClick={()=>seatClick(index,2)} isActive={num.clicked} seatnum={1}>{num.seat_num}</Item>)}
             </LargeGrid>
             <Grid>
-                {seat3.map((num,index) => <Item key={index+50} onClick={()=>seatClick(index,3)} isActive={num.clicked} seatnum={0}>{num.seat_num}</Item>)}
+                {seat3.map((num,index) => <Item key={index+100} onClick={()=>seatClick(index,3)} isActive={num.clicked} seatnum={0}>{num.seat_num}</Item>)}
             </Grid>
             </div>
             {num === 0 ? <SeatButton mode={modeRecoil.movie} onClick={() => nextPress(person)} isActive={num === 0}>예약하기</SeatButton> : <SeatButton mode={modeRecoil.movie} isActive={false}> <span style={{color:"#31CECA", fontSize: "2rem"}}>3개</span>의 좌석을 선택해주세요</SeatButton> }
             <Footer/>
             {resultPrint ? 
-              <MovieResult>
-                <TakenMovieTime>
-                  키오스크 주문완료
-                  {timeTaken}초
-                </TakenMovieTime>
-                <BackButtonContainer>
-                  <BackButton onClick={() => setResultPrint((prev: boolean) => !prev)}>다시하기</BackButton>
-                  <BackButton onClick={() => navigate("/")}>메인 화면으로 가기</BackButton>
-                </BackButtonContainer>
-              </MovieResult>
+              <>
+              <Overlay/>
+              <MovieExplain>
+                <ModalNavBar>
+                  키오스크 지도
+                </ModalNavBar>
+                <TimeTakenDiv>
+                  주문까지 {timeTaken.toFixed(0)}초 걸렸어요!
+                </TimeTakenDiv>
+                <ModalCompleteButton onClick={() => navigate("/")}>홈으로 가기</ModalCompleteButton>
+              </MovieExplain>
+              </>
               :
               null
             }
+             {modeRecoil.movie && modalMatch ? 
+              <>
+              <Overlay/>
+              <MovieExplain>
+                <ModalNavBar>
+                  키오스크 지도
+                </ModalNavBar>
+                <AnimatedText text="먼 저 인원수를 지정해주시고, 좌석을 선택해주세요!"/>
+                <ModalCompleteButton onClick={() => setModalMatch(false)}>확인하기</ModalCompleteButton>
+              </MovieExplain>
+              </>
+              :
+              null
+              }
           </Body>
         </Container>
     );

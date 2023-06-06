@@ -27,7 +27,7 @@ function Hamburger_start() {
     useEffect(() => {
         setAnswer({
             takeout:"매장식사",
-            beverage: "코키콜라",
+            beverage: "콜라",
             beverageCount: 2,
             food: "빅맥",
             foodCount: 3

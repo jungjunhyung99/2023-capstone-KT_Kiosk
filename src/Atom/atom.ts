@@ -104,6 +104,7 @@ export const movieAnswer = atom<IMovieAnswer>({
 })
 
 export interface IAtomCafe {
+    index: number;
     name: string;
     quantity: number;
 }

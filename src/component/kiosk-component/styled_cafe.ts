@@ -33,6 +33,16 @@ export const CafeContainer = styled(motion.div)`
     height: 100vh;
 `;
 
+
+export const CafeContainer2 = styled(motion.div)`
+    display:flex;
+    flex-direction: column;
+    width: 65%;
+    align-items: center;
+    background-color: white;
+    height: 100vh;
+`;
+
 export const MenuContainer = styled(motion.div)`
     display: flex;
     flex-direction: column;
@@ -52,6 +62,22 @@ export const Head = styled.div`
   margin-bottom: 20px;
 `;
 
+export const Head2 = styled.div`
+  display: flex;
+  position: relative;
+  top:0;
+  color: white;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  font-weight: 800;
+  width: 100%;
+  height: 10rem;
+  flex-direction  : column;
+  background-color: #212020;
+  margin-bottom: 20px;
+`;
+
 export const Info = styled(motion.div)`
   padding: 10px;
   opacity: 0;
@@ -63,7 +89,7 @@ export const Info = styled(motion.div)`
   }
 `;
 
-export const Box = styled(motion.div)<{bgphoto: string,index:number}>`
+export const Box = styled(motion.div)<{bgphoto: string,index:number,mode: boolean}>`
     background-image: url(${(props)=>props.bgphoto});
     background-size: cover;
     height: 60%;
@@ -72,14 +98,27 @@ export const Box = styled(motion.div)<{bgphoto: string,index:number}>`
     cursor: pointer;
     background-position: center center;
     margin: 0 auto;
-    border: ${(props) => props.index === 1 ? "2px dashed transparent" : "2px solid"};
+    border: 2px solid;
             ${(props) => 
-        props.index === 1 &&
+        props.index === 1 && props.mode &&
         css`
         border-color: red;
         animation: ${cafeFadeInOut} 2s infinite;
         `};
 `;
+
+export const Box2 = styled(motion.div)<{bgphoto: string}>`
+    background-image: url(${(props)=>props.bgphoto});
+    background-size: cover;
+    height: 10rem;
+    width: 10rem;
+    font-size: 30px;
+    cursor: pointer;
+    background-position: center center;
+    margin: 0 auto;
+    border: 2px solid;
+`;
+
 
 export const SmallBox = styled(motion.div)<{bgphoto: string}>`
     background-image: url(${(props)=>props.bgphoto});
@@ -259,6 +298,11 @@ export const ModalButton = styled.button<{active: boolean}>`
   cursor: pointer;
 `;
 
+export const CafeResultContainer = styled.div`
+  display: flex;
+  min-height: 100vh;
+  background-color: white;
+`;
 
 export interface Ikiosk {
     id: string;
@@ -286,3 +330,33 @@ export interface IPay {
     level: string;
     basket: ICondiment[];
 };
+
+export const CafeResultDiv = styled.div`
+  display: flex;
+  gap: 5rem;
+  align-items: center;
+  min-height: 50vh;
+  padding: 0 3rem;
+`;
+
+export const CafeResultBox = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const CafeRecordBox = styled.div`
+  display: flex;
+  color: black;
+  font-size: 2rem;
+  margin-top: 4rem;
+  font-weight: 700;
+  width: 100%;
+  justify-content: center;
+`;
+
+export const CafeRecordButtonDiv = styled.div`
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  gap: 10rem;
+`;
