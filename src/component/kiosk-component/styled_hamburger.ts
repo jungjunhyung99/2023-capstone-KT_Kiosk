@@ -15,6 +15,20 @@ const fadeInOut = keyframes`
   }
 `;
 
+const initFadeInOut = keyframes`
+ 0% {
+    box-shadow: 0 0 0 0 rgba(0, 161, 28, 0.7);
+    border-color: transparent;
+  }
+  50%{
+    border-color: red;
+  }
+  100% {
+    border-color: transparent;
+    box-shadow: 0 0 0 2rem rgba(0, 161, 28, 0);
+  }
+`;
+
 export const HamburgerContainer = styled(motion.div)`
     display:flex;
     flex-direction: column;
@@ -167,7 +181,7 @@ export const NextButton3 = styled(NextButton)<{isActive:boolean}>`
     cursor:pointer;
 `;
 
-export const InitButton = styled.div`
+export const InitButton = styled.div<{mode: boolean}>`
     display: block;
     background-color: #00B01F;
     height:15%;
@@ -179,12 +193,16 @@ export const InitButton = styled.div`
         background-color: #027317;
         transition: all ease 0.6s 0s;
     }
-    border: 4px dashed white;
-    animation: ${fadeInOut} 2s infinite;
+    ${props =>
+    props.mode &&
+    css`
+      border: 4px dashed transparent;
+      animation: ${fadeInOut} 2s infinite;
+    `}
 `;
 
 
-export const TakeButton = styled.button<{answer: string}>`
+export const TakeButton = styled.button<{answer: string, mode: boolean}>`
     width:13vw;
     height: 10vh;
     margin:20px;
@@ -192,19 +210,17 @@ export const TakeButton = styled.button<{answer: string}>`
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 700;
     background-color: #FFFFFF;
-    border:none;
     box-shadow:  3px 3px 6px 3px #2b2a2a;
     cursor: pointer;
-    
     ${(props) =>
-    props.answer === "포장주문" &&
+    props.answer === "포장주문" && props.mode &&
     css`
-      border-color: red;
+      border: 2px dashed transparent;
       animation: ${fadeInOut} 2s infinite;
     `};
 `;
 
-export const HallButton = styled.button<{answer: string}>`
+export const HallButton = styled.button<{answer: string, mode: boolean}>`
     width:13vw;
     height: 10vh;
     margin:20px;
@@ -212,42 +228,63 @@ export const HallButton = styled.button<{answer: string}>`
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: 700;
     background-color: #FFFFFF;
-    border:none;
+    border: 5px dashed transparent;
     box-shadow:  3px 3px 6px 3px #2b2a2a;
     cursor: pointer;
-    
     ${(props) =>
-    props.answer !== "포장주문" &&
+    props.answer !== "포장주문" && props.mode &&
     css`
       border-color: red;
       animation: ${fadeInOut} 2s infinite;
     `};
+`;
+
+
+export const HallButton2 = styled.button`
+    width:13vw;
+    height: 10vh;
+    margin:20px;
+    font-size: 30px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 700;
+    background-color: #FFFFFF;
+    border: 5px dashed transparent;
+    box-shadow:  3px 3px 6px 3px #2b2a2a;
+    cursor: pointer;
 `;
 
 export const DescribeDiv = styled.div`
     font-size: 2rem;
+    font-weight: 800;
     color: white;
 `;
 
 export const KioskBorderDiv = styled.div`
     border: 3px solid #DEE3EA;
     background-color: white;
+    margin: 2rem 0;
+`;
+
+export const ModeButtonDiv = styled.div`
+    display: flex;
+    flex-direction: column;
 `;
 
 
 export const StartButton = styled.div`
     display: flex;
-    width: 80%;
+    width: 50%;
     height: 10rem;
     margin-top: 5rem;
     align-items: center;
-    justify-content: center;
-    background-color: #2BB7B3;
+    padding-left: 5rem;
+    background-color: white;
     border: 3px solid black;
     border-radius: 2rem;
     font-size: 2rem;
     font-weight: 700;
     cursor: pointer;
+    box-shadow: 1px 2px 0px 1px gray;
     transition: transform 0.2s ease-in-out;
     &:hover{
         transform: scale(1.1);
@@ -266,4 +303,13 @@ export const MenuCost = styled.div`
 
 export const MenuCal = styled.div`
     color: #666666;
+`;
+
+export const HamburgerReusultBox = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.9em;
+    margin-top: 3em;
+    gap: 2rem;
 `;

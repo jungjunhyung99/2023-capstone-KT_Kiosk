@@ -171,7 +171,7 @@ export const cafeItem3 = [
 export const BerverageMenu : IFastItem[] = [
     {   id: "1",
         category: "음료수",   
-        name: "코키콜라",
+        name: "콜라",
         cost: 2000,
         cal: 120,
         quantity: 1,

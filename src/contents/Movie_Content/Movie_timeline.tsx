@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import { useRecoilState } from "recoil";
-import { IAtomMovie, movieObj } from "../../Atom/atom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { IAtomMovie, movieObj, practiceMode } from "../../Atom/atom";
 import { makeImagePath } from "../../Hook/Hook";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { TimeBox, TimelineDiv } from "../../component/kiosk-component/styled_movie";
+import { ModalCompleteButton, ModalNavBar, MovieExplain, TimeBox, TimelineDiv } from "../../component/kiosk-component/styled_movie";
+import AnimatedText from "../AnimatedText";
+import { Overlay } from "../../component/game-component/balloon-component";
 
 const Container = styled(motion.div)`
   width: 50vw;
@@ -102,8 +104,10 @@ function Movie_timeline() {
   const navigate = useNavigate();
   const [movies, setMovies] = useState<IGetMoives>();
   const [movieRecoil, SetMovieRecoil] = useRecoilState<IAtomMovie>(movieObj);
-  const TimeClick = (timeline:string) => {
-    SetMovieRecoil({title:movieRecoil.title, seat:0,time:timeline});
+  const modeRecoil = useRecoilValue(practiceMode);
+  const [modalMatch, setModalMatch] = useState(true);
+  const TimeClick = (timeline:string, index: number) => {
+    SetMovieRecoil({title:movies?.results[index].title as string, seat:0,time:timeline});
     navigate("/kiosk/movie/seat");
   };
     const getMovies = async () => {
@@ -119,6 +123,7 @@ function Movie_timeline() {
     useEffect(() => {
       getMovies();
     }, []);
+
   return (
     <Container
     initial={{opacity: 0}}
@@ -130,7 +135,7 @@ function Movie_timeline() {
           <div style={{display:"flex",flexDirection:"column",color:"white",height:"100vh"}}>
             <Banner bgPhoto={makeImagePath(movies?.results[4].backdrop_path || "")}/>
             {movies?.results.slice(0,3).map((movie,index) => (
-               <TimelineDiv idx={index} key={index}>
+               <TimelineDiv mode={modeRecoil.movie}idx={index} key={index}>
               <Box bgPhoto={makeImagePath(movie?.poster_path)}>
               </Box>
               <div style={{display:"flex", flexDirection:"column"}}>
@@ -138,17 +143,34 @@ function Movie_timeline() {
                   <p style={{fontWeight:"500",fontSize:"20px"}}>{movie.title}</p>
                 </div>
                 <div style={{display:"flex", flexWrap:"wrap",transform:"translateY(-15%)"}}>
-                  {when.time.map((time,index) => <TimeBox onClick={() => TimeClick(time)}>
+                  {when.time.map((time,index2:number) => 
+                  <TimeBox 
+                  key={index + 30}
+                  onClick={() => TimeClick(time,index)}>
                     <p>
-                    {when.time[index]}
+                    {when.time[index2]}
                     <br/>
-                    {when.seat[index]}
+                    {when.seat[index2]}
                     </p>
                     </TimeBox>)}
                 </div>
               </div>
               </TimelineDiv>
               ))}
+              {modeRecoil.movie && modalMatch ? 
+              <>
+              <Overlay/>
+              <MovieExplain>
+                <ModalNavBar>
+                  키오스크 지도
+                </ModalNavBar>
+                <AnimatedText text="화 면에 빨간색으로 빛나는 부분 중에서 시간을 선택해주세요!"/>
+                <ModalCompleteButton onClick={() => setModalMatch(false)}>확인하기</ModalCompleteButton>
+              </MovieExplain>
+              </>
+              :
+              null
+              }
           <Footer>
             <BackButton onClick={()=>navigate(-1)}>←</BackButton>
             <HomeButton></HomeButton>

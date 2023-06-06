@@ -2,13 +2,14 @@ import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import styled, { css } from "styled-components";
-import { useRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { BerverageMenu, HamburgerMenu } from "../Cafe_Content/data";
-import { IFastItem, fastObj } from "../../Atom/atom";
+import { IFastItem, fastObj, practiceMode } from "../../Atom/atom";
 import Bigmac from "../../images/BigMac.png";
 import { FlexBox, HamburgerImageBox, ImageBox, MenuBox } from "../../component/kiosk-component/styled_kiosk";
 import { MenuCal, MenuCost, MenuTitle } from "../../component/kiosk-component/styled_hamburger";
-import { menuFadeInOut } from "../../component/kiosk-component/styled_movie";
+import { ModalCompleteButton, ModalNavBar, MovieExplain, menuFadeInOut } from "../../component/kiosk-component/styled_movie";
+import AnimatedText from "../AnimatedText";
 
 const Container = styled(motion.div)`
     display:flex;
@@ -32,10 +33,12 @@ const Navbar = styled.nav`
 
 const NavButton = styled(motion.button)`
     border-radius: 3em;
-    margin:10px;
-    width:1.5em;
-    height: 1.5em;
-    font-size: 30px;
+    margin-left: 0.5rem;
+    margin-top: 2rem;
+    width: 4rem;
+    height: 4rem;
+    font-weight: 800;
+    font-size: 20px;
     border:none;
     background-color: #9e9b9b;
     color: white;
@@ -59,7 +62,7 @@ const Menu = styled(motion.div)`
     }
 `;
 
-const ItemBox = styled(motion.div)<{index: number}>`
+const ItemBox = styled(motion.div)<{index: number, mode: boolean}>`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,12 +77,11 @@ const ItemBox = styled(motion.div)<{index: number}>`
     box-shadow:  3px 3px 3px 3px rgba(38, 38, 69, 0.3);
     border: 2px dashed transparent;
         ${(props) => 
-        props.index === 0 &&
+        props.index === 0 && props.mode &&
         css`
         border-color: red;
         animation: ${menuFadeInOut} 2s infinite;
       `};
-
 `;
 
 const Footer = styled.footer`
@@ -204,6 +206,9 @@ function Hamburger_choice() {
     const [selectMenu, setSelectMenu] = useState<IFastItem | null>();
     const [quantity, setQuantity] = useState(1);
     const [cost, setCost] = useState(0);
+    const [modalMatch, setModalMatch] = useState(true);
+    const modeRecoil = useRecoilValue(practiceMode);
+
     const NavClick = (name: string) => {
         if(name === "A"){
             setMenu(BerverageMenu);
@@ -268,8 +273,8 @@ function Hamburger_choice() {
             exit={{opacity: 0}}>
                 <Body>
                     <Navbar>
-                        <NavButton onClick={()=>NavClick("A")}>A</NavButton>
-                        <NavButton onClick={()=>NavClick("B")}>B</NavButton>
+                        <NavButton onClick={()=>NavClick("A")}>음료</NavButton>
+                        <NavButton onClick={()=>NavClick("B")}>음식</NavButton>
                     </Navbar>
                     <MenuContainer>
                             <h1 style={{color:"black", fontSize:"2em"}}>
@@ -278,7 +283,7 @@ function Hamburger_choice() {
                         <Menu>
                             {menu.map((menu, index:number) => 
                             <ItemBox 
-                            key={menu.id} layoutId={menu.id} onClick={()=>BoxClicked(menu,menu.id as string)} index={index}
+                            key={menu.id} layoutId={menu.id} mode={modeRecoil.hamburger} onClick={()=>BoxClicked(menu,menu.id as string)} index={index}
                             >
                                 <MenuBox>
                                     <HamburgerImageBox image={menu.img}/>
@@ -298,14 +303,28 @@ function Hamburger_choice() {
                                             <div style={{display:"flex",justifyContent:"center",backgroundColor:"#E2E2E2", fontSize:"45px", width:"50px",height:"100%"}}>{quantity}</div>
                                         <QuantityButton onClick={plusClicked}>+</QuantityButton>
                                         </CountBox>
-                                        <div style={{}}>
+                                        <div>
                                             <NextButton onClick={cancleClicked}>취소하기</NextButton>
                                             <NextButton onClick={okClicked}>메뉴에 추가하기</NextButton>
                                         </div>
                                     </QuantityBox>
                                     </>
                                 )}
-                            </AnimatePresence>    
+                            </AnimatePresence>
+                            {modeRecoil.hamburger && modalMatch ? 
+                            <>
+                            <Overlay/>
+                            <MovieExplain>
+                                <ModalNavBar>
+                                키오스크 지도
+                                </ModalNavBar>
+                                <AnimatedText text="왼 쪽 메뉴바를 이용해서 음료와 음식을 선택해주세요!"/>
+                                <ModalCompleteButton onClick={() => setModalMatch(false)}>확인하기</ModalCompleteButton>
+                            </MovieExplain>
+                            </>
+                            :
+                            null
+                            }    
                         </Menu>
                     </MenuContainer>
                 </Body>
