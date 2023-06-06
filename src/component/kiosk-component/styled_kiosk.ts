@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import KTIcon from "../../images/KTLogo3.svg"
+import KTIcon2 from "../../images/ktLogo2.svg"
 
 export const NavBar = styled.div`
     display: flex;
@@ -11,6 +12,16 @@ export const NavBar = styled.div`
     height: 10rem;
     width: 100%;
     border-radius: 0px 0px 100px 100px;
+`;
+
+export const RecordNavBar = styled.div`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background-color: #2BB7B3;
+    height: 10rem;
+    width: 100%;
 `;
 
 export const FlexBox = styled.div`
@@ -33,6 +44,17 @@ export const ImageBox = styled.div<{image: any}>`
     align-items: center;
     width: 3rem;
     height: 6rem;
+    background-image: url(${(props) => props.image});
+    background-size: cover;
+`;
+
+export const ModeBox = styled.div<{image: any}>`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 8rem;
+    height: 8rem;
+    margin-right: 3rem;
     background-image: url(${(props) => props.image});
     background-size: cover;
 `;
@@ -70,6 +92,8 @@ export const KioskContainer2 = styled(KioskContainer)`
 `;
 
 export const KioskStartContainer = styled(KioskContainer)`
+    display: flex;
+    flex-direction: column;
     transform: translateY(-45%);
     gap: 2rem;
 `;
@@ -86,6 +110,7 @@ export const PrevButton = styled.button`
     box-shadow: 0px 1px 2px 1px gray;
     margin-left: 2rem;
     cursor: pointer;
+    z-index: 100;
 `;
 
 export const NextButton = styled(PrevButton)`
@@ -95,6 +120,7 @@ export const NextButton = styled(PrevButton)`
 `;
 
 export const KTLogo = styled.div`
+    display: flex;
     position: relative;
     right: 3rem;
     width:10rem;
@@ -102,6 +128,20 @@ export const KTLogo = styled.div`
     border-radius: 3rem;
     background-size:cover;
     background-image: url(${KTIcon});
+    path{
+            fill: white;
+    }
+    align-items: center;
+    justify-content: center;
+`;
+
+export const KTLogo2 = styled.div`
+    right: 3rem;
+    width:10rem;
+    height: 10rem;
+    border-radius: 3rem;
+    background-size:cover;
+    background-image: url(${KTIcon2});
     path{
             fill: white;
     }

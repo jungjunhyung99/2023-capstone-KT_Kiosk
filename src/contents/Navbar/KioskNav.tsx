@@ -6,7 +6,7 @@ function Kiosk_Nav() {
     return(
         <NavBar> 
             <PrevButton onClick={() => navigate(-1)}>이전 화면으로</PrevButton>
-            <NextButton onClick={() => navigate(-1)}>처음 화면으로</NextButton>
+            <NextButton onClick={() => navigate("/")}>처음 화면으로</NextButton>
         </NavBar>
     );
 }

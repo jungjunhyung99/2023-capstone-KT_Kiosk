@@ -2,11 +2,11 @@ import React, { PropsWithChildren } from "react";
 import styled from "styled-components";
 
 interface ModalDefaultType {
-  onClickToggleModal: () => void;
+  onClickToggleModal2: () => void;
 }
 
-function Modal_Result({
-  onClickToggleModal,
+function Modal_Result2({
+  onClickToggleModal2,
   children,
 }: PropsWithChildren<ModalDefaultType>) {
   return (
@@ -16,8 +16,8 @@ function Modal_Result({
         onClick={(e: React.MouseEvent) => {
           e.preventDefault();
 
-          if (onClickToggleModal) {
-            onClickToggleModal();
+          if (onClickToggleModal2) {
+            onClickToggleModal2();
           }
         }}
       />
@@ -48,6 +48,8 @@ const DialogBox = styled.dialog`
     box-sizing: border-box;
     background-color: #B2EBF4;
     z-index: 10000;
+    font-size: 35px;
+    font-weight: bold;
 `;
 
 const Backdrop = styled.div`
@@ -58,4 +60,4 @@ const Backdrop = styled.div`
     position: relative;
 `;
 
-export default Modal_Result;
+export default Modal_Result2;

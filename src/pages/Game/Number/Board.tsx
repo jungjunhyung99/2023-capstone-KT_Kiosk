@@ -20,7 +20,7 @@ const Container=styled.div`
     grid-template-columns: repeat(5,1fr);
     grid-template-columns: repeat(5,1fr);
     
-    height: 500px;
+    height: 700px;
     width: 500px;
 `;
 
