@@ -162,13 +162,6 @@ function Icecream_cone() {
         {return (<FAILURETEXT>"실패하셨습니다!"</FAILURETEXT>);}
     }
 
-    function PERCENT_PRINT() {
-        let PERCENT_VALUE = Math.round(tube_number2/3*100);
-
-        if (tube_number2 <= 3) return PERCENT_VALUE;
-        else if ((tube_number2==0) || (tube_number2>3)) return 50;
-    }
-
     const bar_number1 = useRecoilValue(number5);
     const bar_number2 = useRecoilValue(number6);
     const bar_number3 = useRecoilValue(number7);
@@ -760,8 +753,7 @@ function Icecream_cone() {
                                     <Total>총 금액 : {2500*cone_number1 + 2200*cone_number2 + 2500*cone_number3 + 3500*cone_number4 
                                         + 2500*bar_number1 + 2000*bar_number2 + 2500*bar_number3 + 2000* bar_number4
                                         + 3500*tube_number1 + 3000*tube_number2 + 3500*tube_number3 + 3000*tube_number4
-                                        + 3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원, 
-                                        정답률 : {PERCENT_PRINT()}%
+                                        + 3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원 
                                     </Total>
                                     <Close onClick={() => setOpenModal(false)}>닫기</Close> 
                                 </Modal_Result2>
