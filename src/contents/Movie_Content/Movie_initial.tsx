@@ -2,15 +2,17 @@ import styled from "styled-components";
 import {useEffect, useState} from "react";
 import { makeImagePath } from "../../Hook/Hook";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
-import { IAtomMovie, IGetMoives, movieObj } from "../../Atom/atom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { IAtomMovie, IGetMoives, movieObj, practiceMode } from "../../Atom/atom";
 import { title } from "process";
 import { motion } from "framer-motion";
 import GameNav from "../Navbar/GameNav";
-import { AnimatedDiv, MovieChoiceDiv, MovieContentDiv, MovieGuideDiv } from "../../component/kiosk-component/styled_movie";
+import { AnimatedDiv, ModalCompleteButton, ModalNavBar, MovieChoiceDiv, MovieContentDiv, MovieExplain, MovieGuideDiv } from "../../component/kiosk-component/styled_movie";
 import ticket from "../../images/ticket.svg";
 import smartphone from "../../images/smartphone.svg";
 import Clock from "./Clock";
+import { Overlay } from "../../component/game-component/balloon-component";
+import AnimatedText from "../AnimatedText";
 
 const Container = styled(motion.div)`
   width: 50vw;
@@ -57,6 +59,8 @@ function Movie_initial(){
     const navigate = useNavigate();
     const [movies, setMovies] = useState<IGetMoives>();
     const [movieRecoil, setMovieRecoil] = useRecoilState<IAtomMovie>(movieObj);
+    const modeRecoil = useRecoilValue(practiceMode);
+    const [modalMatch, setModalMatch] = useState(true);
     const BoxClicked = (MovieTitle: string) => {
       setMovieRecoil({title:MovieTitle, seat:0, time:""});
       navigate("/Menu/home/hard/cgv/when");
@@ -70,12 +74,12 @@ function Movie_initial(){
       ).json();
       if(json){
         setMovies(json);
-    }
+      }
     };
     useEffect(() => {
       getMovies();
     }, []);
-    console.log(movies);
+    
     return (
       <div style={{display:"flex", flexDirection:"column", alignItems:"center",overflow:"scroll"}}>
           <Container
@@ -86,7 +90,7 @@ function Movie_initial(){
               }}}
               exit={{opacity: 0}}>
             <div style={{display:"flex",flexDirection:"column",justifyContent:"center"}}>
-              <Banner bgPhoto={makeImagePath(movies?.results[4].backdrop_path || "")}/>
+              <Banner bgPhoto={makeImagePath(movies?.results[1].backdrop_path || "")}/>
               <div style={{color:"#666666", display:"flex",flexDirection:"column",width:"100%",alignItems:"center"}}>
                 <Clock/>
               </div>
@@ -94,7 +98,7 @@ function Movie_initial(){
                 <MovieContentDiv>
                   <MovieGuideDiv onClick={() => navigate("/kiosk/movie/fast")}>
                     <MovieChoiceDiv bgimage={ticket}/>
-                    <AnimatedDiv style={{color:"#9B2F7B"}}>티켓 예매하기</AnimatedDiv>
+                    <AnimatedDiv mode={modeRecoil.movie}style={{color:"#9B2F7B"}}>티켓 예매하기</AnimatedDiv>
                   </MovieGuideDiv>
                   <hr/>
                   <MovieGuideDiv>
@@ -107,6 +111,20 @@ function Movie_initial(){
             <div style={{width:"100%",display:"flex", justifyContent:"center"}}>
               <Button onClick={() => navigate("/")}>홈으로 가기</Button>
             </div>
+            {modeRecoil.movie && modalMatch ? 
+              <>
+              <Overlay/>
+              <MovieExplain>
+                <ModalNavBar>
+                  키오스크 지도
+                </ModalNavBar>
+                <AnimatedText text="티 켓은 입장권과 같은 표를 말해요!  희는 티켓을 직접 예매해 볼 거에요!"/>
+                <ModalCompleteButton onClick={() => setModalMatch(false)}>확인하기</ModalCompleteButton>
+              </MovieExplain>
+              </>
+              :
+              null
+              }
           </Container>
         </div>
     );

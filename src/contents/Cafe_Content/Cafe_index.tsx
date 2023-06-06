@@ -1,18 +1,26 @@
 import { useNavigate } from "react-router-dom";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { CafeAnswer, IAtomCafe, ICafe, cafeObj } from "../../Atom/atom";
+import { CafeAnswer, IAtomCafe, ICafe, cafeObj, cafeTime, practiceMode } from "../../Atom/atom";
 import { Box, Button, CafeContainer, CafeCostDiv, CafeHomeButton, CafePayDiv, Head, IItem, IPay, Ikiosk, Li, MenuContainer, Order, OrderSlider, QuantityButton, Row, SmallBox, StyledLink, Ul, XButton, boxVariant, rowVariants, smboxVariant } from "../../component/kiosk-component/styled_cafe";
 import { useEffect, useState } from "react";
 import { cafeItem, cafeItem2, cafeItem3 } from "./data";
 import { AnimatePresence } from "framer-motion";
 import GameNav from "../Navbar/GameNav";
 import Modal from "./Modal";
+import { formatTime } from "../Movie_Content/Movie_fx";
+import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore";
+import { dbService } from "../../Hook/Hook";
+import { Overlay } from "../../component/game-component/balloon-component";
+import { ModalCompleteButton, ModalNavBar, MovieExplain, TimeTakenDiv } from "../../component/kiosk-component/styled_movie";
+import AnimatedText from "../AnimatedText";
 
 const offset = 4;
 
 function Cafe_index () {
     const navigate = useNavigate();
     const [showModal, setShowModal] = useState(false);
+    const [modeRecoil,setModeRecoil] = useRecoilState(practiceMode);
+    const [modalMatch, setModalMatch] = useState(true);
     const [menuRecoil,SetMenuRecoil] = useRecoilState<IAtomCafe[]>(cafeObj);
     const [menu, setKiosk] = useState<Ikiosk[]>(cafeItem);
     const [index, setIndex] = useState(0);
@@ -22,7 +30,10 @@ function Cafe_index () {
     const [focus,setFocus] = useState(0);
     const [send, setSend] = useState<IPay>();
     const [condiment,setCondiment] = useState<IItem>();
+    const [resultPrint, setResultPrint] = useState(false);
+    const [timeTaken, setTimeTaken] = useRecoilState(cafeTime);
     const answer = useRecoilValue<ICafe[]>(CafeAnswer);
+    const [timer, setTimer] = useRecoilState(cafeTime);
     const toggleLeaving = () => setLeaving((prev) => !prev);
     const onBackClick = () => navigate(-1);
     const increaseIndex = (array:Ikiosk[]) => {
@@ -87,45 +98,42 @@ function Cafe_index () {
             }
         }
     };
-    
-    
-    const onPayClicked = (obj: Ikiosk[]) => {
-        let item2 = [];
-        for(let i = 0; i < obj.length; i++){
-            const item = {
-                name: obj[i].name,
-                quantity: obj[i].quantity,
-            };
-            item2.push(item);
+
+    const updateData = async (time: number) => {
+        try {
+          const docId = "c5EkUB47lyWaKnU36b5c";
+          const docRef = doc(dbService, 'kiosk-record', docId); 
+      
+          const docSnap = await getDoc(docRef);
+          const data = docSnap.data();
+          console.log(data);
+  
+          await updateDoc(docRef, {
+            "data.cafe.time": arrayUnion(parseInt(((time % 60000) / 1000).toFixed(0)))
+          });
+          console.log('문서 업데이트 완료');
+        } catch (error) {
+          console.error('문서 업데이트 중 오류 발생:', error);
         }
-    setSend({
-        store: "cafe",
-        level: "middle",
-        basket:[
-            ...item2
-        ]
-    });
-    
-    fetch("http://minho2618.dothome.co.kr/test1/api/kiosk_answer.php",{
-        method: "POST",
-        headers:{
-            'Content-Type': 'application/json',
-            'Accept': 'application/json',
-        },
-        body: JSON.stringify(
-          send  
-        ),
-    }).then((response) => response.json()).then((result) => setCondiment(result));
-    
-    };
+      };
 
     const onPayClicked2 = (obj: Ikiosk[]) => {
-        let arr:IAtomCafe[] = [];
-        for(let i = 0; i < obj.length ; i++){
-            arr.push({name:obj[i].name, quantity: obj[i].quantity});
+        const endTime = Date.now();
+            if(modeRecoil.cafe){
+                let arr:IAtomCafe[] = [];
+            for(let i = 0; i < obj.length ; i++){
+                arr.push({index: i, name:obj[i].name, quantity: obj[i].quantity});
+            }
+            SetMenuRecoil(arr);
+            setTimeTaken(((endTime - timer)) / 1000);
+            updateData(endTime - timer);
+            navigate("/kiosk/cafe/result");
         }
-        SetMenuRecoil(arr);
-        navigate("/Menu/home/hard/cafe/payment");
+        else{
+            setTimeTaken(((endTime - timer)) / 1000);
+            setResultPrint((prev: boolean) => !prev);
+        }
+        
     };
 
     const XClicked = (num: number) => {
@@ -188,7 +196,8 @@ function Cafe_index () {
                 variants={boxVariant} initial whileHover="hover" 
                 transition={{type:"tween"}}
                 onClick={() => onBoxClicked(obj.id, obj)}
-                index={index}>
+                index={index}
+                mode={modeRecoil.cafe}>
                 </Box>
                 <div style={{display:"flex",flexDirection:"column",alignItems:"center"}}>
                     <div style={{fontSize:"23px", fontWeight:"bold"}}>{obj.name}</div>
@@ -236,6 +245,39 @@ function Cafe_index () {
                                 </Order>
                             </OrderSlider>
                         <Button onClick={() => increaseIndex(choice)}>{'>'}</Button>
+                        
+                        {modeRecoil.cafe && modalMatch ? 
+                        <>
+                        <Overlay/>
+                        <MovieExplain>
+                            <ModalNavBar>
+                            키오스크 지도
+                            </ModalNavBar>
+                            <AnimatedText text="라 떼는 우유를 탄 에스프레소 커피에요! 고구마라떼를 선택해주세요!"/>
+                            <ModalCompleteButton onClick={() => setModalMatch(false)}>확인하기</ModalCompleteButton>
+                        </MovieExplain>
+                        </>
+                        :
+                        null
+                        }
+
+                    {resultPrint ? 
+                    <>
+                    <Overlay/>
+                    <MovieExplain>
+                        <ModalNavBar>
+                        키오스크 지도
+                        </ModalNavBar>
+                        <TimeTakenDiv>
+                        주문까지 {timeTaken.toFixed(0)}초 걸렸어요!
+                        </TimeTakenDiv>
+                        <ModalCompleteButton onClick={() => navigate("/")}>홈으로 가기</ModalCompleteButton>
+                    </MovieExplain>
+                    </>
+                    :
+                    null
+                    }
+
                         </div>
             <div style={{display:"flex", fontSize:"20px", alignItems:"center"}}>
             <CafeCostDiv style={{}}><h4>{cost}원</h4></CafeCostDiv>

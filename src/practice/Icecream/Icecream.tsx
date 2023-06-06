@@ -7,8 +7,7 @@ import { css, keyframes } from "styled-components";
 
 function Icecream() {
     const navigate = useNavigate();
-    const modeRecoil = useRecoilValue(practiceMode2);
-
+    
     const onClickIcecreamCone = () => {
         navigate('/kiosk/Icecream_cone');
     }
@@ -26,7 +25,7 @@ function Icecream() {
     }
 
     const onClickKiosk = () => {
-        navigate('/kiosk/Icecream_start');
+        navigate('/kiosk');
     }
 
     const cone_number1 = useRecoilValue(number1);
@@ -56,8 +55,8 @@ function Icecream() {
         {return;}
     }
 
-    function PRINT() {
-        return (<Main_Text>상단 메뉴를 선택해주세요.</Main_Text>);
+    function QUESTION_PRINT() {
+        return "위의 Tube에 있는 " + "빠삐코" + " 아이스크림을 " + "3" + "개 골라주세요.";
     }
 
     const Title = styled.div`
@@ -65,97 +64,53 @@ function Icecream() {
         font-size: 45px;
         display: flex;
         justify-content: center;
-        background-color: #008299;
+        background-color: #CCA63D;
         height: 100px;
         font-style: italic;
         align-items: center;
-        font-weight: bold;
-        `;
+    `;
 
     const List = styled.div`
         width: 80vw;
         height: 80px;
         display: flex;
-        background-color: #3DB7CC;
+        background-color: #FFE08C;
     `;
 
-    const ConeButton = styled.div`
-        font-size: 35px;
-        background-color: #3DB7CC;
+    const ConeButton = styled.button`
+        font-size: 30px;
+        background-color: #FFE08C;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
-        width:27%;
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-        font-weight: bold;
-    `;
+        width: 25%;
+     `;
 
-    const BarButton = styled.div`
-        font-size: 35px;
-        background-color: #3DB7CC;
+    const BarButton = styled.button`
+        font-size: 30px;
+        background-color: #FFE08C;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
-        width: 27%;
-        margin-left: 15px;
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-        font-weight: bold;
+        width: 25%;
     `;
 
-    const fadeInOut = keyframes`
-        0% {
-            box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
-            border-width: 4px;
-        }
-        50%{
-            border-color: red;
-        }
-        100% {
-            border-color: black;
-            box-shadow: 0 0 0 1.03rem rgba(255, 0, 0, 0);
-        }
-        `;
-        
-    const TubeButton = styled.div<{mode: boolean}>`
-        font-size: 35px;
-        background-color: #3DB7CC;
+    const TubeButton = styled.button`
+        font-size: 30px;
+        background-color: #FFE08C;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
-        width: 27%;
-        ${(props) =>
-            props.mode &&
-            css`
-                border: 4px dashed transparent;
-                animation: ${fadeInOut} 2s infinite;
-            `}
-        margin-left: 15px;
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-        font-weight: bold;
+        width: 25%;
     `;
 
-    const FamilyButton = styled.div`
-        font-size: 35px;
-        background-color: #3DB7CC;
+    const FamilyButton = styled.button`
+        font-size: 30px;
+        background-color: #FFE08C;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
-        width: 27%;
-        margin-left: 15px;
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-        font-weight: bold;
-    `;
-
-    const Main_Text = styled.div`
-        font-size: 36px;
+        width: 25%;
     `;
 
     const Introduce = styled.div`
@@ -169,7 +124,7 @@ function Icecream() {
     `;  
 
     const Before = styled.button`
-        font-size: 35px;
+        font-size: 30px;
         font-weight: bold;
         position: relative;
         top: 0px;
@@ -178,9 +133,9 @@ function Icecream() {
         width: 80vw;
         height: 80px;
         align-items: center;
-        background-color: #3DB7CC;
+        background-color: #FFCC99;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
     `;
     
@@ -188,17 +143,16 @@ function Icecream() {
         background-color: black;
         height: 300px;
     `;
-
     return(
         <div>
             <Title>Icecream</Title>
             <List>
                 <ConeButton onClick={onClickIcecreamCone}>Cone</ConeButton>
                 <BarButton onClick={onClickIcecreamBar}>Bar</BarButton>
-                <TubeButton mode={modeRecoil.icecream} onClick={onClickIcecreamTube}>Tube</TubeButton>
+                <TubeButton onClick={onClickIcecreamTube}>Tube</TubeButton>
                 <FamilyButton onClick={onClickIcecreamFamily}>Family</FamilyButton>
             </List>
-            <Introduce>{PRINT()}</Introduce>
+            <Introduce>{QUESTION_PRINT()}</Introduce>
             <Before onClick={onClickKiosk}>이전으로 돌아가기</Before> 
             <Final></Final>
         </div>

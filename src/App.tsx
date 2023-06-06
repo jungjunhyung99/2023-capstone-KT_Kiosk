@@ -8,7 +8,6 @@ import KioskPage from './pages/Main/KioskPage';
 import { RecoilRoot } from 'recoil';
 import GamePage from './pages/Main/GamePage';
 import Game from './pages/Game/Game';
-import NumberGame from './pages/Game/Number/NumberGame';
 import CafePage from './pages/Cafe/CafePage';
 import MoviePage from './pages/Movie/MoviePage';
 import Movie_fast from './contents/Movie_Content/Movie_fast';
@@ -26,6 +25,11 @@ import Hamburger_start from './contents/Hamburger_Content/Hamburger_start';
 import Movie_start from './contents/Movie_Content/Movie_start';
 import Cafe_start from './contents/Cafe_Content/Cafe_start';
 import LogIn from './contents/LogIn_Content/LogIn';
+import NumberGame from './pages/Game/Number/NumberGame';
+import Explain from './contents/Explain_Content/Explain';
+import Movie_result from './contents/Movie_Content/Movie_result';
+import Hamburger_result from './contents/Hamburger_Content/Hamburger_result';
+import Cafe_result from './contents/Cafe_Content/Cafe_result';
 
 function App() {
 
@@ -39,15 +43,18 @@ function App() {
                 <Route path='/kiosk/hamburger' element={<Hamburger_index/>}/>
                 <Route path='/kiosk/cafe/main' element={<CafePage/>}/>
                 <Route path='/kiosk/cafe/start' element={<Cafe_start/>}/>
+                <Route path='/kiosk/cafe/result' element={<Cafe_result/>}/>
                 <Route path='/kiosk/movie' element={<MoviePage/>}/>
                 <Route path='/kiosk/movie/start' element={<Movie_start/>}/>
                 <Route path='/kiosk/movie/fast' element={<Movie_fast/>}/>
                 <Route path='/kiosk/movie/timeline' element={<Movie_timeline/>}/>
                 <Route path='/kiosk/movie/seat' element={<Movie_seat/>}/>
+                <Route path='/kiosk/movie/result' element={<Movie_result/>}/>
                 <Route path='/kiosk/Hamburger/start' element={<Hamburger_start/>}/>
                 <Route path='/kiosk/Hamburger/take' element={<Hamburger_take/>}/>
                 <Route path='/kiosk/Hamburger/choice' element={<Hamburger_choice/>}/>
                 <Route path='/kiosk/Hamburger/last' element={<Hamburger_last/>}/>
+                <Route path='/kiosk/Hamburger/result' element={<Hamburger_result/>}/>
                 <Route path='/kiosk/Icecream' element={<Icecream/>}/>
                 <Route path='/kiosk/Icecream_cone' element={<Icecream_cone/>}/>
                 <Route path='/kiosk/Icecream_bar' element={<Icecream_bar/>}/>
@@ -55,12 +62,9 @@ function App() {
                 <Route path='/kiosk/Icecream_family' element={<Icecream_family/>}/>
                 <Route path='/game' element={<GamePage/>}/>
                 <Route path='/game/balloon' element={<Game/>}/>
-<<<<<<< HEAD
                 <Route path='/game/number' element={<NumberGame/>}/>
-                <Route path='login' element={<LogIn/>}/>
-=======
                 <Route path='/login' element={<LogIn/>}/>
->>>>>>> 566760176d0f9e31bd6af2036a20aa8bf90829c6
+                <Route path='/explain' element={<Explain/>}/>
               </Routes>
           </ GlobalContainer>
         </Router>

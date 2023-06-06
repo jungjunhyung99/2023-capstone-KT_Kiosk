@@ -7,15 +7,14 @@ import Tankboygreengrape from "../../images/icecream/Tankboygreengrape.png";
 import Tankboy from "../../images/icecream/Tankboy.png";
 import { useState, useCallback } from 'react';
 import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
-import Modal_Result from "../../component/Modal";
-import Modal_Result2 from "../../component/Modal2";
+import Modal from "../../component/Modal";
 import {number1, number2, number3, number4, number5, number6, number7, number8, number9, number10, number11, number12, number13, number14, number15, number16} from "../../Atom/store";
 import { practiceMode2 } from '../../Atom/store';
 import { css, keyframes } from "styled-components";
 
 function Icecream_tube() {
+
     const navigate = useNavigate();
-    const modeRecoil = useRecoilValue(practiceMode2);
 
     const onClickIcecreamCone = () => {
         navigate('/kiosk/Icecream_cone');
@@ -27,10 +26,6 @@ function Icecream_tube() {
 
     const onClickIcecreamFamily = () => {
         navigate('/kiosk/Icecream_family');
-    }
-
-    const onClickHome = () => {
-        navigate('/kiosk/Icecream');
     }
     
     const [tube_number1, setNumber] = useRecoilState(number9);
@@ -150,11 +145,7 @@ function Icecream_tube() {
         {return;}
     }
     
-    function RESULT_PRINT() {
-        return (<RESULTTEXT>주문 결과</RESULTTEXT>);
-    }
-    
-    function ANSWER_PRINT() {
+    function ANSWER_PRTINT() {
         if ((cone_number1 == 0) && (cone_number2 == 0) && (cone_number3 == 0) && (cone_number4 == 0) && (bar_number1 == 0) && (bar_number2 == 0) 
         && (bar_number3 == 0) && (bar_number4 == 0) && (tube_number1 == 0) && (tube_number2 == 3) && (tube_number3 == 0) && (tube_number4 == 0)
         && (family_number1 == 0) && (family_number2 == 0) && (family_number3 == 0) && (family_number4 == 0))
@@ -215,88 +206,63 @@ function Icecream_tube() {
     }
 
     const [isOpenModal, setOpenModal] = useState<boolean>(false);
-    const [isOpenModal2, setOpenModal2] = useState<boolean>(false);
 
     const onClickToggleModal = useCallback(() => {
         setOpenModal(!isOpenModal);
-    }, [isOpenModal]);
-
-    const onClickToggleModal2 = useCallback(() => {
-        setOpenModal2(!isOpenModal2);
-    }, [isOpenModal2]);
+    }, [isOpenModal]); 
 
     const Title = styled.div`
         width: 80vw;
         font-size: 45px;
         display: flex;
         justify-content: center;
-        background-color: #008299;
+        background-color: #CCA63D;
         height: 100px;
         font-style: italic;
         align-items: center;
-        font-weight: bold;
         `;
 
     const List = styled.div`
         width: 80vw;
         height: 80px;
         display: flex;
-        background-color: #3DB7CC;
+        background-color: #FFE08C;
         `;
 
-    const ConeButton = styled.div`
-        font-size: 35px;
-        background-color: #3DB7CC;
+    const ConeButton = styled.button`
+        font-size: 30px;
+        background-color: #FFE08C;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
-        width: 27%;
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-        font-weight: bold;
+        width: 25%;
         `;
 
-    const BarButton = styled.div`
-        font-size: 35px;
-        background-color: #3DB7CC;
+    const BarButton = styled.button`
+        font-size: 30px;
+        background-color: #FFE08C;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
-        width: 27%;
-        margin-left: 15px;
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-        font-weight: bold;
+        width: 25%;
     `;
 
-    const TubeButton = styled.div`
-        font-size: 35px;
-        background-color: #3DB7CC;
+    const TubeButton = styled.button`
+        font-size: 30px;
+        background-color: #FFE08C;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
-        width: 27%;
-        margin-left: 15px;
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-        font-weight: bold;
+        width: 25%;
     `;
 
-    const FamilyButton = styled.div`
-        font-size: 35px;
-        background-color: #3DB7CC;
+    const FamilyButton = styled.button`
+        font-size: 30px;
+        background-color: #FFE08C;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
-        width: 27%;
-        margin-left: 15px;
-        display: flex;
-        justify-content: center; 
-        align-items: center;
-        font-weight: bold;
+        width: 25%;
     `;
 
     const Space = styled.div`
@@ -365,60 +331,41 @@ function Icecream_tube() {
     const FirstPlusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: #22741C;
+        background-color: green;
         border-width: 1px;
         position: relative;
         top: 10px;
         right: 315px;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
         z-index: 100;
     `;
 
-    const fadeInOut = keyframes`
-    0% {
-        box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7);
-        border-color: transparent;
-    }
-    50%{
-        border-color: red;
-    }
-    100% {
-        border-color: transparent;
-        box-shadow: 0 0 0 1.5rem rgba(255, 0, 0, 0);
-    }
-    `;
-    const SecondPlusButton = styled.button<{mode: boolean}>`
+    const SecondPlusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: #22741C;
+        background-color: green;
         border-width: 1px;
         position: relative;
         top: 10px;
         right: 37px;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
         z-index: 100;
-        ${(props) =>
-            props.mode &&
-            css`
-                border: 4px dashed transparent;
-                animation: ${fadeInOut} 2s infinite;
-            `}
     `;
 
     const ThirdPlusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: #22741C;
+        background-color: green;
         border-width: 1px;
         position: relative;
         top: 10px;
         left: 249px;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
         z-index: 100;
     `;
@@ -426,13 +373,13 @@ function Icecream_tube() {
     const FourthPlusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: #22741C;
+        background-color: green;
         border-width: 1px;
         position: relative;
         top: 10px;
         left: 532px;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
         z-index: 100;
     `;
@@ -476,53 +423,53 @@ function Icecream_tube() {
     const FirstMinusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: #22741C;
+        background-color: green;
         border-width: 1px;
         position: relative;
         top: 10px;
         right: 315px;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
     `;
 
     const SecondMinusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: #22741C;
+        background-color: green;
         border-width: 1px;
         position: relative;
         top: 10px;
         right: 27px;
         ;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
     `;
 
     const ThirdMinusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: #22741C;
+        background-color: green;
         border-width: 1px;
         position: relative;
         top: 10px;
         left: 252px;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
     `;
 
     const FourthMinusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: #22741C;
+        background-color: green;
         border-width: 1px;
         position: relative;
         top: 10px;
         left: 537px;
         &:hover {
-            background-color: #FAF4C0;
+            background-color: lightyellow;
         }
     `;
 
@@ -579,47 +526,24 @@ function Icecream_tube() {
         left: 390px;
     `;
 
-    const Order = styled.button<{mode: boolean}>`
+    const Order = styled.button`
         width: 80vw;
-        font-size: 35px;
-        background-color: #3DB7CC;
+        font-size: 30px;
+        background-color: red;
         border-width: 1px;
         height: 100px;
         font-color: white;
-        ${(props) =>
-            props.mode &&
-            css`
-                border: 4px dashed transparent;
-                animation: ${fadeInOut} 2s infinite;
-            `}
-        &:hover {
-            background-color: #FAF4C0;
-        }
     `;
 
     const OrderDiv = styled.div`
         width: 80vw;
-        color: black;
-        font-weight: bold;
-    `;
-
-    const RESULTTEXT = styled.div`
-        font-size: 40px;
-        position: relative;
-        font-weight: bold;
-        color: black;
-        background-color: #D4F4FA;
-        width: 700px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 200px;
+        color: white;
     `;
 
     const SUCCESSTEXT = styled.div`
         font-size: 40px;
         position: relative;
-        top: 280px;
+        top: 40px;
         font-weight: bold;
         color: blue;
     `;
@@ -627,87 +551,33 @@ function Icecream_tube() {
     const FAILURETEXT = styled.div`
         font-size: 40px;
         position: relative;
-        top: 280px;
+        top: 40px;
         font-weight: bold;
         color: red;
     `;
 
     const Text = styled.div`
-        font-size: 27px;
-        position: relative;
-        top: -10px;
+    font-size: 27px;
+    position: relative;
+    top: 40px;
     `;
 
     const Total = styled.div`
         font-size: 30px;
         position: relative;
-        top: 40px;
+        top: 70px;
     `;
 
     const Close = styled.button`
         font-size: 30px;
         width: 100px;
         position: relative;
-        top: 65px;
-        background-color: #D4F4FA;
-        &:hover {
-            background-color: #FAF4C0;
-        }
-        font-weight: bold;
-        height: 50px;
+        top: 100px;
+        background-color: lightblue;
     `;
-
 
     const Entire = styled.div`
         background-color: white;
-    `;
-
-    const Two_Button = styled.div`
-        display: flex;
-        justify-content: center;
-        margin-top: 600px;
-    `;
-
-    const Home_Button = styled.div`
-        font-size: 35px;
-        width: 350px;
-        height: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        background-color: #D4F4FA;
-        &:hover {
-            background-color: #FAF4C0;
-        }
-    `;
-
-    const Result = styled.div`
-        font-size: 35px;
-        width: 350px;
-        height: 100px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-weight: bold;
-        background-color: #D4F4FA;
-        &:hover {
-            background-color: #FAF4C0;
-        }
-    `;
-
-    const LookResult = styled.div`
-        font-size: 40px;
-        position: relative;
-        font-weight: bold;
-        color: black;
-        background-color: #D4F4FA;
-        width: 700px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 80px;
-        margin-top: -10px;
     `;
 
     const Final = styled.div`
@@ -734,7 +604,7 @@ function Icecream_tube() {
             </Items>
             <PlusDivButton>
                 <FirstPlusButton onClick={() => {btn_first_click();}}><FirstPlusButtonDiv>+</FirstPlusButtonDiv></FirstPlusButton>
-                <SecondPlusButton mode={modeRecoil.icecream} onClick={() => {btn_second_click();}}><SecondPlusButtonDiv>+</SecondPlusButtonDiv></SecondPlusButton>
+                <SecondPlusButton onClick={() => {btn_second_click();}}><SecondPlusButtonDiv>+</SecondPlusButtonDiv></SecondPlusButton>
                 <ThirdPlusButton onClick={() => {btn_third_click();}}><ThirdPlusButtonDiv>+</ThirdPlusButtonDiv></ThirdPlusButton>
                 <FourthPlusButton onClick={() => {btn_fourth_click();}}><FourthPlusButtonDiv>+</FourthPlusButtonDiv></FourthPlusButton>
             </PlusDivButton>
@@ -751,46 +621,35 @@ function Icecream_tube() {
                 <FourthCount>{tube_number4}</FourthCount>
             </CountItems>
             </Entire>
-            <Order mode={modeRecoil.icecream} onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
+            <Order onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
             {isOpenModal && (
-                <Modal_Result onClickToggleModal={onClickToggleModal}>
-                    {RESULT_PRINT()}<br></br>
-                    {ANSWER_PRINT()}<br></br>
-                    <Two_Button>
-                        <Home_Button onClick={onClickHome}>홈으로 이동</Home_Button>  
-                        <Result onClick={onClickToggleModal2}>기록 보기</Result>   
-                            {isOpenModal2 && (
-                                <Modal_Result2 onClickToggleModal2={onClickToggleModal2}><LookResult>기록 보기</LookResult><br/>
-                                    <Text>{CONE1()}</Text>
-                                    <Text>{CONE2()}</Text>
-                                    <Text>{CONE3()}</Text>
-                                    <Text>{CONE4()}</Text>
+                <Modal onClickToggleModal={onClickToggleModal}>
+                    {ANSWER_PRTINT()}<br></br>
+                    <Text>{CONE1()}</Text>
+                    <Text>{CONE2()}</Text>
+                    <Text>{CONE3()}</Text>
+                    <Text>{CONE4()}</Text>
 
-                                    <Text>{BAR1()}</Text>
-                                    <Text>{BAR2()}</Text>
-                                    <Text>{BAR3()}</Text>
-                                    <Text>{BAR4()}</Text>
+                    <Text>{BAR1()}</Text>
+                    <Text>{BAR2()}</Text>
+                    <Text>{BAR3()}</Text>
+                    <Text>{BAR4()}</Text>
 
-                                    <Text>{TUBE1()}</Text>
-                                    <Text>{TUBE2()}</Text>
-                                    <Text>{TUBE3()}</Text>
-                                    <Text>{TUBE4()}</Text>
+                    <Text>{TUBE1()}</Text>
+                    <Text>{TUBE2()}</Text>
+                    <Text>{TUBE3()}</Text>
+                    <Text>{TUBE4()}</Text>
 
-                                    <Text>{FAMILY1()}</Text>
-                                    <Text>{FAMILY2()}</Text>
-                                    <Text>{FAMILY3()}</Text>
-                                    <Text>{FAMILY4()}</Text>
-                                            
-                                    <Total>총 금액 : {2500*cone_number1 + 2200*cone_number2 + 2500*cone_number3 + 3500*cone_number4 
-                                        + 2500*bar_number1 + 2000*bar_number2 + 2500*bar_number3 + 2000* bar_number4
-                                        + 3500*tube_number1 + 3000*tube_number2 + 3500*tube_number3 + 3000*tube_number4
-                                        + 3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원
-                                    </Total>
-                                    <Close onClick={() => setOpenModal(false)}>닫기</Close> 
-                                </Modal_Result2>
-                            )}   
-                    </Two_Button>
-                </Modal_Result>
+                    <Text>{FAMILY1()}</Text>
+                    <Text>{FAMILY2()}</Text>
+                    <Text>{FAMILY3()}</Text>
+                    <Text>{FAMILY4()}</Text>
+                    <Total>총 금액 : {2500*cone_number1 + 2200*cone_number2 + 2500*cone_number3 + 3500*cone_number4 
+                        + 2500*bar_number1 + 2000*bar_number2 + 2500*bar_number3 + 2000* bar_number4
+                        + 3500*tube_number1 + 3000*tube_number2 + 3500*tube_number3 + 3000*tube_number4
+                        + 3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원</Total>
+                    <Close onClick={() => setOpenModal(false)}>닫기</Close>
+                </Modal>
             )}<Final></Final>
         </div>
     );

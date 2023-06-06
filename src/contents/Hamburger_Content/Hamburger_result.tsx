@@ -1,21 +1,18 @@
-import { AnimatePresence } from "framer-motion";
-import { useEffect,useState } from "react";
-import { useNavigate } from "react-router";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
 import styled from "styled-components";
-import { motion } from "framer-motion";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { fastObj, hamburgerTime, practiceMode } from "../../Atom/atom";
-import { ModalCompleteButton, ModalNavBar, MovieExplain, TimeTakenDiv, fadeInOut } from "../../component/kiosk-component/styled_movie";
-import { formatTime } from "../Movie_Content/Movie_fx";
-import { arrayUnion, doc, getDoc, updateDoc } from "firebase/firestore";
-import { dbService } from "../../Hook/Hook";
+import { fastAnswer, fastObj, IAtomFast } from "../../Atom/atom";
+import { HallButton2, HamburgerReusultBox } from "../../component/kiosk-component/styled_hamburger";
+import { HamburgerImageBox } from "../../component/kiosk-component/styled_kiosk";
+import Bigmac from "../../images/BigMac.png";
+import Cola from "../../images/Cola.png";
 
 const Container = styled(motion.div)`
     display:flex;
     flex-direction: column;
-    width: 40rem;
-    height:100vh;
-    color: white;
+    height:100%;
     background-color: #faf8f8;
 `;
 
@@ -27,6 +24,7 @@ const Body = styled.div`
     background-color: #023282;
     display: flex;
     height: 100%;
+    min-height: 90vh;
     overflow: auto;
 `;
 
@@ -35,7 +33,7 @@ const EditBox = styled.div`
     justify-content: space-between;
     background-color: white;
     border-radius: 10px;
-    width: 37rem;
+    width: 40rem;
     height: 9rem;
     margin-bottom: 2rem;
     box-shadow:  3px 3px 6px 3px #535261;
@@ -190,8 +188,6 @@ const NextButton3 = styled(NextButton)`
         background-color: #0a4b0c;
         transition: all ease 0.5s 0s;
     }
-    border: 4px dashed transparent;
-    animation: ${fadeInOut} 2s infinite;
 `;
 
 const Overlay = styled(motion.div)`
@@ -210,7 +206,6 @@ interface IMenu{
     cost: number | undefined;
     cal: number | undefined;
     quantity: number;
-    img: any;
 }
 
 const BerverageMenu = [
@@ -267,56 +262,18 @@ const HamburgerMenu = [
 ];
 
 
-function Hamburger_last() {
+function Hamburger_result() {
     const navigate = useNavigate();
     const [menu,setMenu] = useState(BerverageMenu);
-    const [fastRecoil, setFastRecoil] = useRecoilState(fastObj);
-    const [select, setSelect] = useState<IMenu[]>([]);
+    const [fastRecoil, setFastRecoil] = useRecoilState<IAtomFast>(fastObj);
+    const [answer, setAnswer] = useRecoilState(fastAnswer);
     const [cost, setCost] = useState(0);
     const [quantity, setQuantity] = useState(0);
     const [selectId, setSelectId] = useState<number | null>();
-    const [selectMenu, setSelectMenu] = useState<IMenu>();
-    const [timeTaken, setTimeTaken] = useRecoilState(hamburgerTime);
-    const [timer, setTimer] = useRecoilState(hamburgerTime);
-    const [resultPrint, setResultPrint] = useState(false);
-    const modeRecoil = useRecoilValue(practiceMode);
-    const EditClciked = (item: IMenu, index: string) => {
-        setSelectMenu(item);
-    };
-
+    
     const cancleClicked = () => {
         setSelectId(null);
         setQuantity(1);
-    };
-
-    const updateData = async (time: number) => {
-        try {
-          const docId = "c5EkUB47lyWaKnU36b5c";
-          const docRef = doc(dbService, 'kiosk-record', docId); 
-      
-          const docSnap = await getDoc(docRef);
-          const data = docSnap.data();
-          console.log(data);
-  
-          await updateDoc(docRef, {
-            "data.hamburger.time": arrayUnion(parseInt(((time % 60000) / 1000).toFixed(0)))
-          });
-          console.log('문서 업데이트 완료');
-        } catch (error) {
-          console.error('문서 업데이트 중 오류 발생:', error);
-        }
-      };
-
-    const payClick = () => {
-        const endTime = Date.now();
-        if(modeRecoil.hamburger){
-        updateData(endTime - timer);
-        navigate("/kiosk/hamburger/result");
-        }
-        else{
-            setTimeTaken(((endTime - timer) % 60000) / 1000);
-            setResultPrint((prev: boolean) => !prev);
-        }
     };
 
     const overlayClicked = () => {
@@ -330,16 +287,23 @@ function Hamburger_last() {
         if(quantity === 1) return;
         setQuantity((prev) => prev-1);
     };
-    const okClicked = () => {
-            
-    };
-
-    const orderClicked = () => {
-        navigate("/Menu/home/hard/hamburger/last");
-        setFastRecoil({takeout:fastRecoil.takeout, item:select});
-    };
-
-    const editClick = (index: number) => {
+    
+    const print = (items: any, num: number) => {
+        if(num === 0){
+        for(let i = 0; i < fastRecoil.item.length; i++){
+            if(answer.beverage === fastRecoil.item[i].name && answer.beverageCount === fastRecoil.item[i].quantity){
+                return true;
+            }
+        }
+    }
+    else if(num === 1){
+        for(let i = 0; i < fastRecoil.item.length; i++){
+            if(answer.food === fastRecoil.item[i].name && answer.foodCount === fastRecoil.item[i].quantity){
+                return true;
+            }
+        }
+    }
+        return false;
     };
 
     const orderSum = () => {
@@ -351,6 +315,8 @@ function Hamburger_last() {
     };
 
     useEffect(()=>{
+        console.log("fastRecoil:", fastRecoil);
+        console.log("Answer:", answer);
         orderSum();
     },[]);
 
@@ -363,67 +329,48 @@ function Hamburger_last() {
             }}}
             exit={{opacity: 0}}>
                 <Body>
-                    <span style={{marginBottom:"4rem"}}>
-                        <h1>주문을 다시 확인해주세요</h1>
-                    </span>
-                    {fastRecoil.item.map((menu,index) => <EditBox>
-                        <SubBox>
-                            <h2>{menu.name}</h2>
-                            <span style={{color:"#848383"}}>{menu.cal}칼로리</span>
-                        </SubBox>
-                        <SubBox>
-                        <span style={{color:"#848383"}}>
-                            <h4>{menu.quantity}개</h4>
-                            <h4>{menu.cost as number * menu.quantity}원</h4>
-                        </span>
-                        </SubBox>
-                    </EditBox>)}
-                                {selectId && (
-                                    <>
-                                    <Overlay onClick={overlayClicked}></Overlay>
-                                    <QuantityBox  layoutId={`${selectId}`} style={{color:"black"}}>
-                                        <h2>더하세요</h2>
-                                        <CountBox>
-                                        <QuantityButton onClick={minusClicked}>-</QuantityButton>
-                                            <div style={{backgroundColor:"#E2E2E2", fontSize:"45px", width:"50px",height:"100%"}}>{quantity}</div>
-                                        <QuantityButton onClick={plusClicked}>+</QuantityButton>
-                                        </CountBox>
-                                        <div style={{}}>
-                                            <NextButton onClick={cancleClicked}>취소하기</NextButton>
-                                            <NextButton onClick={okClicked}>메뉴에 추가하기</NextButton>
-                                        </div>
-                                    </QuantityBox>
-                                    </>
-                                )}
-                                
-                                {resultPrint ? 
-                                <>
-                                <Overlay/>
-                                <MovieExplain>
-                                    <ModalNavBar>
-                                    키오스크 지도
-                                    </ModalNavBar>
-                                    <TimeTakenDiv>
-                                    주문까지 {timeTaken.toFixed(0)}초 걸렸어요!
-                                    </TimeTakenDiv>
-                                    <ModalCompleteButton onClick={() => navigate("/")}>홈으로 가기</ModalCompleteButton>
-                                </MovieExplain>
-                                </>
-                                :
-                                null
-                                }
+                    <div style={{position:"absolute", top:"0"}}>
+                    
+                    </div>
+                    {(answer.takeout === fastRecoil.takeout) ? 
+                        <div style={{fontSize:"1.9em",color:"#2BB7B3"}}>
+                            <HallButton2>{answer.takeout}</HallButton2>
+                            로 잘 골라주셨어요!
+                        </div>
+                    :
+                    <div style={{fontSize:"1.9em",color:"#f96363"}}>
+                        {answer.takeout}로 골라주세요!
+                    </div>
+                    }
+
+                    {(print(fastRecoil,0)) ? <HamburgerReusultBox style={{color:"#2BB7B3"}}>
+                        <HamburgerImageBox image={Cola}/> {answer.beverageCount}개를 잘 골라주셨네요!
+                        </HamburgerReusultBox> 
+                        : 
+                        <HamburgerReusultBox style={{color:"#f96363"}}>
+                        <HamburgerImageBox image={Cola}/> {answer.beverageCount}개를 골라주세요!
+                        </HamburgerReusultBox> 
+                        }
+
+                        {(print(fastRecoil,1)) ? <HamburgerReusultBox style={{color:"#2BB7B3"}}>
+                        <HamburgerImageBox image={Bigmac}/> {answer.foodCount}개를 잘 골라주셨네요!
+                        </HamburgerReusultBox> 
+                        : 
+                        <HamburgerReusultBox style={{color:"#f96363"}}>
+                        <HamburgerImageBox image={Bigmac}/> {answer.foodCount}개를 골라주세요!
+                        </HamburgerReusultBox> 
+                        }
                 </Body>
                 <Footer>
                     <ResultBox>내 주문: {fastRecoil.takeout} | 상품 수: {fastRecoil.item.length} | 가격: {cost}</ResultBox>
                     <div>
-                        <NextButton2 onClick={() => navigate(-1)}>뒤로가기</NextButton2>
-                        <NextButton3 onClick={payClick}>결제하기</NextButton3>
+                        <NextButton2 onClick={() => navigate("/")}>홈으로 가기</NextButton2>
+                        <NextButton3 onClick={() => navigate("/login")}>기록 확인 하기</NextButton3>
                     </div>
                 </Footer>
             </Container>
-            
             </AnimatePresence>
     );
 }
 
-export default Hamburger_last;
+export default Hamburger_result;

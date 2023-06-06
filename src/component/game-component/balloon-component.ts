@@ -80,10 +80,10 @@ export const Overlay = styled(motion.div)`
     position: fixed;
     left: 0;
     top: 0;
-    width: 100%; // 수정 필요
-    height: 100%;
+    width: 100vw; // 수정 필요
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.5);
-    opacity: 0;
+    opacity: 1;
   `;
   
 export const Box = styled(motion.div)<{bgphoto: string}>`
