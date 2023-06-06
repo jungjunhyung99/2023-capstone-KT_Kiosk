@@ -9,6 +9,8 @@ import { useState, useCallback } from 'react';
 import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
 import Modal from "../../component/Modal";
 import {number1, number2, number3, number4, number5, number6, number7, number8, number9, number10, number11, number12, number13, number14, number15, number16} from "../../Atom/store";
+import { practiceMode2 } from '../../Atom/store';
+import { css, keyframes } from "styled-components";
 
 function Icecream_tube() {
 
