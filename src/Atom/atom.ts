@@ -150,11 +150,6 @@ export const cafeTime = atom<number>({
     default: 0
 });
 
-export const icecreamTime = atom<number>({
-    key: 'icecreamTime2',
-    default: 0
-})
-
 export const movieRecord = atom<any>({
     key: 'movieRecord2',
     default: "",
@@ -184,13 +179,3 @@ export const practiceMode = atom<IMode>({
         icecream: false
     }
 });
-
-export const practiceMode2 = atom<IMode>({
-    key: "practiceMode2",
-    default: {
-        movie: false,
-        hamburger: false,
-        cafe: false,
-        icecream: true
-    }
-})
