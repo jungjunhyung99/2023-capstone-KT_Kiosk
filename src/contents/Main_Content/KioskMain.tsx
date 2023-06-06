@@ -21,7 +21,7 @@ function KioskMain() {
             <KioskContainer2>
                 <FlexBox>
                     <KTLogo/>
-                    <LogoTitle>키오스크 연습하기</LogoTitle>
+                    <LogoTitle>키오스크 체험하기</LogoTitle>
                 </FlexBox>
                 <KioskChoiceContainer>
                 <StyledLink to="/kiosk/hamburger/start">    
@@ -59,7 +59,7 @@ function KioskMain() {
                         </ContentTextBox>
                     </KioskClickBox>
                 </StyledLink>
-                <StyledLink to="/kiosk/Icecream">    
+                <StyledLink to="/kiosk/Icecream_start">    
                     <KioskClickBox>
                         <ImageBox1 image={Icecream}/>
                         <ContentTextBox>

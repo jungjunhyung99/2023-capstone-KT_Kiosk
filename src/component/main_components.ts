@@ -190,6 +190,10 @@ export const HeightImageBox = styled(KioskImageBox)`
     height: 7rem;
 `;
 
+export const IcecreamImage = styled(KioskImageBox)`
+    height: 15rem;
+`;
+
 export const LogoutButton = styled.div`
     display: flex;
     justify-content: center;

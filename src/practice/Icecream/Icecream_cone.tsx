@@ -6,7 +6,8 @@ import Pigcone from "../../images/icecream/Pigcone.png";
 import Worldcone from "../../images/icecream/Worldcone.png";
 import Boorabo from "../../images/icecream/Boorabo.png";
 import { useState, useCallback } from 'react';
-import Modal from "../../component/Modal";
+import Modal_Result from "../../component/Modal";
+import Modal_Result2 from "../../component/Modal2";
 import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
 import {number1, number2, number3, number4, number5, number6, number7, number8, number9, number10, number11, number12, number13, number14, number15, number16} from "../../Atom/store";
 
@@ -25,6 +26,10 @@ function Icecream_cone() {
     const onClickIcecreamFamily = () => {
         navigate('/kiosk/Icecream_family');
     }    
+
+    const onClickHome = () => {
+        navigate('/kiosk/Icecream');
+    }
     
     const [cone_number1, setNumber] = useRecoilState(number1);
     const [cone_number2, setNumber2] = useRecoilState(number2);
@@ -143,11 +148,16 @@ function Icecream_cone() {
         {return;}
     }
     
-    function ANSWER_PRTINT() {
+    function RESULT_PRINT() {
+        return (<RESULTTEXT>주문 결과</RESULTTEXT>);
+    }
+
+    function ANSWER_PRINT() {
         if ((cone_number1 == 0) && (cone_number2 == 0) && (cone_number3 == 0) && (cone_number4 == 0) && (bar_number1 == 0) && (bar_number2 == 0) 
         && (bar_number3 == 0) && (bar_number4 == 0) && (tube_number1 == 0) && (tube_number2 == 3) && (tube_number3 == 0) && (tube_number4 == 0)
         && (family_number1 == 0) && (family_number2 == 0) && (family_number3 == 0) && (family_number4 == 0))
-        {return (<SUCCESSTEXT>"성공하셨습니다!"</SUCCESSTEXT>);}
+        {return (
+        <SUCCESSTEXT>"성공하셨습니다!"</SUCCESSTEXT>);}
         else
         {return (<FAILURETEXT>"실패하셨습니다!"</FAILURETEXT>);}
     }
@@ -204,54 +214,74 @@ function Icecream_cone() {
     }
 
     const [isOpenModal, setOpenModal] = useState<boolean>(false);
+    const [isOpenModal2, setOpenModal2] = useState<boolean>(false);
 
     const onClickToggleModal = useCallback(() => {
         setOpenModal(!isOpenModal);
     }, [isOpenModal]);
+
+    const onClickToggleModal2 = useCallback(() => {
+        setOpenModal2(!isOpenModal2);
+    }, [isOpenModal2]);
 
     const Title = styled.div`
         width: 80vw;
         font-size: 45px;
         display: flex;
         justify-content: center;
-        background-color: #CCA63D;
+        background-color: #008299;
         height: 100px;
         font-style: italic;
         align-items: center;
+        font-weight: bold;
         `;
 
     const List = styled.div`
         width: 80vw;
         height: 80px;
         display: flex;
-        background-color: #FFE08C;
+        background-color: #3DB7CC;
         `;
 
-    const ConeButton = styled.button`
-        font-size: 30px;
-        background-color: #FFE08C;
+    const ConeButton = styled.div`
+        font-size: 35px;
+        background-color: #3DB7CC;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
-        width: 25%;
+        width: 27%;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        font-weight: bold;
         `;
 
-    const BarButton = styled.button`
-        font-size: 30px;
-        background-color: #FFE08C;
+    const BarButton = styled.div`
+        font-size: 35px;
+        background-color: #3DB7CC;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
-        width: 25%;
+        width: 27%;
+        margin-left: 15px;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        font-weight: bold;
     `;
 
-    const TubeButton = styled.button`
-        font-size: 30px;
-        background-color: #FFE08C;
+    const TubeButton = styled.div`
+        font-size: 35px;
+        background-color: #3DB7CC;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
-        width: 25%;
+        width: 27%;
+        margin-left: 15px;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        font-weight: bold;
     `;
 
     const Space = styled.div`
@@ -259,13 +289,18 @@ function Icecream_cone() {
         height: 90px;
     `;
 
-    const FamilyButton = styled.button`
-        font-size: 30px;
-        background-color: #FFE08C;
+    const FamilyButton = styled.div`
+        font-size: 35px;
+        background-color: #3DB7CC;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
-        width: 25%;
+        width: 27%;
+        margin-left: 15px;
+        display: flex;
+        justify-content: center; 
+        align-items: center;
+        font-weight: bold;
     `;
 
     const Items = styled.div`
@@ -325,13 +360,13 @@ function Icecream_cone() {
     const FirstPlusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #22741C;
         border-width: 1px;
         position: relative;
         top: 10px;
         right: 315px;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
         z-index: 100;
     `;
@@ -339,13 +374,13 @@ function Icecream_cone() {
     const SecondPlusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #22741C;
         border-width: 1px;
         position: relative;
         top: 10px;
         right: 70px;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
         z-index: 100;
     `;
@@ -353,13 +388,13 @@ function Icecream_cone() {
     const ThirdPlusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #22741C;
         border-width: 1px;
         position: relative;
         top: 10px;
         left: 183px;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
         z-index: 100;
     `;
@@ -367,13 +402,13 @@ function Icecream_cone() {
     const FourthPlusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #22741C;
         border-width: 1px;
         position: relative;
         top: 10px;
         left: 430px;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
         z-index: 100;
     `;
@@ -417,52 +452,52 @@ function Icecream_cone() {
     const FirstMinusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #22741C;
         border-width: 1px;
         position: relative;
         top: 10px;
         right: 315px;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
     `;
 
     const SecondMinusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #22741C;
         border-width: 1px;
         position: relative;
         top: 10px;
         right: 70px;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
     `;
 
     const ThirdMinusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #22741C;
         border-width: 1px;
         position: relative;
         top: 10px;
         left: 183px;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
     `;
 
     const FourthMinusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #22741C;
         border-width: 1px;
         position: relative;
         top: 10px;
         left: 430px;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
     `;
 
@@ -521,22 +556,39 @@ function Icecream_cone() {
 
     const Order = styled.button`
         width: 80vw;
-        font-size: 30px;
-        background-color: red;
+        font-size: 35px;
+        background-color: #3DB7CC;
         border-width: 1px;
         height: 100px;
         font-color: white;
+        &:hover {
+            background-color: #FAF4C0;
+        }
     `;
 
     const OrderDiv = styled.div`
         width: 80vw;
-        color: white;
+        color: black;
+        font-weight: bold;
+    `;
+
+    const RESULTTEXT = styled.div`
+        font-size: 40px;
+        position: relative;
+        font-weight: bold;
+        color: black;
+        background-color: #D4F4FA;
+        width: 700px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 200px;
     `;
 
     const SUCCESSTEXT = styled.div`
         font-size: 40px;
         position: relative;
-        top: 40px;
+        top: 280px;
         font-weight: bold;
         color: blue;
     `;
@@ -544,7 +596,7 @@ function Icecream_cone() {
     const FAILURETEXT = styled.div`
         font-size: 40px;
         position: relative;
-        top: 40px;
+        top: 280px;
         font-weight: bold;
         color: red;
     `;
@@ -552,25 +604,78 @@ function Icecream_cone() {
     const Text = styled.div`
         font-size: 27px;
         position: relative;
-        top: 40px;
+        top: -10px;
     `;
 
     const Total = styled.div`
         font-size: 30px;
         position: relative;
-        top: 70px;
+        top: 40px;
     `;
 
     const Close = styled.button`
-        font-size: 30px;Warning
+        font-size: 30px;
         width: 100px;
         position: relative;
-        top: 100px;
-        background-color: lightblue;
+        top: 65px;
+        background-color: #D4F4FA;
+        &:hover {
+            background-color: #FAF4C0;
+        }
+        font-weight: bold;
+        height: 50px;
     `;
 
     const Entire = styled.div`
         background-color: white;
+    `;
+
+    const Two_Button = styled.div`
+        display: flex;
+        justify-content: center;
+        margin-top: 600px;
+    `;
+
+    const Home_Button = styled.div`
+        font-size: 35px;
+        width: 350px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        background-color: #D4F4FA;
+        &:hover {
+            background-color: #FAF4C0;
+        }
+    `;
+
+    const Result = styled.div`
+        font-size: 35px;
+        width: 350px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        background-color: #D4F4FA;
+        &:hover {
+            background-color: #FAF4C0;
+        }
+    `;
+  
+    const LookResult = styled.div`
+        font-size: 40px;
+        position: relative;
+        font-weight: bold;
+        color: black;
+        background-color: #D4F4FA;
+        width: 700px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80px;
+        margin-top: -10px;
     `;
 
     const Final = styled.div`
@@ -617,34 +722,44 @@ function Icecream_cone() {
             </Entire>
             <Order onClick={onClickToggleModal}><OrderDiv>주문하기</OrderDiv></Order>
             {isOpenModal && (
-                <Modal onClickToggleModal={onClickToggleModal}>
-                    {ANSWER_PRTINT()}<br></br>
-                    <Text>{CONE1()}</Text>
-                    <Text>{CONE2()}</Text>
-                    <Text>{CONE3()}</Text>
-                    <Text>{CONE4()}</Text>
+                <Modal_Result onClickToggleModal={onClickToggleModal}>
+                    {RESULT_PRINT()}<br></br>
+                    {ANSWER_PRINT()}<br></br>
+                    <Two_Button>
+                        <Home_Button onClick={onClickHome}>홈으로 이동</Home_Button>  
+                        <Result onClick={onClickToggleModal2}>기록 보기</Result>   
+                            {isOpenModal2 && (
+                                <Modal_Result2 onClickToggleModal2={onClickToggleModal2}><LookResult>기록 보기</LookResult><br/>
+                                    <Text>{CONE1()}</Text>
+                                    <Text>{CONE2()}</Text>
+                                    <Text>{CONE3()}</Text>
+                                    <Text>{CONE4()}</Text>
 
-                    <Text>{BAR1()}</Text>
-                    <Text>{BAR2()}</Text>
-                    <Text>{BAR3()}</Text>
-                    <Text>{BAR4()}</Text>
+                                    <Text>{BAR1()}</Text>
+                                    <Text>{BAR2()}</Text>
+                                    <Text>{BAR3()}</Text>
+                                    <Text>{BAR4()}</Text>
 
-                    <Text>{TUBE1()}</Text>
-                    <Text>{TUBE2()}</Text>
-                    <Text>{TUBE3()}</Text>
-                    <Text>{TUBE4()}</Text>
+                                    <Text>{TUBE1()}</Text>
+                                    <Text>{TUBE2()}</Text>
+                                    <Text>{TUBE3()}</Text>
+                                    <Text>{TUBE4()}</Text>
 
-                    <Text>{FAMILY1()}</Text>
-                    <Text>{FAMILY2()}</Text>
-                    <Text>{FAMILY3()}</Text>
-                    <Text>{FAMILY4()}</Text>
-                            
-                    <Total>총 금액 : {2500*cone_number1 + 2200*cone_number2 + 2500*cone_number3 + 3500*cone_number4 
-                        + 2500*bar_number1 + 2000*bar_number2 + 2500*bar_number3 + 2000* bar_number4
-                        + 3500*tube_number1 + 3000*tube_number2 + 3500*tube_number3 + 3000*tube_number4
-                        + 3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원</Total>
-                    <Close onClick={() => setOpenModal(false)}>닫기</Close>
-                </Modal>
+                                    <Text>{FAMILY1()}</Text>
+                                    <Text>{FAMILY2()}</Text>
+                                    <Text>{FAMILY3()}</Text>
+                                    <Text>{FAMILY4()}</Text>
+                                                    
+                                    <Total>총 금액 : {2500*cone_number1 + 2200*cone_number2 + 2500*cone_number3 + 3500*cone_number4 
+                                        + 2500*bar_number1 + 2000*bar_number2 + 2500*bar_number3 + 2000* bar_number4
+                                        + 3500*tube_number1 + 3000*tube_number2 + 3500*tube_number3 + 3000*tube_number4
+                                        + 3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원 
+                                    </Total>
+                                    <Close onClick={() => setOpenModal(false)}>닫기</Close> 
+                                </Modal_Result2>
+                            )}   
+                    </Two_Button>
+                </Modal_Result>
             )}<Final></Final>
         </div>
     </RecoilRoot>
