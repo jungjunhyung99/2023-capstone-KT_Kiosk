@@ -5,7 +5,7 @@ interface ModalDefaultType {
   onClickToggleModal: () => void;
 }
 
-function Modal_Result({
+function Modal({
   onClickToggleModal,
   children,
 }: PropsWithChildren<ModalDefaultType>) {
@@ -46,7 +46,7 @@ const DialogBox = styled.dialog`
     border-radius: 3px;
     box-shadow: 0 0 30px rgba(30, 30, 30, 0.185);
     box-sizing: border-box;
-    background-color: #B2EBF4;
+    background-color: white;
     z-index: 10000;
 `;
 
@@ -58,4 +58,4 @@ const Backdrop = styled.div`
     position: relative;
 `;
 
-export default Modal_Result;
+export default Modal;
