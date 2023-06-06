@@ -2,14 +2,16 @@ import styled from "styled-components";
 import {useEffect, useState} from "react";
 import { makeImagePath } from "../../Hook/Hook";
 import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
-import { IAtomMovie, IGetMoives, movieObj } from "../../Atom/atom";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { IAtomMovie, IGetMoives, movieObj, practiceMode } from "../../Atom/atom";
 import { title } from "process";
 import { motion } from "framer-motion";
 import GameNav from "../Navbar/GameNav";
 import { ImageBox } from "../../component/kiosk-component/styled_kiosk";
 import star from "../../images/star.svg";
-import { AllButton, Button } from "../../component/kiosk-component/styled_movie";
+import { AllButton, Button, ModalCompleteButton, ModalNavBar, MovieExplain } from "../../component/kiosk-component/styled_movie";
+import { Overlay } from "../../component/game-component/balloon-component";
+import AnimatedText from "../AnimatedText";
 
 const Container = styled(motion.div)`
   width: 50vw;
@@ -51,6 +53,8 @@ function Movie_fast(){
     const navigate = useNavigate();
     const [movies, setMovies] = useState<IGetMoives>();
     const [movieRecoil, setMovieRecoil] = useRecoilState<IAtomMovie>(movieObj);
+    const [modalMatch, setModalMatch] = useState(true);
+    const modeRecoil = useRecoilValue(practiceMode);
     const BoxClicked = (MovieTitle: string) => {
       setMovieRecoil({title:MovieTitle, seat:0, time:""});
       navigate("/kiosk/movie/timeline");
@@ -101,8 +105,22 @@ function Movie_fast(){
             </div>
             <div style={{width:"100%",display:"flex", justifyContent:"center",gap:"5rem"}}>
               <Button onClick={() => navigate("/")}>홈으로 가기</Button>
-              <AllButton onClick={() => navigate("/kiosk/movie/timeline")}>전체 상영표 보기</AllButton>
+              <AllButton mode={modeRecoil.movie} onClick={() => navigate("/kiosk/movie/timeline")}>전체 상영표 보기</AllButton>
             </div>
+            {modeRecoil.movie && modalMatch ? 
+              <>
+              <Overlay/>
+              <MovieExplain>
+                <ModalNavBar>
+                  키오스크 지도
+                </ModalNavBar>
+                <AnimatedText text="빨 간색의 유도선을 따라 클릭해주세요!"/>
+                <ModalCompleteButton onClick={() => setModalMatch(false)}>확인하기</ModalCompleteButton>
+              </MovieExplain>
+              </>
+              :
+              null
+              }
           </Container>
         </div>
     );

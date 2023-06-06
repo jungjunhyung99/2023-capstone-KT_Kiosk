@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router";
-import { IAtomMovie, movieObj } from "../../Atom/atom";
-import { useRecoilState } from "recoil";
+import { IAtomMovie, hamburgerTime, movieObj, movieTime, practiceMode, userIdAtom } from "../../Atom/atom";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { useEffect, useState } from "react";
-import { makeImagePath } from "../../Hook/Hook";
+import { dbService, makeImagePath } from "../../Hook/Hook";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { MinusButton, PlusButton, SeatButton } from "../../component/kiosk-component/styled_movie";
+import { BackButton, BackButtonContainer, MinusButton, ModalCompleteButton, ModalNavBar, MovieExplain, MovieResult, PlusButton, ResultNavBar, SeatButton, TakenMovieTime, TimeTakenDiv } from "../../component/kiosk-component/styled_movie";
+import { formatTime } from "./Movie_fx";
+import { doc, getFirestore, setDoc, updateDoc, FieldValue,arrayUnion, getDoc } from "firebase/firestore";
+import { Overlay } from "../../component/game-component/balloon-component";
+import AnimatedText from "../AnimatedText";
 
 const Container = styled(motion.div)`
   width: 50vw;
@@ -22,6 +26,8 @@ const Footer = styled.div`
 
 const Grid = styled.div`
   display: grid;
+  row-gap: 10px;
+  column-gap: 4px;
   grid-template-columns  : repeat(3,30px);
   grid-template-rows: repeat(6,30px);
   margin-top: 5vh;
@@ -30,22 +36,24 @@ const Grid = styled.div`
 
 const LargeGrid = styled.div`
   display: grid;
+  row-gap: 10px;
+  column-gap: 4px;
   grid-template-columns  : repeat(6,30px);
   grid-template-rows  : repeat(8,30px);
   margin-top: 5vh;
   margin-right: 3vw;
-  
 `;
 
-const Item = styled.div<{isActive: boolean}>`
+const Item = styled.div<{isActive: boolean, seatnum: number}>`
     display: flex;
     justify-content: center;
     align-items: center;
     background-color: ${(props) => props.isActive ? "#2BB7B3": "#666666"};
     width: 30px;
     height: 30px;
-    border: 2px solid white;
     cursor: pointer;
+    border: 2px solid white;
+    border-color: ${(props) => props.isActive ? "white" : props.seatnum === 0 ? "#DC8317" : "#0B872F"};
 `;
 
 const Body = styled.div`
@@ -143,21 +151,28 @@ function Movie_seat(){
     const [seat1, setSeat1] = useState<ISeat[]>([]);
     const [seat2, setSeat2] = useState<ISeat[]>([]);
     const [seat3, setSeat3] = useState<ISeat[]>([]);
+    const [timer,setTimer] = useRecoilState(movieTime);
+    const [timeTaken, setTimeTaken] = useRecoilState(movieTime);
+    const [resultPrint, setResultPrint] = useState(false);
+    const [editData, setEditData] = useState<any>();
+    const [modalMatch,setModalMatch] = useState(true);
+    const modeRecoil = useRecoilValue(practiceMode);
+    const userId = useRecoilValue(userIdAtom);
     const makeArray = (num: number) => {
       const arr:ISeat[] = [];
-      if(num == 1){
+      if(num === 1){
         for(let i = 0; i < 18; i++){
         arr.push({clicked:false,seat_num:"a26"});
       }
       setSeat1(arr);
     }
-      else if(num == 2){
+      else if(num === 2){
         for(let i = 18; i < 72; i++){
         arr.push({clicked:false,seat_num:"a26"});
       }
       setSeat2(arr);
     }
-      else if(num == 3){
+      else if(num === 3){
         for(let i = 72; i < 90; i++){
         arr.push({clicked:false,seat_num:"a26"});
       }
@@ -170,9 +185,9 @@ function Movie_seat(){
       let RealSeat: ISeat[];
       let RealSeat2: ISeat[];
       let RealSeat3: ISeat[];
-      if(seatnum == 1){
+      if(seatnum === 1){
         RealSeat = JSON.parse(JSON.stringify(seat1));
-        if(num == 0) {
+        if(num === 0) {
           if(RealSeat[index].clicked === true){
             RealSeat[index].clicked = !RealSeat[index].clicked;
             setSeat1(RealSeat);
@@ -190,9 +205,9 @@ function Movie_seat(){
         }
         setSeat1(RealSeat);
       }
-      if(seatnum == 2){
+      if(seatnum === 2){
         RealSeat2 = JSON.parse(JSON.stringify(seat2));
-        if(num == 0) {
+        if(num === 0) {
           if(RealSeat2[index].clicked === true){
             RealSeat2[index].clicked = !RealSeat2[index].clicked;
             setSeat2(RealSeat2);
@@ -210,9 +225,9 @@ function Movie_seat(){
         }
         setSeat2(RealSeat2);
       }
-      if(seatnum == 3){
+      if(seatnum === 3){
         RealSeat3 = JSON.parse(JSON.stringify(seat3));
-        if(num == 0) {
+        if(num === 0) {
           if(RealSeat3[index].clicked === true){
             RealSeat3[index].clicked = !RealSeat3[index].clicked;
             setSeat3(RealSeat3);
@@ -232,31 +247,57 @@ function Movie_seat(){
       }
     };
 
+    const updateData = async (time: number) => {
+      try {
+        const docId = "c5EkUB47lyWaKnU36b5c";
+        const docRef = doc(dbService, 'kiosk-record', docId); 
+    
+        const docSnap = await getDoc(docRef);
+        const data = docSnap.data();
+        console.log(data);
+
+        await updateDoc(docRef, {
+          "data.movie.time": arrayUnion(parseInt(((time % 60000) / 1000).toFixed(0)))
+        });
+        console.log('문서 업데이트 완료');
+      } catch (error) {
+        console.error('문서 업데이트 중 오류 발생:', error);
+      }
+    };
+    
+
     const nextPress = (num : number) => {
       setMovieRecoil({title:movieRecoil.title, time:movieRecoil.time, seat:num})
-      navigate("/Menu/home/hard/cgv/result");
-    }
+      const endTime = Date.now();
+      console.log(((endTime - timer) % 60000) / 1000);
+      setTimeTaken(((endTime - timer) % 60000) / 1000);
+      console.log(dbService);
+      if(modeRecoil.movie){
+        updateData(endTime - timer);
+        navigate("/kiosk/movie/result");
+      }
+      else{
+        setTimeTaken(((endTime - timer) % 60000) / 1000);
+        setResultPrint((prev: boolean) => !prev);
+      }
+    };
 
     const plusPress = () => {
       setPerson(person+1);
-      
-    }
-
+    };
     
     const minusPress = () => {
       if(person === 1 ) return;
       setPerson(person-1);
-    }
+    };
 
     const getMovies = async () => {
       const json = await (
         await fetch(
             `https://api.themoviedb.org/3/movie/now_playing?api_key=1e1dd98e7bbdb858a49359dbec86444f`
         )
-        
       ).json();
       setMovies(json);
-    console.log(json);
     };
 
     useEffect(() => {
@@ -281,25 +322,55 @@ function Movie_seat(){
             <div style={{display:"flex", flexDirection:"column", justifyContent:"center"}}>
             <h2 style={{textAlign:"center"}}>인원수를 정한 후 자리를 지정해주세요</h2>
               <div style={{display:"flex",justifyContent:"center", alignItems:"center",}}>
-              <MinusButton num={3} current={person} onClick={minusPress}>-</MinusButton>
+              <MinusButton mode={modeRecoil.movie} num={3} current={person} onClick={minusPress}>-</MinusButton>
               <h2 style={{fontSize:"50px", margin: "0 10vw"}}>{person}</h2>
-              <PlusButton num={3} current={person} onClick={plusPress}>+</PlusButton>
+              <PlusButton mode={modeRecoil.movie} num={3} current={person} onClick={plusPress}>+</PlusButton>
               </div>
             </div>
             <div style={{display:"block", margin:"0 auto", border:"3px solid white",width:"70%", marginTop:"20px",justifyContent:"center"}}><h2 style={{textAlign:"center"}}>screen</h2></div>
             <div style={{display:"flex",height:"80%",justifyContent:"center"}}>
             <Grid>
-                {seat1.map((num,index) => <Item key={index+10} onClick={()=>seatClick(index,1)} isActive={num.clicked}>{num.seat_num}</Item>)}
+                {seat1.map((num,index) => <Item key={index+70} onClick={()=>seatClick(index,1)} isActive={num.clicked} seatnum={0}>{num.seat_num}</Item>)}
             </Grid>
-            <LargeGrid>
-                {seat2.map((num,index) => <Item key={index+30} onClick={()=>seatClick(index,2)} isActive={num.clicked}>{num.seat_num}</Item>)}
+            <LargeGrid> 
+                {seat2.map((num,index) => <Item key={index+90} onClick={()=>seatClick(index,2)} isActive={num.clicked} seatnum={1}>{num.seat_num}</Item>)}
             </LargeGrid>
             <Grid>
-                {seat3.map((num,index) => <Item key={index+50} onClick={()=>seatClick(index,3)} isActive={num.clicked}>{num.seat_num}</Item>)}
+                {seat3.map((num,index) => <Item key={index+100} onClick={()=>seatClick(index,3)} isActive={num.clicked} seatnum={0}>{num.seat_num}</Item>)}
             </Grid>
             </div>
-            {num === 0 ? <SeatButton onClick={() => nextPress(person)} isActive={num === 0}>예약하기</SeatButton> : <SeatButton isActive={false} >좌석을 선택해주세요</SeatButton> }
+            {num === 0 ? <SeatButton mode={modeRecoil.movie} onClick={() => nextPress(person)} isActive={num === 0}>예약하기</SeatButton> : <SeatButton mode={modeRecoil.movie} isActive={false}> <span style={{color:"#31CECA", fontSize: "2rem"}}>3개</span>의 좌석을 선택해주세요</SeatButton> }
             <Footer/>
+            {resultPrint ? 
+              <>
+              <Overlay/>
+              <MovieExplain>
+                <ModalNavBar>
+                  키오스크 지도
+                </ModalNavBar>
+                <TimeTakenDiv>
+                  주문까지 {timeTaken.toFixed(0)}초 걸렸어요!
+                </TimeTakenDiv>
+                <ModalCompleteButton onClick={() => navigate("/")}>홈으로 가기</ModalCompleteButton>
+              </MovieExplain>
+              </>
+              :
+              null
+            }
+             {modeRecoil.movie && modalMatch ? 
+              <>
+              <Overlay/>
+              <MovieExplain>
+                <ModalNavBar>
+                  키오스크 지도
+                </ModalNavBar>
+                <AnimatedText text="먼 저 인원수를 지정해주시고, 좌석을 선택해주세요!"/>
+                <ModalCompleteButton onClick={() => setModalMatch(false)}>확인하기</ModalCompleteButton>
+              </MovieExplain>
+              </>
+              :
+              null
+              }
           </Body>
         </Container>
     );
