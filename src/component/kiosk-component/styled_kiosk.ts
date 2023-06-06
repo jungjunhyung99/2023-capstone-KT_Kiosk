@@ -110,6 +110,7 @@ export const PrevButton = styled.button`
     box-shadow: 0px 1px 2px 1px gray;
     margin-left: 2rem;
     cursor: pointer;
+    z-index: 100;
 `;
 
 export const NextButton = styled(PrevButton)`
