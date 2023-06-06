@@ -26,7 +26,7 @@ function Icecream() {
     }
 
     const onClickKiosk = () => {
-        navigate('/kiosk');
+        navigate('/kiosk/Icecream_start');
     }
 
     const cone_number1 = useRecoilValue(number1);
