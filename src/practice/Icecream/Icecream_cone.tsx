@@ -164,11 +164,9 @@ function Icecream_cone() {
 
     function PERCENT_PRINT() {
         let PERCENT_VALUE = Math.round(tube_number2/3*100);
-        let OVER_VALUE = Math.round((3-(tube_number2-3))/3*100);
 
-        if ((tube_number2>0) && (tube_number2<=3)) { return PERCENT_VALUE; }
-        else if (tube_number2 == 0) { return 0;}
-        else if (tube_number2 > 3) { return OVER_VALUE; }
+        if (tube_number2 <= 3) return PERCENT_VALUE;
+        else if ((tube_number2==0) || (tube_number2>3)) return 50;
     }
 
     const bar_number1 = useRecoilValue(number5);
