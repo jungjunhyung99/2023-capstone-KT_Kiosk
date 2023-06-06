@@ -6,13 +6,6 @@ export interface ICafe {
     quantity: number;
 }
 
-export interface IMode {
-    movie: boolean,
-    hamburger: boolean,
-    cafe: boolean,
-    icecream: boolean,
-}
-
 
 export interface IFastItem{
     id: string | undefined;
@@ -119,78 +112,15 @@ export const fastObj = atom<IAtomFast>({
     default: {takeout:"",item:[]},
 });
 
-export const fastAnswer = atom<any>({
+export const fastAnswer = atom<IAtomFast>({
     key: "fastAnswer",
     default: {
         takeout: "",
-        beverage: "",
-        beverageCount: 0,
-        food:"",
-        foodCount: 0
+        item: [],
     }
 });
 
 export const LogInState = atom<boolean>({
-    key: "LogInState2",
+    key: "LogInState",
     default: false
-})
-
-export const movieTime = atom<number>({
-    key: 'movieTime2',
-    default: 0
-});
-
-export const hamburgerTime = atom<number>({
-    key: 'hamburgerTime2',
-    default: 0
-});
-
-export const cafeTime = atom<number>({
-    key: 'cafeTime2',
-    default: 0
-});
-
-export const icecreamTime = atom<number>({
-    key: 'icecreamTime2',
-    default: 0
-})
-
-export const movieRecord = atom<any>({
-    key: 'movieRecord2',
-    default: "",
-});
-
-export const hamburgerRecord = atom<any>({
-    key: 'hamburgerRecord2',
-    default: ""
-});
-
-export const cafeRecord = atom<any>({
-    key: 'cafeRecord2',
-    default: ""
-});
-
-export const userIdAtom = atom<any>({
-    key: 'userIdAtom2',
-    default: ""
-});
-
-export const practiceMode = atom<IMode>({
-    key: "practiceMode",
-    default: {
-        movie: false,
-        hamburger: false,
-        cafe: false,
-        icecream: false
-    }
-});
-
-export const practiceMode2 = atom<IMode>({
-    key: "practiceMode2",
-    default: {
-        movie: false,
-        hamburger: false,
-        cafe: false,
-        icecream: true
-    }
 })

@@ -150,12 +150,6 @@ export const KioskClickBox = styled.div`
     }
 `;
 
-export const ModeClickBox = styled(KioskClickBox)`
-    width: 50rem;
-    height: 15rem;
-    justify-content: start;
-`;
-
 export const KioskChoiceContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -188,22 +182,4 @@ export const PopcornImage = styled(KioskImageBox)`
 
 export const HeightImageBox = styled(KioskImageBox)`
     height: 7rem;
-`;
-
-export const IcecreamImage = styled(KioskImageBox)`
-    height: 15rem;
-`;
-
-export const LogoutButton = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 6rem;
-    height: 2rem;
-    color: white;
-    background-color: #BBE3FF;
-    border-radius: 2rem;
-    margin-top: 1rem;
-    font-weight: 800;
-    cursor: pointer;
 `;

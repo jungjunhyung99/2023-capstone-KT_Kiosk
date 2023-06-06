@@ -20,7 +20,7 @@ const Container=styled.div`
     width: 100px;
     height: 100px;
     left: 0px;
-    top: 80px;
+    top: 50px;
     background-color: #D4F4FA;
 `;
 
