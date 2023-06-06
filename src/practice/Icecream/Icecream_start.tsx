@@ -1,15 +1,14 @@
-import { FlexBox, ImageBox, KTLogo, KioskContainer2, KioskStartContainer, ModeBox } from "../../component/kiosk-component/styled_kiosk";
+import { FlexBox, KTLogo, KioskStartContainer, ModeBox } from "../../component/kiosk-component/styled_kiosk";
 import { BackCircle2, CircleConatiner, ContentDescript, ContentTextBox, ContentTitle, LogoTitle, ModeClickBox, IcecreamImage, WidthImageBox } from "../../component/main_components";
 import Kiosk_Nav from "../../contents/Navbar/KioskNav";
 import Icecream from "../../images/Icecream.png";
-import { DescribeDiv, KioskBorderDiv, StartButton } from "../../component/kiosk-component/styled_hamburger";
+import { DescribeDiv, KioskBorderDiv } from "../../component/kiosk-component/styled_hamburger";
 import { LaxicalContainer } from "../../component/index-component/styled_index";
 import { useNavigate } from "react-router-dom";
-import { useResetRecoilState, useSetRecoilState, useRecoilState } from "recoil";
-import { IMode, fastAnswer, icecreamTime, practiceMode2 } from "../../Atom/atom";
+import { useSetRecoilState } from "recoil";
+import { IMode, icecreamTime, practiceMode2 } from "../../Atom/atom";
 import check from "../../images/check.svg";
 import key from "../../images/key.svg";
-import { useEffect } from "react";
 
 function Icecream_start() {
     const navigate = useNavigate();

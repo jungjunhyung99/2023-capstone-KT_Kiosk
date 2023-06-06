@@ -161,6 +161,13 @@ function Icecream_bar() {
         {return (<FAILURETEXT>"실패하셨습니다!"</FAILURETEXT>);}
     }
 
+    function PERSENT_PRINT() {
+        let PERSENT_VALUE = Math.round(tube_number2/3*100);
+
+        if (tube_number2>0) { return PERSENT_VALUE; }
+        else if (tube_number2 == 0) { return 0;}
+    }
+
     const cone_number1 = useRecoilValue(number1);
     const cone_number2 = useRecoilValue(number2);
     const cone_number3 = useRecoilValue(number3);
@@ -246,7 +253,7 @@ function Icecream_bar() {
         font-size: 35px;
         background-color: #3DB7CC;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
         width: 27%;
         display: flex;
@@ -259,7 +266,7 @@ function Icecream_bar() {
         font-size: 35px;
         background-color: #3DB7CC;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
         width: 27%;
         margin-left: 15px;
@@ -273,7 +280,7 @@ function Icecream_bar() {
         font-size: 35px;
         background-color: #3DB7CC;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
         width: 27%;
         margin-left: 15px;
@@ -287,7 +294,7 @@ function Icecream_bar() {
         font-size: 35px;
         background-color: #3DB7CC;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
         width: 27%;
         margin-left: 15px;
@@ -374,13 +381,13 @@ function Icecream_bar() {
     const FirstPlusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #22741C;
         border-width: 1px;
         position: relative;
         top: 10px;
         right: 315px;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
         z-index: 100;
     `;
@@ -388,13 +395,13 @@ function Icecream_bar() {
     const SecondPlusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #22741C;
         border-width: 1px;
         position: relative;
         top: 10px;
         right: 70px;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
         z-index: 100;
     `;
@@ -402,13 +409,13 @@ function Icecream_bar() {
     const ThirdPlusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #22741C;
         border-width: 1px;
         position: relative;
         top: 10px;
         left: 183px;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
         z-index: 100;
     `;
@@ -416,13 +423,13 @@ function Icecream_bar() {
     const FourthPlusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #22741C;
         border-width: 1px;
         position: relative;
         top: 10px;
         left: 436px;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
         z-index: 100;
     `;
@@ -466,52 +473,52 @@ function Icecream_bar() {
     const FirstMinusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #22741C;
         border-width: 1px;
         position: relative;
         top: 10px;
         right: 315px;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
     `;
 
     const SecondMinusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #22741C;
         border-width: 1px;
         position: relative;
         top: 10px;
         right: 70px;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
     `;
 
     const ThirdMinusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #22741C;
         border-width: 1px;
         position: relative;
         top: 10px;
         left: 183px;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
     `;
 
     const FourthMinusButton = styled.button`
         width: 60px;
         height: 50px;
-        background-color: green;
+        background-color: #22741C;
         border-width: 1px;
         position: relative;
         top: 10px;
         left: 436px;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
     `;
 
@@ -575,6 +582,9 @@ function Icecream_bar() {
         border-width: 1px;
         height: 100px;
         font-color: white;
+        &:hover {
+            background-color: #FAF4C0;
+        }
     `;
 
     const OrderDiv = styled.div`
@@ -613,24 +623,30 @@ function Icecream_bar() {
     `;
 
     const Text = styled.div`
-    font-size: 27px;
-    position: relative;
-    top: 40px;
+        font-size: 27px;
+        position: relative;
+        top: -10px;
     `;
 
     const Total = styled.div`
         font-size: 30px;
         position: relative;
-        top: 70px;
+        top: 40px;
     `;
 
     const Close = styled.button`
         font-size: 30px;
         width: 100px;
         position: relative;
-        top: 100px;
+        top: 65px;
         background-color: #D4F4FA;
+        &:hover {
+            background-color: #FAF4C0;
+        }
+        font-weight: bold;
+        height: 50px;
     `;
+
 
     const Entire = styled.div`
         background-color: white;
@@ -652,7 +668,7 @@ function Icecream_bar() {
         font-weight: bold;
         background-color: #D4F4FA;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
     `;
 
@@ -666,8 +682,22 @@ function Icecream_bar() {
         font-weight: bold;
         background-color: #D4F4FA;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
+    `;
+
+    const LookResult = styled.div`
+        font-size: 40px;
+        position: relative;
+        font-weight: bold;
+        color: black;
+        background-color: #D4F4FA;
+        width: 700px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 80px;
+        margin-top: -10px;
     `;
 
     const Final = styled.div`
@@ -720,7 +750,7 @@ function Icecream_bar() {
                         <Home_Button onClick={onClickHome}>홈으로 이동</Home_Button>  
                         <Result onClick={onClickToggleModal2}>기록 보기</Result>   
                             {isOpenModal2 && (
-                                <Modal_Result2 onClickToggleModal2={onClickToggleModal2}>기록 보기<br/>
+                                <Modal_Result2 onClickToggleModal2={onClickToggleModal2}><LookResult>기록 보기</LookResult><br/>
                                     <Text>{CONE1()}</Text>
                                     <Text>{CONE2()}</Text>
                                     <Text>{CONE3()}</Text>
@@ -744,7 +774,9 @@ function Icecream_bar() {
                                     <Total>총 금액 : {2500*cone_number1 + 2200*cone_number2 + 2500*cone_number3 + 3500*cone_number4 
                                         + 2500*bar_number1 + 2000*bar_number2 + 2500*bar_number3 + 2000* bar_number4
                                         + 3500*tube_number1 + 3000*tube_number2 + 3500*tube_number3 + 3000*tube_number4
-                                        + 3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원</Total>
+                                        + 3500*family_number1 + 3500*family_number2 + 4000*family_number3 + 3500*family_number4}원, 
+                                        정답률 : {PERSENT_PRINT()}%
+                                    </Total>
                                     <Close onClick={() => setOpenModal(false)}>닫기</Close> 
                                 </Modal_Result2>
                             )}   

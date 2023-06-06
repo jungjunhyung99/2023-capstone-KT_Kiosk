@@ -83,7 +83,7 @@ function Icecream() {
         font-size: 35px;
         background-color: #3DB7CC;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
         width:27%;
         display: flex;
@@ -96,7 +96,7 @@ function Icecream() {
         font-size: 35px;
         background-color: #3DB7CC;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
         width: 27%;
         margin-left: 15px;
@@ -124,7 +124,7 @@ function Icecream() {
         font-size: 35px;
         background-color: #3DB7CC;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
         width: 27%;
         ${(props) =>
@@ -144,7 +144,7 @@ function Icecream() {
         font-size: 35px;
         background-color: #3DB7CC;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
         width: 27%;
         margin-left: 15px;
@@ -180,7 +180,7 @@ function Icecream() {
         align-items: center;
         background-color: #3DB7CC;
         &:hover {
-            background-color: lightyellow;
+            background-color: #FAF4C0;
         }
     `;
     
