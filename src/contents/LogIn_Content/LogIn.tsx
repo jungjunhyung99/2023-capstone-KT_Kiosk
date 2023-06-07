@@ -98,6 +98,11 @@ console.log(userData);
           <KioskBorderDiv>
             <PopcornImage image={IceCream} />
           </KioskBorderDiv>
+          <BoldDiv>
+          {userData?.data.icecream?.time?.sort((a: any,b: any) => a - b)?.slice(0,3).map((time:number, index: number) => (
+              <div>{index + 1}번째: {time}초</div>
+            ))}
+          </BoldDiv>
         </RecordDiv>
       </RecordGrid>
     </LaxicalContainer>

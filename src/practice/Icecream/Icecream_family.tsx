@@ -9,7 +9,9 @@ import { useState, useCallback } from 'react';
 import { RecoilRoot, useRecoilState, useRecoilValue } from "recoil";
 import Modal_Result from "../../component/Modal";
 import Modal_Result2 from "../../component/Modal2";
-import {number1, number2, number3, number4, number5, number6, number7, number8, number9, number10, number11, number12, number13, number14, number15, number16} from "../../Atom/store";
+import {number1, number2, number3, number4, number5, number6, number7, number8, number9, number10, number11, number12, number13, number14, number15, number16, practiceMode2, icecreamTime} from "../../Atom/store";
+import { dbService } from '../../Hook/Hook';
+import { arrayUnion, doc, getDoc, updateDoc } from 'firebase/firestore';
 
 function Icecream_family() {
 
@@ -214,15 +216,41 @@ function Icecream_family() {
 
     const [isOpenModal, setOpenModal] = useState<boolean>(false);
     const [isOpenModal2, setOpenModal2] = useState<boolean>(false);
+    const timer = useRecoilValue(icecreamTime);
+    const [modeRecoil,setModeRecoil] = useRecoilState(practiceMode2);
+
+    const updateData = async (time: number) => {
+        try {
+          const docId = "c5EkUB47lyWaKnU36b5c";
+          const docRef = doc(dbService, 'kiosk-record', docId); 
+      
+          const docSnap = await getDoc(docRef);
+          const data = docSnap.data();
+          console.log(data);
+  
+          await updateDoc(docRef, {
+            "data.icecream.time": arrayUnion(parseInt(((time) / 1000).toFixed(0)))
+          });
+          console.log('문서 업데이트 완료');
+        } catch (error) {
+          console.error('문서 업데이트 중 오류 발생:', error);
+        }
+      };
 
     const onClickToggleModal = useCallback(() => {
         setOpenModal(!isOpenModal);
+
+        const endTime = Date.now();
+          if(modeRecoil.icecream){
+            updateData(endTime - timer);
+          }   
+          
     }, [isOpenModal]);
-
+   
     const onClickToggleModal2 = useCallback(() => {
-        setOpenModal2(!isOpenModal2);
+        setOpenModal2(!isOpenModal2);       
     }, [isOpenModal2]);
-
+    
     const Title = styled.div`
         width: 80vw;
         font-size: 45px;
@@ -728,9 +756,9 @@ function Icecream_family() {
                     {ANSWER_PRINT()}<br></br>
                     <Two_Button>
                         <Home_Button onClick={onClickHome}>홈으로 이동</Home_Button>  
-                        <Result onClick={onClickToggleModal2}>기록 보기</Result>   
+                        <Result onClick={onClickToggleModal2}>결제하기</Result>   
                             {isOpenModal2 && (
-                                <Modal_Result2 onClickToggleModal2={onClickToggleModal2}><LookResult>기록 보기</LookResult><br/>
+                                <Modal_Result2 onClickToggleModal2={onClickToggleModal2}><LookResult>결제 및 기록</LookResult><br/>
                                     <Text>{CONE1()}</Text>
                                     <Text>{CONE2()}</Text>
                                     <Text>{CONE3()}</Text>
