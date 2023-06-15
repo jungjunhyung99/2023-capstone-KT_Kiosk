@@ -4,21 +4,21 @@
 ## 메인페이지 로그인 전/후
 
 ### 로그인 전
-<img width="600" height="400" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/eea9ec8c-9952-4291-b24d-a16ec20c276a">
+<img width="600" height="450" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/eea9ec8c-9952-4291-b24d-a16ec20c276a">
 
 ### 로그인 후
-<img width="600" height="400" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/6520b693-026b-46be-9112-fc42e9b4f381">
+<img width="600" height="450" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/6520b693-026b-46be-9112-fc42e9b4f381">
 
 ## 키오스크의 '모드' 선택 페이지
-<img width="600" height="400" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/115de17b-d091-46ab-9e53-cc53225a79e7">
+<img width="600" height="450" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/115de17b-d091-46ab-9e53-cc53225a79e7">
 
 ## 각 키오스크별 대표 페이지
 
 ### 영화관 키오스크
-<img width="200" height="400" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/46b6c325-3c7f-4e28-bfc6-745f78ed2d9e">
+<img width="200" height="450" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/46b6c325-3c7f-4e28-bfc6-745f78ed2d9e">
 
 ### 패스트푸드점 키오스크
-<img width="200" height="400" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/0be25a3c-268d-41e2-be65-3fdfd7b055cf">
+<img width="200" height="450" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/0be25a3c-268d-41e2-be65-3fdfd7b055cf">
 
 ### 카페 키오스크
 <img width="400" height="500" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/28a9161e-ed69-4a74-9afb-175fa6f41ad2">
@@ -27,7 +27,7 @@
 <img width="600" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/27ceca9e-5491-472f-95b1-02e718383a4b">
 
 ## 뇌활력 게임
-<img width="600" height="400" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/712b8b81-bd03-4b13-ac8a-7b8a84d26e15">
+<img width="600" height="450" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/712b8b81-bd03-4b13-ac8a-7b8a84d26e15">
 
 ### 글자게임
 <img width="200" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/0ecd3803-ddaf-457a-bca5-9a8eda580fd6">
