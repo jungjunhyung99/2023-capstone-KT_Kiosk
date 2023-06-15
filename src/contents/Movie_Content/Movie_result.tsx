@@ -124,7 +124,7 @@ function Movie_result() {
         <div style={{display:"flex", flexDirection:"column", alignItems:"center",justifyContent:"center"}}>
              <Banner bgPhoto={makeImagePath(movies?.results[1].backdrop_path || "")}/>
              <div style={{display: "flex",alignItems:"center",justifyContent:"center",width: "100%"}}>
-             <h1 style={{marginTop:"2em",color:"white"}}>주문 완료까지 {takenTime.toFixed(0)}초 걸리셨습니다.</h1>
+             <h1 style={{marginTop:"2em",color:"white"}}>주문 완료까지 {takenTime.toFixed(0)}초  걸리셨습니다.</h1>
              </div>
              <div style={{display:"flex", alignItems:"center"}}>
                 

@@ -151,11 +151,6 @@ export const cafeTime = atom<number>({
     default: 0
 });
 
-export const icecreamTime = atom<number>({
-    key: 'icecreamTime2',
-    default: 0
-})
-
 export const movieRecord = atom<any>({
     key: 'movieRecord2',
     default: "",

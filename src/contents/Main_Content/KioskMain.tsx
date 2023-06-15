@@ -24,13 +24,13 @@ function KioskMain() {
                     <LogoTitle>키오스크 체험하기</LogoTitle>
                 </FlexBox>
                 <KioskChoiceContainer>
-                <StyledLink to="/kiosk/hamburger/start">    
+                <StyledLink to="/kiosk/movie/start">    
                     <KioskClickBox>
-                        <WidthImageBox image={Hamburger}/>
+                        <KioskImageBox image={Popcorn}/>
                         <ContentTextBox>
-                            <ContentTitle>패스트푸드 키오스크</ContentTitle>
+                            <ContentTitle>영화관 키오스크</ContentTitle>
                             <ContentDescript>
-                                햄버거, 너겟, 파이 등의 메뉴를 주문해보세요!
+                                원하는 영화를 예매해보세요!    
                             </ContentDescript>
                         </ContentTextBox>
                     </KioskClickBox>
@@ -48,17 +48,19 @@ function KioskMain() {
                     </KioskClickBox>
                 </StyledLink>
 
-                <StyledLink to="/kiosk/movie/start">    
+                
+                <StyledLink to="/kiosk/hamburger/start">    
                     <KioskClickBox>
-                        <KioskImageBox image={Popcorn}/>
+                        <WidthImageBox image={Hamburger}/>
                         <ContentTextBox>
-                            <ContentTitle>영화관 키오스크</ContentTitle>
+                            <ContentTitle>패스트푸드 키오스크</ContentTitle>
                             <ContentDescript>
-                                원하는 영화를 예매해보세요!    
+                                햄버거, 너겟, 파이 등의 메뉴를 주문해보세요!
                             </ContentDescript>
                         </ContentTextBox>
                     </KioskClickBox>
                 </StyledLink>
+                
                 <StyledLink to="/kiosk/Icecream_start">    
                     <KioskClickBox>
                         <ImageBox1 image={Icecream}/>

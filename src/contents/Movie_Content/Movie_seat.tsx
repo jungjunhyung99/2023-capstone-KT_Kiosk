@@ -257,7 +257,7 @@ function Movie_seat(){
         console.log(data);
 
         await updateDoc(docRef, {
-          "data.movie.time": arrayUnion(parseInt(((time % 60000) / 1000).toFixed(0)))
+          "data.movie.time": arrayUnion(parseInt(((time) / 1000).toFixed(0)))
         });
         console.log('문서 업데이트 완료');
       } catch (error) {

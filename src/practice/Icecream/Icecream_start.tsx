@@ -5,7 +5,7 @@ import Icecream from "../../images/Icecream.png";
 import { DescribeDiv, KioskBorderDiv } from "../../component/kiosk-component/styled_hamburger";
 import { LaxicalContainer } from "../../component/index-component/styled_index";
 import { useNavigate } from "react-router-dom";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { IMode, icecreamTime, practiceMode2 } from "../../Atom/store";
 import check from "../../images/check.svg";
 import key from "../../images/key.svg";
@@ -20,6 +20,8 @@ function Icecream_start() {
         setModeRecoil((prev: IMode) => ({...prev, icecream:index}));
         navigate("/kiosk/Icecream");
     };
+
+
 
     return (
         <LaxicalContainer>

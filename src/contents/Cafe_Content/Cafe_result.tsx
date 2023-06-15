@@ -14,17 +14,6 @@ function Cafe_result(){
     const menuArr = [Latte,Chocolate, Ade];
     const [menuRecoil,SetMenuRecoil] = useRecoilState<IAtomCafe[]>(cafeObj);
     const takenTime = useRecoilValue(cafeTime);
-    const sortedData = menuRecoil.sort((a, b) => {
-        if (a.name < b.name) {
-          return -1;
-        }
-        if (a.name > b.name) {
-          return 1;
-        }
-        return 0;
-      });
-
-      console.log(sortedData);
 
 
     return (
@@ -37,10 +26,10 @@ function Cafe_result(){
             <CafeResultDiv>
                 <CafeResultBox>
                     <Box2 bgphoto={menuArr[0]}/>
-                { sortedData[0] ?
-                    answer[0].name === sortedData[0].name ?
-                    <span style={{fontSize:"2em",fontWeight:"700",color:"#2BB7B3"}}>{sortedData[0].name} 선택 성공!</span>:
-                     <span style={{fontSize:"2em",fontWeight:"700",color:"#f96363"}}>{sortedData[0].name}의 선택이 틀렸습니다.</span>
+                { menuRecoil[0] ?
+                    answer[0].name === menuRecoil[0].name ?
+                    <span style={{fontSize:"2em",fontWeight:"700",color:"#2BB7B3"}}>{menuRecoil[0].name} 선택 성공!</span>:
+                     <span style={{fontSize:"2em",fontWeight:"700",color:"#f96363"}}>{menuRecoil[0].name}의 선택이 틀렸습니다.</span>
                 :
                 <span style={{fontSize:"2em",fontWeight:"700",color:"#f96363"}}>선택을 안하셨군요!</span>
                 }
@@ -48,10 +37,10 @@ function Cafe_result(){
                 
                 <CafeResultBox>
                     <Box2 bgphoto={menuArr[1]}/>
-                { sortedData[1] ?
-                    answer[1].name === sortedData[1].name ?
-                    <span style={{fontSize:"2em",fontWeight:"700",color:"#2BB7B3"}}>{sortedData[1].name} 선택 성공!</span>:
-                     <span style={{fontSize:"2em",fontWeight:"700",color:"#f96363"}}>{sortedData[1].name}의 선택이 틀렸습니다.</span>
+                { menuRecoil[1] ?
+                    answer[1].name === menuRecoil[1].name ?
+                    <span style={{fontSize:"2em",fontWeight:"700",color:"#2BB7B3"}}>{menuRecoil[1].name} 선택 성공!</span>:
+                     <span style={{fontSize:"2em",fontWeight:"700",color:"#f96363"}}>{menuRecoil[1].name}의 선택이 틀렸습니다.</span>
                 :
                 <span style={{fontSize:"2em",fontWeight:"700",color:"#f96363"}}>선택을 안하셨군요!</span>
                 }
@@ -59,10 +48,10 @@ function Cafe_result(){
                 
                 <CafeResultBox>
                     <Box2 bgphoto={menuArr[2]}/>
-                { sortedData[2] ?
-                    answer[2].name === sortedData[2].name ?
-                    <span style={{fontSize:"2em",fontWeight:"700",color:"#2BB7B3"}}>{sortedData[2].name} 선택 성공!</span>:
-                     <span style={{fontSize:"2em",fontWeight:"700",color:"#f96363"}}>{sortedData[2].name}의 선택이 틀렸습니다.</span>
+                { menuRecoil[2] ?
+                    answer[2].name === menuRecoil[2].name ?
+                    <span style={{fontSize:"2em",fontWeight:"700",color:"#2BB7B3"}}>{menuRecoil[2].name} 선택 성공!</span>:
+                     <span style={{fontSize:"2em",fontWeight:"700",color:"#f96363"}}>{menuRecoil[2].name}의 선택이 틀렸습니다.</span>
                 :
                 <span style={{fontSize:"2em",fontWeight:"700",color:"#f96363"}}>선택을 안하셨군요!</span>
                 }

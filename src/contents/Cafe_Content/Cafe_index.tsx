@@ -109,7 +109,7 @@ function Cafe_index () {
           console.log(data);
   
           await updateDoc(docRef, {
-            "data.cafe.time": arrayUnion(parseInt(((time % 60000) / 1000).toFixed(0)))
+            "data.cafe.time": arrayUnion(parseInt(((time) / 1000).toFixed(0)))
           });
           console.log('문서 업데이트 완료');
         } catch (error) {
