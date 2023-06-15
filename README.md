@@ -15,10 +15,10 @@
 ## 각 키오스크별 대표 페이지
 
 ### 영화관 키오스크
-<img width="200" height="450" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/46b6c325-3c7f-4e28-bfc6-745f78ed2d9e">
+<img width="300" height="450" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/46b6c325-3c7f-4e28-bfc6-745f78ed2d9e">
 
 ### 패스트푸드점 키오스크
-<img width="200" height="450" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/0be25a3c-268d-41e2-be65-3fdfd7b055cf">
+<img width="300" height="450" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/0be25a3c-268d-41e2-be65-3fdfd7b055cf">
 
 ### 카페 키오스크
 <img width="400" height="500" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/28a9161e-ed69-4a74-9afb-175fa6f41ad2">
@@ -30,11 +30,11 @@
 <img width="600" height="450" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/712b8b81-bd03-4b13-ac8a-7b8a84d26e15">
 
 ### 글자게임
-<img width="200" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/0ecd3803-ddaf-457a-bca5-9a8eda580fd6">
+<img width="250" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/0ecd3803-ddaf-457a-bca5-9a8eda580fd6">
 
 ### 숫자게임
-<img width="200" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/f2a878f6-7000-4e64-a5b1-f4da5133bee2">
+<img width="250" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/f2a878f6-7000-4e64-a5b1-f4da5133bee2">
 
 ## 키오스크 설명서
 
-<img width="200" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/ca4e4bd1-a36d-4194-80f2-005ec03d2f25">
+<img width="250" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/ca4e4bd1-a36d-4194-80f2-005ec03d2f25">
