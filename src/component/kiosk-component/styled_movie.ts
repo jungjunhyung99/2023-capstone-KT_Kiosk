@@ -277,6 +277,11 @@ export const MovieExplain = styled.div`
   border: 2px solid black;
 `;
 
+export const ModalResult = styled(MovieExplain)`
+  left: 42rem;
+  top: 15rem;
+`;
+
 export const ModalNavBar = styled.div`
   display: flex;
   position: relative;

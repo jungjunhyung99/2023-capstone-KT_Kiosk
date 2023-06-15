@@ -89,7 +89,7 @@ export const Overlay = styled(motion.div)`
 export const Box = styled(motion.div)<{bgphoto: string}>`
       background-image: url(${(props)=>props.bgphoto});
       background-size: cover;
-      height: 6rem;
+      height: 7.5rem;
       width: 70%;
       font-size: 30px;
       background-size:cover;
@@ -147,7 +147,9 @@ export const BalloonButtonDiv = styled(motion.div)`
 
 export const BalloonButton = styled.button`
   width: 100%;
-  height: 6rem;
+  height: 7rem;
   background-color: #28A8A5;
   border-top: 2px solid gray;
+  font-size: 2rem;
+  font-weight: 700;
 `;

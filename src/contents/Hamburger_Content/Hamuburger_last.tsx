@@ -299,7 +299,7 @@ function Hamburger_last() {
           console.log(data);
   
           await updateDoc(docRef, {
-            "data.hamburger.time": arrayUnion(parseInt(((time % 60000) / 1000).toFixed(0)))
+            "data.hamburger.time": arrayUnion(parseInt(((time) / 1000).toFixed(0)))
           });
           console.log('문서 업데이트 완료');
         } catch (error) {

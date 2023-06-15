@@ -57,7 +57,7 @@ console.log(userData);
             <SelectedImage image={Hamburger} />
           </KioskBorderDiv>
           <BoldDiv>
-          {userData?.data.hamburger?.time?.sort((a: any,b: any) => a.time - b.time)?.slice(0,3)?.map((time:number, index: number) => (
+          {userData?.data.hamburger?.time?.sort((a: any,b: any) => a - b)?.slice(0,3)?.map((time:number, index: number) => (
               <div>{index + 1}번째: {time}초</div>
             ))}
           </BoldDiv>

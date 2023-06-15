@@ -66,6 +66,8 @@ function Movie_initial(){
       navigate("/Menu/home/hard/cgv/when");
     };
 
+    console.log(modalMatch);
+
     const getMovies = async () => {
       const json = await (
         await fetch(
@@ -118,7 +120,7 @@ function Movie_initial(){
                 <ModalNavBar>
                   키오스크 지도
                 </ModalNavBar>
-                <AnimatedText text="티 켓은 입장권과 같은 표를 말해요!  희는 티켓을 직접 예매해 볼 거에요!"/>
+                <AnimatedText text="티 켓은 입장권과 같은 표를 말해요! 저희는 티켓을 직접 예매해 볼 거에요!"/>
                 <ModalCompleteButton onClick={() => setModalMatch(false)}>확인하기</ModalCompleteButton>
               </MovieExplain>
               </>

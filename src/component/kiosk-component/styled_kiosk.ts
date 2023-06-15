@@ -59,6 +59,7 @@ export const ModeBox = styled.div<{image: any}>`
     background-size: cover;
 `;
 
+
 export const HamburgerImageBox = styled(ImageBox)`
     width: 8rem;
     height: 8rem;

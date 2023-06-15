@@ -206,4 +206,5 @@ export const LogoutButton = styled.div`
     margin-top: 1rem;
     font-weight: 800;
     cursor: pointer;
+    z-index: 2;
 `;

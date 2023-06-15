@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Board from "./Board";
 import Timer from "./Timer";
+import { Overlay } from "../../../component/game-component/balloon-component";
+import { ModalCompleteButton, ModalNavBar, ModalResult, MovieExplain, TimeTakenDiv } from "../../../component/kiosk-component/styled_movie";
+import AnimatedText from "../../../contents/AnimatedText";
+import { useNavigate } from "react-router-dom";
 
 let array : number[] = [];
 for (let i = 1; i <= 25; i++) {
@@ -12,16 +16,18 @@ function OneToFifty() {
   const [numbers, setNumbers] = useState(array);
   const [gameFlag, setGameFlag] = useState(false);
   const [current, setCurrent] = useState(1);
+  const [modal, setModal] = useState(false);
+  const navigate = useNavigate();
   const handleClick = (num : number) => {
     if (num === current && gameFlag) {
-      if (num === 50) {
-        alert("성공");
+      if (num === 25) {
+        setModal(true);
         endGame();
       }
       const index = numbers.indexOf(num);
       setNumbers(numbers => [
         ...numbers.slice(0, index),
-        num < 26 ? num + 25 : 0,
+        num < 26 ? 0 : 0,
         ...numbers.slice(index + 1)
       ]);
       setCurrent(current => current + 1);
@@ -46,6 +52,22 @@ function OneToFifty() {
         <StartButton onClick={startGame}>시작하기</StartButton>
       )}
       <Final>여백</Final><hr/>
+      {modal ? 
+        <>
+        <Overlay/>
+        <ModalResult>
+            <ModalNavBar>
+              숫자게임
+            </ModalNavBar>
+            <TimeTakenDiv>
+              숫자게임 클리어!
+            </TimeTakenDiv>
+            <ModalCompleteButton onClick={() => navigate("/")}>홈으로 가기</ModalCompleteButton>
+        </ModalResult>
+         </>
+          :
+          null
+          }    
     </Container>
   );
 }
@@ -64,7 +86,7 @@ const Final = styled.div`
   background-color:black;
   height: 1000px;
   width: 305.2%;
-  font-color: black;
+  color: black;
 `;
 
 const Container = styled.div`

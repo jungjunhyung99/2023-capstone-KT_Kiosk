@@ -162,7 +162,7 @@ function BallonGame() {
                     delay: 1,
                 }}}
                 exit={{opacity: 0}}>
-                      <BalloonButton>처음으로</BalloonButton>
+                      <BalloonButton onClick={() => navigate("/")}>처음으로</BalloonButton>
                   </BalloonButtonDiv>
                 </div>
                   :
