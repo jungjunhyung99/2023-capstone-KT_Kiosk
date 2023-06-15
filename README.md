@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+# KT 산학연계 '교육용 웹 키오스크 고도화' 프로젝트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## 메인페이지 로그인 전/후
 
-In the project directory, you can run:
+### 로그인 전
+<img width="600" height="400" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/eea9ec8c-9952-4291-b24d-a16ec20c276a">
 
-### `npm start`
+### 로그인 후
+<img width="600" height="400" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/6520b693-026b-46be-9112-fc42e9b4f381">
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 키오스크의 '모드' 선택 페이지
+<img width="600" height="400" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/115de17b-d091-46ab-9e53-cc53225a79e7">
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 각 키오스크별 대표 페이지
 
-### `npm test`
+### 영화관 키오스크
+<img width="200" height="400" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/46b6c325-3c7f-4e28-bfc6-745f78ed2d9e">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 패스트푸드점 키오스크
+<img width="200" height="400" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/0be25a3c-268d-41e2-be65-3fdfd7b055cf">
 
-### `npm run build`
+### 카페 키오스크
+<img width="400" height="500" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/28a9161e-ed69-4a74-9afb-175fa6f41ad2">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 아이스크림 키오스크
+<img width="600" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/27ceca9e-5491-472f-95b1-02e718383a4b">
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 뇌활력 게임
+<img width="600" height="400" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/712b8b81-bd03-4b13-ac8a-7b8a84d26e15">
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 글자게임
+<img width="200" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/0ecd3803-ddaf-457a-bca5-9a8eda580fd6">
 
-### `npm run eject`
+### 숫자게임
+<img width="200" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/f2a878f6-7000-4e64-a5b1-f4da5133bee2">
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 키오스크 설명서
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+<img width="200" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/ca4e4bd1-a36d-4194-80f2-005ec03d2f25">
