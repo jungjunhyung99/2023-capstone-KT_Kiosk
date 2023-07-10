@@ -6,8 +6,6 @@
 ## 최종 시연 영상
 <img width="750" height="450" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/d67ac53c-f5a6-4dd7-b5f2-276434b03c0f">
 
-<img width="750" height="450" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/41f9a02e-912c-4e97-9e63-ceabf6cccf70">
-
 
 ## 메인페이지 로그인 전/후
 
