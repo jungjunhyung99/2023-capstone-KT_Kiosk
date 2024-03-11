@@ -1,11 +1,15 @@
 # KT 산학연계 '교육용 웹 키오스크 고도화' 프로젝트
 
+## 메인 아이디어
+  - 키오스크 주문 기록 단축을 위한 타임 어택 기능을 넣으면 어떨까❓
+  - 어떤 버튼을 눌러야 하는지 정보를 제공해주는 '지도 모드'와 정보를 제공하지 않는 '연습 모드'를 만드는건 어떨까❓
+  - 키오스크에 있는 단어들이 어려운 고령층 분들을 위한 키오스크 설명 페이지를 제작하는건 어떨까❓ 
+
 ## 최종 보고서
 [최종 보고서.pdf](https://github.com/jungjunhyung99/capstone/files/11999190/default.pdf)
 
-## 최종 시연 영상
-<img width="750" height="450" alt="image" src="https://github.com/jungjunhyung99/capstone/assets/55770796/d67ac53c-f5a6-4dd7-b5f2-276434b03c0f">
-
+## 시연 영상
+https://github.com/jungjunhyung99/2023-capstone-KT_Kiosk/assets/55770796/c614c04d-4e39-477b-9719-3be40038b2f9
 
 ## 메인페이지 로그인 전/후
 
